@@ -1,0 +1,62 @@
+{
+  "metrics": {
+    "generated_articles_count": 0,
+    "generated_video_scripts_count": 0,
+    "outbound_ctr_clicks": 6
+  },
+  "click_log": [
+    {
+      "offer_id": "aave-arb-003",
+      "protocol": "Aave",
+      "network": "Arbitrum",
+      "apy": 11.8,
+      "timestamp": "2026-06-04T19:47:49.678Z"
+    },
+    {
+      "offer_id": "jito-sol-001",
+      "protocol": "Jito",
+      "network": "Solana",
+      "apy": 8.4,
+      "timestamp": "2026-06-04T19:49:00.383Z"
+    },
+    {
+      "timestamp": "2026-06-06T14:23:50.744Z",
+      "offer_id": "lido-eth-002",
+      "lang": "ru",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-06-06T14:24:16.581Z",
+      "offer_id": "aave-arb-003",
+      "lang": "en",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-06-06T14:24:52.493Z",
+      "offer_id": "aave-arb-003",
+      "lang": "en",
+      "status": "success"
+    },
+    {
+      "timestamp": "2026-06-07T22:06:19.636Z",
+      "offer_id": "aave-eth-004",
+      "lang": "ru",
+      "status": "success"
+    }
+  ],
+  "agent_run_log": [
+    {
+      "pipeline": "video_script",
+      "token": "BTC",
+      "mode": "demo",
+      "timestamp": "2026-06-07T21:02:13.078261+00:00"
+    },
+    {
+      "pipeline": "video_script",
+      "token": "BTC",
+      "mode": "live",
+      "timestamp": "2026-06-07T21:02:27.005117+00:00"
+    }
+  ],
+  "last_updated": "2026-06-07T22:06:19.636Z"
+}

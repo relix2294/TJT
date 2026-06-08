@@ -1,0 +1,251 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+  TJT — "Quiet Luxury" fintech theme.
+  Strict, expensive, Bloomberg / premium-banking aesthetic.
+    bg_deep  #090a0f (matte charcoal)   bg_card  #121318 (graphite)
+    accent   platinum white + titanium #4f46e5
+    profit   #3fb950   loss #e5484d   muted #8b8d98
+  No neon, no glow. Surfaces use ultra-thin platinum hairlines
+  (border-white/[0.06]) + a barely-there inner gradient.
+*/
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-heading);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  /* Brand tokens */
+  --color-neon: var(--neon);
+  --color-neon-soft: var(--neon-soft);
+  --color-titanium: var(--titanium);
+  --color-titanium-soft: var(--titanium-soft);
+  --color-platinum: var(--platinum);
+  --color-profit: var(--profit);
+  --color-loss: var(--loss);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-hairline: var(--hairline);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+}
+
+:root,
+.dark {
+  --radius: 0.85rem;
+
+  /* Core surfaces — deep fintech dark (#0B0E11) */
+  --background: #0B0E11;
+  --foreground: #e7e8ec;
+  --surface: #12151a;
+  --surface-2: #161a21;
+
+  --card: #121318;
+  --card-foreground: #f4f5f7;
+  --popover: #121318;
+  --popover-foreground: #f4f5f7;
+
+  /* Titanium is the single restrained accent. */
+  --primary: #4f46e5;
+  --primary-foreground: #f7f7fb;
+  --secondary: #15161c;
+  --secondary-foreground: #e7e8ec;
+  --muted: #15161c;
+  --muted-foreground: #8b8d98;
+  --accent: #15161c;
+  --accent-foreground: #e7e8ec;
+  --destructive: #e5484d;
+
+  /* Ultra-thin platinum hairlines instead of glow. */
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.10);
+  --ring: #4f46e5;
+
+  /* Brand accents */
+  --platinum: #e7e8ec;
+  --titanium: #4f46e5;
+  --titanium-soft: rgba(79, 70, 229, 0.12);
+  --hairline: rgba(255, 255, 255, 0.06);
+  /* Legacy aliases kept so older utilities/classes don't break — now titanium, no neon. */
+  --neon: #4f46e5;
+  --neon-soft: rgba(79, 70, 229, 0.12);
+  --profit: #3fb950;
+  --loss: #e5484d;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply font-sans;
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    /* Quiet, expensive depth: a faint graphite vignette + a whisper of titanium. */
+    background-image:
+      radial-gradient(1200px 700px at 82% -14%, rgba(255, 255, 255, 0.025) 0%, transparent 55%),
+      radial-gradient(1000px 620px at 0% 0%, rgba(79, 70, 229, 0.05) 0%, transparent 48%);
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  /* Headings: Space Grotesk, tight and weighty — plotno i vesomo. */
+  .font-heading {
+    font-family: var(--font-heading), var(--font-sans), sans-serif;
+    letter-spacing: -0.035em;
+    font-weight: 700;
+  }
+  /* Calculator/figures: JetBrains Mono, crisp tabular numerals, NO glow. */
+  .font-numeric {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-feature-settings: "tnum" 1, "ss01" 1;
+    letter-spacing: -0.01em;
+  }
+
+  /*
+    Premium graphite surface.
+    Replaces the old neon glass: an ultra-thin platinum hairline plus a
+    barely-there inner gradient (top sheen + deep base), and a soft drop
+    shadow for weight instead of glow.
+  */
+  .glass {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.035) 0%, rgba(255, 255, 255, 0) 42%),
+      linear-gradient(150deg, rgba(18, 21, 26, 0.85) 0%, rgba(11, 14, 17, 0.92) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 24px 60px -34px rgba(0, 0, 0, 0.85);
+  }
+
+  /* Hairline helper for any card that wants the platinum edge directly. */
+  .hairline {
+    border: 1px solid var(--hairline);
+  }
+
+  /* Whisper-faint structural grid — platinum, not neon. */
+  .grid-noise {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(700px 360px at 50% 0%, #000 0%, transparent 75%);
+  }
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .animate-float { animation: float-slow 7s ease-in-out infinite; }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+  .animate-pulse-dot { animation: pulse-dot 1.6s ease-in-out infinite; }
+
+  @keyframes log-fade-in-down {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-log-enter {
+    animation: log-fade-in-down 0.45s ease-out both;
+  }
+
+  @keyframes sniper-badge-glow {
+    0%, 100% {
+      box-shadow: 0 0 10px rgba(255, 120, 40, 0.18);
+      border-color: rgba(255, 120, 40, 0.32);
+    }
+    50% {
+      box-shadow: 0 0 22px rgba(255, 140, 60, 0.38);
+      border-color: rgba(255, 150, 70, 0.55);
+    }
+  }
+  .animate-sniper-badge {
+    animation: sniper-badge-glow 2.4s ease-in-out infinite;
+  }
+
+  @keyframes ticker-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-ticker-scroll {
+    animation: ticker-scroll 28s linear infinite;
+  }
+  .group\/ticker:hover .animate-ticker-scroll {
+    animation-play-state: paused;
+  }
+
+  @keyframes cta-pulse {
+    0%, 100% {
+      box-shadow: 0 0 16px rgba(63, 185, 80, 0.2);
+      border-color: rgba(63, 185, 80, 0.35);
+    }
+    50% {
+      box-shadow: 0 0 32px rgba(63, 185, 80, 0.45);
+      border-color: rgba(63, 185, 80, 0.65);
+    }
+  }
+  .animate-cta-pulse {
+    animation: cta-pulse 2s ease-in-out infinite;
+  }
+
+  /* Thin scrollbar for the agent activity terminal. */
+  .terminal-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.14) transparent;
+  }
+  .terminal-scroll::-webkit-scrollbar {
+    width: 4px;
+  }
+  .terminal-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .terminal-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.14);
+    border-radius: 9999px;
+  }
+  .terminal-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.22);
+  }
+}
