@@ -18,8 +18,11 @@ import type { Locale } from "@/lib/i18n";
 /** Non-localizable brand identity. */
 export const SITE = {
   name: "TJT",
-  /** Canonical public origin — used by sitemap.xml, robots.txt and OG metadata. */
-  url: "https://tjt.example",
+  /**
+   * Canonical public origin — used when `NEXT_PUBLIC_SITE_URL` is unset.
+   * Set `NEXT_PUBLIC_SITE_URL` in production (see frontend/.env.example).
+   */
+  url: "",
   model: "Non-Custodial Information Broker (CPA / RevShare)",
   version: "1.0.0",
 } as const;

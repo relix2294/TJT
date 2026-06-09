@@ -7,6 +7,11 @@ import { Navbar } from "@/components/navbar";
 import { LegalFooter } from "@/components/legal-footer";
 import { HomeTerminal } from "@/components/home-terminal";
 import { PriceTickerTape } from "@/components/price-ticker-tape";
+import { JsonLd } from "@/components/json-ld";
+import {
+  buildOrganizationSchema,
+  buildWebSiteSchema,
+} from "@/lib/seo/json-ld";
 
 export const dynamic = "force-dynamic";
 
@@ -27,9 +32,22 @@ export default async function Home({ params }: PageProps) {
 
   const dict = config.dict;
   const latestNewsAt = config.news?.[0]?.publishedAt;
+  const homePath = `/${lang}`;
+  const jsonLd = [
+    buildWebSiteSchema({
+      lang: lang as Locale,
+      path: homePath,
+      description: dict.site.metaDescription,
+    }),
+    buildOrganizationSchema({
+      url: homePath,
+      description: dict.site.metaDescription,
+    }),
+  ];
 
   return (
     <>
+      <JsonLd data={jsonLd} />
       <Navbar lang={lang as Locale} dict={dict} />
       <main className="flex-1 bg-neutral-950">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-5">

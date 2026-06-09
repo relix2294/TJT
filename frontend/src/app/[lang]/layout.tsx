@@ -6,6 +6,7 @@ import { SITE } from "@/lib/config";
 import { Toaster } from "@/components/ui/sonner";
 import { loadDictionary } from "@/lib/server-config";
 import { LOCALES, isLocale } from "@/lib/i18n";
+import { GoogleAnalytics } from "@/components/google-analytics";
 import { generatePageMetadata } from "@/lib/seo";
 
 const inter = Inter({
@@ -64,6 +65,7 @@ export default async function RootLayout({
       className={`dark ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <GoogleAnalytics />
         {children}
         <Toaster />
       </body>
