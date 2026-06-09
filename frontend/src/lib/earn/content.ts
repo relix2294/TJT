@@ -1,6 +1,8 @@
 import type { Locale } from "@/lib/i18n";
+import type { EarnAssetSlug } from "@/lib/earn/types";
 import type { Asset } from "@/lib/earn/types";
 import type { TrustScore } from "@/lib/trust-score";
+import type { SeoPilotFaqItem } from "@/lib/seo-pilot/types";
 
 /** Hub-level copy — bilingual, independent of config.json for earn foundation. */
 export const EARN_HUB_COPY = {
@@ -21,10 +23,58 @@ export const EARN_HUB_COPY = {
     en: "Asset-first yield discovery for stablecoins and native tokens. Every page is SEO-ready and wired for 10,000+ programmatic expansion.",
     ru: "Поиск доходности по активам: стейблкоины и нативные токены. SEO-готовые страницы для масштабирования до 10 000+ URL.",
   },
-  assetGridTitle: { en: "Earn by asset", ru: "Доходность по активу" },
+  hubGridTitle: {
+    en: "Earn guides & yield pages",
+    ru: "Earn-гиды и страницы доходности",
+  },
   exploreLabel: { en: "Explore earn routes", ru: "Открыть маршруты" },
   breadcrumbEarn: { en: "Earn", ru: "Earn" },
+  faqTitle: { en: "Earn FAQ", ru: "FAQ по Earn" },
 } as const;
+
+/** Display titles for earn hub listings — maps asset slugs to SEO-friendly names. */
+export const EARN_HUB_ASSET_LISTING_TITLES: Record<
+  EarnAssetSlug,
+  Record<Locale, string>
+> = {
+  usdt: { en: "Best USDT Yield", ru: "Лучший USDT Yield" },
+  usdc: { en: "Best USDC Yield", ru: "Лучший USDC Yield" },
+  eth: { en: "Best ETH Staking", ru: "Лучший ETH Staking" },
+  sol: { en: "Best SOL Staking", ru: "Лучший SOL Staking" },
+};
+
+export const EARN_HUB_FAQ: SeoPilotFaqItem[] = [
+  {
+    question: {
+      en: "What earn pages does TJT provide?",
+      ru: "Какие earn-страницы предоставляет TJT?",
+    },
+    answer: {
+      en: "The earn hub lists educational guides and asset-specific yield pages for USDT, USDC, ETH, and SOL — with APY snapshots, Trust Score indicators, and links to Compare tables.",
+      ru: "Earn-хаб содержит образовательные гиды и страницы yield по USDT, USDC, ETH и SOL — со снимками APY, Trust Score и ссылками на Compare.",
+    },
+  },
+  {
+    question: {
+      en: "Is TJT earn content financial advice?",
+      ru: "Является ли earn-контент TJT финансовым советом?",
+    },
+    answer: {
+      en: "No. Earn pages are informational market context. APY figures are indicative snapshots — verify live rates and risks before acting.",
+      ru: "Нет. Earn-страницы — информационный рыночный контекст. APY — ориентировочные снимки — проверяйте live-ставки и риски.",
+    },
+  },
+  {
+    question: {
+      en: "How do I compare USDT yield on TJT?",
+      ru: "Как сравнить USDT yield на TJT?",
+    },
+    answer: {
+      en: "Start with the How to Compare USDT Yield guide, then open the Best USDT Yield page and linked Compare tables for side-by-side APY and Trust Score context.",
+      ru: "Начните с гида «Как сравнивать USDT yield», затем откройте страницу Best USDT Yield и связанные таблицы Compare.",
+    },
+  },
+];
 
 export function earnAssetMetaTitle(asset: Asset, lang: Locale): string {
   const name = asset.name[lang];

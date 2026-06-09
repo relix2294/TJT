@@ -4,8 +4,9 @@ import { TrendingUp } from "lucide-react";
 import { Navbar } from "@/components/navbar";
 import { LegalFooter } from "@/components/legal-footer";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { EarnAssetGrid } from "@/components/earn/asset-grid";
+import { EarnHubPageGrid } from "@/components/earn/hub-page-grid";
 import { EarnInternalLinkSection } from "@/components/earn/internal-link-section";
+import { SeoPilotFaqSection } from "@/components/seo-pilot/faq-section";
 import { JsonLd } from "@/components/json-ld";
 import { loadAppConfig, loadDictionary } from "@/lib/server-config";
 import { LOCALES, isLocale, type Locale } from "@/lib/i18n";
@@ -13,6 +14,7 @@ import { generatePageMetadata } from "@/lib/seo";
 import {
   EARN_ASSETS,
   EARN_HUB_COPY,
+  EARN_HUB_FAQ,
   buildEarnAssetTrustScore,
   buildYieldOpportunitiesFromOffers,
   buildEarnHubJsonLd,
@@ -68,11 +70,17 @@ export default async function EarnHubPage({ params }: PageProps) {
   const currentPath = earnHubMetadataPath(lang as Locale);
   const internalLinks = getEarnHubLinkGraph(lang as Locale, currentPath);
 
+  const breadcrumbs = [
+    { label: dict.breadcrumbs.home, href: `/${lang}` },
+    { label: EARN_HUB_COPY.breadcrumbEarn[lang as Locale] },
+  ];
+
   const jsonLd = buildEarnHubJsonLd({
     lang: lang as Locale,
     title: EARN_HUB_COPY.metaTitle[lang as Locale],
     description: EARN_HUB_COPY.metaDescription[lang as Locale],
     assets: EARN_ASSETS,
+    breadcrumbs,
   });
 
   return (
@@ -83,10 +91,7 @@ export default async function EarnHubPage({ params }: PageProps) {
         <section className="mx-auto max-w-6xl px-5 pt-10 pb-16">
           <Breadcrumbs
             ariaLabel={dict.breadcrumbs.ariaLabel}
-            items={[
-              { label: dict.breadcrumbs.home, href: `/${lang}` },
-              { label: EARN_HUB_COPY.breadcrumbEarn[lang as Locale] },
-            ]}
+            items={breadcrumbs}
           />
 
           <div className="mb-10 max-w-2xl">
@@ -103,9 +108,9 @@ export default async function EarnHubPage({ params }: PageProps) {
           </div>
 
           <h2 className="mb-4 font-heading text-lg font-bold text-white">
-            {EARN_HUB_COPY.assetGridTitle[lang as Locale]}
+            {EARN_HUB_COPY.hubGridTitle[lang as Locale]}
           </h2>
-          <EarnAssetGrid
+          <EarnHubPageGrid
             lang={lang as Locale}
             assets={EARN_ASSETS}
             exploreLabel={EARN_HUB_COPY.exploreLabel[lang as Locale]}
@@ -113,7 +118,12 @@ export default async function EarnHubPage({ params }: PageProps) {
             trustScoreByAsset={trustScoreByAsset}
           />
 
-          <div className="mt-10">
+          <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_320px]">
+            <SeoPilotFaqSection
+              lang={lang as Locale}
+              items={EARN_HUB_FAQ}
+              title={EARN_HUB_COPY.faqTitle[lang as Locale]}
+            />
             <EarnInternalLinkSection
               title={lang === "ru" ? "Внутренние ссылки" : "Internal links"}
               links={internalLinks}

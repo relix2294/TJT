@@ -14,6 +14,7 @@ import {
   SEO_PILOT_HUB_LABELS,
   buildSeoPilotJsonLd,
   resolvePilotLocalized,
+  seoPilotHubPath,
   type SeoPilotPage,
 } from "@/lib/seo-pilot";
 
@@ -34,7 +35,7 @@ export function SeoPilotDetailPage({
 
   const breadcrumbs = [
     { label: dict.breadcrumbs.home, href: `/${lang}` },
-    { label: hubLabel },
+    { label: hubLabel, href: seoPilotHubPath(lang, page.hubSegment) },
     { label: resolvePilotLocalized(page.h1, lang) },
   ];
 

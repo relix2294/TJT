@@ -1,6 +1,13 @@
 import type { Locale } from "@/lib/i18n";
 import type { SeoPilotHubSegment, SeoPilotPage } from "@/lib/seo-pilot/types";
 
+export function seoPilotHubPath(
+  lang: Locale,
+  hubSegment: SeoPilotHubSegment,
+): string {
+  return `/${lang}/${hubSegment}`;
+}
+
 export function seoPilotDetailPath(
   lang: Locale,
   hubSegment: SeoPilotHubSegment,

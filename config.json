@@ -909,10 +909,10 @@
         {
           "heading": { "en": "Academy", "ru": "Академия" },
           "links": [
-            { "label": { "en": "All articles", "ru": "Все статьи" }, "href": "#academy" },
-            { "label": { "en": "Inflation & savings", "ru": "Инфляция и сбережения" }, "href": "#academy" },
-            { "label": { "en": "Staking guide", "ru": "Гайд по стейкингу" }, "href": "#academy" },
-            { "label": { "en": "DeFi basics", "ru": "Основы DeFi" }, "href": "#academy" }
+            { "label": { "en": "Learn hub", "ru": "Обучение" }, "href": "/learn" },
+            { "label": { "en": "Protocol reviews", "ru": "Обзоры протоколов" }, "href": "/reviews" },
+            { "label": { "en": "Safety guides", "ru": "Безопасность" }, "href": "/safety" },
+            { "label": { "en": "Earn hub", "ru": "Earn" }, "href": "/earn" }
           ]
         },
         {
