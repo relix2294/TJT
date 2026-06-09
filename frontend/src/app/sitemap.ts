@@ -74,7 +74,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             path: `/${lang}/earn/${asset}`,
             lastModified: now,
             changeFrequency: "weekly",
-            priority: 0.8,
+            priority: 0.78,
             localeNeutralPath: (l) => `/${l}/earn/${asset}`,
           },
           now,
