@@ -84,6 +84,10 @@ const PROTOCOL_COMPARE_TITLES: Record<ProtocolCompareSlug, LocalizedString> = {
     en: "Compound vs Morpho — informational lending comparison",
     ru: "Compound vs Morpho — информационное сравнение lending",
   },
+  "ethena-vs-aave": {
+    en: "Ethena vs Aave — informational yield comparison",
+    ru: "Ethena vs Aave — информационное сравнение yield",
+  },
 };
 
 const YIELD_COMPARE_TITLES: Record<

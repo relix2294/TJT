@@ -44,7 +44,12 @@ export const LEARN_SLUGS = [
   "usdc-yield-risks",
 ] as const;
 
-export const EARN_GUIDE_SLUGS = ["how-to-compare-usdt-yield"] as const;
+export const EARN_GUIDE_SLUGS = [
+  "how-to-compare-usdt-yield",
+  "how-to-compare-usdc-yield",
+  "how-to-compare-eth-yield",
+  "how-to-compare-sol-yield",
+] as const;
 
 export const SEO_PILOT_SLUGS = [
   ...REVIEW_SLUGS,

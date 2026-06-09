@@ -94,6 +94,24 @@ export function getEarnHubLinkGraph(
       priority: 0.78,
     },
     {
+      href: localePath(lang, "/earn/how-to-compare-usdc-yield"),
+      label: lang === "ru" ? "Сравнение USDC yield" : "Compare USDC yield guide",
+      type: "earn",
+      priority: 0.77,
+    },
+    {
+      href: localePath(lang, "/earn/how-to-compare-eth-yield"),
+      label: lang === "ru" ? "Сравнение ETH yield" : "Compare ETH yield guide",
+      type: "earn",
+      priority: 0.77,
+    },
+    {
+      href: localePath(lang, "/earn/how-to-compare-sol-yield"),
+      label: lang === "ru" ? "Сравнение SOL yield" : "Compare SOL yield guide",
+      type: "earn",
+      priority: 0.77,
+    },
+    {
       href: localePath(lang, "/protocols"),
       label: lang === "ru" ? "Протоколы" : "Protocols",
       type: "protocols",

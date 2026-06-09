@@ -95,6 +95,126 @@
         "en": ["Battle-tested Aave V3 on Ethereum L1", "Variable APY from real borrow demand", "Non-custodial — you sign every transaction", "Minimum entry from $75"],
         "ru": ["Проверенный Aave V3 на Ethereum L1", "Переменный APY от реального спроса на заём", "Non-custodial — каждая транзакция подписывается вами", "Минимальный вход от $75"]
       }
+    },
+    {
+      "id": "morpho-usdc-005",
+      "slug": "morpho-blue-usdc-ethereum",
+      "name": "Morpho Blue USDC Supply",
+      "protocol": "Morpho",
+      "network": "Ethereum",
+      "logo": "MO",
+      "apy": 9.2,
+      "risk_rating": "AA",
+      "min_entry_usd": 50,
+      "referral_url": "https://app.morpho.org/?ref=tjt",
+      "description": {
+        "en": "Supply USDC to Morpho Blue curated markets on Ethereum. P2P matching can improve supplier APY versus passive underlying pools during elevated borrow demand.",
+        "ru": "Поставьте USDC в курируемые рынки Morpho Blue на Ethereum. P2P-matching может улучшать APY поставщиков vs пассивные базовые пулы при высоком спросе на заём."
+      },
+      "benefits": {
+        "en": ["P2P lending optimizer efficiency", "Isolated Morpho Blue market parameters", "TJT Trust Score context: Morpho ~81/100", "Minimum entry from $50"],
+        "ru": ["Эффективность P2P lending optimizer", "Изолированные параметры рынков Morpho Blue", "Контекст TJT Trust Score: Morpho ~81/100", "Минимальный вход от $50"]
+      }
+    },
+    {
+      "id": "spark-usdc-006",
+      "slug": "sparklend-usdc-ethereum",
+      "name": "SparkLend USDC Supply",
+      "protocol": "Spark",
+      "network": "Ethereum",
+      "logo": "SP",
+      "apy": 7.8,
+      "risk_rating": "AA",
+      "min_entry_usd": 50,
+      "referral_url": "https://app.spark.fi/?ref=tjt",
+      "description": {
+        "en": "Supply USDC to SparkLend in the MakerDAO ecosystem. Earn variable APY from borrow utilization with documented audit coverage.",
+        "ru": "Поставьте USDC в SparkLend экосистемы MakerDAO. Получайте переменный APY от utilization с документированными аудитами."
+      },
+      "benefits": {
+        "en": ["MakerDAO ecosystem lending infrastructure", "SparkLend audited smart contracts", "TJT Trust Score context: Spark ~80/100", "Minimum entry from $50"],
+        "ru": ["Lending-инфраструктура экосистемы MakerDAO", "Аудированные смарт-контракты SparkLend", "Контекст TJT Trust Score: Spark ~80/100", "Минимальный вход от $50"]
+      }
+    },
+    {
+      "id": "etherfi-eth-007",
+      "slug": "etherfi-eeth-ethereum",
+      "name": "EtherFi eETH Restaking",
+      "protocol": "EtherFi",
+      "network": "Ethereum",
+      "logo": "EF",
+      "apy": 4.8,
+      "risk_rating": "AA",
+      "min_entry_usd": 100,
+      "referral_url": "https://www.ether.fi/?ref=tjt",
+      "description": {
+        "en": "Liquid restaking via EtherFi eETH on Ethereum. Accrue staking plus restaking rewards while keeping a composable receipt token for DeFi.",
+        "ru": "Liquid restaking через EtherFi eETH на Ethereum. Начисление staking и restaking rewards с композируемым receipt-токеном для DeFi."
+      },
+      "benefits": {
+        "en": ["Liquid restaking receipt token eETH", "Composable across DeFi integrations", "TJT Trust Score context: EtherFi ~73/100", "Minimum entry from $100"],
+        "ru": ["Liquid restaking receipt eETH", "Композируемость в DeFi-интеграциях", "Контекст TJT Trust Score: EtherFi ~73/100", "Минимальный вход от $100"]
+      }
+    },
+    {
+      "id": "pendle-usdc-008",
+      "slug": "pendle-usdc-yield-ethereum",
+      "name": "Pendle USDC Yield Markets",
+      "protocol": "Pendle",
+      "network": "Ethereum",
+      "logo": "PE",
+      "apy": 12.5,
+      "risk_rating": "A",
+      "min_entry_usd": 75,
+      "referral_url": "https://app.pendle.finance/?ref=tjt",
+      "description": {
+        "en": "Trade or lock USDC yield exposure via Pendle PT/YT markets on Ethereum. Implied fixed yields are market-derived — verify maturity and underlying-asset risk.",
+        "ru": "Торгуйте или фиксируйте USDC yield-экспозицию через рынки Pendle PT/YT на Ethereum. Implied yield рыночный — проверяйте срок погашения и риск базового актива."
+      },
+      "benefits": {
+        "en": ["Yield-trading infrastructure for USDC routes", "Lock implied fixed yield via PT tokens", "TJT Trust Score context: Pendle ~77/100", "Minimum entry from $75"],
+        "ru": ["Yield-trading инфраструктура для USDC", "Фиксация implied yield через PT", "Контекст TJT Trust Score: Pendle ~77/100", "Минимальный вход от $75"]
+      }
+    },
+    {
+      "id": "ethena-usde-009",
+      "slug": "ethena-susde-ethereum",
+      "name": "Ethena sUSDe Yield",
+      "protocol": "Ethena",
+      "network": "Ethereum",
+      "logo": "ET",
+      "apy": 14.2,
+      "risk_rating": "A",
+      "min_entry_usd": 50,
+      "referral_url": "https://app.ethena.fi/?ref=tjt",
+      "description": {
+        "en": "Earn funding-rate-based yield on Ethena sUSDe — a synthetic dollar backed by delta-neutral hedging. Distinct risk profile from traditional lending supply.",
+        "ru": "Получайте yield от funding rates на Ethena sUSDe — synthetic dollar под delta-neutral хеджирование. Отличный профиль риска от классического lending supply."
+      },
+      "benefits": {
+        "en": ["Funding-rate yield on synthetic USDe", "On-chain composability for sUSDe", "TJT Trust Score context: Ethena ~70/100", "Minimum entry from $50"],
+        "ru": ["Yield от funding rates на synthetic USDe", "On-chain композируемость sUSDe", "Контекст TJT Trust Score: Ethena ~70/100", "Минимальный вход от $50"]
+      }
+    },
+    {
+      "id": "compound-usdc-010",
+      "slug": "compound-v3-usdc-ethereum",
+      "name": "Compound V3 USDC Supply",
+      "protocol": "Compound",
+      "network": "Ethereum",
+      "logo": "CO",
+      "apy": 6.9,
+      "risk_rating": "AA",
+      "min_entry_usd": 50,
+      "referral_url": "https://app.compound.finance/?ref=tjt",
+      "description": {
+        "en": "Supply USDC to Compound III (Comet) on Ethereum. Pioneer lending market with algorithmic rates driven by borrow utilization.",
+        "ru": "Поставьте USDC в Compound III (Comet) на Ethereum. Pioneer lending market с алгоритмическими ставками от utilization."
+      },
+      "benefits": {
+        "en": ["Pioneer DeFi lending with years of mainnet history", "Compound III focused USDC market", "TJT Trust Score context: Compound ~85/100", "Minimum entry from $50"],
+        "ru": ["Pioneer DeFi lending с годами mainnet", "Сфокусированный USDC-рынок Compound III", "Контекст TJT Trust Score: Compound ~85/100", "Минимальный вход от $50"]
+      }
     }
   ],
   "market_snapshot": [
@@ -398,6 +518,226 @@
       "seo_keywords": {
         "en": ["TJT news", "AI analytics", "crypto news", "DeFi analytics", "Web3 hub"],
         "ru": ["TJT новости", "ИИ-аналитика", "крипто новости", "DeFi аналитика", "Web3 хаб"]
+      }
+    },
+    {
+      "id": "news-morpho-blue-tvl-milestone",
+      "slug": "morpho-blue-tvl-milestone",
+      "category": "DeFi",
+      "published_at": "2026-06-08T10:00:00Z",
+      "title": {
+        "en": "Morpho Blue crosses $5B TVL as curated markets expand",
+        "ru": "Morpho Blue превысил $5B TVL на фоне расширения curated markets"
+      },
+      "description": {
+        "en": "Morpho Blue lending markets continue to grow as curators deploy new USDC and ETH vaults. TJT Trust Score for Morpho remains ~81/100 — review audit and oracle dependencies before allocating.",
+        "ru": "Рынки Morpho Blue продолжают расти по мере развёртывания новых USDC и ETH vaults кураторами. TJT Trust Score для Morpho ~81/100 — проверьте аудиты и oracle-зависимости перед аллокацией."
+      },
+      "content": {
+        "en": "Morpho Blue has crossed a new TVL milestone as curated lending markets attract institutional and retail liquidity. The P2P matching layer can improve supplier APY versus passive underlying pools during periods of elevated borrow demand.\n\nTJT tracks Morpho with a Trust Score of approximately 81/100. Before depositing, compare Morpho against Aave and Compound on our [Morpho vs Aave](/en/compare/morpho-vs-aave) page and read the [Morpho review](/en/reviews/morpho).\n\nYield is variable and depends on market utilization. Use our [USDC yield comparison guide](/en/earn/how-to-compare-usdc-yield) to evaluate net returns after gas and bridge costs.",
+        "ru": "Morpho Blue превысил новый рубеж TVL: curated lending markets привлекают институциональную и розничную ликвидность. Слой P2P-matching может улучшать APY поставщиков vs пассивные базовые пулы при высоком спросе на заём.\n\nTJT отслеживает Morpho с Trust Score ~81/100. Перед депозитом сравните Morpho с Aave и Compound на странице [Morpho vs Aave](/ru/compare/morpho-vs-aave) и прочитайте [обзор Morpho](/ru/reviews/morpho).\n\nДоходность переменная и зависит от utilization. Используйте [гайд по сравнению USDC yield](/ru/earn/how-to-compare-usdc-yield) для оценки net returns с учётом gas и bridge."
+      },
+      "seo_keywords": {
+        "en": ["Morpho Blue", "Morpho TVL", "curated lending", "USDC yield"],
+        "ru": ["Morpho Blue", "Morpho TVL", "curated lending", "USDC yield"]
+      }
+    },
+    {
+      "id": "news-sparklend-utilization-update",
+      "slug": "sparklend-utilization-update",
+      "category": "DeFi",
+      "published_at": "2026-06-07T14:30:00Z",
+      "title": {
+        "en": "SparkLend utilization rises as MakerDAO ecosystem lending heats up",
+        "ru": "Utilization SparkLend растёт на фоне активности lending в экосистеме MakerDAO"
+      },
+      "description": {
+        "en": "SparkLend borrow demand has pushed supplier APY higher across USDC and DAI markets. Spark Trust Score ~80/100 — see our Spark review and Spark vs Aave comparison.",
+        "ru": "Спрос на заём в SparkLend поднял APY поставщиков на рынках USDC и DAI. Trust Score Spark ~80/100 — см. обзор Spark и сравнение Spark vs Aave."
+      },
+      "content": {
+        "en": "SparkLend, the lending arm of the MakerDAO ecosystem, has seen rising utilization across core stablecoin markets. Higher borrow demand typically translates to improved supplier APY, though rates remain algorithmically variable.\n\nTJT assigns Spark a Trust Score of approximately 80/100 based on audit coverage, governance transparency, and operational history. Compare Spark against alternatives on [Spark vs Aave](/en/compare/spark-vs-aave) and check [is Spark safe](/en/safety/is-spark-safe) before depositing.\n\nFor USDC-specific routing, see our [how to compare USDC yield](/en/earn/how-to-compare-usdc-yield) guide and the [SparkLend USDC offer](/en/earn/sparklend-usdc-ethereum).",
+        "ru": "SparkLend — lending-направление экосистемы MakerDAO — фиксирует рост utilization на ключевых stablecoin-рынках. Высокий спрос на заём обычно улучшает APY поставщиков, хотя ставки остаются алгоритмическими.\n\nTJT присваивает Spark Trust Score ~80/100 по аудитам, прозрачности governance и операционной истории. Сравните альтернативы на [Spark vs Aave](/ru/compare/spark-vs-aave) и проверьте [безопасен ли Spark](/ru/safety/is-spark-safe) перед депозитом.\n\nДля USDC-маршрутов см. [гайд по сравнению USDC yield](/ru/earn/how-to-compare-usdc-yield) и [оффер SparkLend USDC](/ru/earn/sparklend-usdc-ethereum)."
+      },
+      "seo_keywords": {
+        "en": ["SparkLend", "MakerDAO", "Spark APY", "USDC lending"],
+        "ru": ["SparkLend", "MakerDAO", "Spark APY", "USDC lending"]
+      }
+    },
+    {
+      "id": "news-etherfi-restaking-growth",
+      "slug": "etherfi-restaking-growth",
+      "category": "DeFi",
+      "published_at": "2026-06-06T09:15:00Z",
+      "title": {
+        "en": "EtherFi eETH restaking TVL grows as liquid restaking demand surges",
+        "ru": "TVL EtherFi eETH растёт на волне спроса на liquid restaking"
+      },
+      "description": {
+        "en": "EtherFi liquid restaking continues to attract ETH deposits. Trust Score ~73/100 — restaking adds operator and slashing layers beyond standard liquid staking.",
+        "ru": "Liquid restaking EtherFi продолжает привлекать ETH-депозиты. Trust Score ~73/100 — restaking добавляет слои операторов и slashing поверх liquid staking."
+      },
+      "content": {
+        "en": "EtherFi's eETH token has seen sustained inflows as investors seek liquid restaking exposure without running validators. eETH accrues both consensus staking rewards and restaking incentives, but introduces additional smart-contract and operator dependencies.\n\nTJT rates EtherFi at approximately 73/100 on our Trust Score framework. Read the full [EtherFi review](/en/reviews/etherfi) and compare against Lido on [best ETH restaking](/en/compare/best-eth-restaking).\n\nUse our [how to compare ETH yield](/en/earn/how-to-compare-eth-yield) guide to weigh eETH against stETH, rETH, and native staking options.",
+        "ru": "Токен eETH EtherFi получает устойчивые притоки: инвесторы ищут liquid restaking без запуска валидаторов. eETH начисляет consensus staking rewards и restaking incentives, но добавляет зависимости от смарт-контрактов и операторов.\n\nTJT оценивает EtherFi ~73/100 по Trust Score. Прочитайте [обзор EtherFi](/ru/reviews/etherfi) и сравните с Lido на [best ETH restaking](/ru/compare/best-eth-restaking).\n\nИспользуйте [гайд по сравнению ETH yield](/ru/earn/how-to-compare-eth-yield) для сравнения eETH со stETH, rETH и native staking."
+      },
+      "seo_keywords": {
+        "en": ["EtherFi", "eETH", "liquid restaking", "ETH yield"],
+        "ru": ["EtherFi", "eETH", "liquid restaking", "ETH yield"]
+      }
+    },
+    {
+      "id": "news-pendle-maturity-season",
+      "slug": "pendle-maturity-season",
+      "category": "Аналитика",
+      "published_at": "2026-06-05T16:00:00Z",
+      "title": {
+        "en": "Pendle maturity season: what PT holders should know",
+        "ru": "Сезон погашений Pendle: что важно держателям PT"
+      },
+      "description": {
+        "en": "Several Pendle PT markets approach maturity. Implied yields were market-derived — verify underlying-asset risk and Trust Score ~77/100 before rolling positions.",
+        "ru": "Несколько рынков Pendle PT приближаются к погашению. Implied yield был рыночным — проверьте риск базового актива и Trust Score ~77/100 перед роллингом позиций."
+      },
+      "content": {
+        "en": "Pendle's Principal Token (PT) markets are entering a maturity window where holders can redeem for underlying yield-bearing assets. PT prices embed implied fixed yields that were set at purchase time — actual outcomes depend on underlying protocol performance.\n\nTJT Trust Score for Pendle is approximately 77/100. Review [is Pendle safe](/en/safety/is-pendle-safe) and the [Pendle review](/en/reviews/pendle) before rolling into new maturities.\n\nCompare Pendle yield strategies against EtherFi on [Pendle vs EtherFi](/en/compare/pendle-vs-etherfi). For stablecoin routes, see [how to compare USDC yield](/en/earn/how-to-compare-usdc-yield).",
+        "ru": "Рынки Principal Token (PT) Pendle входят в окно погашения: держатели могут получить базовые yield-bearing активы. Цены PT закладывали implied fixed yield на момент покупки — итог зависит от performance базового протокола.\n\nTJT Trust Score для Pendle ~77/100. Изучите [безопасен ли Pendle](/ru/safety/is-pendle-safe) и [обзор Pendle](/ru/reviews/pendle) перед роллингом в новые сроки.\n\nСравните стратегии Pendle с EtherFi на [Pendle vs EtherFi](/ru/compare/pendle-vs-etherfi). Для stablecoin — [гайд по USDC yield](/ru/earn/how-to-compare-usdc-yield)."
+      },
+      "seo_keywords": {
+        "en": ["Pendle", "PT maturity", "yield trading", "fixed yield DeFi"],
+        "ru": ["Pendle", "погашение PT", "yield trading", "фиксированный yield DeFi"]
+      }
+    },
+    {
+      "id": "news-ethena-funding-rates-update",
+      "slug": "ethena-funding-rates-update",
+      "category": "Аналитика",
+      "published_at": "2026-06-04T11:45:00Z",
+      "title": {
+        "en": "Ethena funding rates shift: sUSDe yield outlook for Q3",
+        "ru": "Funding rates Ethena меняются: прогноз yield sUSDe на Q3"
+      },
+      "description": {
+        "en": "Ethena sUSDe yields track perpetual funding rates and basis dynamics. Trust Score ~70/100 — synthetic dollar risk differs from lending supply.",
+        "ru": "Yield sUSDe Ethena следует за funding rates перпов и basis. Trust Score ~70/100 — риск synthetic dollar отличается от lending supply."
+      },
+      "content": {
+        "en": "Ethena's sUSDe yield is primarily driven by funding rates on delta-neutral hedged positions rather than traditional borrow utilization. Recent funding dynamics have shifted implied APY — past performance does not guarantee future returns.\n\nTJT assigns Ethena a Trust Score of approximately 70/100, reflecting newer protocol history and synthetic-asset mechanics. Read [is Ethena safe](/en/safety/is-ethena-safe) and compare on [Ethena vs Aave](/en/compare/ethena-vs-aave).\n\nFor stablecoin allocation decisions, use [how to compare USDC yield](/en/earn/how-to-compare-usdc-yield) and the [Ethena sUSDe offer](/en/earn/ethena-susde-ethereum).",
+        "ru": "Yield sUSDe Ethena в основном определяется funding rates на delta-neutral хеджированных позициях, а не borrow utilization. Недавняя динамика funding сдвинула implied APY — прошлые результаты не гарантируют будущие.\n\nTJT присваивает Ethena Trust Score ~70/100 с учётом более короткой истории и механики synthetic-активов. Изучите [безопасна ли Ethena](/ru/safety/is-ethena-safe) и сравнение [Ethena vs Aave](/ru/compare/ethena-vs-aave).\n\nДля аллокации stablecoin используйте [гайд USDC yield](/ru/earn/how-to-compare-usdc-yield) и [оффер Ethena sUSDe](/ru/earn/ethena-susde-ethereum)."
+      },
+      "seo_keywords": {
+        "en": ["Ethena", "sUSDe", "funding rates", "synthetic dollar"],
+        "ru": ["Ethena", "sUSDe", "funding rates", "synthetic dollar"]
+      }
+    },
+    {
+      "id": "news-compound-v3-governance-vote",
+      "slug": "compound-v3-governance-vote",
+      "category": "Новости",
+      "published_at": "2026-06-03T08:20:00Z",
+      "title": {
+        "en": "Compound III governance vote passes collateral parameter update",
+        "ru": "Голосование governance Compound III одобрило обновление параметров залога"
+      },
+      "description": {
+        "en": "Compound community approved collateral factor adjustments on Ethereum USDC Comet. Trust Score ~85/100 — monitor utilization impact on supplier APY.",
+        "ru": "Сообщество Compound одобрило корректировки collateral factor в USDC Comet на Ethereum. Trust Score ~85/100 — следите за влиянием на APY поставщиков."
+      },
+      "content": {
+        "en": "Compound III (Comet) governance has approved updated collateral parameters on the Ethereum USDC market. Parameter changes can affect borrow capacity and utilization, which in turn influences supplier APY.\n\nWith a TJT Trust Score of approximately 85/100, Compound remains among the higher-rated lending protocols. See [Compound vs Morpho](/en/compare/compound-vs-morpho) and the [Compound review](/en/reviews/compound).\n\nUSDC suppliers can check live rates via the [Compound V3 USDC offer](/en/earn/compound-v3-usdc-ethereum) and our [USDC yield guide](/en/earn/how-to-compare-usdc-yield).",
+        "ru": "Governance Compound III (Comet) одобрила обновлённые параметры залога на USDC-рынке Ethereum. Изменения влияют на borrow capacity и utilization, а значит — на APY поставщиков.\n\nС Trust Score ~85/100 Compound остаётся среди высоко оценённых lending-протоколов. См. [Compound vs Morpho](/ru/compare/compound-vs-morpho) и [обзор Compound](/ru/reviews/compound).\n\nПоставщики USDC могут проверить ставки через [оффер Compound V3 USDC](/ru/earn/compound-v3-usdc-ethereum) и [гайд USDC yield](/ru/earn/how-to-compare-usdc-yield)."
+      },
+      "seo_keywords": {
+        "en": ["Compound", "Compound III", "governance", "USDC Comet"],
+        "ru": ["Compound", "Compound III", "governance", "USDC Comet"]
+      }
+    },
+    {
+      "id": "news-aave-vs-lido-yield-analysis",
+      "slug": "aave-vs-lido-yield-analysis",
+      "category": "Аналитика",
+      "published_at": "2026-06-02T13:00:00Z",
+      "title": {
+        "en": "Aave vs Lido: ETH yield paths compared for June 2026",
+        "ru": "Aave vs Lido: сравнение путей ETH yield на июнь 2026"
+      },
+      "description": {
+        "en": "Lending supply APY and liquid staking rewards offer different ETH yield mechanics. Updated editorial on Aave vs Lido with Trust Scores ~88 and ~86.",
+        "ru": "Lending supply APY и liquid staking rewards — разная механика ETH yield. Обновлённая редакция Aave vs Lido с Trust Scores ~88 и ~86."
+      },
+      "content": {
+        "en": "ETH holders face a fork: supply WETH or stETH on Aave for borrow-driven APY, or stake via Lido for consensus rewards with stETH liquidity. The optimal path depends on utilization, loop risk, and liquidity needs.\n\nTJT Trust Scores: Aave ~88/100, Lido ~86/100. Read our enriched [Aave vs Lido](/en/compare/aave-vs-lido) comparison and [how to compare ETH yield](/en/earn/how-to-compare-eth-yield) guide.\n\nFor liquid staking depth, see [best liquid staking](/en/compare/best-liquid-staking) and [Lido review](/en/reviews/lido).",
+        "ru": "Держатели ETH выбирают: supply WETH или stETH на Aave за borrow-driven APY или staking через Lido с ликвидностью stETH. Оптимальный путь зависит от utilization, loop risk и потребности в ликвидности.\n\nTJT Trust Scores: Aave ~88/100, Lido ~86/100. Читайте обновлённое [Aave vs Lido](/ru/compare/aave-vs-lido) и [гайд ETH yield](/ru/earn/how-to-compare-eth-yield).\n\nПо liquid staking — [best liquid staking](/ru/compare/best-liquid-staking) и [обзор Lido](/ru/reviews/lido)."
+      },
+      "seo_keywords": {
+        "en": ["Aave vs Lido", "ETH yield", "stETH", "liquid staking"],
+        "ru": ["Aave vs Lido", "ETH yield", "stETH", "liquid staking"]
+      }
+    },
+    {
+      "id": "news-jito-sol-yield-surge",
+      "slug": "jito-sol-yield-surge",
+      "category": "DeFi",
+      "published_at": "2026-06-01T10:30:00Z",
+      "title": {
+        "en": "Jito SOL staking rewards climb as MEV tips increase",
+        "ru": "Награды Jito SOL растут на фоне увеличения MEV tips"
+      },
+      "description": {
+        "en": "Jito liquid staking on Solana benefits from higher MEV tip flows. Trust Score ~79/100 — compare SOL yield paths before allocating.",
+        "ru": "Liquid staking Jito на Solana выигрывает от роста MEV tips. Trust Score ~79/100 — сравните пути SOL yield перед аллокацией."
+      },
+      "content": {
+        "en": "Jito's liquid staking token (JitoSOL) has seen improved effective APY as MEV tip revenue on Solana increases. Unlike Ethereum liquid staking, Solana MEV dynamics are a primary yield driver alongside inflation rewards.\n\nTJT rates Jito at approximately 79/100. Compare against Aave Solana routes on [Aave vs Jito](/en/compare/aave-vs-jito) and [Lido vs Jito](/en/compare/lido-vs-jito) for cross-chain context.\n\nUse [how to compare SOL yield](/en/earn/how-to-compare-sol-yield) for a structured evaluation framework.",
+        "ru": "Liquid staking токен Jito (JitoSOL) показывает улучшенный effective APY по мере роста MEV tip revenue на Solana. В отличие от Ethereum, MEV — ключевой драйвер yield вместе с inflation rewards.\n\nTJT оценивает Jito ~79/100. Сравните с маршрутами Aave Solana на [Aave vs Jito](/ru/compare/aave-vs-jito) и [Lido vs Jito](/ru/compare/lido-vs-jito) для кросс-чейн контекста.\n\nИспользуйте [гайд SOL yield](/ru/earn/how-to-compare-sol-yield) для структурированной оценки."
+      },
+      "seo_keywords": {
+        "en": ["Jito", "JitoSOL", "Solana staking", "MEV yield"],
+        "ru": ["Jito", "JitoSOL", "Solana staking", "MEV yield"]
+      }
+    },
+    {
+      "id": "news-defi-trust-scores-june-update",
+      "slug": "defi-trust-scores-june-update",
+      "category": "Аналитика",
+      "published_at": "2026-05-31T15:00:00Z",
+      "title": {
+        "en": "TJT Trust Scores June update: top protocols ranked",
+        "ru": "Обновление TJT Trust Scores за июнь: рейтинг топ-протоколов"
+      },
+      "description": {
+        "en": "Monthly Trust Score refresh across 10 tracked protocols. Compound leads at ~85, Ethena trails at ~70 — see individual protocol pages for methodology.",
+        "ru": "Ежемесячное обновление Trust Score по 10 протоколам. Compound лидирует ~85, Ethena ~70 — методология на страницах протоколов."
+      },
+      "content": {
+        "en": "TJT has refreshed Trust Scores for all 10 tracked DeFi protocols. Top performers: Compound (~85), Aave (~88), Lido (~86). Newer or structurally complex protocols — Ethena (~70), EtherFi (~73) — score lower on history and dependency factors.\n\nTrust Scores inform but do not replace due diligence. Visit individual pages: [Aave Trust Score](/en/trust/aave), [Morpho Trust Score](/en/trust/morpho), [Ethena Trust Score](/en/trust/ethena).\n\nPair comparisons: [Compound vs Morpho](/en/compare/compound-vs-morpho), [Ethena vs Aave](/en/compare/ethena-vs-aave), [Spark vs Aave](/en/compare/spark-vs-aave).",
+        "ru": "TJT обновил Trust Scores для всех 10 отслеживаемых DeFi-протоколов. Лидеры: Compound (~85), Aave (~88), Lido (~86). Более новые или структурно сложные — Ethena (~70), EtherFi (~73) — ниже по истории и зависимостям.\n\nTrust Scores дополняют, но не заменяют due diligence. Страницы: [Trust Score Aave](/ru/trust/aave), [Trust Score Morpho](/ru/trust/morpho), [Trust Score Ethena](/ru/trust/ethena).\n\nСравнения: [Compound vs Morpho](/ru/compare/compound-vs-morpho), [Ethena vs Aave](/ru/compare/ethena-vs-aave), [Spark vs Aave](/ru/compare/spark-vs-aave)."
+      },
+      "seo_keywords": {
+        "en": ["Trust Score", "DeFi safety", "protocol ranking", "TJT analytics"],
+        "ru": ["Trust Score", "безопасность DeFi", "рейтинг протоколов", "аналитика TJT"]
+      }
+    },
+    {
+      "id": "news-beta-launch-content-expansion",
+      "slug": "beta-launch-content-expansion",
+      "category": "Новости",
+      "published_at": "2026-05-29T12:00:00Z",
+      "title": {
+        "en": "TJT Beta content expansion: new guides, compares, and offers live",
+        "ru": "Расширение контента TJT Beta: новые гайды, сравнения и офферы"
+      },
+      "description": {
+        "en": "Beta finish pass adds earn guides for USDC, ETH, and SOL yield comparison, enriches protocol compares, and launches 6 new CPA offers.",
+        "ru": "Beta finish pass добавляет гайды USDC, ETH и SOL yield, обогащает сравнения протоколов и 6 новых CPA-офферов."
+      },
+      "content": {
+        "en": "TJT's Beta content expansion is now live. New earn guides help users compare yield across assets:\n\n- [How to compare USDC yield](/en/earn/how-to-compare-usdc-yield)\n- [How to compare ETH yield](/en/earn/how-to-compare-eth-yield)\n- [How to compare SOL yield](/en/earn/how-to-compare-sol-yield)\n\nProtocol comparisons enriched: [Aave vs Lido](/en/compare/aave-vs-lido), [Aave vs Jito](/en/compare/aave-vs-jito), [Lido vs Jito](/en/compare/lido-vs-jito). New pair: [Ethena vs Aave](/en/compare/ethena-vs-aave).\n\nSix new offers: Morpho, Spark, EtherFi, Pendle, Ethena, and Compound — browse all on the [Earn hub](/en/earn).",
+        "ru": "Расширение контента TJT Beta уже доступно. Новые earn-гайды помогают сравнивать yield по активам:\n\n- [Как сравнить USDC yield](/ru/earn/how-to-compare-usdc-yield)\n- [Как сравнить ETH yield](/ru/earn/how-to-compare-eth-yield)\n- [Как сравнить SOL yield](/ru/earn/how-to-compare-sol-yield)\n\nОбогащены сравнения: [Aave vs Lido](/ru/compare/aave-vs-lido), [Aave vs Jito](/ru/compare/aave-vs-jito), [Lido vs Jito](/ru/compare/lido-vs-jito). Новая пара: [Ethena vs Aave](/ru/compare/ethena-vs-aave).\n\nШесть новых офферов: Morpho, Spark, EtherFi, Pendle, Ethena и Compound — все на [хабе Earn](/ru/earn)."
+      },
+      "seo_keywords": {
+        "en": ["TJT Beta", "DeFi guides", "yield comparison", "CPA offers"],
+        "ru": ["TJT Beta", "гайды DeFi", "сравнение yield", "CPA офферы"]
       }
     }
   ],

@@ -1,5 +1,6 @@
 import type { Locale } from "@/lib/i18n";
 import { L, type SeoPilotPage } from "@/lib/seo-pilot/types";
+import { WAVE2_EARN_GUIDE_PAGES } from "@/lib/seo-pilot/content/wave2-earn-guides";
 
 function compareHref(lang: Locale, slug: string) {
   return `/${lang}/compare/${slug}`;
@@ -140,4 +141,5 @@ export const EARN_GUIDE_PAGES: SeoPilotPage[] = [
       "usdt apy comparison",
     ],
   },
+  ...WAVE2_EARN_GUIDE_PAGES,
 ];

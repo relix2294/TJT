@@ -209,6 +209,23 @@ const COMPARE_LEARN_LINKS: Partial<Record<CompareSlug, { slug: string; label: Lo
     { slug: "what-is-defi-yield", label: { en: "What is DeFi yield?", ru: "Что такое DeFi yield?" } },
     { slug: "crypto-yield-risks", label: { en: "Crypto yield risks", ru: "Риски crypto yield" } },
   ],
+  "ethena-vs-aave": [
+    { slug: "usdc-yield-risks", label: { en: "USDC yield risks", ru: "Риски USDC yield" } },
+    { slug: "what-is-defi-yield", label: { en: "What is DeFi yield?", ru: "Что такое DeFi yield?" } },
+    { slug: "crypto-yield-risks", label: { en: "Crypto yield risks", ru: "Риски crypto yield" } },
+  ],
+  "aave-vs-lido": [
+    { slug: "what-is-liquid-staking", label: { en: "What is liquid staking?", ru: "Что такое liquid staking?" } },
+    { slug: "what-is-defi-yield", label: { en: "What is DeFi yield?", ru: "Что такое DeFi yield?" } },
+  ],
+  "aave-vs-jito": [
+    { slug: "what-is-defi-yield", label: { en: "What is DeFi yield?", ru: "Что такое DeFi yield?" } },
+    { slug: "crypto-yield-risks", label: { en: "Crypto yield risks", ru: "Риски crypto yield" } },
+  ],
+  "lido-vs-jito": [
+    { slug: "what-is-liquid-staking", label: { en: "What is liquid staking?", ru: "Что такое liquid staking?" } },
+    { slug: "crypto-yield-risks", label: { en: "Crypto yield risks", ru: "Риски crypto yield" } },
+  ],
 };
 
 /** Protocol page → protocol-vs-protocol compare links involving this protocol. */
@@ -217,7 +234,7 @@ export function getProtocolCompareLinks(
   protocol: Protocol,
 ): CompareInternalLink[] {
   const pairs: Record<ProtocolSlug, CompareSlug[]> = {
-    aave: ["aave-vs-lido", "aave-vs-jito", "morpho-vs-aave", "compound-vs-aave", "spark-vs-aave"],
+    aave: ["aave-vs-lido", "aave-vs-jito", "morpho-vs-aave", "compound-vs-aave", "spark-vs-aave", "ethena-vs-aave"],
     lido: ["aave-vs-lido", "lido-vs-jito", "lido-vs-rocket-pool", "best-liquid-staking"],
     jito: ["aave-vs-jito", "lido-vs-jito"],
     morpho: ["morpho-vs-aave", "compound-vs-morpho", "best-usdc-yield", "best-usdt-yield"],
@@ -226,7 +243,7 @@ export function getProtocolCompareLinks(
     "rocket-pool": ["lido-vs-rocket-pool", "best-eth-staking", "best-liquid-staking"],
     etherfi: ["pendle-vs-etherfi", "best-eth-staking", "best-eth-restaking", "best-liquid-staking"],
     pendle: ["pendle-vs-etherfi", "best-usdc-yield", "best-eth-staking"],
-    ethena: ["best-usdt-yield", "best-usdc-yield"],
+    ethena: ["ethena-vs-aave", "best-usdt-yield", "best-usdc-yield"],
   };
 
   return (pairs[protocol.slug] ?? []).map((slug) => ({

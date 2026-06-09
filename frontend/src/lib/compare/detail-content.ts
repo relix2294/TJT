@@ -310,6 +310,206 @@ const COMPOUND_VS_MORPHO: CompareDetailEditorial = {
   ],
 };
 
+const AAVE_VS_LIDO: CompareDetailEditorial = {
+  slug: "aave-vs-lido",
+  leftOverview: {
+    protocolName: "Aave",
+    title: L("Aave — protocol overview", "Aave — обзор протокола"),
+    body: L(
+      "Aave is a multi-chain decentralized lending protocol where suppliers earn variable APY from borrower demand across pooled markets. Aave V3 supports stablecoin supply, ETH collateral, and cross-chain deployments on Arbitrum, Base, Polygon, and Optimism. Educational information only — utilization, oracle, and governance risks apply.",
+      "Aave — multi-chain децентрализованный lending, где поставщики получают переменный APY от спроса заёмщиков в пулах. Aave V3 поддерживает supply стейблкоинов, залог ETH и cross-chain развёртывания. Только образовательная информация — риски utilization, oracle и governance.",
+    ),
+  },
+  rightOverview: {
+    protocolName: "Lido",
+    title: L("Lido — protocol overview", "Lido — обзор протокола"),
+    body: L(
+      "Lido is the dominant Ethereum liquid-staking protocol issuing stETH — a rebasing token representing staked ETH plus validator rewards. A curated operator set manages pooled validators with LDO governance. Educational information only — slashing, withdrawal-queue, and peg risks apply.",
+      "Lido — доминирующий протокол liquid staking на Ethereum, выпускающий rebasing stETH как застейканный ETH плюс награды валидаторов. Курируемый operator set с governance LDO. Только образовательная информация — риски slashing, withdrawal queue и пега.",
+    ),
+  },
+  useCaseComparison: {
+    title: L("Use case comparison", "Сравнение сценариев"),
+    body: L(
+      "Different yield categories: Aave supplies variable APY from lending borrow demand on assets like USDC or ETH. Lido supplies ETH staking rewards via stETH — a fundamentally different risk profile focused on validator, slashing, and peg dynamics.\n\nETH exposure overlap: Both can feature in ETH-centric portfolios — Aave for supply/lending yield, Lido for native staking yield with DeFi composability. Researchers should not compare headline APY directly without mapping yield sources.\n\nMarket context: Aave Trust Score reflects lending-market maturity; Lido Trust Score reflects liquid-staking depth. Use best ETH staking and best USDC yield Compare pages alongside this cross-category comparison.",
+      "Разные категории yield: Aave даёт переменный APY от lending на USDC или ETH. Lido даёт staking rewards через stETH — другой профиль риска с фокусом на validator, slashing и пег.\n\nПересечение ETH-экспозиции: оба могут быть в ETH-портфеле — Aave для lending yield, Lido для native staking с DeFi-композируемостью. Не сравнивайте headline APY без mapping источников yield.\n\nРыночный контекст: Trust Score Aave отражает зрелость lending; Lido — глубину liquid staking. Используйте Compare best ETH staking и best USDC yield вместе с этим кросс-категорийным сравнением.",
+    ),
+  },
+  faq: [
+    {
+      question: L("Can I use Aave and Lido together?", "Можно ли использовать Aave и Lido вместе?"),
+      answer: L(
+        "Yes. Many strategies supply stETH as collateral on Aave while earning staking rewards — but this layers composability and liquidation risk. Evaluate each protocol independently.",
+        "Да. Многие стратегии используют stETH как залог в Aave, получая staking rewards — но это добавляет composability и риск ликвидации. Оценивайте каждый протокол отдельно.",
+      ),
+    },
+    {
+      question: L("Which has higher Trust Score in TJT v0.1?", "У кого выше Trust Score в TJT v0.1?"),
+      answer: L(
+        "TJT Trust Score v0.1 is an educational framework — not a safety certification. Compare factor breakdown cards on this page for informational risk context.",
+        "TJT Trust Score v0.1 — образовательная рамка, не сертификат безопасности. Сравните карточки факторов на этой странице для информационного risk context.",
+      ),
+    },
+    {
+      question: L("Does TJT prefer Aave over Lido?", "TJT предпочитает Aave Lido?"),
+      answer: L(
+        "No. This page provides side-by-side market context for cross-category research — not a ranking or financial advice.",
+        "Нет. Страница даёт side-by-side рыночный контекст для кросс-категорийного исследования — не рейтинг и не финансовый совет.",
+      ),
+    },
+  ],
+};
+
+const AAVE_VS_JITO: CompareDetailEditorial = {
+  slug: "aave-vs-jito",
+  leftOverview: {
+    protocolName: "Aave",
+    title: L("Aave — protocol overview", "Aave — обзор протокола"),
+    body: L(
+      "Aave operates multi-chain lending pools where suppliers earn variable APY from borrower utilization. Deployments span Ethereum, Arbitrum, Base, Polygon, and Optimism with audited smart contracts. Educational information only — lending risks apply across all markets.",
+      "Aave управляет multi-chain lending pools, где поставщики получают переменный APY от utilization. Развёртывания на Ethereum, Arbitrum, Base, Polygon и Optimism с аудированными контрактами. Только образовательная информация — риски lending применимы ко всем рынкам.",
+    ),
+  },
+  rightOverview: {
+    protocolName: "Jito",
+    title: L("Jito — protocol overview", "Jito — обзор протокола"),
+    body: L(
+      "Jito is the leading Solana liquid-staking protocol issuing jitoSOL — an exchange-rate LST accruing validator rewards plus MEV tips. Educational information only — Solana network liveness, slashing, and jitoSOL peg risks apply.",
+      "Jito — ведущий протокол liquid staking на Solana, выпускающий jitoSOL — exchange-rate LST с наградами валидаторов и MEV tips. Только образовательная информация — риски liveness Solana, slashing и пега jitoSOL.",
+    ),
+  },
+  useCaseComparison: {
+    title: L("Use case comparison", "Сравнение сценариев"),
+    body: L(
+      "Chain scope: Aave is primarily Ethereum and EVM L2 lending; Jito is Solana-native liquid staking. They serve different ecosystems — comparison is portfolio-contextual, not direct product substitution.\n\nYield mechanics: Aave USDC/USDT supply yields organic borrow-demand APY. Jito jitoSOL yields staking plus MEV-boosted rewards — different sustainability and volatility profiles.\n\nMarket context: Researchers building multi-chain portfolios should compare Trust Score indicators per chain, verify bridge risks when moving capital, and use asset-specific earn hubs (USDC vs SOL) for structured research.",
+      "Охват сетей: Aave — Ethereum и EVM L2 lending; Jito — Solana-native liquid staking. Разные экосистемы — сравнение для портфельного контекста, не прямая замена продуктов.\n\nМеханика yield: Aave USDC/USDT — органический APY от заёма. Jito jitoSOL — staking плюс MEV-boosted rewards — другая устойчивость и волатильность.\n\nРыночный контекст: при multi-chain портфеле сравнивайте Trust Score по сетям, проверяйте bridge-риски и используйте earn-хабы USDC vs SOL.",
+    ),
+  },
+  faq: [
+    {
+      question: L("Is Aave available on Solana?", "Доступен ли Aave на Solana?"),
+      answer: L(
+        "Aave's core deployments are EVM chains. Jito serves Solana staking — they are complementary across chains, not competing on the same network.",
+        "Core-развёртывания Aave — EVM-сети. Jito обслуживает staking Solana — они дополняют друг друга на разных сетях, а не конкурируют в одной.",
+      ),
+    },
+    {
+      question: L("Which is better for stablecoin yield?", "Что лучше для stablecoin yield?"),
+      answer: L(
+        "Aave supports stablecoin supply on EVM chains. Jito focuses on SOL staking — not stablecoin lending. Compare best USDC yield for Aave context and best SOL staking for Jito.",
+        "Aave поддерживает supply стейблкоинов на EVM. Jito фокусируется на SOL staking — не stablecoin lending. Сравните best USDC yield для Aave и best SOL staking для Jito.",
+      ),
+    },
+    {
+      question: L("Does TJT rank Aave above Jito?", "Ранжирует ли TJT Aave выше Jito?"),
+      answer: L(
+        "No. TJT publishes informational comparisons and Trust Score context — not financial advice or cross-chain rankings.",
+        "Нет. TJT публикует информационные сравнения и контекст Trust Score — не финансовые советы и не кросс-чейн рейтинги.",
+      ),
+    },
+  ],
+};
+
+const LIDO_VS_JITO: CompareDetailEditorial = {
+  slug: "lido-vs-jito",
+  leftOverview: {
+    protocolName: "Lido",
+    title: L("Lido — protocol overview", "Lido — обзор протокола"),
+    body: L(
+      "Lido is the dominant Ethereum liquid-staking protocol with stETH — a rebasing LST with deep DeFi integrations and years of mainnet history. Educational information only — operator concentration, slashing, and withdrawal-queue risks apply.",
+      "Lido — доминирующий протокол liquid staking на Ethereum со stETH — rebasing LST с глубокими DeFi-интеграциями и годами mainnet. Только образовательная информация — риски концентрации операторов, slashing и withdrawal queue.",
+    ),
+  },
+  rightOverview: {
+    protocolName: "Jito",
+    title: L("Jito — protocol overview", "Jito — обзор протокола"),
+    body: L(
+      "Jito is the leading Solana liquid-staking protocol with jitoSOL — an exchange-rate LST earning validator rewards plus MEV tips. Educational information only — Solana network, slashing, and peg risks apply.",
+      "Jito — ведущий протокол liquid staking на Solana с jitoSOL — exchange-rate LST с наградами валидаторов и MEV tips. Только образовательная информация — риски сети Solana, slashing и пега.",
+    ),
+  },
+  useCaseComparison: {
+    title: L("Use case comparison", "Сравнение сценариев"),
+    body: L(
+      "Cross-ecosystem liquid staking: Lido serves Ethereum (stETH rebasing); Jito serves Solana (jitoSOL exchange-rate). Both unlock staking yield with transferable receipt tokens — but on different chains with distinct consensus and DeFi ecosystems.\n\nToken mechanics: stETH rebases daily in wallet balance; jitoSOL appreciates via exchange rate. Tax, accounting, and integration behavior differ — verify implications independently.\n\nMarket context: Compare Trust Score profiles (Lido ~88, Jito ~79 in TJT v0.1), secondary-market liquidity depth, and best ETH staking vs best SOL staking Compare pages for asset-scoped research.",
+      "Кросс-экосистемный liquid staking: Lido — Ethereum (rebasing stETH); Jito — Solana (exchange-rate jitoSOL). Оба открывают staking yield с receipt-токенами — но на разных сетях с разным консенсусом и DeFi.\n\nМеханика токенов: stETH rebase ежедневно; jitoSOL растёт через exchange rate. Налоговый, учётный и интеграционный контекст различается — проверяйте самостоятельно.\n\nРыночный контекст: сравните Trust Score (Lido ~88, Jito ~79 в TJT v0.1), ликвидность вторичного рынка и Compare best ETH staking vs best SOL staking.",
+    ),
+  },
+  faq: [
+    {
+      question: L("Is stETH the same as jitoSOL?", "stETH — то же, что jitoSOL?"),
+      answer: L(
+        "No. They are liquid staking tokens on different chains with different rebasing vs exchange-rate mechanics and distinct risk profiles.",
+        "Нет. Это LST на разных сетях с разной механикой rebasing vs exchange-rate и разными профилями риска.",
+      ),
+    },
+    {
+      question: L("Which has higher staking APY?", "У кого выше staking APY?"),
+      answer: L(
+        "Jito often shows higher headline APY due to MEV tips on Solana; Lido ETH staking reflects validator economics. APY varies — verify live rates and risk-adjust for chain-specific factors.",
+        "Jito часто показывает более высокий headline APY из-за MEV tips на Solana; Lido ETH staking отражает экономику валидаторов. APY меняется — проверяйте live-ставки и risk-adjust по сетям.",
+      ),
+    },
+    {
+      question: L("Does TJT prefer Lido over Jito?", "TJT предпочитает Lido Jito?"),
+      answer: L(
+        "No. TJT provides informational cross-chain liquid-staking context — not financial advice or protocol preference.",
+        "Нет. TJT даёт информационный кросс-чейн контекст liquid staking — не финансовые советы и не предпочтение протокола.",
+      ),
+    },
+  ],
+};
+
+const ETHENA_VS_AAVE: CompareDetailEditorial = {
+  slug: "ethena-vs-aave",
+  leftOverview: {
+    protocolName: "Ethena",
+    title: L("Ethena — protocol overview", "Ethena — обзор протокола"),
+    body: L(
+      "Ethena is a synthetic-dollar protocol issuing USDe backed by delta-neutral hedging strategies. Yield for sUSDe holders comes from funding rates and staking components — distinct from traditional lending markets. Educational information only — hedging dependency and younger protocol age are elevated risk context.",
+      "Ethena — протокол синтетического доллара, выпускающий USDe под delta-neutral хеджирование. Yield для держателей sUSDe от funding rates и staking — отличный от классического lending. Только образовательная информация — зависимость от хеджирования и молодой возраст — повышенный risk context.",
+    ),
+  },
+  rightOverview: {
+    protocolName: "Aave",
+    title: L("Aave — protocol overview", "Aave — обзор протокола"),
+    body: L(
+      "Aave is a multi-chain decentralized lending protocol where suppliers earn variable APY from organic borrower demand on pooled USDC, USDT, and ETH markets. Educational information only — utilization, oracle, and governance risks apply.",
+      "Aave — multi-chain децентрализованный lending, где поставщики получают переменный APY от органического спроса заёмщиков в пулах USDC, USDT и ETH. Только образовательная информация — риски utilization, oracle и governance.",
+    ),
+  },
+  useCaseComparison: {
+    title: L("Use case comparison", "Сравнение сценариев"),
+    body: L(
+      "Stablecoin yield paths: Aave USDC supply earns borrow-demand-driven variable APY with mature lending infrastructure. Ethena sUSDe earns funding-rate-based yield on a synthetic dollar — different stability mechanics (hedging vs pooled lending).\n\nRisk profile: Aave carries classic lending risks — smart contracts, utilization, oracles. Ethena adds hedging-dependency, funding-rate variability, and synthetic-dollar depeg context. Trust Score: Aave ~85 vs Ethena ~70 in TJT v0.1 — informational only.\n\nMarket context: Researchers comparing stablecoin yield should read usdc-yield-risks learn guide, best USDC yield Compare, and ethena-review / is-ethena-safe pages — not headline APY alone.",
+      "Маршруты stablecoin yield: Aave USDC supply — переменный APY от спроса на заём с зрелой lending-инфраструктурой. Ethena sUSDe — yield от funding rates на synthetic dollar — другая механика стабильности (хеджирование vs пулы lending).\n\nПрофиль риска: Aave — классические риски lending. Ethena добавляет зависимость от хеджирования, волатильность funding rates и depeg synthetic dollar. Trust Score: Aave ~85 vs Ethena ~70 в TJT v0.1 — только информация.\n\nРыночный контекст: при сравнении stablecoin yield читайте usdc-yield-risks, Compare best USDC yield и ethena-review / is-ethena-safe — не только headline APY.",
+    ),
+  },
+  faq: [
+    {
+      question: L("Is USDe the same as supplying USDC on Aave?", "USDe — то же, что supply USDC в Aave?"),
+      answer: L(
+        "No. USDe is a synthetic dollar with hedging-based stability; Aave USDC supply is pooled lending with fiat-backed USDC. Yield sources, risks, and exit mechanics differ materially.",
+        "Нет. USDe — synthetic dollar со стабильностью через хеджирование; Aave USDC supply — pooled lending с fiat-backed USDC. Источники yield, риски и механика выхода существенно различаются.",
+      ),
+    },
+    {
+      question: L("Which has higher Trust Score in TJT v0.1?", "У кого выше Trust Score в TJT v0.1?"),
+      answer: L(
+        "Aave scores higher in TJT's educational framework (~85 vs ~70), reflecting lending-market maturity vs younger synthetic-dollar design. Trust Score is not a safety certification — compare factor cards below.",
+        "Aave выше в образовательной рамке TJT (~85 vs ~70), отражая зрелость lending vs более молодой synthetic-dollar дизайн. Trust Score не сертификат безопасности — сравните карточки факторов ниже.",
+      ),
+    },
+    {
+      question: L("Does TJT recommend Ethena or Aave?", "TJT рекомендует Ethena или Aave?"),
+      answer: L(
+        "No. TJT publishes informational comparisons and Trust Score context for independent research — not financial advice or product recommendations.",
+        "Нет. TJT публикует информационные сравнения и контекст Trust Score для самостоятельного исследования — не финансовые советы и не рекомендации продуктов.",
+      ),
+    },
+  ],
+};
+
 const EDITORIAL_BY_SLUG: Partial<Record<ProtocolCompareSlug, CompareDetailEditorial>> = {
   "morpho-vs-aave": MORPHO_VS_AAVE,
   "compound-vs-aave": COMPOUND_VS_AAVE,
@@ -317,6 +517,10 @@ const EDITORIAL_BY_SLUG: Partial<Record<ProtocolCompareSlug, CompareDetailEditor
   "spark-vs-aave": SPARK_VS_AAVE,
   "pendle-vs-etherfi": PENDLE_VS_ETHERFI,
   "compound-vs-morpho": COMPOUND_VS_MORPHO,
+  "aave-vs-lido": AAVE_VS_LIDO,
+  "aave-vs-jito": AAVE_VS_JITO,
+  "lido-vs-jito": LIDO_VS_JITO,
+  "ethena-vs-aave": ETHENA_VS_AAVE,
 };
 
 export function getCompareDetailEditorial(

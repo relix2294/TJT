@@ -18,6 +18,7 @@ export const COMPARE_SLUGS = [
   "spark-vs-aave",
   "pendle-vs-etherfi",
   "compound-vs-morpho",
+  "ethena-vs-aave",
   "best-usdt-yield",
   "best-usdc-yield",
   "best-eth-staking",
@@ -37,6 +38,7 @@ export const PROTOCOL_COMPARE_SLUGS = [
   "spark-vs-aave",
   "pendle-vs-etherfi",
   "compound-vs-morpho",
+  "ethena-vs-aave",
 ] as const;
 
 export type ProtocolCompareSlug = (typeof PROTOCOL_COMPARE_SLUGS)[number];

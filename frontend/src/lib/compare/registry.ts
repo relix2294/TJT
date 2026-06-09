@@ -75,6 +75,7 @@ const PROTOCOL_PAIR_SPECS: ProtocolPairSpec[] = [
   { slug: "spark-vs-aave", left: "spark", right: "aave", sharedAsset: "usdc" },
   { slug: "pendle-vs-etherfi", left: "pendle", right: "etherfi", sharedAsset: "eth" },
   { slug: "compound-vs-morpho", left: "compound", right: "morpho", sharedAsset: "usdc" },
+  { slug: "ethena-vs-aave", left: "ethena", right: "aave", sharedAsset: "usdc" },
 ];
 
 const YIELD_SPECS: YieldSpec[] = [
@@ -122,6 +123,10 @@ const PROTOCOL_COMPARE_SUMMARIES: Record<ProtocolPairSpec["slug"], LocalizedStri
   "compound-vs-morpho": {
     en: "Informational comparison of Compound (pioneer lending markets) and Morpho (P2P lending optimizer and Morpho Blue). Side-by-side stablecoin supply context, governance models, and Trust Score profiles for market research.",
     ru: "Информационное сравнение Compound (pioneer lending) и Morpho (P2P optimizer и Morpho Blue). Контекст supply стейблкоинов, модели governance и профили Trust Score для исследования рынка.",
+  },
+  "ethena-vs-aave": {
+    en: "Informational comparison of Ethena (synthetic-dollar USDe with funding-rate yield) and Aave (multi-chain lending). Contrasts hedging-dependent stablecoin yield vs organic borrow-demand APY, Trust Score profiles — market context only.",
+    ru: "Информационное сравнение Ethena (синтетический USDe с yield от funding rates) и Aave (multi-chain lending). Контраст hedging-зависимого stablecoin yield vs органического APY от заёма, профили Trust Score — только рыночный контекст.",
   },
 };
 
