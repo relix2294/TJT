@@ -2,16 +2,19 @@ import Link from "next/link";
 import { ArrowUpRight, TrendingUp } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { TrustScoreCard } from "@/components/trust-score/trust-score-card";
 import type { Locale } from "@/lib/i18n";
 import type { Asset } from "@/lib/earn/types";
 import { earnAssetPath } from "@/lib/earn/paths";
 import { resolveLocalized } from "@/lib/earn/types";
+import type { TrustScore } from "@/lib/trust-score";
 
 type EarnAssetGridProps = {
   lang: Locale;
   assets: Asset[];
   exploreLabel: string;
   topApyByAsset: Record<string, number | null>;
+  trustScoreByAsset: Record<string, TrustScore>;
 };
 
 export function EarnAssetGrid({
@@ -19,6 +22,7 @@ export function EarnAssetGrid({
   assets,
   exploreLabel,
   topApyByAsset,
+  trustScoreByAsset,
 }: EarnAssetGridProps) {
   return (
     <div className="grid gap-4 sm:grid-cols-2">
@@ -46,12 +50,21 @@ export function EarnAssetGrid({
               <p className="mt-3 line-clamp-2 text-sm text-muted-foreground">
                 {resolveLocalized(asset.description, lang)}
               </p>
-              {topApy != null ? (
-                <p className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-profit">
-                  <TrendingUp className="size-3.5" />
-                  {topApy}% APY
-                </p>
-              ) : null}
+              <div className="mt-4 flex flex-wrap items-center gap-3">
+                {trustScoreByAsset[asset.slug] ? (
+                  <TrustScoreCard
+                    lang={lang}
+                    trustScore={trustScoreByAsset[asset.slug]}
+                    variant="compact"
+                  />
+                ) : null}
+                {topApy != null ? (
+                  <p className="inline-flex items-center gap-1.5 text-xs font-semibold text-profit">
+                    <TrendingUp className="size-3.5" />
+                    {topApy}% APY
+                  </p>
+                ) : null}
+              </div>
               <span className="mt-4 inline-block text-xs font-semibold uppercase tracking-wider text-primary">
                 {exploreLabel}
               </span>

@@ -45,10 +45,8 @@ export {
 } from "@/lib/protocols/internal-links";
 
 export {
-  DEFAULT_PROTOCOL_TRUST_SCORE,
   PROTOCOLS_HUB_COPY,
   PROTOCOL_CONTENT_BLOCK_KEYS,
-  PROTOCOL_TRUST_SCORE_FACTOR_KEYS,
   buildProtocolContentBlocks,
   protocolMetaDescription,
   protocolMetaTitle,

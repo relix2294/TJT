@@ -8,7 +8,7 @@ import {
 } from "@/lib/earn";
 import { earnAssetPath } from "@/lib/earn/paths";
 import { localePath } from "@/lib/seo/urls";
-import { DEFAULT_PROTOCOL_TRUST_SCORE } from "@/lib/protocols/content";
+import { computeProtocolTrustScore } from "@/lib/trust-score";
 import type {
   Protocol,
   ProtocolCategory,
@@ -92,8 +92,8 @@ const PROTOCOL_DESCRIPTIONS: Record<ProtocolSlug, Protocol["description"]> = {
 };
 
 const RISK_EXPLANATION_PLACEHOLDER: Protocol["riskProfile"]["explanation"] = {
-  en: "Risk tier reflects catalog ratings today. Full Trust Score methodology and weighted factor analysis are launching soon.",
-  ru: "Уровень риска отражает рейтинги каталога. Полная методология Trust Score и взвешенный анализ факторов — скоро.",
+  en: "Risk tier reflects catalog ratings today. See TJT Trust Score v0.1 below for weighted informational factor analysis — not financial advice.",
+  ru: "Уровень риска отражает рейтинги каталога. См. TJT Trust Score v0.1 ниже для взвешенного информационного анализа факторов — не финансовый совет.",
 };
 
 function protocolNameToSlug(name: string): ProtocolSlug | null {
@@ -187,6 +187,8 @@ export function buildProtocolsFromOffers(
     const categorySlug = PROTOCOL_CATEGORIES[slug];
     const category = CATEGORY_REGISTRY[categorySlug];
 
+    const linkedOffers = buildLinkedOffers(lang, offers, seed.name);
+
     return {
       slug,
       name: seed.name,
@@ -203,9 +205,16 @@ export function buildProtocolsFromOffers(
       },
       supportedAssets: buildSupportedAssets(lang, seed.assets),
       supportedChains: buildSupportedChains(seed.chains),
-      linkedOffers: buildLinkedOffers(lang, offers, seed.name),
+      linkedOffers,
       earnOpportunities: buildEarnOpportunities(lang, offers, slug),
-      trustScore: DEFAULT_PROTOCOL_TRUST_SCORE,
+      trustScore: computeProtocolTrustScore({
+        entityType: "protocol",
+        slug,
+        name: seed.name,
+        categorySlug,
+        riskTier: seed.riskTier,
+        topApy: linkedOffers[0]?.apy ?? null,
+      }),
     };
   });
 }

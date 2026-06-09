@@ -55,7 +55,6 @@ export {
 } from "@/lib/earn/internal-links";
 
 export {
-  DEFAULT_TRUST_SCORE_PLACEHOLDER,
   EARN_CONTENT_BLOCK_KEYS,
   EARN_HUB_COPY,
   buildEarnAssetContentBlocks,
@@ -64,3 +63,5 @@ export {
   type EarnContentBlock,
   type EarnContentBlockKey,
 } from "@/lib/earn/content";
+
+export { buildEarnAssetTrustScore } from "@/lib/trust-score";

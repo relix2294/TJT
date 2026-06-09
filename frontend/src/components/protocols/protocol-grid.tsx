@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight, Layers } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { TrustScoreCard } from "@/components/trust-score/trust-score-card";
 import type { Locale } from "@/lib/i18n";
 import type { Protocol } from "@/lib/protocols/types";
 import { resolveProtocolLocalized } from "@/lib/protocols/types";
@@ -55,11 +56,18 @@ export function ProtocolGrid({ lang, protocols, exploreLabel }: ProtocolGridProp
                   {protocol.supportedAssets.map((a) => a.symbol).join(", ")}
                 </span>
               </div>
-              {topApy != null ? (
-                <p className="mt-3 text-xs font-semibold text-profit">
-                  {lang === "ru" ? "Лучший APY в каталоге" : "Top catalog APY"}: {topApy}%
-                </p>
-              ) : null}
+              <div className="mt-3 flex flex-wrap items-center gap-3">
+                <TrustScoreCard
+                  lang={lang}
+                  trustScore={protocol.trustScore}
+                  variant="compact"
+                />
+                {topApy != null ? (
+                  <p className="text-xs font-semibold text-profit">
+                    {lang === "ru" ? "Лучший APY" : "Top APY"}: {topApy}%
+                  </p>
+                ) : null}
+              </div>
               <span className="mt-4 inline-block text-xs font-semibold uppercase tracking-wider text-primary">
                 {exploreLabel}
               </span>

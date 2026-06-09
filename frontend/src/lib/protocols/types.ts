@@ -1,5 +1,6 @@
 import type { Locale } from "@/lib/i18n";
 import type { EarnAssetSlug, ChainSlug } from "@/lib/earn/types";
+import type { TrustScore } from "@/lib/trust-score";
 
 /** Supported protocol slugs — powers `/protocols/{slug}` routes. */
 export const PROTOCOL_SLUGS = ["aave", "lido", "jito"] as const;
@@ -83,8 +84,7 @@ export type ProtocolLinkedEarnOpportunity = {
 };
 
 /**
- * Placeholder for future Trust Score integration.
- * No scoring logic — structure only for AI-generated pages and JSON-LD hooks.
+ * @deprecated Use TrustScore from @/lib/trust-score — kept for backward-compatible imports.
  */
 export type ProtocolTrustScorePlaceholder = {
   score: null;
@@ -108,7 +108,7 @@ export type Protocol = {
   supportedChains: ProtocolSupportedChain[];
   linkedOffers: ProtocolLinkedOffer[];
   earnOpportunities: ProtocolLinkedEarnOpportunity[];
-  trustScore: ProtocolTrustScorePlaceholder;
+  trustScore: TrustScore;
 };
 
 export type LocalizedString = Record<Locale, string>;

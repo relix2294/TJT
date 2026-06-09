@@ -1,27 +1,5 @@
 import type { Locale } from "@/lib/i18n";
-import type {
-  Protocol,
-  ProtocolTrustScorePlaceholder,
-} from "@/lib/protocols/types";
-
-export const PROTOCOL_TRUST_SCORE_FACTOR_KEYS = [
-  "audit_status",
-  "tvl_depth",
-  "smart_contract_age",
-  "governance_decentralization",
-  "historical_exploit_record",
-  "liquidity_exit_speed",
-] as const;
-
-export const DEFAULT_PROTOCOL_TRUST_SCORE: ProtocolTrustScorePlaceholder = {
-  score: null,
-  status: "coming_soon",
-  label: {
-    en: "Trust Score (coming soon)",
-    ru: "Trust Score (скоро)",
-  },
-  factorKeys: PROTOCOL_TRUST_SCORE_FACTOR_KEYS,
-};
+import type { Protocol } from "@/lib/protocols/types";
 
 /** Hub-level copy — bilingual, independent of config.json for protocols foundation. */
 export const PROTOCOLS_HUB_COPY = {
@@ -30,8 +8,8 @@ export const PROTOCOLS_HUB_COPY = {
     ru: "Обзоры DeFi-протоколов — Aave, Lido, Jito | TJT",
   },
   metaDescription: {
-    en: "Protocol reviews for Aave, Lido and Jito. Supported assets, chains, earn routes, linked offers and Trust Score placeholders.",
-    ru: "Обзоры протоколов Aave, Lido и Jito. Поддерживаемые активы, сети, earn-маршруты, офферы и заглушки Trust Score.",
+    en: "Protocol reviews for Aave, Lido and Jito. Supported assets, chains, earn routes, linked offers and TJT Trust Score v0.1 informational indicators.",
+    ru: "Обзоры протоколов Aave, Lido и Jito. Поддерживаемые активы, сети, earn-маршруты, офферы и информационные индикаторы TJT Trust Score v0.1.",
   },
   eyebrow: { en: "Protocols Engine", ru: "Protocols Engine" },
   title: {
@@ -113,12 +91,11 @@ export function buildProtocolContentBlocks(
     },
     {
       key: "trust_score_placeholder",
-      title: protocol.trustScore.label[lang],
-      body: {
-        en: `Trust Score (${protocol.trustScore.factorKeys.join(", ")}) — launching soon. No score computed on this page.`,
-        ru: `Trust Score (${protocol.trustScore.factorKeys.join(", ")}) — скоро. На этой странице оценка не рассчитывается.`,
+      title: {
+        en: `TJT Trust Score v0.1 — ${protocol.name}`,
+        ru: `TJT Trust Score v0.1 — ${protocol.name}`,
       }[lang],
-      aiSlot: true,
+      body: protocol.trustScore.explanation.detailed?.[lang] ?? protocol.trustScore.explanation.short[lang],
     },
     {
       key: "risk_explanation",

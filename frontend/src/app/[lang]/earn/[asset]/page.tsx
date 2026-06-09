@@ -4,6 +4,7 @@ import { TrendingUp } from "lucide-react";
 import { Navbar } from "@/components/navbar";
 import { LegalFooter } from "@/components/legal-footer";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { TrustScoreCard } from "@/components/trust-score/trust-score-card";
 import { EarnContentBlocks } from "@/components/earn/content-blocks";
 import { EarnOpportunityList } from "@/components/earn/opportunity-list";
 import { EarnInternalLinkSection } from "@/components/earn/internal-link-section";
@@ -13,10 +14,10 @@ import { loadAppConfig, loadDictionary } from "@/lib/server-config";
 import { LOCALES, isLocale, type Locale } from "@/lib/i18n";
 import { dedupeInternalLinks, generatePageMetadata } from "@/lib/seo";
 import {
-  DEFAULT_TRUST_SCORE_PLACEHOLDER,
   EARN_ASSET_SLUGS,
   EARN_HUB_COPY,
   buildEarnAssetContentBlocks,
+  buildEarnAssetTrustScore,
   buildEarnAssetJsonLd,
   buildYieldOpportunitiesFromOffers,
   earnAssetMetaDescription,
@@ -60,7 +61,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       `${earnAsset.symbol} earn`,
       `${earnAsset.symbol} yield`,
       `${earnAsset.symbol} apy`,
-      "defi",
+      "tjt trust score",
+      "defi risk indicator",
       "non-custodial",
     ],
   });
@@ -87,10 +89,14 @@ export default async function EarnAssetPage({ params }: PageProps) {
     : [];
 
   const topApy = getTopApyForAsset(opportunities, earnAsset.slug);
+  const trustScore = buildEarnAssetTrustScore(
+    earnAsset,
+    config ? buildYieldOpportunitiesFromOffers(config.offers) : [],
+  );
   const contentBlocks = buildEarnAssetContentBlocks(
     earnAsset,
     lang as Locale,
-    DEFAULT_TRUST_SCORE_PLACEHOLDER,
+    trustScore,
   );
 
   const currentPath = earnAssetMetadataPath(lang, earnAsset);
@@ -166,6 +172,10 @@ export default async function EarnAssetPage({ params }: PageProps) {
                 {lang === "ru" ? "Лучший APY в каталоге" : "Top catalog APY"}: {topApy}%
               </p>
             ) : null}
+          </div>
+
+          <div className="mb-8">
+            <TrustScoreCard lang={lang as Locale} trustScore={trustScore} />
           </div>
 
           <div className="grid gap-8 lg:grid-cols-[1fr_320px]">

@@ -4,6 +4,7 @@ import { Shield } from "lucide-react";
 import { Navbar } from "@/components/navbar";
 import { LegalFooter } from "@/components/legal-footer";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { TrustScoreCard } from "@/components/trust-score/trust-score-card";
 import { ProtocolContentBlocks } from "@/components/protocols/content-blocks";
 import { ProtocolEarnOpportunities } from "@/components/protocols/earn-opportunities";
 import { ProtocolInternalLinkSection } from "@/components/protocols/internal-link-section";
@@ -71,7 +72,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       `${protocol.name} protocol`,
       `${protocol.name} review`,
       `${protocol.name} defi`,
-      "trust score",
+      "tjt trust score",
+      "defi risk indicator",
       "yield protocol",
     ],
     ogImageAlt: `${protocol.name} Protocol Review`,
@@ -174,6 +176,10 @@ export default async function ProtocolDetailPage({ params }: PageProps) {
             <p className="mt-3 text-muted-foreground">
               {protocol.description[lang as Locale]}
             </p>
+          </div>
+
+          <div className="mb-8">
+            <TrustScoreCard lang={lang as Locale} trustScore={protocol.trustScore} />
           </div>
 
           <div className="grid gap-8 lg:grid-cols-[1fr_320px]">

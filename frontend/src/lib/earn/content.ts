@@ -1,6 +1,6 @@
 import type { Locale } from "@/lib/i18n";
-import type { Asset, TrustScorePlaceholder } from "@/lib/earn/types";
-import { TRUST_SCORE_FACTOR_KEYS } from "@/lib/earn/types";
+import type { Asset } from "@/lib/earn/types";
+import type { TrustScore } from "@/lib/trust-score";
 
 /** Hub-level copy — bilingual, independent of config.json for earn foundation. */
 export const EARN_HUB_COPY = {
@@ -9,8 +9,8 @@ export const EARN_HUB_COPY = {
     ru: "Crypto Earn — доходность USDT, USDC, ETH, SOL | TJT",
   },
   metaDescription: {
-    en: "Explore non-custodial yield routes for USDT, USDC, ETH and SOL. APY snapshots, protocol mapping and scalable earn knowledge graph.",
-    ru: "Некастодиальные маршруты доходности для USDT, USDC, ETH и SOL. APY, протоколы и масштабируемый earn knowledge graph.",
+    en: "Explore non-custodial yield routes for USDT, USDC, ETH and SOL. APY snapshots, protocol mapping, TJT Trust Score v0.1 indicators and scalable earn knowledge graph.",
+    ru: "Некастодиальные маршруты доходности для USDT, USDC, ETH и SOL. APY, протоколы, индикаторы TJT Trust Score v0.1 и масштабируемый earn knowledge graph.",
   },
   eyebrow: { en: "Earn Engine", ru: "Earn Engine" },
   title: {
@@ -66,7 +66,7 @@ export type EarnContentBlock = {
 export function buildEarnAssetContentBlocks(
   asset: Asset,
   lang: Locale,
-  trustScore: TrustScorePlaceholder,
+  trustScore: TrustScore,
 ): EarnContentBlock[] {
   const symbol = asset.symbol;
   const isStable = asset.category === "stablecoin";
@@ -100,12 +100,11 @@ export function buildEarnAssetContentBlocks(
     },
     {
       key: "trust_score_placeholder",
-      title: trustScore.label[lang],
-      body: {
-        en: `Trust Score (${trustScore.factorKeys.join(", ")}) — launching soon. No score computed on this page.`,
-        ru: `Trust Score (${trustScore.factorKeys.join(", ")}) — скоро. На этой странице оценка не рассчитывается.`,
+      title: {
+        en: `TJT Trust Score v0.1 — ${symbol}`,
+        ru: `TJT Trust Score v0.1 — ${symbol}`,
       }[lang],
-      aiSlot: true,
+      body: trustScore.explanation.detailed?.[lang] ?? trustScore.explanation.short[lang],
     },
     {
       key: "compare_teaser",
@@ -119,12 +118,3 @@ export function buildEarnAssetContentBlocks(
   ];
 }
 
-export const DEFAULT_TRUST_SCORE_PLACEHOLDER: TrustScorePlaceholder = {
-  score: null,
-  status: "coming_soon",
-  label: {
-    en: "Trust Score (coming soon)",
-    ru: "Trust Score (скоро)",
-  },
-  factorKeys: TRUST_SCORE_FACTOR_KEYS,
-};

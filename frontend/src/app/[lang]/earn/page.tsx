@@ -13,6 +13,7 @@ import { generatePageMetadata } from "@/lib/seo";
 import {
   EARN_ASSETS,
   EARN_HUB_COPY,
+  buildEarnAssetTrustScore,
   buildYieldOpportunitiesFromOffers,
   buildEarnHubJsonLd,
   earnHubMetadataPath,
@@ -55,6 +56,13 @@ export default async function EarnHubPage({ params }: PageProps) {
 
   const topApyByAsset = Object.fromEntries(
     EARN_ASSETS.map((a) => [a.slug, getTopApyForAsset(opportunities, a.slug)]),
+  );
+
+  const trustScoreByAsset = Object.fromEntries(
+    EARN_ASSETS.map((a) => [
+      a.slug,
+      buildEarnAssetTrustScore(a, opportunities),
+    ]),
   );
 
   const currentPath = earnHubMetadataPath(lang as Locale);
@@ -102,6 +110,7 @@ export default async function EarnHubPage({ params }: PageProps) {
             assets={EARN_ASSETS}
             exploreLabel={EARN_HUB_COPY.exploreLabel[lang as Locale]}
             topApyByAsset={topApyByAsset}
+            trustScoreByAsset={trustScoreByAsset}
           />
 
           <div className="mt-10">
