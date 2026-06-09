@@ -32,6 +32,13 @@ import {
 import { offerMatchesAsset } from "@/lib/calculator-assets";
 import { LOCALES, isLocale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
+import {
+  buildFinancialProductSchema,
+  detailPath,
+  generatePageMetadata,
+  noIndexMetadata,
+} from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 
 export const dynamic = "force-dynamic";
 
@@ -57,28 +64,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const asset = await findMarketBySlug(slug, lang).catch(() => undefined);
 
   if (!asset) {
-    return {
-      title: dict?.marketDetail.notFoundTitle,
-      description: dict?.marketDetail.notFoundDesc,
-      robots: { index: false, follow: true },
-    };
+    return noIndexMetadata(
+      lang,
+      `/${lang}/market/${slug}`,
+      dict?.marketDetail.notFoundTitle,
+      dict?.marketDetail.notFoundDesc,
+    );
   }
 
-  const url = `/${lang}/market/${asset.slug}`;
+  const path = detailPath(lang, "coins", asset.slug);
   const title = `${asset.name} (${asset.symbol}) — ${dict?.marketDetail.metaTitleSuffix}`;
 
-  return {
+  return generatePageMetadata({
+    lang,
+    path,
     title: `${title} | TJT`,
     description: asset.aiRecommendation.rationale,
-    alternates: {
-      canonical: url,
-      languages: {
-        en: `/en/market/${asset.slug}`,
-        ru: `/ru/market/${asset.slug}`,
-      },
-    },
-    openGraph: { type: "website", title, url, description: asset.aiRecommendation.rationale },
-  };
+    ogImageAlt: `${asset.name} (${asset.symbol})`,
+  });
 }
 
 const SENTIMENT_STYLES = {
@@ -110,8 +113,17 @@ export default async function MarketAssetPage({ params }: PageProps) {
   const assetNews = filterNewsByAsset(config.news, asset).slice(0, 4);
   const similarAssets = resolveRelatedAssets(asset, config.market, 4);
 
+  const assetPath = detailPath(lang, "coins", asset.slug);
+  const jsonLd = buildFinancialProductSchema({
+    path: assetPath,
+    name: asset.name,
+    description: asset.aiRecommendation.rationale,
+    symbol: asset.symbol,
+  });
+
   return (
     <>
+      <JsonLd data={jsonLd} />
       <Navbar lang={lang} dict={dict} />
       <main className="flex-1 bg-[#0B0E11]">
         <section className="relative overflow-hidden border-b border-white/[0.06]">

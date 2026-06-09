@@ -19,17 +19,15 @@ import { extractAssetsFromNews, marketHref } from "@/lib/market-utils";
 import { type NewsCategory } from "@/lib/config";
 import { LOCALES, isLocale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
+import {
+  buildNewsArticleSchema,
+  detailPath,
+  generatePageMetadata,
+  noIndexMetadata,
+} from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 
 export const dynamic = "force-dynamic";
-
-const SITE_URL = "https://tjt.example";
-
-/**
- * Default premium social-share card (shipped in `/public`). Resolved to an
- * absolute URL via the `metadataBase` set in the locale layout, so links pasted
- * into X/Telegram/Discord always render a rich "summary_large_image" preview.
- */
-const OG_IMAGE = "/og-card.png";
 
 const CATEGORY_BADGE: Record<NewsCategory, string> = {
   Аналитика: "border-primary/40 bg-[--neon-soft] text-primary",
@@ -63,45 +61,27 @@ export async function generateMetadata({
   const article = await findNewsBySlug(lang, slug).catch(() => undefined);
 
   if (!article) {
-    return {
-      title: dict?.article.notFoundTitle,
-      description: dict?.article.notFoundDesc,
-      robots: { index: false, follow: true },
-    };
+    return noIndexMetadata(
+      lang,
+      `/${lang}/news/${slug}`,
+      dict?.article.notFoundTitle,
+      dict?.article.notFoundDesc,
+    );
   }
 
-  const url = `/${lang}/news/${article.slug}`;
-  return {
+  const path = detailPath(lang, "news", article.slug);
+  return generatePageMetadata({
+    lang,
+    path,
     title: `${article.title} — TJT`,
     description: article.description,
     keywords: article.seoKeywords,
-    alternates: {
-      canonical: url,
-      languages: {
-        en: `/en/news/${article.slug}`,
-        ru: `/ru/news/${article.slug}`,
-      },
-    },
-    openGraph: {
-      type: "article",
-      locale: lang === "ru" ? "ru_RU" : "en_US",
-      title: article.title,
-      description: article.description,
-      url,
-      publishedTime: article.publishedAt,
-      section: article.category,
-      tags: article.seoKeywords,
-      images: [
-        { url: OG_IMAGE, width: 1200, height: 630, alt: article.title },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: article.title,
-      description: article.description,
-      images: [OG_IMAGE],
-    },
-  };
+    ogType: "article",
+    ogImageAlt: article.title,
+    publishedTime: article.publishedAt,
+    section: article.category,
+    tags: article.seoKeywords,
+  });
 }
 
 export default async function NewsArticlePage({ params }: PageProps) {
@@ -130,23 +110,16 @@ export default async function NewsArticlePage({ params }: PageProps) {
 
   const categoryLabel = dict.newsCategories[article.category];
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "NewsArticle",
-    inLanguage: lang,
+  const articlePath = detailPath(lang, "news", article.slug);
+  const jsonLd = buildNewsArticleSchema({
+    lang,
+    path: articlePath,
     headline: article.title,
     description: article.description,
     datePublished: article.publishedAt,
-    dateModified: article.publishedAt,
     articleSection: categoryLabel,
-    keywords: article.seoKeywords.join(", "),
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `${SITE_URL}/${lang}/news/${article.slug}`,
-    },
-    author: { "@type": "Organization", name: "TJT AI Research" },
-    publisher: { "@type": "Organization", name: "TJT" },
-  };
+    keywords: article.seoKeywords,
+  });
 
   return (
     <>
@@ -285,10 +258,7 @@ export default async function NewsArticlePage({ params }: PageProps) {
             </section>
           ) : null}
 
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-          />
+          <JsonLd data={jsonLd} />
         </article>
       </main>
       <LegalFooter lang={lang} dict={dict} />

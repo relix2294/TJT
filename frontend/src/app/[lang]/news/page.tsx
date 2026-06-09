@@ -8,6 +8,7 @@ import { NewsList } from "@/components/news-list";
 import { Card } from "@/components/ui/card";
 import { loadDictionary, loadNews } from "@/lib/server-config";
 import { LOCALES, isLocale } from "@/lib/i18n";
+import { generatePageMetadata, hubPath } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
@@ -24,21 +25,12 @@ export async function generateMetadata({
   if (!isLocale(lang)) return {};
 
   const dict = await loadDictionary(lang).catch(() => null);
-  const url = `/${lang}/news`;
-  return {
-    title: dict?.newsHub.metaTitle,
+  return generatePageMetadata({
+    lang,
+    path: hubPath(lang, "news"),
+    title: dict?.newsHub.metaTitle ?? "News",
     description: dict?.newsHub.metaDescription,
-    alternates: {
-      canonical: url,
-      languages: { en: "/en/news", ru: "/ru/news" },
-    },
-    openGraph: {
-      type: "website",
-      title: dict?.newsHub.metaTitle,
-      description: dict?.newsHub.metaDescription,
-      url,
-    },
-  };
+  });
 }
 
 export default async function NewsHubPage({ params }: PageProps) {

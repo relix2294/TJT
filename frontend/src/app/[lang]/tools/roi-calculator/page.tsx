@@ -8,6 +8,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Card } from "@/components/ui/card";
 import { loadAppConfig } from "@/lib/server-config";
 import { LOCALES, isLocale } from "@/lib/i18n";
+import { generatePageMetadata, localePath } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
@@ -25,25 +26,12 @@ export async function generateMetadata({
 
   const config = await loadAppConfig(lang).catch(() => null);
   const t = config?.dict.calculatorPage;
-  const url = `/${lang}/tools/roi-calculator`;
-
-  return {
-    title: t?.metaTitle,
+  return generatePageMetadata({
+    lang,
+    path: localePath(lang, "/tools/roi-calculator"),
+    title: t?.metaTitle ?? "ROI Calculator",
     description: t?.metaDescription,
-    alternates: {
-      canonical: url,
-      languages: {
-        en: "/en/tools/roi-calculator",
-        ru: "/ru/tools/roi-calculator",
-      },
-    },
-    openGraph: {
-      type: "website",
-      title: t?.metaTitle,
-      description: t?.metaDescription,
-      url,
-    },
-  };
+  });
 }
 
 function CalculatorFallback() {

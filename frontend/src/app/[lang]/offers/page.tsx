@@ -8,6 +8,7 @@ import { Offers } from "@/components/offers";
 import { Card } from "@/components/ui/card";
 import { loadAppConfig, loadDictionary } from "@/lib/server-config";
 import { LOCALES, isLocale } from "@/lib/i18n";
+import { generatePageMetadata, hubPath } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
@@ -25,22 +26,12 @@ export async function generateMetadata({
 
   const config = await loadAppConfig(lang).catch(() => null);
   const t = config?.dict.offersHub;
-  const url = `/${lang}/offers`;
-
-  return {
-    title: t?.metaTitle,
+  return generatePageMetadata({
+    lang,
+    path: hubPath(lang, "earn"),
+    title: t?.metaTitle ?? "Offers",
     description: t?.metaDescription,
-    alternates: {
-      canonical: url,
-      languages: { en: "/en/offers", ru: "/ru/offers" },
-    },
-    openGraph: {
-      type: "website",
-      title: t?.metaTitle,
-      description: t?.metaDescription,
-      url,
-    },
-  };
+  });
 }
 
 export default async function OffersCatalogPage({ params }: PageProps) {

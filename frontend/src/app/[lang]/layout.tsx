@@ -6,6 +6,7 @@ import { SITE } from "@/lib/config";
 import { Toaster } from "@/components/ui/sonner";
 import { loadDictionary } from "@/lib/server-config";
 import { LOCALES, isLocale } from "@/lib/i18n";
+import { generatePageMetadata } from "@/lib/seo";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -41,31 +42,13 @@ export async function generateMetadata({
   const dict = await loadDictionary(lang).catch(() => null);
   const title = dict?.site.metaTitle ?? SITE.name;
   const description = dict?.site.metaDescription ?? "";
-  return {
-    metadataBase: new URL("https://tjt.example"),
+  return generatePageMetadata({
+    lang,
+    path: `/${lang}`,
     title,
     description,
-    alternates: {
-      canonical: `/${lang}`,
-      languages: { en: "/en", ru: "/ru" },
-    },
-    openGraph: {
-      type: "website",
-      siteName: SITE.name,
-      locale: lang === "ru" ? "ru_RU" : "en_US",
-      alternateLocale: lang === "ru" ? "en_US" : "ru_RU",
-      title,
-      description,
-      url: `/${lang}`,
-      images: [{ url: "/og-card.png", width: 1200, height: 630, alt: SITE.name }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: ["/og-card.png"],
-    },
-  };
+    xDefault: true,
+  });
 }
 
 export default async function RootLayout({

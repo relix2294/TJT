@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import { buildBreadcrumbList } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 
 export type Crumb = { label: string; href?: string };
-
-const SITE_URL = "https://tjt.example";
 
 /**
  * Strict, SEO-friendly breadcrumb trail.
@@ -19,16 +19,7 @@ export function Breadcrumbs({
   items: Crumb[];
   ariaLabel: string;
 }) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: items.map((item, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: item.label,
-      ...(item.href ? { item: `${SITE_URL}${item.href}` } : {}),
-    })),
-  };
+  const jsonLd = buildBreadcrumbList(items);
 
   return (
     <nav aria-label={ariaLabel} className="mb-6">
@@ -66,10 +57,7 @@ export function Breadcrumbs({
           );
         })}
       </ol>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
     </nav>
   );
 }

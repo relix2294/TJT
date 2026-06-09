@@ -9,6 +9,7 @@ import { NewsTicker } from "@/components/news-ticker";
 import { Card } from "@/components/ui/card";
 import { loadAppConfig, loadDictionary } from "@/lib/server-config";
 import { LOCALES, isLocale } from "@/lib/i18n";
+import { generatePageMetadata, hubPath } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
@@ -26,22 +27,12 @@ export async function generateMetadata({
 
   const config = await loadAppConfig(lang).catch(() => null);
   const t = config?.dict.marketHub;
-  const url = `/${lang}/market`;
-
-  return {
-    title: t?.metaTitle,
+  return generatePageMetadata({
+    lang,
+    path: hubPath(lang, "coins"),
+    title: t?.metaTitle ?? "Market",
     description: t?.metaDescription,
-    alternates: {
-      canonical: url,
-      languages: { en: "/en/market", ru: "/ru/market" },
-    },
-    openGraph: {
-      type: "website",
-      title: t?.metaTitle,
-      description: t?.metaDescription,
-      url,
-    },
-  };
+  });
 }
 
 export default async function MarketTerminalPage({ params }: PageProps) {

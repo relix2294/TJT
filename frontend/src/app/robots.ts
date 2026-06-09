@@ -1,23 +1,17 @@
 import type { MetadataRoute } from "next";
-import { SITE } from "@/lib/config";
-
-const FALLBACK_BASE_URL = "https://yourdomain.com";
-
-function getBaseUrl(): string {
-  return SITE.url || FALLBACK_BASE_URL;
-}
+import { getSiteUrl } from "@/lib/seo";
 
 /**
  * robots.txt — fully indexable public hub; API plumbing stays out of crawlers.
  */
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = getBaseUrl();
+  const baseUrl = getSiteUrl();
 
   return {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: "/api/",
+      disallow: ["/api/", "/*/admin/"],
     },
     sitemap: `${baseUrl}/sitemap.xml`,
     host: baseUrl,

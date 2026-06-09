@@ -11,11 +11,15 @@ import { Card } from "@/components/ui/card";
 import { findOfferBySlug, loadAppConfig, loadDictionary } from "@/lib/server-config";
 import { fmtUsd } from "@/lib/format";
 import { LOCALES, isLocale } from "@/lib/i18n";
+import {
+  buildProductSchema,
+  detailPath,
+  generatePageMetadata,
+  noIndexMetadata,
+} from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 
 export const dynamic = "force-dynamic";
-
-const SITE_URL = "https://tjt.example";
-const OG_IMAGE = "/og-card.png";
 
 type PageProps = { params: Promise<{ lang: string; slug: string }> };
 
@@ -41,39 +45,22 @@ export async function generateMetadata({
   const offer = await findOfferBySlug(lang, slug).catch(() => undefined);
 
   if (!offer) {
-    return {
-      title: dict?.offerDetail.notFoundTitle,
-      description: dict?.offerDetail.notFoundDesc,
-      robots: { index: false, follow: true },
-    };
+    return noIndexMetadata(
+      lang,
+      `/${lang}/offers/${slug}`,
+      dict?.offerDetail.notFoundTitle,
+      dict?.offerDetail.notFoundDesc,
+    );
   }
 
-  const url = `/${lang}/offers/${offer.slug}`;
-  return {
+  const path = detailPath(lang, "earn", offer.slug);
+  return generatePageMetadata({
+    lang,
+    path,
     title: `${offer.name} — ${offer.apy}% APY | TJT`,
     description: offer.description,
-    alternates: {
-      canonical: url,
-      languages: {
-        en: `/en/offers/${offer.slug}`,
-        ru: `/ru/offers/${offer.slug}`,
-      },
-    },
-    openGraph: {
-      type: "website",
-      locale: lang === "ru" ? "ru_RU" : "en_US",
-      title: offer.name,
-      description: offer.description,
-      url,
-      images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: offer.name }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: offer.name,
-      description: offer.description,
-      images: [OG_IMAGE],
-    },
-  };
+    ogImageAlt: offer.name,
+  });
 }
 
 export default async function OfferDetailPage({ params }: PageProps) {
@@ -97,14 +84,13 @@ export default async function OfferDetailPage({ params }: PageProps) {
 
   const trackUrl = `/api/click-track?offerId=${encodeURIComponent(offer.id)}&lang=${lang}`;
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
+  const offerPath = detailPath(lang, "earn", offer.slug);
+  const jsonLd = buildProductSchema({
+    path: offerPath,
     name: offer.name,
     description: offer.description,
-    brand: { "@type": "Brand", name: offer.protocol },
-    url: `${SITE_URL}/${lang}/offers/${offer.slug}`,
-  };
+    brandName: offer.protocol,
+  });
 
   return (
     <>
@@ -220,10 +206,7 @@ export default async function OfferDetailPage({ params }: PageProps) {
             </section>
           ) : null}
 
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-          />
+          <JsonLd data={jsonLd} />
         </article>
       </main>
       <LegalFooter lang={lang} dict={dict} />
