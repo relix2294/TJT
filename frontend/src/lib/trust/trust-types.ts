@@ -4,7 +4,17 @@ import type { Locale } from "@/lib/i18n";
 export type TrustLocalizedString = Record<Locale, string>;
 
 /** Supported protocol slugs in the v0.1 static registry. */
-export type TrustProtocolSlug = "aave" | "lido" | "jito";
+export type TrustProtocolSlug =
+  | "aave"
+  | "lido"
+  | "jito"
+  | "morpho"
+  | "spark"
+  | "rocket-pool"
+  | "etherfi"
+  | "pendle"
+  | "ethena"
+  | "compound";
 
 /** How confident TJT is in the underlying data at v0.1. */
 export type TrustDataStatus = "placeholder" | "estimated" | "verified";

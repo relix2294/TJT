@@ -22,8 +22,8 @@ export const SEO_PILOT_HUB_COPY: Record<
       "Обзоры DeFi-протоколов — образовательные материалы | TJT",
     ),
     metaDescription: L(
-      "Educational DeFi protocol reviews for Aave, Lido, and Jito. How each protocol works, use cases, benefits, risks, and links to compare opportunities on TJT — not financial advice.",
-      "Образовательные обзоры DeFi-протоколов Aave, Lido и Jito: как работают, сценарии, преимущества, риски и ссылки на сравнение возможностей на TJT — не финансовый совет.",
+      "Educational DeFi protocol reviews for Aave, Lido, Jito, Morpho, Rocket Pool, Compound, and more. How each protocol works, use cases, benefits, risks, and links to compare opportunities on TJT — not financial advice.",
+      "Образовательные обзоры DeFi-протоколов Aave, Lido, Jito, Morpho, Rocket Pool, Compound и др.: как работают, сценарии, преимущества, риски и ссылки на сравнение возможностей на TJT — не финансовый совет.",
     ),
     eyebrow: L("Protocol reviews", "Обзоры протоколов"),
     title: L("DeFi Protocol Reviews", "Обзоры DeFi-протоколов"),
@@ -45,8 +45,8 @@ export const SEO_PILOT_HUB_COPY: Record<
       {
         question: L("Which protocols are reviewed?", "Какие протоколы охвачены?"),
         answer: L(
-          "The reviews hub currently covers Aave (lending), Lido (ETH liquid staking), and Jito (SOL liquid staking). More protocols will be added as the knowledge graph expands.",
-          "Сейчас хаб охватывает Aave (lending), Lido (ETH liquid staking) и Jito (SOL liquid staking). По мере роста knowledge graph появятся новые протоколы.",
+          "The reviews hub covers Aave, Compound, and Morpho (lending), Lido and Rocket Pool (ETH liquid staking), and Jito (SOL liquid staking). Protocol hub pages exist for Spark, EtherFi, Pendle, and Ethena — with more SEO reviews planned.",
+          "Хаб охватывает Aave, Compound и Morpho (lending), Lido и Rocket Pool (ETH liquid staking) и Jito (SOL liquid staking). Хабы протоколов есть для Spark, EtherFi, Pendle и Ethena — больше SEO-обзоров запланировано.",
         ),
       },
       {
@@ -64,8 +64,8 @@ export const SEO_PILOT_HUB_COPY: Record<
       "Безопасность DeFi-протоколов — гиды по рискам | TJT",
     ),
     metaDescription: L(
-      "Educational safety guides for Aave, Lido, and Jito. Smart contract risk, governance, audit history, exploit context, and TJT Trust Score factors — informational only.",
-      "Образовательные гиды по безопасности Aave, Lido и Jito: риски смарт-контрактов, governance, аудиты, контекст эксплойтов и факторы TJT Trust Score — только информация.",
+      "Educational safety guides for Aave, Lido, Jito, Morpho, Rocket Pool, and Compound. Smart contract risk, governance, audit history, exploit context, and TJT Trust Score factors — informational only.",
+      "Образовательные гиды по безопасности Aave, Lido, Jito, Morpho, Rocket Pool и Compound: риски смарт-контрактов, governance, аудиты, контекст эксплойтов и факторы TJT Trust Score — только информация.",
     ),
     eyebrow: L("Safety analysis", "Анализ безопасности"),
     title: L("DeFi Protocol Safety", "Безопасность DeFi-протоколов"),

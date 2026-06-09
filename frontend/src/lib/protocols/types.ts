@@ -3,7 +3,18 @@ import type { EarnAssetSlug, ChainSlug } from "@/lib/earn/types";
 import type { TrustScore } from "@/lib/trust-score";
 
 /** Supported protocol slugs — powers `/protocols/{slug}` routes. */
-export const PROTOCOL_SLUGS = ["aave", "lido", "jito"] as const;
+export const PROTOCOL_SLUGS = [
+  "aave",
+  "lido",
+  "jito",
+  "morpho",
+  "spark",
+  "rocket-pool",
+  "etherfi",
+  "pendle",
+  "ethena",
+  "compound",
+] as const;
 
 export type ProtocolSlug = (typeof PROTOCOL_SLUGS)[number];
 

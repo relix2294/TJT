@@ -4,12 +4,12 @@ import type { Protocol } from "@/lib/protocols/types";
 /** Hub-level copy — bilingual, independent of config.json for protocols foundation. */
 export const PROTOCOLS_HUB_COPY = {
   metaTitle: {
-    en: "DeFi Protocol Reviews — Aave, Lido, Jito | TJT",
-    ru: "Обзоры DeFi-протоколов — Aave, Lido, Jito | TJT",
+    en: "DeFi Protocol Reviews — 10 Protocols | TJT",
+    ru: "Обзоры DeFi-протоколов — 10 протоколов | TJT",
   },
   metaDescription: {
-    en: "Protocol reviews for Aave, Lido and Jito. Supported assets, chains, earn routes, linked offers and TJT Trust Score v0.1 informational indicators.",
-    ru: "Обзоры протоколов Aave, Lido и Jito. Поддерживаемые активы, сети, earn-маршруты, офферы и информационные индикаторы TJT Trust Score v0.1.",
+    en: "Protocol reviews for Aave, Lido, Jito, Morpho, Spark, Rocket Pool, EtherFi, Pendle, Ethena, and Compound. Supported assets, chains, earn routes, and TJT Trust Score v0.1 indicators.",
+    ru: "Обзоры протоколов Aave, Lido, Jito, Morpho, Spark, Rocket Pool, EtherFi, Pendle, Ethena и Compound. Активы, сети, earn-маршруты и индикаторы TJT Trust Score v0.1.",
   },
   eyebrow: { en: "Protocols Engine", ru: "Protocols Engine" },
   title: {

@@ -4,7 +4,23 @@ import { detailPath, hubPath, localePath } from "@/lib/seo/urls";
 import type { Asset, EarnAssetSlug, YieldOpportunity } from "@/lib/earn/types";
 import { earnAssetPath, earnHubPath } from "@/lib/earn/paths";
 import { EARN_ASSETS } from "@/lib/earn/registry";
+import { protocolDetailPath } from "@/lib/protocols/paths";
+import type { ProtocolSlug } from "@/lib/protocols/types";
 import type { InternalLink } from "@/lib/seo/internal-links";
+
+/** Curated protocol hub links surfaced on the earn hub — maps assets to relevant protocols. */
+const EARN_HUB_PROTOCOL_LINKS: { slug: ProtocolSlug; label: string; assets: string[] }[] = [
+  { slug: "aave", label: "Aave", assets: ["usdt", "usdc", "eth"] },
+  { slug: "compound", label: "Compound", assets: ["usdt", "usdc", "eth"] },
+  { slug: "morpho", label: "Morpho", assets: ["usdt", "usdc", "eth"] },
+  { slug: "spark", label: "Spark", assets: ["usdt", "usdc", "eth"] },
+  { slug: "lido", label: "Lido", assets: ["eth"] },
+  { slug: "rocket-pool", label: "Rocket Pool", assets: ["eth"] },
+  { slug: "etherfi", label: "EtherFi", assets: ["eth"] },
+  { slug: "pendle", label: "Pendle", assets: ["usdc", "eth"] },
+  { slug: "ethena", label: "Ethena", assets: ["usdt", "usdc"] },
+  { slug: "jito", label: "Jito", assets: ["sol"] },
+];
 
 /** Cross-links between earn asset hub pages. */
 export function getRelatedEarnAssetLinks(
@@ -77,7 +93,29 @@ export function getEarnHubLinkGraph(
       type: "earn",
       priority: 0.78,
     },
+    {
+      href: localePath(lang, "/protocols"),
+      label: lang === "ru" ? "Протоколы" : "Protocols",
+      type: "protocols",
+      priority: 0.77,
+    },
+    {
+      href: localePath(lang, "/reviews"),
+      label: lang === "ru" ? "Обзоры протоколов" : "Protocol reviews",
+      type: "protocols",
+      priority: 0.76,
+    },
   ];
+
+  for (const entry of EARN_HUB_PROTOCOL_LINKS) {
+    links.push({
+      href: protocolDetailPath(lang, entry.slug),
+      label: `${entry.label} Review`,
+      type: "protocols",
+      slug: entry.slug,
+      priority: 0.74,
+    });
+  }
 
   for (const asset of EARN_ASSETS) {
     const href = earnAssetPath(lang, asset.slug);

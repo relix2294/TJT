@@ -35,6 +35,55 @@ export const PROTOCOL_PLACEHOLDER_PROFILES: Record<
     exploitScore: 80,
     liquidityScore: 75,
   },
+  morpho: {
+    tvlTierScore: 82,
+    maturityYears: 3,
+    auditScore: 85,
+    exploitScore: 78,
+    liquidityScore: 80,
+  },
+  spark: {
+    tvlTierScore: 80,
+    maturityYears: 2,
+    auditScore: 84,
+    exploitScore: 80,
+    liquidityScore: 78,
+  },
+  "rocket-pool": {
+    tvlTierScore: 78,
+    maturityYears: 4,
+    auditScore: 86,
+    exploitScore: 82,
+    liquidityScore: 76,
+  },
+  etherfi: {
+    tvlTierScore: 74,
+    maturityYears: 2,
+    auditScore: 80,
+    exploitScore: 75,
+    liquidityScore: 72,
+  },
+  pendle: {
+    tvlTierScore: 76,
+    maturityYears: 3,
+    auditScore: 82,
+    exploitScore: 78,
+    liquidityScore: 74,
+  },
+  ethena: {
+    tvlTierScore: 70,
+    maturityYears: 1,
+    auditScore: 76,
+    exploitScore: 72,
+    liquidityScore: 70,
+  },
+  compound: {
+    tvlTierScore: 88,
+    maturityYears: 6,
+    auditScore: 88,
+    exploitScore: 76,
+    liquidityScore: 84,
+  },
 };
 
 const DEFAULT_PROFILE = {

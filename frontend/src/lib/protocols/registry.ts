@@ -25,12 +25,26 @@ const PROTOCOL_LOGOS: Record<ProtocolSlug, string> = {
   aave: "AA",
   lido: "LD",
   jito: "JT",
+  morpho: "MO",
+  spark: "SP",
+  "rocket-pool": "RP",
+  etherfi: "EF",
+  pendle: "PE",
+  ethena: "ET",
+  compound: "CO",
 };
 
 const PROTOCOL_CATEGORIES: Record<ProtocolSlug, ProtocolCategorySlug> = {
   aave: "lending",
   lido: "liquid_staking",
   jito: "liquid_staking",
+  morpho: "lending",
+  spark: "lending",
+  "rocket-pool": "liquid_staking",
+  etherfi: "liquid_staking",
+  pendle: "vault",
+  ethena: "vault",
+  compound: "lending",
 };
 
 const CATEGORY_REGISTRY: Record<ProtocolCategorySlug, ProtocolCategory> = {
@@ -88,6 +102,34 @@ const PROTOCOL_DESCRIPTIONS: Record<ProtocolSlug, Protocol["description"]> = {
   jito: {
     en: "Jito is a liquid-staking protocol on Solana with MEV-boosted rewards. jitoSOL stays composable while earning validator yield.",
     ru: "Jito — протокол liquid staking на Solana с MEV-бустом. jitoSOL остаётся композируемым и приносит доход валидаторов.",
+  },
+  morpho: {
+    en: "Morpho is a peer-to-peer lending optimizer that matches suppliers and borrowers on top of base markets like Aave and Compound. Morpho Blue enables permissionless market creation with isolated risk parameters.",
+    ru: "Morpho — P2P-оптимизатор кредитования, сопоставляющий поставщиков и заёмщиков поверх базовых рынков Aave и Compound. Morpho Blue позволяет создавать рынки с изолированными параметрами риска.",
+  },
+  spark: {
+    en: "Spark is a lending protocol in the MakerDAO ecosystem, offering supply and borrow markets for stablecoins and ETH on Ethereum. SparkLend extends DAI-centric liquidity infrastructure into general-purpose DeFi lending.",
+    ru: "Spark — lending-протокол экосистемы MakerDAO с рынками supply и borrow для стейблкоинов и ETH на Ethereum. SparkLend расширяет DAI-инфраструктуру в универсальный DeFi lending.",
+  },
+  "rocket-pool": {
+    en: "Rocket Pool is a decentralized liquid-staking protocol on Ethereum. rETH represents staked ETH with a distributed node-operator network and governance via RPL.",
+    ru: "Rocket Pool — децентрализованный протокол liquid staking на Ethereum. rETH представляет застейканный ETH через распределённую сеть node operators с governance через RPL.",
+  },
+  etherfi: {
+    en: "EtherFi is a liquid restaking and staking protocol on Ethereum. eETH and related tokens accrue staking and restaking rewards while staying composable across DeFi.",
+    ru: "EtherFi — протокол liquid restaking и staking на Ethereum. eETH и связанные токены начисляют staking и restaking rewards, оставаясь композируемыми в DeFi.",
+  },
+  pendle: {
+    en: "Pendle is a yield-trading protocol that splits future yield from underlying assets into principal and yield tokens. Users can lock in fixed yield or trade yield exposure on Ethereum and L2s.",
+    ru: "Pendle — протокол торговли доходностью, разделяющий будущий yield базовых активов на principal и yield tokens. Пользователи фиксируют доходность или торгуют yield-экспозицией на Ethereum и L2.",
+  },
+  ethena: {
+    en: "Ethena is a synthetic-dollar protocol issuing USDe backed by delta-neutral hedging strategies. Yield comes from funding rates and staking components — distinct from traditional lending markets.",
+    ru: "Ethena — протокол синтетического доллара, выпускающий USDe под delta-neutral хеджирование. Доходность от funding rates и staking-компонентов — отличная от классического lending.",
+  },
+  compound: {
+    en: "Compound is a pioneer decentralized lending protocol on Ethereum. Suppliers earn variable APY via cTokens; borrowers post collateral against algorithmic interest rates.",
+    ru: "Compound — пионер децентрализованного lending на Ethereum. Поставщики получают переменный APY через cTokens; заёмщики вносят залог под алгоритмические ставки.",
   },
 };
 

@@ -21,6 +21,18 @@ function offerHref(lang: Locale, slug: string) {
   return `/${lang}/offers/${slug}`;
 }
 
+function learnHref(lang: Locale, slug: string) {
+  return `/${lang}/learn/${slug}`;
+}
+
+function reviewsHubHref(lang: Locale) {
+  return `/${lang}/reviews`;
+}
+
+function safetyHref(lang: Locale, slug: string) {
+  return `/${lang}/safety/${slug}`;
+}
+
 export const REVIEW_PAGES: SeoPilotPage[] = [
   {
     slug: "aave-review",
@@ -456,5 +468,340 @@ export const REVIEW_PAGES: SeoPilotPage[] = [
       "mev staking",
       "sol yield comparison",
     ],
+  },
+  {
+    slug: "morpho-review",
+    type: "review",
+    hubSegment: "reviews",
+    metaTitle: L(
+      "Morpho Protocol Review — Lending Optimizer & Risk Overview | TJT",
+      "Обзор протокола Morpho — оптимизатор кредитования и риски | TJT",
+    ),
+    metaDescription: L(
+      "Educational Morpho protocol overview: P2P lending optimization, Morpho Blue markets, use cases, benefits, risks, and TJT Compare links for stablecoin yield research.",
+      "Образовательный обзор Morpho: P2P-оптимизация кредитования, рынки Morpho Blue, сценарии, преимущества, риски и ссылки TJT Compare для исследования stablecoin yield.",
+    ),
+    h1: L("Morpho Protocol Review", "Обзор протокола Morpho"),
+    eyebrow: L("Protocol overview", "Обзор протокола"),
+    intro: L(
+      "Morpho is a decentralized lending optimizer that improves capital efficiency by matching suppliers and borrowers peer-to-peer on top of base liquidity markets. This review provides educational information and market context — not financial advice.",
+      "Morpho — децентрализованный оптимизатор кредитования, повышающий капитальную эффективность через P2P-сопоставление поставщиков и заёмщиков поверх базовых рынков ликвидности. Обзор даёт образовательную информацию и рыночный контекст, а не финансовый совет.",
+    ),
+    sections: [
+      {
+        key: "overview",
+        title: L("Protocol overview", "Обзор протокола"),
+        body: L(
+          "Morpho started as an optimizer layer on Aave and Compound, routing matched liquidity to improve supplier APY and borrower rates. Morpho Blue extends this with permissionless, isolated lending markets curated by risk managers.\n\nFrom a TJT perspective, Morpho sits in the lending category. It connects stablecoin suppliers and ETH collateral users across Ethereum and L2 deployments. Underlying-market dependencies, oracle feeds, and curator parameters are primary risk inputs.\n\nMorpho markets can be created for specific collateral pairs with custom loan-to-value ratios, oracle providers, and interest-rate models — increasing flexibility but also configuration risk.",
+          "Morpho начинался как optimizer-слой на Aave и Compound, направляя matched liquidity для улучшения APY поставщиков и ставок заёмщиков. Morpho Blue расширяет это permissionless изолированными рынками под управлением risk managers.\n\nВ контексте TJT Morpho относится к lending. Он связывает поставщиков стейблкоинов и залог ETH на Ethereum и L2. Зависимости от базовых рынков, oracle и параметров кураторов — ключевые входы риска.\n\nРынки Morpho создаются для конкретных пар залога с custom LTV, oracle и моделями ставок — гибкость растёт, но и риск конфигурации.",
+        ),
+      },
+      {
+        key: "how_it_works",
+        title: L("How it works", "Как это работает"),
+        body: L(
+          "Suppliers deposit into Morpho vaults or markets and earn yield from matched borrower demand. In optimizer mode, idle liquidity falls through to underlying protocols; matched portions earn improved rates.\n\nBorrowers post collateral against Morpho or Morpho Blue markets and pay interest based on utilization and IRM parameters. Liquidations follow market-specific thresholds.\n\nCurators propose risk parameters for Morpho Blue markets. Governance and curator decisions affect oracle selection, caps, and pause controls.",
+          "Поставщики вносят средства в vaults или рынки Morpho и получают yield от matched спроса заёмщиков. В режиме optimizer неиспользованная ликвидность уходит в базовые протоколы; matched части получают улучшенные ставки.\n\nЗаёмщики вносят залог в рынки Morpho или Morpho Blue и платят проценты по utilization и IRM. Ликвидации следуют порогам конкретного рынка.\n\nКураторы предлагают параметры риска для Morpho Blue. Governance и решения кураторов влияют на oracle, caps и паузы.",
+        ),
+      },
+      {
+        key: "use_cases",
+        title: L("Main use cases", "Основные сценарии"),
+        body: L(
+          "Stablecoin supply: Users seeking improved APY on USDC or USDT via P2P matching when borrow demand is elevated.\n\nIsolated markets: Curators deploy markets for specific collateral types with segmented risk from core lending pools.\n\nDeFi composability: Morpho vault shares integrate with aggregators and strategy vaults, layering exposure beyond base markets.",
+          "Поставка стейблкоинов: пользователи ищут улучшенный APY на USDC или USDT через P2P matching при высоком спросе на заём.\n\nИзолированные рынки: кураторы разворачивают рынки для конкретных типов залога с сегментированным риском.\n\nКомпозируемость DeFi: доли vaults Morpho интегрируются с агрегаторами и strategy vaults.",
+        ),
+      },
+      {
+        key: "benefits",
+        title: L("Benefits", "Преимущества"),
+        body: L(
+          "Capital efficiency improvements can raise supplier APY versus passive underlying-market deposits during high matching rates.\n\nMorpho Blue enables permissionless market creation with isolated risk parameters.\n\nTransparent on-chain metrics for utilization, matching rates, and market parameters support independent verification.",
+          "Улучшение капитальной эффективности может повышать APY поставщиков vs пассивные депозиты в базовых рынках при высоком matching.\n\nMorpho Blue позволяет permissionless создание рынков с изолированными параметрами риска.\n\nПрозрачные on-chain метрики utilization, matching и параметров рынков поддерживают независимую проверку.",
+        ),
+      },
+      {
+        key: "risks",
+        title: L("Risks", "Риски"),
+        body: L(
+          "Underlying protocol risk: Morpho inherits smart-contract and liquidity risk from base markets like Aave and Compound.\n\nCurator and configuration risk: Incorrect oracle selection, LTV settings, or caps can harm suppliers.\n\nLiquidity risk: High utilization on isolated markets can slow withdrawals.\n\nOracle risk: Price feeds drive liquidations; stale data can trigger wrongful liquidations.",
+          "Риск базового протокола: Morpho наследует риски смарт-контрактов и ликвидности Aave, Compound и др.\n\nРиск куратора и конфигурации: неверный oracle, LTV или caps вредят поставщикам.\n\nРиск ликвидности: высокий utilization на изолированных рынках замедляет вывод.\n\nРиск оракулов: ценовые фиды управляют ликвидациями.",
+        ),
+      },
+      {
+        key: "alternatives",
+        title: L("Alternatives", "Альтернативы"),
+        body: L(
+          "Aave, Compound, and Spark offer direct lending-market exposure without optimizer layering.\n\nFor ETH-native yield, liquid staking via Lido or Rocket Pool presents a different risk profile.\n\nTJT Compare pages for best USDC and USDT yield help evaluate Morpho alongside other lending routes using Trust Score context.",
+          "Aave, Compound и Spark дают прямую экспозицию lending без optimizer-слоя.\n\nДля ETH-yield liquid staking через Lido или Rocket Pool — другой профиль риска.\n\nTJT Compare best USDC и USDT yield помогает оценить Morpho рядом с другими lending-маршрутами через Trust Score.",
+        ),
+      },
+      {
+        key: "related_compare",
+        title: L("Related Compare pages", "Связанные страницы Compare"),
+        body: L(
+          "Best USDC yield and best USDT yield comparisons aggregate stablecoin routes where Morpho deployments may appear in catalog data.\n\nAave vs Lido provides cross-category context when Morpho supply sits alongside ETH staking research.",
+          "Сравнения best USDC yield и best USDT yield агрегируют stablecoin-маршруты, где развёртывания Morpho могут появиться в каталоге.\n\nAave vs Lido даёт кросс-категорийный контекст, когда supply Morpho сочетается с исследованием ETH staking.",
+        ),
+      },
+    ],
+    faq: [
+      {
+        question: L("What is Morpho Blue?", "Что такое Morpho Blue?"),
+        answer: L(
+          "Morpho Blue is a permissionless lending primitive where curators deploy isolated markets with custom collateral, oracle, and interest-rate parameters.",
+          "Morpho Blue — permissionless lending-примитив, где кураторы разворачивают изолированные рынки с custom залогом, oracle и ставками.",
+        ),
+      },
+      {
+        question: L("Is Morpho the same as Aave?", "Morpho — это то же, что Aave?"),
+        answer: L(
+          "No. Morpho optimizes or creates markets that may route through or sit alongside protocols like Aave. Underlying contracts and risks differ by deployment.",
+          "Нет. Morpho оптимизирует или создаёт рынки, которые могут маршрутизироваться через Aave и др. Контракты и риски различаются по развёртыванию.",
+        ),
+      },
+      {
+        question: L("Can I lose funds supplying to Morpho?", "Можно ли потерять средства при supply в Morpho?"),
+        answer: L(
+          "Yes. Smart contract exploits, oracle failures, and underlying-market insolvency are among the risks. This page is a risk overview, not a safety guarantee.",
+          "Да. Эксплойты, сбои oracle и неплатёжеспособность базовых рынков — среди рисков. Страница — risk overview, а не гарантия безопасности.",
+        ),
+      },
+    ],
+    relatedLinks: [
+      { href: (lang) => compareHref(lang, "best-usdc-yield"), label: L("Best USDC yield comparison", "Сравнение лучшего USDC yield"), type: "compare" },
+      { href: (lang) => compareHref(lang, "best-usdt-yield"), label: L("Best USDT yield comparison", "Сравнение лучшего USDT yield"), type: "compare" },
+      { href: (lang) => compareHref(lang, "aave-vs-lido"), label: L("Aave vs Lido comparison", "Сравнение Aave vs Lido"), type: "compare" },
+      { href: (lang) => protocolHref(lang, "morpho"), label: L("Morpho protocol hub", "Хаб протокола Morpho"), type: "protocols" },
+      { href: (lang) => earnHref(lang, "usdc"), label: L("USDC earn hub", "Earn-хаб USDC"), type: "earn" },
+      { href: (lang) => learnHref(lang, "what-is-defi-yield"), label: L("What is DeFi yield?", "Что такое DeFi yield?"), type: "learn" },
+      { href: (lang) => safetyHref(lang, "is-morpho-safe"), label: L("Is Morpho safe?", "Безопасен ли Morpho?"), type: "safety" },
+      { href: reviewsHubHref, label: L("Reviews hub", "Хаб обзоров"), type: "reviews" },
+    ],
+    ctaHref: (lang) => compareHref(lang, "best-usdc-yield"),
+    keywords: ["morpho review", "morpho blue", "defi lending optimizer", "morpho risks"],
+  },
+  {
+    slug: "rocket-pool-review",
+    type: "review",
+    hubSegment: "reviews",
+    metaTitle: L(
+      "Rocket Pool Protocol Review — Decentralized Liquid Staking | TJT",
+      "Обзор протокола Rocket Pool — децентрализованный liquid staking | TJT",
+    ),
+    metaDescription: L(
+      "Educational Rocket Pool overview: rETH mechanics, decentralized node operators, use cases, benefits, risks, and TJT Compare links for ETH staking research.",
+      "Образовательный обзор Rocket Pool: механика rETH, децентрализованные node operators, сценарии, преимущества, риски и ссылки TJT Compare для исследования ETH staking.",
+    ),
+    h1: L("Rocket Pool Protocol Review", "Обзор протокола Rocket Pool"),
+    eyebrow: L("Protocol overview", "Обзор протокола"),
+    intro: L(
+      "Rocket Pool is a decentralized liquid-staking protocol on Ethereum that issues rETH while distributing validation across independent node operators. This review provides educational information and market context — not financial advice.",
+      "Rocket Pool — децентрализованный протокол liquid staking на Ethereum, выпускающий rETH при распределении валидации между независимыми node operators. Обзор даёт образовательную информацию и рыночный контекст, а не финансовый совет.",
+    ),
+    sections: [
+      {
+        key: "overview",
+        title: L("Protocol overview", "Обзор протокола"),
+        body: L(
+          "Rocket Pool allows users to stake ETH and receive rETH, a liquid staking token whose exchange rate accrues validator rewards. Unlike fully pooled designs, Rocket Pool emphasizes a distributed minipool and node-operator network secured by RPL collateral.\n\nFrom a TJT perspective, Rocket Pool sits in the liquid-staking category alongside Lido. Validator decentralization, slashing rules, and rETH secondary-market liquidity are primary risk inputs.\n\nRocket Pool governance via RPL holders influences fees, operator requirements, and protocol upgrades.",
+          "Rocket Pool позволяет стейкать ETH и получать rETH — LST с растущим курсом от наград валидаторов. В отличие от полностью пуловых дизайнов, Rocket Pool делает акцент на распределённой сети minipool и node operators с залогом RPL.\n\nВ контексте TJT Rocket Pool — liquid staking рядом с Lido. Децентрализация валидаторов, slashing и ликвидность rETH — ключевые входы риска.\n\nGovernance через RPL влияет на комиссии, требования к операторам и апгрейды.",
+        ),
+      },
+      {
+        key: "how_it_works",
+        title: L("How it works", "Как это работает"),
+        body: L(
+          "Users deposit ETH and receive rETH at the current exchange rate. Rewards increase the rETH/ETH ratio over time minus protocol and node-operator fees.\n\nNode operators run minipools with bonded RPL collateral. Slashing penalties can affect operator collateral and, in extreme cases, pool participants.\n\nrETH trades on DEXs and is accepted as collateral in lending protocols, enabling composable DeFi strategies.",
+          "Пользователи вносят ETH и получают rETH по текущему курсу. Награды увеличивают соотношение rETH/ETH за вычетом комиссий.\n\nNode operators запускают minipools с залогом RPL. Slashing влияет на залог операторов и в крайних случаях на участников пула.\n\nrETH торгуется на DEX и принимается как залог в lending, обеспечивая композируемые DeFi-стратегии.",
+        ),
+      },
+      {
+        key: "use_cases",
+        title: L("Main use cases", "Основные сценарии"),
+        body: L(
+          "ETH staking with liquidity: Hold rETH instead of illiquid staked ETH while earning validator rewards.\n\nDeFi collateral: Use rETH in lending markets for borrow utility while maintaining staking exposure.\n\nDecentralization preference: Users seeking a more distributed operator model versus single-curator liquid staking.",
+          "Staking ETH с ликвидностью: держать rETH вместо неликвидного staked ETH с наградами валидаторов.\n\nЗалог DeFi: использовать rETH в lending для utility заёма при сохранении staking-экспозиции.\n\nПредпочтение децентрализации: пользователи, ищущие более распределённую модель операторов.",
+        ),
+      },
+      {
+        key: "benefits",
+        title: L("Benefits", "Преимущества"),
+        body: L(
+          "Distributed node-operator network aims to reduce single-curator concentration versus some pooled LST designs.\n\nrETH composability across DeFi lending and DEX markets supports flexible portfolio construction.\n\nYears of mainnet operation and multiple audits provide a longer track record than many newer LST protocols.",
+          "Распределённая сеть node operators снижает концентрацию одного куратора vs некоторых пуловых LST.\n\nКомпозируемость rETH в lending и DEX поддерживает гибкое построение портфеля.\n\nГоды mainnet и множественные аудиты дают более длинную историю vs многих новых LST.",
+        ),
+      },
+      {
+        key: "risks",
+        title: L("Risks", "Риски"),
+        body: L(
+          "Slashing risk: Validator penalties can affect rETH exchange rate and operator collateral.\n\nPeg and liquidity risk: rETH can trade below ETH during market stress; DEX depth may thin.\n\nSmart contract risk: Minipool, deposit, and withdrawal contracts carry exploit exposure despite audits.\n\nGovernance risk: RPL holder votes can change fees, collateral requirements, or upgrade paths.",
+          "Риск slashing: штрафы валидаторов влияют на курс rETH и залог операторов.\n\nРиск пега и ликвидности: rETH может торговаться ниже ETH в стрессе; глубина DEX истончается.\n\nРиск смарт-контрактов: minipool, deposit и withdrawal несут экспозицию эксплойтов.\n\nРиск governance: голоса RPL меняют комиссии, залог и апгрейды.",
+        ),
+      },
+      {
+        key: "alternatives",
+        title: L("Alternatives", "Альтернативы"),
+        body: L(
+          "Lido stETH offers deeper liquidity and broader DeFi integrations with a different governance and operator model.\n\nEtherFi and restaking protocols add AVS yield layers with distinct complexity.\n\nNative solo staking and centralized staking services provide non-DeFi paths with separate custody models.\n\nTJT best ETH staking Compare helps evaluate Rocket Pool alongside Lido with Trust Score context.",
+          "Lido stETH даёт более глубокую ликвидность и интеграции с другой моделью governance.\n\nEtherFi и restaking добавляют AVS-yield со своей сложностью.\n\nSolo staking и CEX-сервисы — отдельные модели кастоди.\n\nTJT best ETH staking Compare оценивает Rocket Pool рядом с Lido через Trust Score.",
+        ),
+      },
+      {
+        key: "related_compare",
+        title: L("Related Compare pages", "Связанные страницы Compare"),
+        body: L(
+          "Best ETH staking ranks Ethereum liquid-staking routes including Rocket Pool and Lido.\n\nAave vs Lido contrasts lending with liquid staking when ETH yield research spans categories.",
+          "Best ETH staking ранжирует маршруты liquid staking Ethereum, включая Rocket Pool и Lido.\n\nAave vs Lido сопоставляет lending и liquid staking при кросс-категорийном исследовании ETH yield.",
+        ),
+      },
+    ],
+    faq: [
+      {
+        question: L("What is rETH?", "Что такое rETH?"),
+        answer: L(
+          "rETH is Rocket Pool's liquid staking token. Its ETH exchange rate increases as staking rewards accrue minus protocol fees.",
+          "rETH — LST Rocket Pool. Курс к ETH растёт с наградами staking за вычетом комиссий протокола.",
+        ),
+      },
+      {
+        question: L("How is Rocket Pool different from Lido?", "Чем Rocket Pool отличается от Lido?"),
+        answer: L(
+          "Rocket Pool emphasizes a distributed minipool operator network with RPL collateral. Lido uses a curated operator set with different governance and liquidity characteristics.",
+          "Rocket Pool делает акцент на распределённых minipool operators с залогом RPL. Lido использует курируемый operator set с другим governance и ликвидностью.",
+        ),
+      },
+      {
+        question: L("Does Rocket Pool guarantee ETH staking yield?", "Гарантирует ли Rocket Pool yield от ETH staking?"),
+        answer: L(
+          "No. Validator rewards, slashing, and fees vary. TJT displays indicative context for comparison research only.",
+          "Нет. Награды валидаторов, slashing и комиссии меняются. TJT показывает ориентировочный контекст только для сравнительных исследований.",
+        ),
+      },
+    ],
+    relatedLinks: [
+      { href: (lang) => compareHref(lang, "best-eth-staking"), label: L("Best ETH staking comparison", "Сравнение лучшего ETH staking"), type: "compare" },
+      { href: (lang) => compareHref(lang, "aave-vs-lido"), label: L("Aave vs Lido comparison", "Сравнение Aave vs Lido"), type: "compare" },
+      { href: (lang) => protocolHref(lang, "rocket-pool"), label: L("Rocket Pool protocol hub", "Хаб протокола Rocket Pool"), type: "protocols" },
+      { href: (lang) => earnHref(lang, "eth"), label: L("ETH earn hub", "Earn-хаб ETH"), type: "earn" },
+      { href: (lang) => learnHref(lang, "what-is-liquid-staking"), label: L("What is liquid staking?", "Что такое liquid staking?"), type: "learn" },
+      { href: (lang) => safetyHref(lang, "is-rocket-pool-safe"), label: L("Is Rocket Pool safe?", "Безопасен ли Rocket Pool?"), type: "safety" },
+      { href: reviewsHubHref, label: L("Reviews hub", "Хаб обзоров"), type: "reviews" },
+    ],
+    ctaHref: (lang) => compareHref(lang, "best-eth-staking"),
+    keywords: ["rocket pool review", "reth", "decentralized staking", "eth liquid staking"],
+  },
+  {
+    slug: "compound-review",
+    type: "review",
+    hubSegment: "reviews",
+    metaTitle: L(
+      "Compound Protocol Review — Lending Markets & Risk Overview | TJT",
+      "Обзор протокола Compound — lending-рынки и риски | TJT",
+    ),
+    metaDescription: L(
+      "Educational Compound protocol overview: cToken lending, use cases, benefits, risks, alternatives, and TJT Compare links for stablecoin yield research.",
+      "Образовательный обзор Compound: cToken lending, сценарии, преимущества, риски, альтернативы и ссылки TJT Compare для исследования stablecoin yield.",
+    ),
+    h1: L("Compound Protocol Review", "Обзор протокола Compound"),
+    eyebrow: L("Protocol overview", "Обзор протокола"),
+    intro: L(
+      "Compound is a pioneer decentralized lending protocol where suppliers earn interest via cTokens and borrowers draw loans against collateral. This review provides educational information and market context — not financial advice.",
+      "Compound — пионер децентрализованного lending, где поставщики получают проценты через cTokens, а заёмщики берут займы под залог. Обзор даёт образовательную информацию и рыночный контекст, а не финансовый совет.",
+    ),
+    sections: [
+      {
+        key: "overview",
+        title: L("Protocol overview", "Обзор протокола"),
+        body: L(
+          "Compound launched among the earliest DeFi money markets on Ethereum and expanded to L2 networks with Compound III (Comet) deployments. Suppliers receive cTokens representing their pool share; interest accrues automatically.\n\nFrom a TJT perspective, Compound sits in the lending category alongside Aave, Morpho, and Spark. TVL depth, utilization, governance proposals, and oracle dependencies are primary risk inputs.\n\nCompound III focuses on single borrowable asset markets per deployment, simplifying risk parameters versus multi-asset legacy pools.",
+          "Compound — один из первых DeFi money markets на Ethereum, расширившийся на L2 с Compound III (Comet). Поставщики получают cTokens как долю пула; проценты начисляются автоматически.\n\nВ контексте TJT Compound — lending рядом с Aave, Morpho и Spark. TVL, utilization, governance и oracle — ключевые входы риска.\n\nCompound III фокусируется на одном borrowable активе на развёртывание, упрощая параметры риска vs legacy multi-asset пулы.",
+        ),
+      },
+      {
+        key: "how_it_works",
+        title: L("How it works", "Как это работает"),
+        body: L(
+          "Suppliers deposit assets and receive cTokens that appreciate in value as interest accrues from borrower demand.\n\nBorrowers post collateral, maintain health factors, and pay variable interest rates algorithmically tied to utilization.\n\nCOMP governance token holders vote on protocol upgrades, market listings, and parameter changes.",
+          "Поставщики вносят активы и получают cTokens, растущие в цене по мере начисления процентов от спроса заёмщиков.\n\nЗаёмщики вносят залог, поддерживают health factor и платят переменные ставки, привязанные к utilization.\n\nДержатели COMP голосуют за апгрейды, листинг рынков и изменение параметров.",
+        ),
+      },
+      {
+        key: "use_cases",
+        title: L("Main use cases", "Основные сценарии"),
+        body: L(
+          "Stablecoin supply: Earn variable APY on USDC or USDT when borrow demand is elevated.\n\nCollateralized borrowing: ETH holders borrow stablecoins for liquidity without exiting positions.\n\nDeFi composability: cTokens and collateral positions integrate with external protocols, layering exposure.",
+          "Поставка стейблкоинов: переменный APY на USDC или USDT при высоком спросе на заём.\n\nЗалоговое кредитование: держатели ETH занимают стейблкоины для ликвидности без выхода из позиции.\n\nКомпозируемость DeFi: cTokens и залоговые позиции интегрируются с внешними протоколами.",
+        ),
+      },
+      {
+        key: "benefits",
+        title: L("Benefits", "Преимущества"),
+        body: L(
+          "Long operational history since early DeFi provides extensive mainnet track record.\n\nTransparent on-chain utilization and rate curves enable independent verification.\n\nCompound III simplifies market structure with focused collateral sets per deployment.",
+          "Длинная операционная история с раннего DeFi даёт обширный mainnet track record.\n\nПрозрачные on-chain utilization и кривые ставок позволяют независимую проверку.\n\nCompound III упрощает структуру рынков с фокусированными наборами залога.",
+        ),
+      },
+      {
+        key: "risks",
+        title: L("Risks", "Риски"),
+        body: L(
+          "Smart contract risk: Despite audits, vulnerabilities or governance exploits could affect pooled funds.\n\nLiquidity risk: High utilization can slow withdrawals during stress.\n\nOracle risk: Price feeds drive liquidations; oracle failures can trigger wrongful liquidations.\n\nGovernance risk: Parameter changes and market listings affect supplier and borrower risk profiles.",
+          "Риск смарт-контрактов: несмотря на аудиты, уязвимости или эксплойты governance могут затронуть пулы.\n\nРиск ликвидности: высокий utilization замедляет вывод в стрессе.\n\nРиск оракулов: ценовые фиды управляют ликвидациями.\n\nРиск governance: изменения параметров и листинг влияют на профили риска.",
+        ),
+      },
+      {
+        key: "alternatives",
+        title: L("Alternatives", "Альтернативы"),
+        body: L(
+          "Aave, Morpho, and Spark offer competing lending routes with different governance and market structures.\n\nFor ETH yield without lending, liquid staking via Lido or Rocket Pool presents a different risk profile.\n\nTJT Compare pages for best USDC and USDT yield help evaluate Compound alongside peers using Trust Score context.",
+          "Aave, Morpho и Spark — конкурирующие lending-маршруты с разными governance и структурами рынков.\n\nДля ETH-yield без lending liquid staking через Lido или Rocket Pool — другой профиль риска.\n\nTJT Compare best USDC и USDT yield оценивает Compound рядом с аналогами через Trust Score.",
+        ),
+      },
+      {
+        key: "related_compare",
+        title: L("Related Compare pages", "Связанные страницы Compare"),
+        body: L(
+          "Best USDC yield and best USDT yield comparisons aggregate stablecoin routes where Compound deployments may appear.\n\nAave vs Lido provides cross-category context when Compound supply sits alongside ETH staking research.",
+          "Сравнения best USDC yield и best USDT yield агрегируют stablecoin-маршруты с развёртываниями Compound.\n\nAave vs Lido даёт кросс-категорийный контекст при сочетании Compound supply и ETH staking.",
+        ),
+      },
+    ],
+    faq: [
+      {
+        question: L("What are cTokens?", "Что такое cTokens?"),
+        answer: L(
+          "cTokens represent your share in a Compound market. Their exchange rate increases as interest accrues from borrower demand.",
+          "cTokens представляют вашу долю в рынке Compound. Их курс растёт по мере начисления процентов от спроса заёмщиков.",
+        ),
+      },
+      {
+        question: L("Is Compound V3 the same as legacy Compound?", "Compound V3 — то же, что legacy Compound?"),
+        answer: L(
+          "Compound III (Comet) uses a different market architecture focused on single borrowable assets per deployment. Legacy v2 markets still exist on Ethereum with separate parameters.",
+          "Compound III (Comet) использует другую архитектуру с одним borrowable активом на развёртывание. Legacy v2 рынки на Ethereum сохраняются с отдельными параметрами.",
+        ),
+      },
+      {
+        question: L("Can I lose funds supplying to Compound?", "Можно ли потерять средства при supply в Compound?"),
+        answer: L(
+          "Yes. Smart contract exploits, insolvency events, or prolonged high utilization are among the risks. This page is a risk overview, not a safety guarantee.",
+          "Да. Эксплойты, неплатёжеспособность или длительный высокий utilization — среди рисков. Страница — risk overview, а не гарантия безопасности.",
+        ),
+      },
+    ],
+    relatedLinks: [
+      { href: (lang) => compareHref(lang, "best-usdc-yield"), label: L("Best USDC yield comparison", "Сравнение лучшего USDC yield"), type: "compare" },
+      { href: (lang) => compareHref(lang, "best-usdt-yield"), label: L("Best USDT yield comparison", "Сравнение лучшего USDT yield"), type: "compare" },
+      { href: (lang) => compareHref(lang, "aave-vs-lido"), label: L("Aave vs Lido comparison", "Сравнение Aave vs Lido"), type: "compare" },
+      { href: (lang) => protocolHref(lang, "compound"), label: L("Compound protocol hub", "Хаб протокола Compound"), type: "protocols" },
+      { href: (lang) => earnHref(lang, "usdc"), label: L("USDC earn hub", "Earn-хаб USDC"), type: "earn" },
+      { href: (lang) => learnHref(lang, "crypto-yield-risks"), label: L("Crypto yield risks guide", "Гид по рискам crypto yield"), type: "learn" },
+      { href: (lang) => safetyHref(lang, "is-compound-safe"), label: L("Is Compound safe?", "Безопасен ли Compound?"), type: "safety" },
+      { href: reviewsHubHref, label: L("Reviews hub", "Хаб обзоров"), type: "reviews" },
+    ],
+    ctaHref: (lang) => compareHref(lang, "best-usdc-yield"),
+    keywords: ["compound review", "compound finance", "defi lending", "compound risks"],
   },
 ];

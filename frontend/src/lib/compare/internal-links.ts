@@ -133,6 +133,13 @@ export function getProtocolCompareLinks(
     aave: ["aave-vs-lido", "aave-vs-jito"],
     lido: ["aave-vs-lido", "lido-vs-jito"],
     jito: ["aave-vs-jito", "lido-vs-jito"],
+    morpho: ["best-usdc-yield", "best-usdt-yield"],
+    spark: ["best-usdc-yield", "best-usdt-yield"],
+    compound: ["best-usdc-yield", "best-usdt-yield"],
+    "rocket-pool": ["best-eth-staking", "aave-vs-lido"],
+    etherfi: ["best-eth-staking"],
+    pendle: ["best-usdc-yield", "best-eth-staking"],
+    ethena: ["best-usdt-yield", "best-usdc-yield"],
   };
 
   return (pairs[protocol.slug] ?? []).map((slug) => ({

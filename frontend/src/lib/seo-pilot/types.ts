@@ -10,12 +10,18 @@ export const REVIEW_SLUGS = [
   "aave-review",
   "lido-review",
   "jito-review",
+  "morpho-review",
+  "rocket-pool-review",
+  "compound-review",
 ] as const;
 
 export const SAFETY_SLUGS = [
   "is-aave-safe",
   "is-lido-safe",
   "is-jito-safe",
+  "is-morpho-safe",
+  "is-rocket-pool-safe",
+  "is-compound-safe",
 ] as const;
 
 export const LEARN_SLUGS = [

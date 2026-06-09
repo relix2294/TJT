@@ -50,8 +50,8 @@ export const EARN_HUB_FAQ: SeoPilotFaqItem[] = [
       ru: "Какие earn-страницы предоставляет TJT?",
     },
     answer: {
-      en: "The earn hub lists educational guides and asset-specific yield pages for USDT, USDC, ETH, and SOL — with APY snapshots, Trust Score indicators, and links to Compare tables.",
-      ru: "Earn-хаб содержит образовательные гиды и страницы yield по USDT, USDC, ETH и SOL — со снимками APY, Trust Score и ссылками на Compare.",
+      en: "The earn hub lists educational guides and asset-specific yield pages for USDT, USDC, ETH, and SOL — with APY snapshots, Trust Score indicators, links to Compare tables, and protocol hub pages for Aave, Compound, Morpho, Lido, Rocket Pool, and more.",
+      ru: "Earn-хаб содержит образовательные гиды и страницы yield по USDT, USDC, ETH и SOL — со снимками APY, Trust Score, ссылками на Compare и хабами протоколов Aave, Compound, Morpho, Lido, Rocket Pool и др.",
     },
   },
   {

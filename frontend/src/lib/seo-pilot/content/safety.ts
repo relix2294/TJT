@@ -17,6 +17,18 @@ function safetyHref(lang: Locale, slug: string) {
   return `/${lang}/safety/${slug}`;
 }
 
+function learnHref(lang: Locale, slug: string) {
+  return `/${lang}/learn/${slug}`;
+}
+
+function earnHref(lang: Locale, asset: string) {
+  return `/${lang}/earn/${asset}`;
+}
+
+function safetyHubHref(lang: Locale) {
+  return `/${lang}/safety`;
+}
+
 export const SAFETY_PAGES: SeoPilotPage[] = [
   {
     slug: "is-aave-safe",
@@ -404,5 +416,338 @@ export const SAFETY_PAGES: SeoPilotPage[] = [
     ],
     ctaHref: (lang) => compareHref(lang, "best-sol-staking"),
     keywords: ["is jito safe", "jitosol risks", "solana staking safety", "jito mev risk"],
+  },
+  {
+    slug: "is-morpho-safe",
+    type: "safety",
+    hubSegment: "safety",
+    metaTitle: L(
+      "Is Morpho Safe? Lending Optimizer Risk Overview | TJT",
+      "Безопасен ли Morpho? Обзор рисков lending-optimizer | TJT",
+    ),
+    metaDescription: L(
+      "Educational safety overview for Morpho: underlying-market risk, curator configuration, oracle dependencies, and TJT Trust Score context — not a safety guarantee.",
+      "Образовательный обзор безопасности Morpho: риски базовых рынков, конфигурация кураторов, oracle и контекст TJT Trust Score — не гарантия безопасности.",
+    ),
+    h1: L("Is Morpho Safe?", "Безопасен ли Morpho?"),
+    eyebrow: L("Risk overview", "Обзор рисков"),
+    intro: L(
+      "Short answer: Morpho is a widely adopted lending optimizer with documented audits and growing TVL, but no DeFi deployment is risk-free. Safety depends on underlying markets, curator parameters, oracle integrity, and your position structure. This page provides educational information — not a certification of safety.",
+      "Краткий ответ: Morpho — широко принятый lending-optimizer с аудитами и растущим TVL, но ни одно DeFi-развёртывание не безрисково. Безопасность зависит от базовых рынков, параметров кураторов, oracle и структуры позиции. Страница даёт образовательную информацию, а не сертификат безопасности.",
+    ),
+    sections: [
+      {
+        key: "what_affects_safety",
+        title: L("What affects safety", "Что влияет на безопасность"),
+        body: L(
+          "Morpho safety is layered: optimizer contracts, Morpho Blue market parameters, and underlying protocols like Aave or Compound each contribute risk.\n\nCurator quality affects oracle selection, loan-to-value ratios, and supply caps on isolated markets.\n\nUser composability with vault aggregators can add nested exposure beyond core Morpho contracts.",
+          "Безопасность Morpho многослойна: контракты optimizer, параметры Morpho Blue и базовые протоколы вроде Aave или Compound вносят риск.\n\nКачество кураторов влияет на oracle, LTV и supply caps изолированных рынков.\n\nКомпозируемость с vault-агрегаторами добавляет вложенную экспозицию поверх core Morpho.",
+        ),
+      },
+      {
+        key: "smart_contract_risk",
+        title: L("Smart contract risk", "Риск смарт-контрактов"),
+        body: L(
+          "Morpho core and Morpho Blue contracts have undergone third-party audits. Bug bounty programs incentivize disclosure.\n\nUnderlying protocol upgrades or regressions can affect routed liquidity.\n\nUsers should confirm official contract addresses from Morpho documentation, not third-party frontends.",
+          "Core Morpho и Morpho Blue прошли аудиты третьих сторон. Bug bounty стимулирует раскрытие.\n\nАпгрейды базовых протоколов влияют на маршрутизируемую ликвидность.\n\nПодтверждайте официальные адреса контрактов из документации Morpho.",
+        ),
+      },
+      {
+        key: "liquidity_risk",
+        title: L("Liquidity risk", "Риск ликвидности"),
+        body: L(
+          "Matched P2P liquidity improves rates but unmatched portions rely on underlying market depth.\n\nIsolated Morpho Blue markets can experience high utilization, slowing supplier exits.\n\nVault share integrations in external protocols may require unwinding nested positions before exit.",
+          "Matched P2P ликвидность улучшает ставки, но unmatched части зависят от глубины базовых рынков.\n\nИзолированные рынки Morpho Blue при высоком utilization замедляют вывод поставщиков.\n\nИнтеграции vault shares могут требовать размотки вложенных позиций.",
+        ),
+      },
+      {
+        key: "protocol_risk",
+        title: L("Protocol risk", "Протокольный риск"),
+        body: L(
+          "Curators and governance can adjust market parameters, pause markets, or list new collateral types.\n\nOracle provider selection ties market safety to third-party price feed uptime and accuracy.\n\nMorpho Blue permissionless market creation increases the surface area for misconfigured markets.",
+          "Кураторы и governance меняют параметры, останавливают рынки или листят новый залог.\n\nВыбор oracle связывает безопасность с uptime и точностью price feeds.\n\nPermissionless создание рынков Morpho Blue расширяет поверхность ошибок конфигурации.",
+        ),
+      },
+      {
+        key: "market_risk",
+        title: L("Market risk", "Рыночный риск"),
+        body: L(
+          "Variable supply APY compresses when borrow demand falls.\n\nCorrelated asset crashes can trigger liquidations across DeFi, stressing Morpho and underlying pools.\n\nIncentive programs can temporarily boost APY without changing structural risk.",
+          "Переменный supply APY сжимается при падении спроса на заём.\n\nКоррелированные обвалы вызывают ликвидации в DeFi, нагружая Morpho и базовые пулы.\n\nIncentive-программы временно повышают APY без изменения структурного риска.",
+        ),
+      },
+      {
+        key: "verify_independently",
+        title: L("What users should verify independently", "Что проверить самостоятельно"),
+        body: L(
+          "Confirm which Morpho market or vault you interact with and its underlying protocol dependencies.\n\nReview oracle sources, LTV parameters, and utilization for your chosen asset.\n\nCross-check TJT Trust Score v0.1 and Compare tables as educational context — then validate on-chain.",
+          "Подтвердите, с каким рынком или vault Morpho вы взаимодействуете и какие базовые протоколы задействованы.\n\nИзучите oracle, LTV и utilization для выбранного актива.\n\nСверьте Trust Score v0.1 и Compare на TJT — затем проверьте on-chain.",
+        ),
+      },
+      {
+        key: "related_compare",
+        title: L("Related Compare pages", "Связанные страницы Compare"),
+        body: L(
+          "Best USDC and USDT yield comparisons add market context for stablecoin suppliers evaluating Morpho routes.\n\nAave vs Lido contrasts lending with liquid staking for portfolio-level risk research.",
+          "Best USDC и USDT yield добавляют контекст для поставщиков стейблкоинов, оценивающих Morpho.\n\nAave vs Lido сопоставляет lending и liquid staking для портфельного risk research.",
+        ),
+      },
+    ],
+    faq: [
+      {
+        question: L("Does Morpho inherit Aave or Compound risk?", "Наследует ли Morpho риски Aave или Compound?"),
+        answer: L(
+          "Yes, when liquidity routes through or depends on underlying markets. Optimizer layering does not eliminate base-protocol smart contract or liquidity risk.",
+          "Да, когда ликвидность маршрутизируется через базовые рынки. Optimizer-слой не устраняет риски смарт-контрактов и ликвидности базового протокола.",
+        ),
+      },
+      {
+        question: L("Are Morpho Blue markets riskier than optimizer mode?", "Рискованнее ли рынки Morpho Blue, чем optimizer?"),
+        answer: L(
+          "Isolated markets can have different collateral, oracle, and curator risk than established underlying pools. Evaluate each market independently.",
+          "Изолированные рынки могут иметь другой залог, oracle и риск куратора vs устоявшихся базовых пулов. Оценивайте каждый рынок отдельно.",
+        ),
+      },
+      {
+        question: L("Does TJT certify Morpho as safe?", "Сертифицирует ли TJT Morpho как безопасный?"),
+        answer: L(
+          "No. TJT publishes educational information and Trust Score indicators. Users must perform independent due diligence.",
+          "Нет. TJT публикует образовательную информацию и Trust Score. Пользователи обязаны проводить собственную проверку.",
+        ),
+      },
+    ],
+    relatedLinks: [
+      { href: (lang) => compareHref(lang, "best-usdc-yield"), label: L("Best USDC yield comparison", "Сравнение лучшего USDC yield"), type: "compare" },
+      { href: (lang) => compareHref(lang, "best-usdt-yield"), label: L("Best USDT yield comparison", "Сравнение лучшего USDT yield"), type: "compare" },
+      { href: (lang) => protocolHref(lang, "morpho"), label: L("Morpho protocol hub", "Хаб протокола Morpho"), type: "protocols" },
+      { href: (lang) => reviewHref(lang, "morpho-review"), label: L("Morpho protocol review", "Обзор протокола Morpho"), type: "reviews" },
+      { href: (lang) => learnHref(lang, "crypto-yield-risks"), label: L("Crypto yield risks guide", "Гид по рискам crypto yield"), type: "learn" },
+      { href: (lang) => earnHref(lang, "usdc"), label: L("USDC earn hub", "Earn-хаб USDC"), type: "earn" },
+      { href: safetyHubHref, label: L("Safety hub", "Хаб безопасности"), type: "safety" },
+    ],
+    ctaHref: (lang) => compareHref(lang, "best-usdc-yield"),
+    keywords: ["is morpho safe", "morpho risks", "morpho blue safety", "defi lending safety"],
+  },
+  {
+    slug: "is-rocket-pool-safe",
+    type: "safety",
+    hubSegment: "safety",
+    metaTitle: L(
+      "Is Rocket Pool Safe? Liquid Staking Risk Overview | TJT",
+      "Безопасен ли Rocket Pool? Обзор рисков liquid staking | TJT",
+    ),
+    metaDescription: L(
+      "Educational safety overview for Rocket Pool: slashing, rETH peg, node-operator risk, smart contracts, and TJT Trust Score context — not a safety guarantee.",
+      "Образовательный обзор безопасности Rocket Pool: slashing, пег rETH, риск node operators, смарт-контракты и контекст TJT Trust Score — не гарантия безопасности.",
+    ),
+    h1: L("Is Rocket Pool Safe?", "Безопасен ли Rocket Pool?"),
+    eyebrow: L("Risk overview", "Обзор рисков"),
+    intro: L(
+      "Short answer: Rocket Pool is an established decentralized liquid-staking protocol with years of mainnet operation and multiple audits, yet staking always carries slashing, peg, and smart contract risks. This is educational information, not a safety rating.",
+      "Краткий ответ: Rocket Pool — устоявшийся децентрализованный протокол liquid staking с годами mainnet и аудитами, но стейкинг всегда несёт slashing, пег и риски смарт-контрактов. Это образовательная информация, а не рейтинг безопасности.",
+    ),
+    sections: [
+      {
+        key: "what_affects_safety",
+        title: L("What affects safety", "Что влияет на безопасность"),
+        body: L(
+          "Node operator quality, minipool mechanics, and RPL collateral rules directly affect rETH holders.\n\nSecondary market liquidity determines how closely rETH tracks ETH during stress.\n\nEthereum consensus changes and Rocket Pool governance can alter fees, collateral requirements, or withdrawal policies.",
+          "Качество node operators, механика minipool и правила залога RPL напрямую влияют на держателей rETH.\n\nЛиквидность вторичного рынка определяет, насколько rETH следует за ETH в стрессе.\n\nИзменения консенсуса Ethereum и governance Rocket Pool меняют комиссии, залог и политику вывода.",
+        ),
+      },
+      {
+        key: "smart_contract_risk",
+        title: L("Smart contract risk", "Риск смарт-контрактов"),
+        body: L(
+          "Rocket Pool deposit, minipool, and withdrawal contracts have been audited. Upgradeable components require monitoring for governance-approved changes.\n\nDeFi integrations accepting rETH extend blast radius of adjacent contract bugs.\n\nUsers must verify they hold genuine rETH from official Rocket Pool contracts.",
+          "Контракты deposit, minipool и withdrawal Rocket Pool аудированы. Апгрейдируемые компоненты требуют мониторинга governance-изменений.\n\nDeFi-интеграции, принимающие rETH, расширяют радиус багов смежных контрактов.\n\nПроверяйте, что вы держите настоящий rETH с официальных контрактов Rocket Pool.",
+        ),
+      },
+      {
+        key: "liquidity_risk",
+        title: L("Liquidity risk", "Риск ликвидности"),
+        body: L(
+          "Protocol withdrawal queues may delay ETH redemption during high exit demand.\n\nDEX pools for rETH/ETH can deplete during crashes, widening discounts.\n\nUsing rETH as collateral ties exit timing to lending market health and liquidation thresholds.",
+          "Очереди вывода могут задерживать redemption ETH при высоком спросе на выход.\n\nDEX-пулы rETH/ETH истощаются в крашах, расширяя дисконты.\n\nИспользование rETH как залога связывает выход со здоровьем lending и порогами ликвидации.",
+        ),
+      },
+      {
+        key: "protocol_risk",
+        title: L("Protocol risk", "Протокольный риск"),
+        body: L(
+          "Distributed operator set reduces single-curator concentration but introduces operator performance variance.\n\nRPL governance concentration may influence decisions affecting all stakers.\n\nSocialized slashing rules define how validator penalties propagate across the pool.",
+          "Распределённый operator set снижает концентрацию куратора, но вносит разброс performance операторов.\n\nКонцентрация RPL governance влияет на решения для всех стейкеров.\n\nПравила социализированного slashing определяют распространение штрафов валидаторов.",
+        ),
+      },
+      {
+        key: "market_risk",
+        title: L("Market risk", "Рыночный риск"),
+        body: L(
+          "Staking rewards vary with validator performance and network conditions — not fixed APY.\n\nrETH price can deviate from ETH during market stress — not a guaranteed peg.\n\nRegulatory scrutiny of staking products is an evolving external factor.",
+          "Staking rewards меняются с performance валидаторов и условиями сети — не фиксированный APY.\n\nЦена rETH может отклоняться от ETH в стрессе — не гарантированный пег.\n\nРегуляторное внимание к staking-продуктам — развивающийся внешний фактор.",
+        ),
+      },
+      {
+        key: "verify_independently",
+        title: L("What users should verify independently", "Что проверить самостоятельно"),
+        body: L(
+          "Confirm contract addresses and current rETH exchange rate on the official Rocket Pool app.\n\nReview operator set health, slashing history, and withdrawal queue status.\n\nCross-check TJT Trust Score v0.1 and best ETH staking Compare as educational context — then validate on-chain.",
+          "Подтвердите адреса контрактов и текущий курс rETH в официальном приложении Rocket Pool.\n\nИзучите здоровье operator set, историю slashing и статус очереди вывода.\n\nСверьте Trust Score v0.1 и best ETH staking Compare — затем проверьте on-chain.",
+        ),
+      },
+      {
+        key: "related_compare",
+        title: L("Related Compare pages", "Связанные страницы Compare"),
+        body: L(
+          "Best ETH staking ranks Rocket Pool alongside Lido and other routes with Trust Score context.\n\nAave vs Lido helps contrast lending safety with liquid staking when building ETH yield research.",
+          "Best ETH staking ранжирует Rocket Pool рядом с Lido и другими маршрутами с Trust Score.\n\nAave vs Lido помогает сопоставить безопасность lending и liquid staking при исследовании ETH yield.",
+        ),
+      },
+    ],
+    faq: [
+      {
+        question: L("Has Rocket Pool been slashed?", "Был ли Rocket Pool подвержен slashing?"),
+        answer: L(
+          "Research historical validator slashing events affecting Rocket Pool minipools. Past outcomes do not guarantee future resilience.",
+          "Изучайте исторические события slashing валидаторов, затрагивающие minipools Rocket Pool. Прошлые исходы не гарантируют будущую устойчивость.",
+        ),
+      },
+      {
+        question: L("Is rETH safer than stETH?", "Безопаснее ли rETH, чем stETH?"),
+        answer: L(
+          "Neither token eliminates staking or smart contract risk. They differ in operator model, liquidity depth, and governance — compare independently.",
+          "Ни один токен не устраняет staking или риск смарт-контрактов. Они различаются моделью операторов, ликвидностью и governance — сравнивайте самостоятельно.",
+        ),
+      },
+      {
+        question: L("Does TJT certify Rocket Pool as safe?", "Сертифицирует ли TJT Rocket Pool как безопасный?"),
+        answer: L(
+          "No. TJT publishes educational information and Trust Score indicators. Users must perform independent due diligence.",
+          "Нет. TJT публикует образовательную информацию и Trust Score. Пользователи обязаны проводить собственную проверку.",
+        ),
+      },
+    ],
+    relatedLinks: [
+      { href: (lang) => compareHref(lang, "best-eth-staking"), label: L("Best ETH staking comparison", "Сравнение лучшего ETH staking"), type: "compare" },
+      { href: (lang) => compareHref(lang, "aave-vs-lido"), label: L("Aave vs Lido comparison", "Сравнение Aave vs Lido"), type: "compare" },
+      { href: (lang) => protocolHref(lang, "rocket-pool"), label: L("Rocket Pool protocol hub", "Хаб протокола Rocket Pool"), type: "protocols" },
+      { href: (lang) => reviewHref(lang, "rocket-pool-review"), label: L("Rocket Pool protocol review", "Обзор протокола Rocket Pool"), type: "reviews" },
+      { href: (lang) => learnHref(lang, "what-is-liquid-staking"), label: L("What is liquid staking?", "Что такое liquid staking?"), type: "learn" },
+      { href: (lang) => earnHref(lang, "eth"), label: L("ETH earn hub", "Earn-хаб ETH"), type: "earn" },
+      { href: safetyHubHref, label: L("Safety hub", "Хаб безопасности"), type: "safety" },
+    ],
+    ctaHref: (lang) => compareHref(lang, "best-eth-staking"),
+    keywords: ["is rocket pool safe", "reth risks", "rocket pool slashing", "liquid staking safety"],
+  },
+  {
+    slug: "is-compound-safe",
+    type: "safety",
+    hubSegment: "safety",
+    metaTitle: L(
+      "Is Compound Safe? Lending Protocol Risk Overview | TJT",
+      "Безопасен ли Compound? Обзор рисков lending-протокола | TJT",
+    ),
+    metaDescription: L(
+      "Educational safety overview for Compound: smart contract risk, governance, liquidity, oracle dependencies, and TJT Trust Score context — not a safety guarantee.",
+      "Образовательный обзор безопасности Compound: риски смарт-контрактов, governance, ликвидность, oracle и контекст TJT Trust Score — не гарантия безопасности.",
+    ),
+    h1: L("Is Compound Safe?", "Безопасен ли Compound?"),
+    eyebrow: L("Risk overview", "Обзор рисков"),
+    intro: L(
+      "Short answer: Compound is a mature pioneer lending protocol with extensive audits and years of mainnet operation, but no DeFi deployment is risk-free. Safety depends on smart contracts, liquidity conditions, oracle integrity, governance decisions, and your position structure. This page provides educational information — not a certification of safety.",
+      "Краткий ответ: Compound — зрелый pioneer lending-протокол с обширными аудитами и годами mainnet, но ни одно DeFi-развёртывание не безрисково. Безопасность зависит от смарт-контрактов, ликвидности, oracle, governance и структуры позиции. Страница даёт образовательную информацию, а не сертификат безопасности.",
+    ),
+    sections: [
+      {
+        key: "what_affects_safety",
+        title: L("What affects safety", "Что влияет на безопасность"),
+        body: L(
+          "Protocol safety spans legacy v2 markets and Compound III (Comet) deployments with different parameter sets.\n\nTVL depth and utilization patterns affect whether suppliers can exit promptly.\n\nGovernance via COMP influences market listings, collateral factors, and upgrade paths.",
+          "Безопасность охватывает legacy v2 и развёртывания Compound III (Comet) с разными параметрами.\n\nTVL и utilization влияют на скорость вывода поставщиков.\n\nGovernance через COMP влияет на листинг, collateral factors и апгрейды.",
+        ),
+      },
+      {
+        key: "smart_contract_risk",
+        title: L("Smart contract risk", "Риск смарт-контрактов"),
+        body: L(
+          "Compound v2 and v3 contracts have been audited by multiple firms over years of operation.\n\nHistorical DeFi exploits demonstrate that upgrades and composability can introduce regressions.\n\nUsers should confirm official contract addresses listed in Compound documentation.",
+          "Контракты Compound v2 и v3 аудированы несколькими фирмами за годы работы.\n\nЭксплойты в DeFi показывают, что апгрейды и композируемость вносят регрессии.\n\nПодтверждайте официальные адреса контрактов в документации Compound.",
+        ),
+      },
+      {
+        key: "liquidity_risk",
+        title: L("Liquidity risk", "Риск ликвидности"),
+        body: L(
+          "When pool utilization approaches 100%, new withdrawals may queue until borrowers repay or suppliers add liquidity.\n\nStablecoin pools during market stress can experience rapid utilization spikes.\n\ncToken integrations in external protocols may lock liquidity indirectly.",
+          "При utilization близком к 100% вывод может ждать погашений или новых депозитов.\n\nСтейблкоин-пулы в стрессе видят скачки utilization.\n\nИнтеграции cToken косвенно блокируют ликвидность.",
+        ),
+      },
+      {
+        key: "protocol_risk",
+        title: L("Protocol risk", "Протокольный риск"),
+        body: L(
+          "Governance can list new assets, adjust collateral factors, or pause markets.\n\nCompound III simplifies markets but introduces deployment-specific oracle and bridge dependencies on L2s.\n\nDependency on external oracle providers ties protocol safety to third-party infrastructure.",
+          "Governance листит активы, меняет collateral factors или останавливает рынки.\n\nCompound III упрощает рынки, но добавляет oracle и bridge-зависимости на L2.\n\nЗависимость от oracle связывает безопасность со сторонней инфраструктурой.",
+        ),
+      },
+      {
+        key: "market_risk",
+        title: L("Market risk", "Рыночный риск"),
+        body: L(
+          "Variable APY compresses when borrow demand falls — suppliers face income volatility.\n\nCorrelated asset crashes can trigger cascading liquidations across DeFi.\n\nRegulatory developments affecting stablecoins may impact listed markets independently of code security.",
+          "Переменный APY сжимается при падении спроса — поставщики сталкиваются с волатильностью дохода.\n\nКоррелированные обвалы вызывают каскадные ликвидации.\n\nРегуляторные изменения по стейблкоинам влияют на рынки независимо от безопасности кода.",
+        ),
+      },
+      {
+        key: "verify_independently",
+        title: L("What users should verify independently", "Что проверить самостоятельно"),
+        body: L(
+          "Confirm contract addresses and market parameters on the official Compound app for your chosen chain.\n\nReview current utilization, supply caps, and oracle sources for your asset.\n\nCross-check TJT Trust Score v0.1 and Compare tables as educational context — then validate on-chain.",
+          "Подтвердите адреса и параметры рынка в официальном приложении Compound для выбранной сети.\n\nИзучите utilization, supply caps и oracle для актива.\n\nСверьте Trust Score v0.1 и Compare — затем проверьте on-chain.",
+        ),
+      },
+      {
+        key: "related_compare",
+        title: L("Related Compare pages", "Связанные страницы Compare"),
+        body: L(
+          "Best USDC and USDT yield comparisons add market context for stablecoin suppliers evaluating Compound routes.\n\nAave vs Lido contrasts lending with liquid staking for portfolio-level research.",
+          "Best USDC и USDT yield добавляют контекст для поставщиков стейблкоинов, оценивающих Compound.\n\nAave vs Lido сопоставляет lending и liquid staking для портфельного исследования.",
+        ),
+      },
+    ],
+    faq: [
+      {
+        question: L("Has Compound been hacked?", "Был ли взломан Compound?"),
+        answer: L(
+          "Compound has faced governance proposals and ecosystem stress events; research historical incident reports. Past survival does not guarantee future resilience.",
+          "Compound сталкивался с governance-предложениями и стрессом экосистемы; изучайте отчёты об инцидентах. Прошлое выживание не гарантирует будущую устойчивость.",
+        ),
+      },
+      {
+        question: L("Is Compound III safer than legacy markets?", "Безопаснее ли Compound III, чем legacy рынки?"),
+        answer: L(
+          "Comet uses a different architecture with focused collateral sets. Safety depends on deployment-specific parameters — evaluate each market independently.",
+          "Comet использует другую архитектуру с фокусированным залогом. Безопасность зависит от параметров развёртывания — оценивайте каждый рынок отдельно.",
+        ),
+      },
+      {
+        question: L("Does TJT certify Compound as safe?", "Сертифицирует ли TJT Compound как безопасный?"),
+        answer: L(
+          "No. TJT publishes educational information and Trust Score indicators. Users must perform independent due diligence.",
+          "Нет. TJT публикует образовательную информацию и Trust Score. Пользователи обязаны проводить собственную проверку.",
+        ),
+      },
+    ],
+    relatedLinks: [
+      { href: (lang) => compareHref(lang, "best-usdc-yield"), label: L("Best USDC yield comparison", "Сравнение лучшего USDC yield"), type: "compare" },
+      { href: (lang) => compareHref(lang, "best-usdt-yield"), label: L("Best USDT yield comparison", "Сравнение лучшего USDT yield"), type: "compare" },
+      { href: (lang) => protocolHref(lang, "compound"), label: L("Compound protocol hub", "Хаб протокола Compound"), type: "protocols" },
+      { href: (lang) => reviewHref(lang, "compound-review"), label: L("Compound protocol review", "Обзор протокола Compound"), type: "reviews" },
+      { href: (lang) => learnHref(lang, "crypto-yield-risks"), label: L("Crypto yield risks guide", "Гид по рискам crypto yield"), type: "learn" },
+      { href: (lang) => earnHref(lang, "usdc"), label: L("USDC earn hub", "Earn-хаб USDC"), type: "earn" },
+      { href: safetyHubHref, label: L("Safety hub", "Хаб безопасности"), type: "safety" },
+    ],
+    ctaHref: (lang) => compareHref(lang, "best-usdc-yield"),
+    keywords: ["is compound safe", "compound risks", "compound security", "defi lending safety"],
   },
 ];

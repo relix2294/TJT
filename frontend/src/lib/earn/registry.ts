@@ -118,6 +118,55 @@ export const EARN_PROTOCOLS: Protocol[] = [
     assets: ["sol"],
     riskTier: "AAA",
   },
+  {
+    slug: "morpho",
+    name: "Morpho",
+    chains: ["ethereum", "base", "arbitrum"],
+    assets: ["usdc", "usdt", "eth"],
+    riskTier: "AA",
+  },
+  {
+    slug: "spark",
+    name: "Spark",
+    chains: ["ethereum"],
+    assets: ["usdc", "usdt", "eth"],
+    riskTier: "AA",
+  },
+  {
+    slug: "rocket-pool",
+    name: "Rocket Pool",
+    chains: ["ethereum"],
+    assets: ["eth"],
+    riskTier: "AA",
+  },
+  {
+    slug: "etherfi",
+    name: "EtherFi",
+    chains: ["ethereum", "arbitrum", "base"],
+    assets: ["eth"],
+    riskTier: "AA",
+  },
+  {
+    slug: "pendle",
+    name: "Pendle",
+    chains: ["ethereum", "arbitrum"],
+    assets: ["usdc", "eth"],
+    riskTier: "A",
+  },
+  {
+    slug: "ethena",
+    name: "Ethena",
+    chains: ["ethereum"],
+    assets: ["usdt", "usdc"],
+    riskTier: "A",
+  },
+  {
+    slug: "compound",
+    name: "Compound",
+    chains: ["ethereum", "arbitrum", "base", "polygon"],
+    assets: ["usdc", "usdt", "eth"],
+    riskTier: "AA",
+  },
 ];
 
 const NETWORK_TO_CHAIN: Record<string, YieldOpportunity["chainSlug"]> = {
