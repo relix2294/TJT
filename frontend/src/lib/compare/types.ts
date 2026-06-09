@@ -1,6 +1,7 @@
 import type { Locale } from "@/lib/i18n";
 import type { EarnAssetSlug } from "@/lib/earn/types";
 import type { ProtocolSlug } from "@/lib/protocols/types";
+import type { CompareTrustBadge, ProtocolTrustProfile } from "@/lib/trust";
 import type { TrustScore } from "@/lib/trust-score";
 
 /** Comparison page taxonomy — powers programmatic SEO expansion. */
@@ -104,7 +105,12 @@ export type ProtocolComparisonSide = {
   tvlLabel: LocalizedString | null;
   chain: LocalizedString;
   supportedAsset: LocalizedString;
+  /** Legacy dynamic score — retained for /protocols parity and fallback. */
   trustScore: TrustScore;
+  /** Canonical static Trust Score v0.1 when slug is in TRUST_PROTOCOL_REGISTRY. */
+  trustProfile?: ProtocolTrustProfile | null;
+  /** Precomputed badge for compare table (static score + category label). */
+  trustBadge?: CompareTrustBadge | null;
   riskExplanation: LocalizedString;
   protocolPath: string;
 };
@@ -128,7 +134,12 @@ export type YieldComparisonRow = {
   tvlLabel: LocalizedString | null;
   chain: LocalizedString;
   supportedAsset: string;
+  /** Legacy dynamic score — retained for /protocols parity and fallback. */
   trustScore: TrustScore;
+  /** Canonical static Trust Score v0.1 when slug is in TRUST_PROTOCOL_REGISTRY. */
+  trustProfile?: ProtocolTrustProfile | null;
+  /** Precomputed badge for compare table (static score + category label). */
+  trustBadge?: CompareTrustBadge | null;
   riskExplanation: LocalizedString;
   earnPath: string;
   protocolPath: string;

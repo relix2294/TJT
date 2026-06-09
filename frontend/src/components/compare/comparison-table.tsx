@@ -10,6 +10,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import type { Locale } from "@/lib/i18n";
+import type { CompareTrustBadge } from "@/lib/trust";
 import type {
   ComparePage,
   ProtocolComparisonSide,
@@ -40,7 +41,31 @@ type CompareComparisonTableProps = {
   labels: CompareTableLabels;
 };
 
-function TrustScoreBadge({ score, grade }: { score: number; grade: string }) {
+function StaticTrustScoreBadge({
+  badge,
+  lang,
+}: {
+  badge: CompareTrustBadge;
+  lang: Locale;
+}) {
+  return (
+    <Badge
+      variant="outline"
+      className="border-primary/30 bg-[--neon-soft] font-heading text-xs font-bold text-primary"
+    >
+      <Shield className="mr-1 size-3" />
+      {badge.score} · {resolveCompareLocalized(badge.categoryLabel, lang)}
+    </Badge>
+  );
+}
+
+function LegacyTrustScoreBadge({
+  score,
+  grade,
+}: {
+  score: number;
+  grade: string;
+}) {
   return (
     <Badge
       variant="outline"
@@ -49,6 +74,26 @@ function TrustScoreBadge({ score, grade }: { score: number; grade: string }) {
       <Shield className="mr-1 size-3" />
       {score} · {grade}
     </Badge>
+  );
+}
+
+function CompareTrustScoreCell({
+  lang,
+  trustBadge,
+  trustScore,
+}: {
+  lang: Locale;
+  trustBadge?: CompareTrustBadge | null;
+  trustScore: ProtocolComparisonSide["trustScore"];
+}) {
+  if (trustBadge) {
+    return <StaticTrustScoreBadge badge={trustBadge} lang={lang} />;
+  }
+  return (
+    <LegacyTrustScoreBadge
+      score={trustScore.score}
+      grade={trustScore.grade}
+    />
   );
 }
 
@@ -105,9 +150,10 @@ function ProtocolRow({
         {resolveCompareLocalized(side.supportedAsset, lang)}
       </TableCell>
       <TableCell>
-        <TrustScoreBadge
-          score={side.trustScore.score}
-          grade={side.trustScore.grade}
+        <CompareTrustScoreCell
+          lang={lang}
+          trustBadge={side.trustBadge}
+          trustScore={side.trustScore}
         />
       </TableCell>
       <TableCell className="max-w-xs text-xs text-muted-foreground">
@@ -155,9 +201,10 @@ function YieldRow({
       </TableCell>
       <TableCell className="text-sm">{row.supportedAsset}</TableCell>
       <TableCell>
-        <TrustScoreBadge
-          score={row.trustScore.score}
-          grade={row.trustScore.grade}
+        <CompareTrustScoreCell
+          lang={lang}
+          trustBadge={row.trustBadge}
+          trustScore={row.trustScore}
         />
       </TableCell>
       <TableCell className="max-w-xs text-xs text-muted-foreground">

@@ -95,7 +95,10 @@ export function buildProtocolContentBlocks(
         en: `TJT Trust Score v0.1 — ${protocol.name}`,
         ru: `TJT Trust Score v0.1 — ${protocol.name}`,
       }[lang],
-      body: protocol.trustScore.explanation.detailed?.[lang] ?? protocol.trustScore.explanation.short[lang],
+      body:
+        protocol.trustProfile?.explanation[lang] ??
+        protocol.trustScore.explanation.detailed?.[lang] ??
+        protocol.trustScore.explanation.short[lang],
     },
     {
       key: "risk_explanation",

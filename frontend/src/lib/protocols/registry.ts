@@ -8,6 +8,7 @@ import {
 } from "@/lib/earn";
 import { earnAssetPath } from "@/lib/earn/paths";
 import { localePath } from "@/lib/seo/urls";
+import { getTrustProfileOrNull } from "@/lib/trust";
 import { computeProtocolTrustScore } from "@/lib/trust-score";
 import type {
   Protocol,
@@ -257,6 +258,7 @@ export function buildProtocolsFromOffers(
         riskTier: seed.riskTier,
         topApy: linkedOffers[0]?.apy ?? null,
       }),
+      trustProfile: getTrustProfileOrNull(slug),
     };
   });
 }

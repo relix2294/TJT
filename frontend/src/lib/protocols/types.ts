@@ -1,5 +1,6 @@
 import type { Locale } from "@/lib/i18n";
 import type { EarnAssetSlug, ChainSlug } from "@/lib/earn/types";
+import type { ProtocolTrustProfile } from "@/lib/trust";
 import type { TrustScore } from "@/lib/trust-score";
 
 /** Supported protocol slugs — powers `/protocols/{slug}` routes. */
@@ -119,7 +120,10 @@ export type Protocol = {
   supportedChains: ProtocolSupportedChain[];
   linkedOffers: ProtocolLinkedOffer[];
   earnOpportunities: ProtocolLinkedEarnOpportunity[];
+  /** Legacy dynamic score — retained for fallback and /earn parity. */
   trustScore: TrustScore;
+  /** Canonical static Trust Score v0.1 when slug is in TRUST_PROTOCOL_REGISTRY. */
+  trustProfile?: ProtocolTrustProfile | null;
 };
 
 export type LocalizedString = Record<Locale, string>;

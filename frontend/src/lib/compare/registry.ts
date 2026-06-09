@@ -12,6 +12,10 @@ import { buildProtocolsFromOffers } from "@/lib/protocols/registry";
 import { protocolDetailPath } from "@/lib/protocols/paths";
 import type { Protocol, ProtocolSlug } from "@/lib/protocols/types";
 import { localePath } from "@/lib/seo/urls";
+import {
+  getTrustProfileOrNull,
+  trustProfileToCompareBadge,
+} from "@/lib/trust";
 import { getProtocolPlaceholderProfile } from "@/lib/trust-score/placeholders";
 import {
   COMPARE_LEGAL_DISCLAIMER,
@@ -141,6 +145,28 @@ function formatAssets(protocol: Protocol, lang: Locale): LocalizedString {
   return { en: symbols, ru: symbols };
 }
 
+function attachStaticTrustFields(protocol: Pick<Protocol, "slug" | "trustProfile">) {
+  const trustProfile =
+    protocol.trustProfile ?? getTrustProfileOrNull(protocol.slug);
+  const trustBadge = trustProfile
+    ? trustProfileToCompareBadge(trustProfile)
+    : null;
+  return { trustProfile, trustBadge };
+}
+
+function resolveCanonicalTrustScore(
+  side: Pick<
+    ProtocolComparisonSide,
+    "trustBadge" | "trustProfile" | "trustScore"
+  >,
+): number {
+  return (
+    side.trustBadge?.score ??
+    side.trustProfile?.score ??
+    side.trustScore.score
+  );
+}
+
 function buildProtocolSide(
   lang: Locale,
   protocol: Protocol,
@@ -170,6 +196,8 @@ function buildProtocolSide(
       }
     : formatAssets(protocol, lang);
 
+  const { trustProfile, trustBadge } = attachStaticTrustFields(protocol);
+
   return {
     protocolSlug: protocol.slug,
     name: protocol.name,
@@ -180,6 +208,8 @@ function buildProtocolSide(
     chain: chainLabel,
     supportedAsset: assetLabel,
     trustScore: protocol.trustScore,
+    trustProfile,
+    trustBadge,
     riskExplanation: protocol.riskProfile.explanation,
     protocolPath: protocolDetailPath(lang, protocol.slug),
   };
@@ -223,6 +253,8 @@ function buildYieldRow(
     ? chain.name
     : { en: "—", ru: "—" };
 
+  const { trustProfile, trustBadge } = attachStaticTrustFields(protocol);
+
   return {
     id: opportunity?.id ?? `${protocol.slug}-informational`,
     protocolSlug: protocol.slug,
@@ -233,6 +265,8 @@ function buildYieldRow(
     chain: chainLabel,
     supportedAsset: assetSymbol,
     trustScore: protocol.trustScore,
+    trustProfile,
+    trustBadge,
     riskExplanation: protocol.riskProfile.explanation,
     earnPath: earnAssetPath(lang, (opportunity?.assetSlug ?? protocol.supportedAssets[0]?.slug)!),
     protocolPath: protocolDetailPath(lang, protocol.slug),
@@ -350,14 +384,14 @@ function buildMetrics(
       {
         key: "trust_left",
         label: { en: `${comparison.left.name} Trust Score`, ru: `Trust Score ${comparison.left.name}` },
-        value: comparison.left.trustScore.score,
+        value: resolveCanonicalTrustScore(comparison.left),
         format: "score",
         available: true,
       },
       {
         key: "trust_right",
         label: { en: `${comparison.right.name} Trust Score`, ru: `Trust Score ${comparison.right.name}` },
-        value: comparison.right.trustScore.score,
+        value: resolveCanonicalTrustScore(comparison.right),
         format: "score",
         available: true,
       },

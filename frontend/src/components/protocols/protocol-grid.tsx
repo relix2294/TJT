@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight, Layers } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { TrustScoreCard } from "@/components/trust-score/trust-score-card";
+import { ProtocolTrustScoreCard } from "@/components/protocols/protocol-trust-score-card";
 import type { Locale } from "@/lib/i18n";
 import type { Protocol } from "@/lib/protocols/types";
 import { resolveProtocolLocalized } from "@/lib/protocols/types";
@@ -57,9 +57,9 @@ export function ProtocolGrid({ lang, protocols, exploreLabel }: ProtocolGridProp
                 </span>
               </div>
               <div className="mt-3 flex flex-wrap items-center gap-3">
-                <TrustScoreCard
+                <ProtocolTrustScoreCard
                   lang={lang}
-                  trustScore={protocol.trustScore}
+                  protocol={protocol}
                   variant="compact"
                 />
                 {topApy != null ? (

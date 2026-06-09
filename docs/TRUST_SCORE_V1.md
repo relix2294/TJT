@@ -8,7 +8,7 @@ Trust Score sits in the TJT funnel as:
 
 **SEO → Traffic → CPA → Trust Score → Risk Engine/API**
 
-v0.1 is a **static foundation** — explainable scores for Aave, Lido, and Jito without live scoring APIs, AI models, wallet connections, or trading signals.
+v0.1 is a **static foundation** — explainable scores for all 10 catalog protocols without live scoring APIs, AI models, wallet connections, or trading signals.
 
 ## Scoring philosophy
 
@@ -82,7 +82,14 @@ Static registry in `frontend/src/lib/trust/trust-registry.ts`:
 |----------|------|------------------|----------|-------------|
 | Aave | `aave` | 89 | High Trust | estimated |
 | Lido | `lido` | 90 | Very High Trust | estimated |
-| Jito | `jito` | 69 | Moderate Trust | estimated |
+| Jito | `jito` | 70 | Moderate Trust | estimated |
+| Morpho | `morpho` | 81 | High Trust | estimated |
+| Spark | `spark` | 81 | High Trust | estimated |
+| Rocket Pool | `rocket-pool` | 82 | High Trust | estimated |
+| EtherFi | `etherfi` | 74 | Moderate Trust | estimated |
+| Pendle | `pendle` | 78 | High Trust | estimated |
+| Ethena | `ethena` | 72 | Moderate Trust | estimated |
+| Compound | `compound` | 86 | High Trust | estimated |
 
 Each profile includes:
 
@@ -99,8 +106,9 @@ Each profile includes:
 ```
 frontend/src/lib/trust/
 ├── trust-types.ts      # ProtocolTrustProfile, TrustFactor, TrustCategory
-├── trust-registry.ts   # Static Aave, Lido, Jito profiles
+├── trust-registry.ts   # Static profiles for 10 catalog protocols
 ├── trust-score.ts      # scoreToCategory, helpers, SEO slug mapping
+├── resolve.ts          # getProtocolTrustForDisplay, trustProfileToCompareBadge
 └── index.ts
 
 frontend/src/components/trust/
@@ -111,10 +119,14 @@ frontend/src/components/trust/
 
 | Surface | Integration |
 |---------|-------------|
-| `/reviews/{slug}` | Full `TrustScoreCard` when slug maps to aave/lido/jito |
-| `/safety/{slug}` | Full `TrustScoreCard` when slug maps to aave/lido/jito |
-| `/compare/{slug}` | `CompareTrustOverview` section with cards for registry protocols |
-| `/protocols/{slug}` | Legacy `trust-score` module (dynamic computation) — migration planned |
+| `/reviews/{slug}` | Full `TrustScoreCard` when slug maps via `SEO_PILOT_TRUST_SLUG_MAP` |
+| `/safety/{slug}` | Full `TrustScoreCard` when slug maps via `SEO_PILOT_TRUST_SLUG_MAP` |
+| `/compare/{slug}` table | Static v0.1 via `trustBadge` (canonical); legacy fallback if missing |
+| `/compare/{slug}` overview | `CompareTrustOverview` with static `TrustScoreCard` |
+| `/protocols/{slug}` | Static v0.1 via `trustProfile` + `ProtocolTrustScoreCard` (Phase 3 complete) |
+| `/earn/{asset}` | Legacy `trust-score` module (dynamic computation) — Phase 4 migration |
+
+See `docs/TRUST_SCORE_UNIFICATION.md` for migration phases and status.
 
 ### SEO requirements
 
@@ -123,9 +135,9 @@ Trust Score explanation is rendered as **visible, indexable text** in the card b
 ## Limitations (v0.1)
 
 1. **No external APIs** — TVL, audits, and exploits are not fetched live
-2. **Three protocols only** — Aave, Lido, Jito in the static registry
+2. **Ten protocols** — full catalog coverage in `TRUST_PROTOCOL_REGISTRY`
 3. **Not predictive** — scores reflect informational profile, not future outcomes
-4. **Parallel legacy module** — `frontend/src/lib/trust-score/` still powers protocols/earn dynamic scores with letter grades; consolidation planned for v1.0
+4. **Partial legacy coexistence** — `frontend/src/lib/trust-score/` still powers `/protocols` and `/earn`; compare table unified to static v0.1 (Phase 0–2)
 
 ## Roadmap to v1.0
 

@@ -19,6 +19,16 @@ export {
   isTrustProtocolSlug,
 } from "@/lib/trust/trust-registry";
 
+export {
+  getProtocolTrustForDisplay,
+  trustProfileToCompareBadge,
+} from "@/lib/trust/resolve";
+
+export type {
+  CompareTrustBadge,
+  ProtocolTrustDisplay,
+} from "@/lib/trust/resolve";
+
 export type {
   ProtocolTrustProfile,
   TrustCategory,

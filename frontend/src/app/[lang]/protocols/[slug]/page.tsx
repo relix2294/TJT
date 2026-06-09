@@ -4,7 +4,7 @@ import { Shield } from "lucide-react";
 import { Navbar } from "@/components/navbar";
 import { LegalFooter } from "@/components/legal-footer";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { TrustScoreCard } from "@/components/trust-score/trust-score-card";
+import { ProtocolTrustScoreCard } from "@/components/protocols/protocol-trust-score-card";
 import { ProtocolContentBlocks } from "@/components/protocols/content-blocks";
 import { ProtocolEarnOpportunities } from "@/components/protocols/earn-opportunities";
 import { ProtocolInternalLinkSection } from "@/components/protocols/internal-link-section";
@@ -179,7 +179,7 @@ export default async function ProtocolDetailPage({ params }: PageProps) {
           </div>
 
           <div className="mb-8">
-            <TrustScoreCard lang={lang as Locale} trustScore={protocol.trustScore} />
+            <ProtocolTrustScoreCard lang={lang as Locale} protocol={protocol} />
           </div>
 
           <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
