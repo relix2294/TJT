@@ -8,7 +8,7 @@ import { Offers } from "@/components/offers";
 import { Card } from "@/components/ui/card";
 import { loadAppConfig, loadDictionary } from "@/lib/server-config";
 import { LOCALES, isLocale } from "@/lib/i18n";
-import { generatePageMetadata, hubPath } from "@/lib/seo";
+import { generatePageMetadata, localePath } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
@@ -28,7 +28,7 @@ export async function generateMetadata({
   const t = config?.dict.offersHub;
   return generatePageMetadata({
     lang,
-    path: hubPath(lang, "earn"),
+    path: localePath(lang, "/offers"),
     title: t?.metaTitle ?? "Offers",
     description: t?.metaDescription,
   });

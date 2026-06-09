@@ -53,9 +53,9 @@ export function getRelatedEarnLinks(
     .sort((a, b) => b.apy - a.apy)
     .slice(0, limit)
     .map((o) => ({
-      href: detailPath(lang, "earn", o.slug),
+      href: detailPath(lang, "protocols", o.slug),
       label: o.name,
-      type: "earn" as const,
+      type: "protocols" as const,
       slug: o.slug,
       priority: 0.7,
     }));
@@ -126,9 +126,9 @@ export function getRelatedOfferLinks(
     .filter((o) => o.slug !== excludeSlug)
     .slice(0, limit)
     .map((o) => ({
-      href: detailPath(lang, "earn", o.slug),
+      href: detailPath(lang, "protocols", o.slug),
       label: o.name,
-      type: "earn" as const,
+      type: "protocols" as const,
       slug: o.slug,
       priority: 0.55,
     }));

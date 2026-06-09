@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { loadAppConfig } from "@/lib/server-config";
 import { LOCALES } from "@/lib/i18n";
+import { EARN_ASSET_SLUGS } from "@/lib/earn";
 import {
   buildSitemapEntry,
   buildStaticHubEntries,
@@ -63,6 +64,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ),
   );
 
+  const earnAssetEntries: MetadataRoute.Sitemap = EARN_ASSET_SLUGS.flatMap(
+    (asset) =>
+      LOCALES.map((lang) =>
+        buildSitemapEntry(
+          {
+            baseUrl,
+            lang,
+            path: `/${lang}/earn/${asset}`,
+            lastModified: now,
+            changeFrequency: "weekly",
+            priority: 0.8,
+            localeNeutralPath: (l) => `/${l}/earn/${asset}`,
+          },
+          now,
+        ),
+      ),
+  );
+
   const marketEntries: MetadataRoute.Sitemap = config.market.flatMap((asset) =>
     LOCALES.map((lang) =>
       buildSitemapEntry(
@@ -80,5 +99,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ),
   );
 
-  return [...staticEntries, ...offerEntries, ...newsEntries, ...marketEntries];
+  return [
+    ...staticEntries,
+    ...earnAssetEntries,
+    ...offerEntries,
+    ...newsEntries,
+    ...marketEntries,
+  ];
 }

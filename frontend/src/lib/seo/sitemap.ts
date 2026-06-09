@@ -99,6 +99,10 @@ export function buildStaticHubEntries(baseUrl: string, now: Date): MetadataRoute
       { baseUrl, pathSegment: "/offers", changeFrequency: "weekly", priority: 0.8 },
       now,
     ),
+    ...buildLocalizedHubEntries(
+      { baseUrl, pathSegment: "/earn", changeFrequency: "weekly", priority: 0.85 },
+      now,
+    ),
   ];
 }
 

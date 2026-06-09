@@ -53,7 +53,7 @@ export async function generateMetadata({
     );
   }
 
-  const path = detailPath(lang, "earn", offer.slug);
+  const path = detailPath(lang, "protocols", offer.slug);
   return generatePageMetadata({
     lang,
     path,
@@ -84,7 +84,7 @@ export default async function OfferDetailPage({ params }: PageProps) {
 
   const trackUrl = `/api/click-track?offerId=${encodeURIComponent(offer.id)}&lang=${lang}`;
 
-  const offerPath = detailPath(lang, "earn", offer.slug);
+  const offerPath = detailPath(lang, "protocols", offer.slug);
   const jsonLd = buildProductSchema({
     path: offerPath,
     name: offer.name,

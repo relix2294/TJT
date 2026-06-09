@@ -50,8 +50,8 @@ export const SEO_ROUTE_MAP: Record<
     detail: (slug) => `/market/${slug}`,
   },
   earn: {
-    hub: "/offers",
-    detail: (slug) => `/offers/${slug}`,
+    hub: "/earn",
+    detail: (slug) => `/earn/${slug}`,
   },
   news: {
     hub: "/news",
