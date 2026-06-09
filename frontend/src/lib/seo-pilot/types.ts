@@ -13,6 +13,10 @@ export const REVIEW_SLUGS = [
   "morpho-review",
   "rocket-pool-review",
   "compound-review",
+  "spark-review",
+  "pendle-review",
+  "etherfi-review",
+  "ethena-review",
 ] as const;
 
 export const SAFETY_SLUGS = [
@@ -22,12 +26,22 @@ export const SAFETY_SLUGS = [
   "is-morpho-safe",
   "is-rocket-pool-safe",
   "is-compound-safe",
+  "is-spark-safe",
+  "is-pendle-safe",
+  "is-etherfi-safe",
+  "is-ethena-safe",
 ] as const;
 
 export const LEARN_SLUGS = [
   "what-is-defi-yield",
   "what-is-liquid-staking",
   "crypto-yield-risks",
+  "what-is-restaking",
+  "what-is-liquid-restaking",
+  "what-is-protocol-tvl",
+  "what-is-smart-contract-risk",
+  "what-is-defi-audit",
+  "usdc-yield-risks",
 ] as const;
 
 export const EARN_GUIDE_SLUGS = ["how-to-compare-usdt-yield"] as const;

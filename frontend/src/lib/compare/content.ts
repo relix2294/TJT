@@ -72,12 +72,29 @@ const PROTOCOL_COMPARE_TITLES: Record<ProtocolCompareSlug, LocalizedString> = {
     en: "Lido vs Rocket Pool — informational liquid-staking comparison",
     ru: "Lido vs Rocket Pool — информационное сравнение liquid staking",
   },
+  "spark-vs-aave": {
+    en: "Spark vs Aave — informational lending comparison",
+    ru: "Spark vs Aave — информационное сравнение lending",
+  },
+  "pendle-vs-etherfi": {
+    en: "Pendle vs EtherFi — informational yield comparison",
+    ru: "Pendle vs EtherFi — информационное сравнение yield",
+  },
+  "compound-vs-morpho": {
+    en: "Compound vs Morpho — informational lending comparison",
+    ru: "Compound vs Morpho — информационное сравнение lending",
+  },
 };
 
 const YIELD_COMPARE_TITLES: Record<
   Extract<
     CompareSlug,
-    "best-usdt-yield" | "best-usdc-yield" | "best-eth-staking" | "best-sol-staking"
+    | "best-usdt-yield"
+    | "best-usdc-yield"
+    | "best-eth-staking"
+    | "best-sol-staking"
+    | "best-eth-restaking"
+    | "best-liquid-staking"
   >,
   LocalizedString
 > = {
@@ -96,6 +113,14 @@ const YIELD_COMPARE_TITLES: Record<
   "best-sol-staking": {
     en: "SOL staking comparison — informational market context",
     ru: "Сравнение стейкинга SOL — информационный рыночный контекст",
+  },
+  "best-eth-restaking": {
+    en: "ETH restaking comparison — informational market context",
+    ru: "Сравнение ETH restaking — информационный рыночный контекст",
+  },
+  "best-liquid-staking": {
+    en: "Liquid staking comparison — informational market context",
+    ru: "Сравнение liquid staking — информационный рыночный контекст",
   },
 };
 

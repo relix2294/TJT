@@ -1,5 +1,6 @@
 import type { Locale } from "@/lib/i18n";
 import { L, type SeoPilotPage } from "@/lib/seo-pilot/types";
+import { WAVE1_LEARN_PAGES } from "@/lib/seo-pilot/content/wave1-learn";
 
 function compareHref(lang: Locale, slug: string) {
   return `/${lang}/compare/${slug}`;
@@ -362,4 +363,5 @@ export const LEARN_PAGES: SeoPilotPage[] = [
     ctaHref: (lang) => compareHref(lang, "best-usdt-yield"),
     keywords: ["crypto yield risks", "defi risks", "yield farming risks", "defi safety"],
   },
+  ...WAVE1_LEARN_PAGES,
 ];

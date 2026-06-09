@@ -1,5 +1,6 @@
 import type { Locale } from "@/lib/i18n";
 import { L, type SeoPilotPage } from "@/lib/seo-pilot/types";
+import { WAVE1_REVIEW_PAGES } from "@/lib/seo-pilot/content/wave1-reviews";
 
 function compareHref(lang: Locale, slug: string) {
   return `/${lang}/compare/${slug}`;
@@ -822,4 +823,5 @@ export const REVIEW_PAGES: SeoPilotPage[] = [
     ctaHref: (lang) => compareHref(lang, "compound-vs-aave"),
     keywords: ["compound review", "compound finance", "defi lending", "compound risks"],
   },
+  ...WAVE1_REVIEW_PAGES,
 ];

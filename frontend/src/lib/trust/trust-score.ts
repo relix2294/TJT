@@ -105,12 +105,20 @@ export const SEO_PILOT_TRUST_SLUG_MAP: Record<string, TrustProtocolSlug> = {
   "morpho-review": "morpho",
   "rocket-pool-review": "rocket-pool",
   "compound-review": "compound",
+  "spark-review": "spark",
+  "pendle-review": "pendle",
+  "etherfi-review": "etherfi",
+  "ethena-review": "ethena",
   "is-aave-safe": "aave",
   "is-lido-safe": "lido",
   "is-jito-safe": "jito",
   "is-morpho-safe": "morpho",
   "is-rocket-pool-safe": "rocket-pool",
   "is-compound-safe": "compound",
+  "is-spark-safe": "spark",
+  "is-pendle-safe": "pendle",
+  "is-etherfi-safe": "etherfi",
+  "is-ethena-safe": "ethena",
 };
 
 export function resolveTrustSlugFromSeoPilot(

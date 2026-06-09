@@ -55,7 +55,12 @@ type ProtocolPairSpec = {
 type YieldSpec = {
   slug: Extract<
     CompareSlug,
-    "best-usdt-yield" | "best-usdc-yield" | "best-eth-staking" | "best-sol-staking"
+    | "best-usdt-yield"
+    | "best-usdc-yield"
+    | "best-eth-staking"
+    | "best-sol-staking"
+    | "best-eth-restaking"
+    | "best-liquid-staking"
   >;
   asset: EarnAssetSlug;
 };
@@ -67,6 +72,9 @@ const PROTOCOL_PAIR_SPECS: ProtocolPairSpec[] = [
   { slug: "morpho-vs-aave", left: "morpho", right: "aave", sharedAsset: "usdc" },
   { slug: "compound-vs-aave", left: "compound", right: "aave", sharedAsset: "usdc" },
   { slug: "lido-vs-rocket-pool", left: "lido", right: "rocket-pool", sharedAsset: "eth" },
+  { slug: "spark-vs-aave", left: "spark", right: "aave", sharedAsset: "usdc" },
+  { slug: "pendle-vs-etherfi", left: "pendle", right: "etherfi", sharedAsset: "eth" },
+  { slug: "compound-vs-morpho", left: "compound", right: "morpho", sharedAsset: "usdc" },
 ];
 
 const YIELD_SPECS: YieldSpec[] = [
@@ -74,6 +82,8 @@ const YIELD_SPECS: YieldSpec[] = [
   { slug: "best-usdc-yield", asset: "usdc" },
   { slug: "best-eth-staking", asset: "eth" },
   { slug: "best-sol-staking", asset: "sol" },
+  { slug: "best-eth-restaking", asset: "eth" },
+  { slug: "best-liquid-staking", asset: "eth" },
 ];
 
 const PROTOCOL_COMPARE_SUMMARIES: Record<ProtocolPairSpec["slug"], LocalizedString> = {
@@ -101,6 +111,18 @@ const PROTOCOL_COMPARE_SUMMARIES: Record<ProtocolPairSpec["slug"], LocalizedStri
     en: "Informational Ethereum liquid-staking comparison: Lido stETH vs Rocket Pool rETH. Covers operator models, APY context, TVL tiers, composability, and TJT Trust Score v0.1 — not a ranking.",
     ru: "Информационное сравнение liquid staking Ethereum: Lido stETH vs Rocket Pool rETH. Модели операторов, APY, TVL, composability и TJT Trust Score v0.1 — не рейтинг.",
   },
+  "spark-vs-aave": {
+    en: "Informational comparison of Spark (MakerDAO ecosystem lending via SparkLend) and Aave (multi-chain lending). Covers stablecoin supply context, TVL tiers, governance coupling, and TJT Trust Score v0.1 — market context only.",
+    ru: "Информационное сравнение Spark (lending экосистемы MakerDAO через SparkLend) и Aave (multi-chain lending). Контекст supply стейблкоинов, TVL, governance-связь и TJT Trust Score v0.1 — только рыночный контекст.",
+  },
+  "pendle-vs-etherfi": {
+    en: "Informational comparison of Pendle (yield-trading markets) and EtherFi (liquid restaking). Contrasts fixed-yield trading vs restaking receipt tokens, ETH exposure, Trust Score profiles — not a ranking.",
+    ru: "Информационное сравнение Pendle (yield-trading) и EtherFi (liquid restaking). Контраст торговли фиксированным yield vs restaking receipt-токенов, ETH-экспозиция, профили Trust Score — не рейтинг.",
+  },
+  "compound-vs-morpho": {
+    en: "Informational comparison of Compound (pioneer lending markets) and Morpho (P2P lending optimizer and Morpho Blue). Side-by-side stablecoin supply context, governance models, and Trust Score profiles for market research.",
+    ru: "Информационное сравнение Compound (pioneer lending) и Morpho (P2P optimizer и Morpho Blue). Контекст supply стейблкоинов, модели governance и профили Trust Score для исследования рынка.",
+  },
 };
 
 const YIELD_COMPARE_SUMMARIES: Record<YieldSpec["slug"], LocalizedString> = {
@@ -119,6 +141,14 @@ const YIELD_COMPARE_SUMMARIES: Record<YieldSpec["slug"], LocalizedString> = {
   "best-sol-staking": {
     en: "Informational SOL staking comparison via Jito liquid staking. Catalog APY, Solana chain context, Trust Score, and risk explanation for market research.",
     ru: "Информационное сравнение стейкинга SOL через Jito liquid staking. APY каталога, контекст Solana, Trust Score и объяснение рисков.",
+  },
+  "best-eth-restaking": {
+    en: "Informational ETH restaking comparison across catalogued routes including EtherFi and related DeFi integrations. APY snapshots, Trust Score v0.1, and restaking risk context — not financial advice.",
+    ru: "Информационное сравнение ETH restaking по маршрутам каталога, включая EtherFi и связанные DeFi-интеграции. Снимки APY, Trust Score v0.1 и контекст рисков restaking — не финансовый совет.",
+  },
+  "best-liquid-staking": {
+    en: "Informational liquid staking comparison for ETH — Lido, Rocket Pool, EtherFi, and catalogued routes. APY, TVL tiers, Trust Score v0.1, and peg/slashing risk context for market research.",
+    ru: "Информационное сравнение liquid staking для ETH — Lido, Rocket Pool, EtherFi и маршруты каталога. APY, TVL, Trust Score v0.1 и контекст рисков пега/slashing для исследования рынка.",
   },
 };
 

@@ -160,10 +160,163 @@ const LIDO_VS_ROCKET_POOL: CompareDetailEditorial = {
   ],
 };
 
+const SPARK_VS_AAVE: CompareDetailEditorial = {
+  slug: "spark-vs-aave",
+  leftOverview: {
+    protocolName: "Spark",
+    title: L("Spark — protocol overview", "Spark — обзор протокола"),
+    body: L(
+      "Spark is a lending protocol in the MakerDAO ecosystem, operating SparkLend markets for stablecoins and ETH on Ethereum. Supply and borrow mechanics extend DAI-centric liquidity infrastructure into general-purpose DeFi lending. Educational information only — governance coupling with MakerDAO and younger deployment history are risk context factors.",
+      "Spark — lending-протокол экосистемы MakerDAO с рынками SparkLend для стейблкоинов и ETH на Ethereum. Механика supply и borrow расширяет DAI-инфраструктуру в универсальный DeFi lending. Только образовательная информация — governance-связь с MakerDAO и более короткая история развёртывания — факторы risk context.",
+    ),
+  },
+  rightOverview: {
+    protocolName: "Aave",
+    title: L("Aave — protocol overview", "Aave — обзор протокола"),
+    body: L(
+      "Aave is a multi-chain decentralized lending protocol with pooled markets across Ethereum, Arbitrum, Base, Polygon, and Optimism. Suppliers earn aTokens with variable APY from borrower utilization. Educational information only — oracle, governance, and cross-chain bridge dependencies apply.",
+      "Aave — multi-chain децентрализованный lending с пулами на Ethereum, Arbitrum, Base, Polygon и Optimism. Поставщики получают aTokens с переменным APY от utilization. Только образовательная информация — зависимости oracle, governance и cross-chain мостов.",
+    ),
+  },
+  useCaseComparison: {
+    title: L("Use case comparison", "Сравнение сценариев"),
+    body: L(
+      "Stablecoin supply: Both Spark and Aave offer USDC and USDT supply routes on Ethereum. Spark pools benefit from MakerDAO ecosystem liquidity flows; Aave offers broader multi-chain deployments and longer operational history.\n\nETH collateral: Both support ETH-related lending markets with distinct risk parameters and oracle stacks. Researchers should compare utilization, withdrawal conditions, and governance responsiveness.\n\nMarket context: Spark carries MakerDAO-aligned governance coupling; Aave has independent AAVE governance with wider chain coverage. Compare Trust Score profiles and TVL depth — not headline APY alone.",
+      "Поставка стейблкоинов: Spark и Aave предлагают USDC и USDT на Ethereum. Пулы Spark связаны с ликвидностью MakerDAO; Aave — шире на multi-chain и с более длинной историей.\n\nЗалог ETH: оба поддерживают ETH-lending с разными параметрами и oracle. Сравнивайте utilization, вывод и governance.\n\nРыночный контекст: Spark связан с governance MakerDAO; Aave — независимый AAVE governance и больше сетей. Сравнивайте Trust Score и TVL — не только headline APY.",
+    ),
+  },
+  faq: [
+    {
+      question: L("Is Spark part of MakerDAO?", "Spark — часть MakerDAO?"),
+      answer: L(
+        "Spark operates within the MakerDAO ecosystem with aligned governance links. Risk parameters and SparkLend upgrades can be influenced by MakerDAO governance processes.",
+        "Spark работает в экосистеме MakerDAO со связанным governance. Параметры риска и апгрейды SparkLend могут влияться процессами governance MakerDAO.",
+      ),
+    },
+    {
+      question: L("Which has higher Trust Score in TJT v0.1?", "У кого выше Trust Score в TJT v0.1?"),
+      answer: L(
+        "TJT Trust Score v0.1 is an educational framework — not a safety certification. Compare the factor breakdown cards on this page for informational risk context.",
+        "TJT Trust Score v0.1 — образовательная рамка, не сертификат безопасности. Сравните карточки факторов на этой странице для информационного risk context.",
+      ),
+    },
+    {
+      question: L("Does TJT prefer Spark over Aave?", "TJT предпочитает Spark Aave?"),
+      answer: L(
+        "No. This page provides side-by-side market context and Trust Score indicators for independent research — not a ranking or financial advice.",
+        "Нет. Страница даёт side-by-side рыночный контекст и индикаторы Trust Score для самостоятельного исследования — не рейтинг и не финансовый совет.",
+      ),
+    },
+  ],
+};
+
+const PENDLE_VS_ETHERFI: CompareDetailEditorial = {
+  slug: "pendle-vs-etherfi",
+  leftOverview: {
+    protocolName: "Pendle",
+    title: L("Pendle — protocol overview", "Pendle — обзор протокола"),
+    body: L(
+      "Pendle is a yield-trading protocol that splits future yield from underlying assets into principal tokens (PT) and yield tokens (YT). Users can lock in implied fixed yields or trade yield exposure across maturities on Ethereum and L2s. Educational information only — underlying-asset and maturity-specific liquidity risks apply.",
+      "Pendle — протокол торговли доходностью, разделяющий будущий yield на principal tokens (PT) и yield tokens (YT). Пользователи фиксируют implied yield или торгуют yield-экспозицией по срокам на Ethereum и L2. Только образовательная информация — риски базовых активов и ликвидности по срокам.",
+    ),
+  },
+  rightOverview: {
+    protocolName: "EtherFi",
+    title: L("EtherFi — protocol overview", "EtherFi — обзор протокола"),
+    body: L(
+      "EtherFi is a liquid restaking protocol on Ethereum issuing eETH and related tokens that accrue staking and restaking rewards while staying composable in DeFi. Educational information only — restaking adds AVS slashing vectors and younger protocol age versus plain liquid staking.",
+      "EtherFi — протокол liquid restaking на Ethereum, выпускающий eETH и связанные токены с начислением staking и restaking rewards при композируемости в DeFi. Только образовательная информация — restaking добавляет AVS slashing и более молодой возраст vs plain liquid staking.",
+    ),
+  },
+  useCaseComparison: {
+    title: L("Use case comparison", "Сравнение сценариев"),
+    body: L(
+      "ETH yield exposure: EtherFi provides direct liquid restaking receipt tokens with variable staking plus AVS yield. Pendle lets users trade fixed or variable yield on ETH-based assets (including LSTs and restaking tokens) via PT/YT markets.\n\nRisk profile: EtherFi concentrates restaking and operator risk in one protocol layer. Pendle adds maturity, implied-yield pricing, and underlying-issuer risk from source assets — users may hold Pendle positions backed by EtherFi or other LSTs.\n\nMarket context: Researchers should compare Trust Score profiles, withdrawal complexity, and whether they want direct restaking exposure (EtherFi) or yield-trading mechanics (Pendle) — not headline APY alone.",
+      "ETH yield-экспозиция: EtherFi даёт прямые liquid restaking receipt-токены с переменным staking и AVS yield. Pendle позволяет торговать фиксированным или переменным yield на ETH-активах (LST, restaking) через PT/YT.\n\nПрофиль риска: EtherFi концентрирует restaking и operator risk в одном слое. Pendle добавляет сроки, implied-yield pricing и риск эмитента базовых активов — позиции Pendle могут быть обеспечены EtherFi или другими LST.\n\nРыночный контекст: сравнивайте Trust Score, сложность вывода и нужна ли прямая restaking-экспозиция (EtherFi) или yield-trading (Pendle) — не только headline APY.",
+    ),
+  },
+  faq: [
+    {
+      question: L("Can Pendle markets use EtherFi as underlying?", "Могут ли рынки Pendle использовать EtherFi как базовый актив?"),
+      answer: L(
+        "Yes. Pendle supports markets on various yield-bearing ETH assets including liquid staking and restaking tokens. Verify the specific market's underlying asset before entering a position.",
+        "Да. Pendle поддерживает рынки на различных ETH-активах с yield, включая liquid staking и restaking. Проверяйте базовый актив конкретного рынка перед входом.",
+      ),
+    },
+    {
+      question: L("Is restaking riskier than yield trading?", "Restaking рискованнее торговли yield?"),
+      answer: L(
+        "They carry different risk vectors. Restaking adds AVS slashing exposure; yield trading adds maturity liquidity and implied-yield pricing risk. Neither is risk-free.",
+        "У них разные векторы риска. Restaking добавляет AVS slashing; yield trading — ликвидность по срокам и риск implied-yield pricing. Ни то ни другое не безрисково.",
+      ),
+    },
+    {
+      question: L("Does TJT rank Pendle above EtherFi?", "Ранжирует ли TJT Pendle выше EtherFi?"),
+      answer: L(
+        "No. TJT publishes informational comparisons and Trust Score context for market research — not financial advice or protocol preference.",
+        "Нет. TJT публикует информационные сравнения и контекст Trust Score для исследования рынка — не финансовые советы и не предпочтение протокола.",
+      ),
+    },
+  ],
+};
+
+const COMPOUND_VS_MORPHO: CompareDetailEditorial = {
+  slug: "compound-vs-morpho",
+  leftOverview: {
+    protocolName: "Compound",
+    title: L("Compound — protocol overview", "Compound — обзор протокола"),
+    body: L(
+      "Compound is a pioneer decentralized lending protocol on Ethereum and L2 networks. Suppliers receive cTokens accruing interest; Compound III (Comet) uses focused single-borrowable-asset markets. Educational information only — governance and oracle risks apply.",
+      "Compound — pioneer децентрализованного lending на Ethereum и L2. Поставщики получают cTokens с начислением процентов; Compound III (Comet) фокусируется на одном borrowable активе. Только образовательная информация — риски governance и oracle.",
+    ),
+  },
+  rightOverview: {
+    protocolName: "Morpho",
+    title: L("Morpho — protocol overview", "Morpho — обзор протокола"),
+    body: L(
+      "Morpho is a decentralized lending optimizer matching suppliers and borrowers peer-to-peer on top of base markets, plus Morpho Blue permissionless isolated markets curated by risk managers. Educational information only — underlying-protocol and curator configuration risks apply.",
+      "Morpho — децентрализованный lending optimizer с P2P-сопоставлением поверх базовых рынков и Morpho Blue — permissionless изолированными рынками под кураторами. Только образовательная информация — риски базовых протоколов и конфигурации кураторов.",
+    ),
+  },
+  useCaseComparison: {
+    title: L("Use case comparison", "Сравнение сценариев"),
+    body: L(
+      "Stablecoin supply: Both Compound and Morpho support USDC supply routes. Compound offers direct pooled-market exposure with ~6+ years of mainnet history. Morpho may improve matched-rate efficiency and adds Morpho Blue isolated markets with curator-defined parameters.\n\nArchitecture: Compound is a standalone money market; Morpho layers on or creates markets that may route through Compound, Aave, or other base protocols. Morpho inherits underlying smart-contract dependencies.\n\nMarket context: Compare Trust Score profiles, governance models (COMP vs curator + Morpho governance), and whether you prefer direct pool exposure or optimizer-layer efficiency — not headline APY alone.",
+      "Поставка стейблкоинов: Compound и Morpho поддерживают USDC. Compound — прямые пулы с ~6+ годами mainnet. Morpho может улучшать matched-ставки и добавляет изолированные рынки Morpho Blue.\n\nАрхитектура: Compound — standalone money market; Morpho накладывается на или создаёт рынки через Compound, Aave и др. Morpho наследует зависимости базовых протоколов.\n\nРыночный контекст: сравнивайте Trust Score, governance (COMP vs кураторы + Morpho) и предпочитаете ли прямые пулы или optimizer-слой — не только headline APY.",
+    ),
+  },
+  faq: [
+    {
+      question: L("Does Morpho replace Compound?", "Morpho заменяет Compound?"),
+      answer: L(
+        "No. Morpho can optimize liquidity that routes through Compound markets but does not replace Compound's standalone pools. Users may interact with either or both depending on market parameters.",
+        "Нет. Morpho может оптимизировать ликвидность через рынки Compound, но не заменяет standalone-пулы Compound. Пользователи могут взаимодействовать с одним или обоими в зависимости от параметров.",
+      ),
+    },
+    {
+      question: L("Which has higher Trust Score in TJT v0.1?", "У кого выше Trust Score в TJT v0.1?"),
+      answer: L(
+        "TJT Trust Score v0.1 is an educational framework — not a safety certification. Compare the factor breakdown cards on this page for informational risk context.",
+        "TJT Trust Score v0.1 — образовательная рамка, не сертификат безопасности. Сравните карточки факторов на этой странице для информационного risk context.",
+      ),
+    },
+    {
+      question: L("Does TJT prefer Compound over Morpho?", "TJT предпочитает Compound Morpho?"),
+      answer: L(
+        "No. This page provides side-by-side market context and Trust Score indicators for independent research — not a ranking or financial advice.",
+        "Нет. Страница даёт side-by-side рыночный контекст и индикаторы Trust Score для самостоятельного исследования — не рейтинг и не финансовый совет.",
+      ),
+    },
+  ],
+};
+
 const EDITORIAL_BY_SLUG: Partial<Record<ProtocolCompareSlug, CompareDetailEditorial>> = {
   "morpho-vs-aave": MORPHO_VS_AAVE,
   "compound-vs-aave": COMPOUND_VS_AAVE,
   "lido-vs-rocket-pool": LIDO_VS_ROCKET_POOL,
+  "spark-vs-aave": SPARK_VS_AAVE,
+  "pendle-vs-etherfi": PENDLE_VS_ETHERFI,
+  "compound-vs-morpho": COMPOUND_VS_MORPHO,
 };
 
 export function getCompareDetailEditorial(

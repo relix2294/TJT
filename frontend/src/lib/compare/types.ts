@@ -15,10 +15,15 @@ export const COMPARE_SLUGS = [
   "morpho-vs-aave",
   "compound-vs-aave",
   "lido-vs-rocket-pool",
+  "spark-vs-aave",
+  "pendle-vs-etherfi",
+  "compound-vs-morpho",
   "best-usdt-yield",
   "best-usdc-yield",
   "best-eth-staking",
   "best-sol-staking",
+  "best-eth-restaking",
+  "best-liquid-staking",
 ] as const;
 
 /** Protocol-vs-protocol compare slugs only. */
@@ -29,6 +34,9 @@ export const PROTOCOL_COMPARE_SLUGS = [
   "morpho-vs-aave",
   "compound-vs-aave",
   "lido-vs-rocket-pool",
+  "spark-vs-aave",
+  "pendle-vs-etherfi",
+  "compound-vs-morpho",
 ] as const;
 
 export type ProtocolCompareSlug = (typeof PROTOCOL_COMPARE_SLUGS)[number];

@@ -22,8 +22,8 @@ export const SEO_PILOT_HUB_COPY: Record<
       "Обзоры DeFi-протоколов — образовательные материалы | TJT",
     ),
     metaDescription: L(
-      "Educational DeFi protocol reviews for Aave, Lido, Jito, Morpho, Rocket Pool, Compound, and more. How each protocol works, use cases, benefits, risks, and links to compare opportunities on TJT — not financial advice.",
-      "Образовательные обзоры DeFi-протоколов Aave, Lido, Jito, Morpho, Rocket Pool, Compound и др.: как работают, сценарии, преимущества, риски и ссылки на сравнение возможностей на TJT — не финансовый совет.",
+      "Educational DeFi protocol reviews for Aave, Lido, Jito, Morpho, Rocket Pool, Compound, Spark, Pendle, EtherFi, Ethena, and more. How each protocol works, use cases, benefits, risks, and links to compare opportunities on TJT — not financial advice.",
+      "Образовательные обзоры DeFi-протоколов Aave, Lido, Jito, Morpho, Rocket Pool, Compound, Spark, Pendle, EtherFi, Ethena и др.: как работают, сценарии, преимущества, риски и ссылки на сравнение возможностей на TJT — не финансовый совет.",
     ),
     eyebrow: L("Protocol reviews", "Обзоры протоколов"),
     title: L("DeFi Protocol Reviews", "Обзоры DeFi-протоколов"),
@@ -45,8 +45,8 @@ export const SEO_PILOT_HUB_COPY: Record<
       {
         question: L("Which protocols are reviewed?", "Какие протоколы охвачены?"),
         answer: L(
-          "The reviews hub covers Aave, Compound, and Morpho (lending), Lido and Rocket Pool (ETH liquid staking), and Jito (SOL liquid staking). Protocol hub pages exist for Spark, EtherFi, Pendle, and Ethena — with more SEO reviews planned.",
-          "Хаб охватывает Aave, Compound и Morpho (lending), Lido и Rocket Pool (ETH liquid staking) и Jito (SOL liquid staking). Хабы протоколов есть для Spark, EtherFi, Pendle и Ethena — больше SEO-обзоров запланировано.",
+          "The reviews hub covers Aave, Compound, Morpho, and Spark (lending), Lido and Rocket Pool (ETH liquid staking), Jito (SOL liquid staking), Pendle (yield trading), EtherFi (liquid restaking), and Ethena (synthetic dollar).",
+          "Хаб охватывает Aave, Compound, Morpho и Spark (lending), Lido и Rocket Pool (ETH liquid staking), Jito (SOL liquid staking), Pendle (yield trading), EtherFi (liquid restaking) и Ethena (synthetic dollar).",
         ),
       },
       {
@@ -64,8 +64,8 @@ export const SEO_PILOT_HUB_COPY: Record<
       "Безопасность DeFi-протоколов — гиды по рискам | TJT",
     ),
     metaDescription: L(
-      "Educational safety guides for Aave, Lido, Jito, Morpho, Rocket Pool, and Compound. Smart contract risk, governance, audit history, exploit context, and TJT Trust Score factors — informational only.",
-      "Образовательные гиды по безопасности Aave, Lido, Jito, Morpho, Rocket Pool и Compound: риски смарт-контрактов, governance, аудиты, контекст эксплойтов и факторы TJT Trust Score — только информация.",
+      "Educational safety guides for Aave, Lido, Jito, Morpho, Rocket Pool, Compound, Spark, Pendle, EtherFi, and Ethena. Smart contract risk, governance, audit history, exploit context, and TJT Trust Score factors — informational only.",
+      "Образовательные гиды по безопасности Aave, Lido, Jito, Morpho, Rocket Pool, Compound, Spark, Pendle, EtherFi и Ethena: риски смарт-контрактов, governance, аудиты, контекст эксплойтов и факторы TJT Trust Score — только информация.",
     ),
     eyebrow: L("Safety analysis", "Анализ безопасности"),
     title: L("DeFi Protocol Safety", "Безопасность DeFi-протоколов"),
@@ -106,14 +106,14 @@ export const SEO_PILOT_HUB_COPY: Record<
       "Обучение DeFi — доходность, стейкинг и риски | TJT",
     ),
     metaDescription: L(
-      "Educational DeFi guides on yield mechanics, liquid staking, and crypto yield risks. Build foundational knowledge before comparing protocols on TJT.",
-      "Образовательные гиды по механике yield, liquid staking и рискам crypto yield. Базовые знания перед сравнением протоколов на TJT.",
+      "Educational DeFi guides on yield mechanics, liquid staking, restaking, protocol TVL, smart contract risk, audits, and USDC yield risks. Build foundational knowledge before comparing protocols on TJT.",
+      "Образовательные гиды по механике yield, liquid staking, restaking, TVL протоколов, рискам смарт-контрактов, аудитам и USDC yield. Базовые знания перед сравнением протоколов на TJT.",
     ),
     eyebrow: L("DeFi education", "Обучение DeFi"),
     title: L("DeFi Learning Hub", "Обучение DeFi"),
     subtitle: L(
-      "Foundational guides on how DeFi yield works, liquid staking mechanics, and the risks that APY alone does not capture. Educational information wired to Compare and earn routes.",
-      "Базовые гиды: как работает DeFi yield, механика liquid staking и риски, которые APY не отражает. Образовательная информация со связями с Compare и earn.",
+      "Foundational guides on DeFi yield, liquid staking, restaking, protocol TVL, smart contract risk, audits, and USDC yield risks. Educational information wired to Compare and earn routes.",
+      "Базовые гиды: DeFi yield, liquid staking, restaking, TVL протоколов, риски смарт-контрактов, аудиты и USDC yield. Образовательная информация со связями с Compare и earn.",
     ),
     gridTitle: L("Learning guides", "Обучающие гиды"),
     exploreLabel: L("Read guide", "Читать гид"),

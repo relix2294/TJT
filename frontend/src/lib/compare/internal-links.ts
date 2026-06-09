@@ -113,6 +113,37 @@ export function getEarnCompareLinks(
     eth: "best-eth-staking",
     sol: "best-sol-staking",
   };
+  const extraEthLinks: CompareInternalLink[] =
+    asset.slug === "eth"
+      ? [
+          {
+            href: compareDetailPath(lang, "best-liquid-staking"),
+            label: "Liquid staking comparison",
+            type: "compare",
+            slug: "best-liquid-staking",
+            priority: 0.76,
+          },
+          {
+            href: compareDetailPath(lang, "best-eth-restaking"),
+            label: "ETH restaking comparison",
+            type: "compare",
+            slug: "best-eth-restaking",
+            priority: 0.75,
+          },
+        ]
+      : [];
+  const usdcRiskLink: CompareInternalLink[] =
+    asset.slug === "usdc"
+      ? [
+          {
+            href: localePath(lang, "/learn/usdc-yield-risks"),
+            label: "USDC yield risks guide",
+            type: "learn",
+            slug: "usdc-yield-risks",
+            priority: 0.74,
+          },
+        ]
+      : [];
   const slug = slugMap[asset.slug];
   if (!slug) return [];
 
@@ -131,6 +162,8 @@ export function getEarnCompareLinks(
       slug: asset.slug,
       priority: 0.85,
     },
+    ...extraEthLinks,
+    ...usdcRiskLink,
   ];
 }
 
@@ -143,6 +176,10 @@ const PROTOCOL_SEO_SLUGS: Partial<
   lido: { review: "lido-review", safety: "is-lido-safe" },
   "rocket-pool": { review: "rocket-pool-review", safety: "is-rocket-pool-safe" },
   jito: { review: "jito-review", safety: "is-jito-safe" },
+  spark: { review: "spark-review", safety: "is-spark-safe" },
+  pendle: { review: "pendle-review", safety: "is-pendle-safe" },
+  etherfi: { review: "etherfi-review", safety: "is-etherfi-safe" },
+  ethena: { review: "ethena-review", safety: "is-ethena-safe" },
 };
 
 const COMPARE_LEARN_LINKS: Partial<Record<CompareSlug, { slug: string; label: LocalizedString }[]>> = {
@@ -158,6 +195,20 @@ const COMPARE_LEARN_LINKS: Partial<Record<CompareSlug, { slug: string; label: Lo
     { slug: "what-is-liquid-staking", label: { en: "What is liquid staking?", ru: "Что такое liquid staking?" } },
     { slug: "crypto-yield-risks", label: { en: "Crypto yield risks", ru: "Риски crypto yield" } },
   ],
+  "spark-vs-aave": [
+    { slug: "what-is-defi-yield", label: { en: "What is DeFi yield?", ru: "Что такое DeFi yield?" } },
+    { slug: "what-is-protocol-tvl", label: { en: "What is protocol TVL?", ru: "Что такое TVL протокола?" } },
+    { slug: "crypto-yield-risks", label: { en: "Crypto yield risks", ru: "Риски crypto yield" } },
+  ],
+  "pendle-vs-etherfi": [
+    { slug: "what-is-restaking", label: { en: "What is restaking?", ru: "Что такое restaking?" } },
+    { slug: "what-is-liquid-restaking", label: { en: "What is liquid restaking?", ru: "Что такое liquid restaking?" } },
+    { slug: "crypto-yield-risks", label: { en: "Crypto yield risks", ru: "Риски crypto yield" } },
+  ],
+  "compound-vs-morpho": [
+    { slug: "what-is-defi-yield", label: { en: "What is DeFi yield?", ru: "Что такое DeFi yield?" } },
+    { slug: "crypto-yield-risks", label: { en: "Crypto yield risks", ru: "Риски crypto yield" } },
+  ],
 };
 
 /** Protocol page → protocol-vs-protocol compare links involving this protocol. */
@@ -166,15 +217,15 @@ export function getProtocolCompareLinks(
   protocol: Protocol,
 ): CompareInternalLink[] {
   const pairs: Record<ProtocolSlug, CompareSlug[]> = {
-    aave: ["aave-vs-lido", "aave-vs-jito", "morpho-vs-aave", "compound-vs-aave"],
-    lido: ["aave-vs-lido", "lido-vs-jito", "lido-vs-rocket-pool"],
+    aave: ["aave-vs-lido", "aave-vs-jito", "morpho-vs-aave", "compound-vs-aave", "spark-vs-aave"],
+    lido: ["aave-vs-lido", "lido-vs-jito", "lido-vs-rocket-pool", "best-liquid-staking"],
     jito: ["aave-vs-jito", "lido-vs-jito"],
-    morpho: ["morpho-vs-aave", "best-usdc-yield", "best-usdt-yield"],
-    spark: ["best-usdc-yield", "best-usdt-yield"],
-    compound: ["compound-vs-aave", "best-usdc-yield", "best-usdt-yield"],
-    "rocket-pool": ["lido-vs-rocket-pool", "best-eth-staking"],
-    etherfi: ["best-eth-staking"],
-    pendle: ["best-usdc-yield", "best-eth-staking"],
+    morpho: ["morpho-vs-aave", "compound-vs-morpho", "best-usdc-yield", "best-usdt-yield"],
+    spark: ["spark-vs-aave", "best-usdc-yield", "best-usdt-yield"],
+    compound: ["compound-vs-aave", "compound-vs-morpho", "best-usdc-yield", "best-usdt-yield"],
+    "rocket-pool": ["lido-vs-rocket-pool", "best-eth-staking", "best-liquid-staking"],
+    etherfi: ["pendle-vs-etherfi", "best-eth-staking", "best-eth-restaking", "best-liquid-staking"],
+    pendle: ["pendle-vs-etherfi", "best-usdc-yield", "best-eth-staking"],
     ethena: ["best-usdt-yield", "best-usdc-yield"],
   };
 
