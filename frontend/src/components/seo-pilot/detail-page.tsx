@@ -10,6 +10,8 @@ import { SeoPilotFaqSection } from "@/components/seo-pilot/faq-section";
 import { SeoPilotRelatedLinks } from "@/components/seo-pilot/related-links";
 import type { Dictionary } from "@/lib/config";
 import type { Locale } from "@/lib/i18n";
+import { TrustScoreCard } from "@/components/trust/trust-score-card";
+import type { ProtocolTrustProfile } from "@/lib/trust";
 import {
   SEO_PILOT_HUB_LABELS,
   buildSeoPilotJsonLd,
@@ -22,12 +24,14 @@ type SeoPilotDetailPageProps = {
   lang: Locale;
   dict: Dictionary;
   page: SeoPilotPage;
+  trustProfile?: ProtocolTrustProfile | null;
 };
 
 export function SeoPilotDetailPage({
   lang,
   dict,
   page,
+  trustProfile,
 }: SeoPilotDetailPageProps) {
   const hubLabel = SEO_PILOT_HUB_LABELS[page.hubSegment][lang];
   const ctaLabel =
@@ -74,6 +78,12 @@ export function SeoPilotDetailPage({
               {ctaLabel}
             </Button>
           </div>
+
+          {trustProfile ? (
+            <div className="mb-8">
+              <TrustScoreCard lang={lang} profile={trustProfile} />
+            </div>
+          ) : null}
 
           <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
             <div className="space-y-8">

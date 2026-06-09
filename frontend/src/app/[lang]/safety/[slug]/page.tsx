@@ -6,6 +6,7 @@ import {
   buildSeoPilotMetadata,
   buildSeoPilotStaticParams,
 } from "@/lib/seo-pilot/page-helpers";
+import { getTrustProfileOrNull, resolveTrustSlugFromSeoPilot } from "@/lib/trust";
 import { getSeoPilotPage, isSafetySlug } from "@/lib/seo-pilot";
 
 export const dynamic = "force-static";
@@ -31,7 +32,15 @@ export default async function SafetyPage({ params }: PageProps) {
   const dict = await loadDictionary(lang).catch(() => null);
   if (!dict) notFound();
 
+  const trustSlug = resolveTrustSlugFromSeoPilot(slug);
+  const trustProfile = trustSlug ? getTrustProfileOrNull(trustSlug) : null;
+
   return (
-    <SeoPilotDetailPage lang={lang as Locale} dict={dict} page={page} />
+    <SeoPilotDetailPage
+      lang={lang as Locale}
+      dict={dict}
+      page={page}
+      trustProfile={trustProfile}
+    />
   );
 }

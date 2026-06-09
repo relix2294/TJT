@@ -5,6 +5,7 @@ import { Navbar } from "@/components/navbar";
 import { LegalFooter } from "@/components/legal-footer";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CompareComparisonTable } from "@/components/compare/comparison-table";
+import { CompareTrustOverview } from "@/components/compare/trust-overview-section";
 import { CompareInternalLinkSection } from "@/components/compare/internal-link-section";
 import { CompareDisclaimer } from "@/components/compare/disclaimer";
 import { JsonLd } from "@/components/json-ld";
@@ -149,6 +150,8 @@ export default async function CompareDetailPage({ params }: PageProps) {
                   labels={tableLabels}
                 />
               </div>
+
+              <CompareTrustOverview lang={lang as Locale} page={page} />
 
               <CompareDisclaimer
                 lang={lang as Locale}
