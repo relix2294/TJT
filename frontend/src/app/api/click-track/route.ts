@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
-import path from "node:path";
 import { withLockedJsonUpdate } from "@/lib/json-file-store";
+import { resolveRepoDataPath } from "@/lib/repo-paths";
 import { loadCpaOffers } from "@/lib/server-config";
 import { sendErrorToTelegram } from "@/lib/telegram-logger";
 
@@ -13,7 +13,7 @@ export const dynamic = "force-dynamic";
  * ABOVE the Next.js app dir (process.cwd() === `frontend/` in dev and prod).
  * Both this route and `ai_agents.log_outbound_click` append to the same file.
  */
-const REGISTRY_PATH = path.resolve(process.cwd(), "..", "sys_registry.json");
+const REGISTRY_PATH = resolveRepoDataPath("sys_registry.json");
 
 /** Keep the click log bounded; identical to the Python `[-500:]` cap. */
 const CLICK_LOG_CAP = 500;

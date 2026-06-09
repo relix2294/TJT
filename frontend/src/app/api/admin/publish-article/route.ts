@@ -1,6 +1,6 @@
 import { timingSafeEqual } from "node:crypto";
-import path from "node:path";
 import { NextResponse } from "next/server";
+import { resolveRepoDataPath } from "@/lib/repo-paths";
 import { NEWS_CATEGORIES } from "@/lib/config";
 import {
   JsonFileLockError,
@@ -12,8 +12,8 @@ import { sendErrorToTelegram } from "@/lib/telegram-logger";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const CONFIG_PATH = path.resolve(process.cwd(), "..", "config.json");
-const REGISTRY_PATH = path.resolve(process.cwd(), "..", "sys_registry.json");
+const CONFIG_PATH = resolveRepoDataPath("config.json");
+const REGISTRY_PATH = resolveRepoDataPath("sys_registry.json");
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 const NEWS_CATEGORY_SET: ReadonlySet<string> = new Set(NEWS_CATEGORIES);

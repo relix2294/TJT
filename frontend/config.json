@@ -1,0 +1,1297 @@
+{
+  "meta": {
+    "name": "TJT",
+    "version": "1.0.0",
+    "model": "Non-Custodial Information Broker (CPA / RevShare)",
+    "source_of_truth": "python-backend",
+    "default_locale": "en",
+    "locales": ["en", "ru"],
+    "description": "Единый источник правды для публичного сайта TJT. Этот файл читается бэкендом на Python и отдаётся фронтенду (Next.js) через /api/config. Локализуемые поля хранятся как { en, ru } и резолвятся серверным валидатором по параметру lang."
+  },
+  "fintech_benchmarks": {
+    "bank_deposit_apr": 2.5,
+    "real_inflation_rate": 6.5,
+    "web3_aggregator_apy": 11.8,
+    "currency_symbol": "$",
+    "default_capital_usd": 10000
+  },
+  "cpa_offers": [
+    {
+      "id": "jito-sol-001",
+      "slug": "jito-liquid-staking-solana",
+      "name": "Jito Liquid Staking",
+      "protocol": "Jito",
+      "network": "Solana",
+      "logo": "JT",
+      "apy": 8.4,
+      "risk_rating": "AAA",
+      "min_entry_usd": 50,
+      "referral_url": "https://www.jito.network/staking/?ref=tjt",
+      "description": {
+        "en": "Liquid staking on Solana with MEV-boosted rewards. Non-custodial jitoSOL stays composable across DeFi while earning validator yield.",
+        "ru": "Ликвидный стейкинг на Solana с MEV-бустом. Некастодиальный jitoSOL остаётся композируемым в DeFi и приносит доход валидаторов."
+      },
+      "benefits": {
+        "en": ["AAA risk rating · audited Tier-1 protocol", "MEV-boosted staking yield on Solana", "Liquid jitoSOL — no unbonding lock", "Minimum entry from $50"],
+        "ru": ["Рейтинг AAA · аудированный Tier-1 протокол", "MEV-буст доходности стейкинга на Solana", "Ликвидный jitoSOL — без периода анбондинга", "Минимальный вход от $50"]
+      }
+    },
+    {
+      "id": "lido-eth-002",
+      "slug": "lido-steth-ethereum",
+      "name": "Lido stETH Pool",
+      "protocol": "Lido",
+      "network": "Ethereum",
+      "logo": "LD",
+      "apy": 3.6,
+      "risk_rating": "AAA",
+      "min_entry_usd": 100,
+      "referral_url": "https://stake.lido.fi/?ref=tjt",
+      "description": {
+        "en": "The largest liquid-staking pool on Ethereum. stETH accrues validator rewards while staying usable as collateral across DeFi.",
+        "ru": "Крупнейший пул ликвидного стейкинга на Ethereum. stETH начисляет доход валидаторов и остаётся залогом в DeFi."
+      },
+      "benefits": {
+        "en": ["Institutional-grade liquid staking leader", "Deep liquidity and battle-tested smart contracts", "stETH composable across Tier-1 DeFi", "Minimum entry from $100"],
+        "ru": ["Лидер институционального liquid staking", "Глубокая ликвидность и проверенные смарт-контракты", "stETH композируется в Tier-1 DeFi", "Минимальный вход от $100"]
+      }
+    },
+    {
+      "id": "aave-arb-003",
+      "slug": "aave-v3-usdc-arbitrum",
+      "name": "Aave V3 USDC Supply",
+      "protocol": "Aave",
+      "network": "Arbitrum",
+      "logo": "AA",
+      "apy": 11.8,
+      "risk_rating": "AA",
+      "min_entry_usd": 25,
+      "referral_url": "https://app.aave.com/?ref=tjt&market=arbitrum",
+      "description": {
+        "en": "Supply USDC to Aave V3 on Arbitrum and earn organic borrow demand yield. Variable APY driven by utilization, not token emissions.",
+        "ru": "Поставьте USDC в Aave V3 на Arbitrum и получайте органический yield от спроса на заём. Переменный APY от utilization, а не эмиссии токенов."
+      },
+      "benefits": {
+        "en": ["Up to 11.8% APY on organic borrow demand", "Low gas costs on Arbitrum L2", "Instant withdrawals when liquidity is available", "Minimum entry from $25"],
+        "ru": ["До 11.8% APY на органическом спросе заёмщиков", "Низкие комиссии газа на Arbitrum L2", "Мгновенный вывод при наличии ликвидности", "Минимальный вход от $25"]
+      }
+    },
+    {
+      "id": "aave-eth-004",
+      "slug": "aave-v3-eth-ethereum",
+      "name": "Aave V3 ETH Market",
+      "protocol": "Aave",
+      "network": "Ethereum",
+      "logo": "AA",
+      "apy": 5.2,
+      "risk_rating": "AA",
+      "min_entry_usd": 75,
+      "referral_url": "https://app.aave.com/?ref=tjt&market=ethereum",
+      "description": {
+        "en": "Supply ETH to Aave V3 on Ethereum mainnet. Earn variable yield from borrowers while keeping assets in your non-custodial wallet.",
+        "ru": "Поставьте ETH в Aave V3 на Ethereum mainnet. Получайте переменный yield от заёмщиков, сохраняя активы в некастодиальном кошельке."
+      },
+      "benefits": {
+        "en": ["Battle-tested Aave V3 on Ethereum L1", "Variable APY from real borrow demand", "Non-custodial — you sign every transaction", "Minimum entry from $75"],
+        "ru": ["Проверенный Aave V3 на Ethereum L1", "Переменный APY от реального спроса на заём", "Non-custodial — каждая транзакция подписывается вами", "Минимальный вход от $75"]
+      }
+    },
+    {
+      "id": "morpho-usdc-005",
+      "slug": "morpho-blue-usdc-ethereum",
+      "name": "Morpho Blue USDC Supply",
+      "protocol": "Morpho",
+      "network": "Ethereum",
+      "logo": "MO",
+      "apy": 9.2,
+      "risk_rating": "AA",
+      "min_entry_usd": 50,
+      "referral_url": "https://app.morpho.org/?ref=tjt",
+      "description": {
+        "en": "Supply USDC to Morpho Blue curated markets on Ethereum. P2P matching can improve supplier APY versus passive underlying pools during elevated borrow demand.",
+        "ru": "Поставьте USDC в курируемые рынки Morpho Blue на Ethereum. P2P-matching может улучшать APY поставщиков vs пассивные базовые пулы при высоком спросе на заём."
+      },
+      "benefits": {
+        "en": ["P2P lending optimizer efficiency", "Isolated Morpho Blue market parameters", "TJT Trust Score context: Morpho ~81/100", "Minimum entry from $50"],
+        "ru": ["Эффективность P2P lending optimizer", "Изолированные параметры рынков Morpho Blue", "Контекст TJT Trust Score: Morpho ~81/100", "Минимальный вход от $50"]
+      }
+    },
+    {
+      "id": "spark-usdc-006",
+      "slug": "sparklend-usdc-ethereum",
+      "name": "SparkLend USDC Supply",
+      "protocol": "Spark",
+      "network": "Ethereum",
+      "logo": "SP",
+      "apy": 7.8,
+      "risk_rating": "AA",
+      "min_entry_usd": 50,
+      "referral_url": "https://app.spark.fi/?ref=tjt",
+      "description": {
+        "en": "Supply USDC to SparkLend in the MakerDAO ecosystem. Earn variable APY from borrow utilization with documented audit coverage.",
+        "ru": "Поставьте USDC в SparkLend экосистемы MakerDAO. Получайте переменный APY от utilization с документированными аудитами."
+      },
+      "benefits": {
+        "en": ["MakerDAO ecosystem lending infrastructure", "SparkLend audited smart contracts", "TJT Trust Score context: Spark ~80/100", "Minimum entry from $50"],
+        "ru": ["Lending-инфраструктура экосистемы MakerDAO", "Аудированные смарт-контракты SparkLend", "Контекст TJT Trust Score: Spark ~80/100", "Минимальный вход от $50"]
+      }
+    },
+    {
+      "id": "etherfi-eth-007",
+      "slug": "etherfi-eeth-ethereum",
+      "name": "EtherFi eETH Restaking",
+      "protocol": "EtherFi",
+      "network": "Ethereum",
+      "logo": "EF",
+      "apy": 4.8,
+      "risk_rating": "AA",
+      "min_entry_usd": 100,
+      "referral_url": "https://www.ether.fi/?ref=tjt",
+      "description": {
+        "en": "Liquid restaking via EtherFi eETH on Ethereum. Accrue staking plus restaking rewards while keeping a composable receipt token for DeFi.",
+        "ru": "Liquid restaking через EtherFi eETH на Ethereum. Начисление staking и restaking rewards с композируемым receipt-токеном для DeFi."
+      },
+      "benefits": {
+        "en": ["Liquid restaking receipt token eETH", "Composable across DeFi integrations", "TJT Trust Score context: EtherFi ~73/100", "Minimum entry from $100"],
+        "ru": ["Liquid restaking receipt eETH", "Композируемость в DeFi-интеграциях", "Контекст TJT Trust Score: EtherFi ~73/100", "Минимальный вход от $100"]
+      }
+    },
+    {
+      "id": "pendle-usdc-008",
+      "slug": "pendle-usdc-yield-ethereum",
+      "name": "Pendle USDC Yield Markets",
+      "protocol": "Pendle",
+      "network": "Ethereum",
+      "logo": "PE",
+      "apy": 12.5,
+      "risk_rating": "A",
+      "min_entry_usd": 75,
+      "referral_url": "https://app.pendle.finance/?ref=tjt",
+      "description": {
+        "en": "Trade or lock USDC yield exposure via Pendle PT/YT markets on Ethereum. Implied fixed yields are market-derived — verify maturity and underlying-asset risk.",
+        "ru": "Торгуйте или фиксируйте USDC yield-экспозицию через рынки Pendle PT/YT на Ethereum. Implied yield рыночный — проверяйте срок погашения и риск базового актива."
+      },
+      "benefits": {
+        "en": ["Yield-trading infrastructure for USDC routes", "Lock implied fixed yield via PT tokens", "TJT Trust Score context: Pendle ~77/100", "Minimum entry from $75"],
+        "ru": ["Yield-trading инфраструктура для USDC", "Фиксация implied yield через PT", "Контекст TJT Trust Score: Pendle ~77/100", "Минимальный вход от $75"]
+      }
+    },
+    {
+      "id": "ethena-usde-009",
+      "slug": "ethena-susde-ethereum",
+      "name": "Ethena sUSDe Yield",
+      "protocol": "Ethena",
+      "network": "Ethereum",
+      "logo": "ET",
+      "apy": 14.2,
+      "risk_rating": "A",
+      "min_entry_usd": 50,
+      "referral_url": "https://app.ethena.fi/?ref=tjt",
+      "description": {
+        "en": "Earn funding-rate-based yield on Ethena sUSDe — a synthetic dollar backed by delta-neutral hedging. Distinct risk profile from traditional lending supply.",
+        "ru": "Получайте yield от funding rates на Ethena sUSDe — synthetic dollar под delta-neutral хеджирование. Отличный профиль риска от классического lending supply."
+      },
+      "benefits": {
+        "en": ["Funding-rate yield on synthetic USDe", "On-chain composability for sUSDe", "TJT Trust Score context: Ethena ~70/100", "Minimum entry from $50"],
+        "ru": ["Yield от funding rates на synthetic USDe", "On-chain композируемость sUSDe", "Контекст TJT Trust Score: Ethena ~70/100", "Минимальный вход от $50"]
+      }
+    },
+    {
+      "id": "compound-usdc-010",
+      "slug": "compound-v3-usdc-ethereum",
+      "name": "Compound V3 USDC Supply",
+      "protocol": "Compound",
+      "network": "Ethereum",
+      "logo": "CO",
+      "apy": 6.9,
+      "risk_rating": "AA",
+      "min_entry_usd": 50,
+      "referral_url": "https://app.compound.finance/?ref=tjt",
+      "description": {
+        "en": "Supply USDC to Compound III (Comet) on Ethereum. Pioneer lending market with algorithmic rates driven by borrow utilization.",
+        "ru": "Поставьте USDC в Compound III (Comet) на Ethereum. Pioneer lending market с алгоритмическими ставками от utilization."
+      },
+      "benefits": {
+        "en": ["Pioneer DeFi lending with years of mainnet history", "Compound III focused USDC market", "TJT Trust Score context: Compound ~85/100", "Minimum entry from $50"],
+        "ru": ["Pioneer DeFi lending с годами mainnet", "Сфокусированный USDC-рынок Compound III", "Контекст TJT Trust Score: Compound ~85/100", "Минимальный вход от $50"]
+      }
+    }
+  ],
+  "market_snapshot": [
+    {
+      "rank": 1,
+      "slug": "bitcoin",
+      "symbol": "BTC",
+      "name": "Bitcoin",
+      "price": 68500,
+      "market_cap": 1350000000000,
+      "change_24h": 1.42,
+      "volume_24h": 28500000000,
+      "ai_sentiment": "Greed",
+      "related_symbols": ["ETH", "SOL", "USDC"],
+      "ai_recommendation": {
+        "signal": "Buy",
+        "rationale": {
+          "en": "ETF inflows and on-chain accumulation keep BTC in a constructive trend. AI sentiment reads Greed without overheating — momentum favors gradual accumulation with tight risk limits.",
+          "ru": "Притоки ETF и ончейн-накопление держат BTC в конструктивном тренде. ИИ-тональность — Greed без перегрева: импульс поддерживает поэтапное накопление при жёстком контроле риска."
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "slug": "ethereum",
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "price": 3550,
+      "market_cap": 426000000000,
+      "change_24h": 0.87,
+      "volume_24h": 14200000000,
+      "ai_sentiment": "Neutral",
+      "related_symbols": ["BTC", "SOL", "USDC"],
+      "ai_recommendation": {
+        "signal": "Hold",
+        "rationale": {
+          "en": "Spot ETF flows offset L2 fee compression. Liquid-staking demand is steady but not euphoric — AI flags Neutral sentiment; hold core exposure, add on dips below key support.",
+          "ru": "Потоки spot-ETF компенсируют сжатие комиссий L2. Спрос на liquid staking стабилен, без эйфории — ИИ фиксирует Neutral; держите базовую позицию, докупайте на откатах к поддержке."
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "slug": "tether",
+      "symbol": "USDT",
+      "name": "Tether",
+      "price": 1.0,
+      "market_cap": 118000000000,
+      "change_24h": 0.01,
+      "volume_24h": 52800000000,
+      "ai_sentiment": "Neutral",
+      "related_symbols": ["USDC", "BTC", "ETH"],
+      "ai_recommendation": {
+        "signal": "Hold",
+        "rationale": {
+          "en": "Stablecoin peg remains tight; reserve transparency updates reduce tail risk. Use as dry powder for tactical entries — not a yield asset.",
+          "ru": "Привязка стейблкоина стабильна; обновления прозрачности резервов снижают хвостовой риск. Используйте как «сухой порошок» для тактических входов — не как доходный актив."
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "slug": "solana",
+      "symbol": "SOL",
+      "name": "Solana",
+      "price": 172.0,
+      "market_cap": 80000000000,
+      "change_24h": 3.15,
+      "volume_24h": 3100000000,
+      "ai_sentiment": "Greed",
+      "related_symbols": ["BTC", "ETH", "USDC"],
+      "ai_recommendation": {
+        "signal": "Buy",
+        "rationale": {
+          "en": "Restaking and MEV-boosted staking narratives drive capital rotation into SOL. AI reads Greed with +3% 24h — favorable risk/reward for momentum traders with trailing stops.",
+          "ru": "Рестейкинг и MEV-буст стейкинга переключают капитал в SOL. ИИ фиксирует Greed при +3% за 24ч — благоприятное соотношение риск/доходность для momentum-трейдеров с трейлинг-стопами."
+        }
+      }
+    },
+    {
+      "rank": 5,
+      "slug": "usd-coin",
+      "symbol": "USDC",
+      "name": "USD Coin",
+      "price": 1.0,
+      "market_cap": 34000000000,
+      "change_24h": 0.0,
+      "volume_24h": 4800000000,
+      "ai_sentiment": "Neutral",
+      "related_symbols": ["USDT", "ETH", "SOL"],
+      "ai_recommendation": {
+        "signal": "Hold",
+        "rationale": {
+          "en": "Regulated reserve profile supports peg stability. Ideal parking liquidity for DeFi supply strategies — pair with yield offers rather than directional bets.",
+          "ru": "Регулируемый профиль резервов поддерживает стабильность peg. Оптимален для парковки ликвидности под DeFi-supply — сочетайте с yield-офферами, а не с направленными ставками."
+        }
+      }
+    },
+    {
+      "rank": 6,
+      "slug": "binancecoin",
+      "symbol": "BNB",
+      "name": "BNB",
+      "price": 612.0,
+      "market_cap": 89000000000,
+      "change_24h": 0.65,
+      "volume_24h": 2100000000,
+      "ai_sentiment": "Neutral",
+      "related_symbols": ["BTC", "ETH", "USDT"],
+      "ai_recommendation": {
+        "signal": "Hold",
+        "rationale": {
+          "en": "Exchange-token beta tracks spot volumes; BNB holds range-bound while L1 fee burn supports floor — Neutral sentiment, hold for ecosystem utility not directional leverage.",
+          "ru": "Бета биржевого токена следует за спотовыми объёмами; BNB держится в диапазоне, fee burn L1 поддерживает пол — Neutral, держите ради экосистемной утилиты, не для плеча."
+        }
+      }
+    },
+    {
+      "rank": 7,
+      "slug": "ripple",
+      "symbol": "XRP",
+      "name": "XRP",
+      "price": 0.52,
+      "market_cap": 29000000000,
+      "change_24h": -0.42,
+      "volume_24h": 1800000000,
+      "ai_sentiment": "Neutral",
+      "related_symbols": ["BTC", "ETH", "USDC"],
+      "ai_recommendation": {
+        "signal": "Hold",
+        "rationale": {
+          "en": "Cross-border settlement narrative intact; mild 24h drift keeps AI at Neutral — hold core exposure, add only on confirmed breakout volume.",
+          "ru": "Narrative трансграничных расчётов сохраняется; лёгкий дрейф за 24ч держит ИИ на Neutral — базовую позицию держите, докупайте только при подтверждённом объёме пробоя."
+        }
+      }
+    },
+    {
+      "rank": 8,
+      "slug": "cardano",
+      "symbol": "ADA",
+      "name": "Cardano",
+      "price": 0.45,
+      "market_cap": 16000000000,
+      "change_24h": 1.08,
+      "volume_24h": 420000000,
+      "ai_sentiment": "Greed",
+      "related_symbols": ["BTC", "ETH", "SOL"],
+      "ai_recommendation": {
+        "signal": "Buy",
+        "rationale": {
+          "en": "Staking participation and L1 upgrade cycle lift ADA off lows; +1% 24h with Greed tilt — favorable for swing entries with defined stops.",
+          "ru": "Участие в стейкинге и цикл апгрейдов L1 поднимают ADA от минимумов; +1% за 24ч при Greed — благоприятно для swing-входов со стопами."
+        }
+      }
+    },
+    {
+      "rank": 9,
+      "slug": "dogecoin",
+      "symbol": "DOGE",
+      "name": "Dogecoin",
+      "price": 0.16,
+      "market_cap": 23000000000,
+      "change_24h": 2.35,
+      "volume_24h": 980000000,
+      "ai_sentiment": "Greed",
+      "related_symbols": ["BTC", "SOL", "USDT"],
+      "ai_recommendation": {
+        "signal": "Hold",
+        "rationale": {
+          "en": "Meme-beta momentum runs hot on social flows; Greed reading warns of mean-reversion — hold speculative sleeve only, size for volatility.",
+          "ru": "Meme-beta разогревается социальными потоками; Greed предупреждает о mean-reversion — держите только спекулятивную долю, закладывайте волатильность."
+        }
+      }
+    },
+    {
+      "rank": 10,
+      "slug": "avalanche-2",
+      "symbol": "AVAX",
+      "name": "Avalanche",
+      "price": 35.8,
+      "market_cap": 14000000000,
+      "change_24h": 0.92,
+      "volume_24h": 510000000,
+      "ai_sentiment": "Neutral",
+      "related_symbols": ["ETH", "SOL", "USDC"],
+      "ai_recommendation": {
+        "signal": "Hold",
+        "rationale": {
+          "en": "Subnet activity stabilizes but lacks euphoric inflows; Neutral AI tone — maintain tactical allocation, prefer yield on AVAX via vetted DeFi gateways.",
+          "ru": "Активность subnet стабилизируется без эйфоричных притоков; Neutral от ИИ — тактическая доля ок, yield на AVAX предпочтительнее через проверенные DeFi-шлюзы."
+        }
+      }
+    }
+  ],
+  "news": [
+    {
+      "id": "news-eth-etf-inflows-2026",
+      "slug": "eth-etf-rekordnye-pritoki-likvidnogo-stejkinga",
+      "category": "Аналитика",
+      "published_at": "2026-06-04T09:30:00Z",
+      "title": {
+        "en": "ETH ETFs: Record Inflows Rotate Capital Into Liquid Staking",
+        "ru": "ETH-ETF: рекордные притоки переключают капитал на ликвидный стейкинг"
+      },
+      "description": {
+        "en": "Spot Ethereum ETFs pulled in $1.2B of net inflows in a single week. We break down why institutions are simultaneously building liquid-staking positions and what it means for stETH yield.",
+        "ru": "Спотовые ETF на Ethereum за неделю собрали $1.2 млрд чистого притока. Разбираем, почему институционалы параллельно наращивают позиции в ликвидном стейкинге и что это значит для доходности stETH."
+      },
+      "content": {
+        "en": "## Institutions are coming back to ETH\n\nOver the past week spot Ethereum ETFs recorded **$1.2B** of net inflows — the strongest result since launch. In parallel, on-chain data shows growing deposits into liquid-staking protocols.\n\n### Why it matters\n\n- The **stETH** rate stays around 3.6% annually with low issuer risk.\n- Institutional addresses prefer liquid derivatives so they don't lock capital for the unbonding period.\n- Rising collateral demand lowers net validator yield but improves network resilience.\n\n> TJT's AI sentiment index reads the current ETH mood as *Neutral → Greed*: capital is flowing, but without euphoria.\n\n### What an investor can do\n\n1. Compare the real yield of liquid staking against inflation.\n2. Assess the depeg risk of the liquid token.\n3. Remember: APY is a variable, not a guarantee.\n\nTJT aggregates data but does not manage your decision. Every transition is non-custodial.",
+        "ru": "## Институционал возвращается в ETH\n\nЗа последнюю неделю спотовые ETF на Ethereum зафиксировали **$1.2 млрд** чистого притока — лучший результат с момента запуска. Параллельно ончейн-данные показывают рост депозитов в протоколы ликвидного стейкинга.\n\n### Почему это важно\n\n- Ставка по **stETH** остаётся около 3.6% годовых при низком риске эмитента.\n- Институциональные адреса предпочитают ликвидные деривативы, чтобы не блокировать капитал на период анбондинга.\n- Растущий спрос на залог снижает чистую доходность валидаторов, но повышает устойчивость сети.\n\n> ИИ-индекс тональности TJT оценивает текущий настрой по ETH как *Neutral → Greed*: приток капитала есть, но без эйфории.\n\n### Что делать инвестору\n\n1. Сравнить реальную доходность ликвидного стейкинга с инфляцией.\n2. Оценить риск депривязки (depeg) ликвидного токена.\n3. Помнить: APY — переменная величина, а не гарантия.\n\nTJT агрегирует данные, но не управляет вашим решением. Все переходы — некастодиальные."
+      },
+      "seo_keywords": {
+        "en": ["ETH ETF", "liquid staking", "stETH yield", "Ethereum inflows", "DeFi staking 2026"],
+        "ru": ["ETH ETF", "ликвидный стейкинг", "stETH доходность", "Ethereum приток капитала", "DeFi стейкинг 2026"]
+      }
+    },
+    {
+      "id": "news-aave-v3-arbitrum-apy",
+      "slug": "aave-v3-arbitrum-usdc-rost-stavki",
+      "category": "DeFi",
+      "published_at": "2026-06-03T14:10:00Z",
+      "title": {
+        "en": "Aave V3 on Arbitrum: USDC Rate Climbs to 11.8% on Leverage Demand",
+        "ru": "Aave V3 на Arbitrum: ставка по USDC выросла до 11.8% на фоне спроса на плечо"
+      },
+      "description": {
+        "en": "The USDC pool utilization rate in Aave V3 on Arbitrum broke past 90%, pushing the supply rate higher. We explain the mechanics and the risks of lending pools.",
+        "ru": "Utilization rate пула USDC в Aave V3 на Arbitrum пробил 90%, разогнав ставку поставщикам ликвидности. Объясняем механику и риски кредитных пулов."
+      },
+      "content": {
+        "en": "## Borrowing demand pushes APY up\n\nThe **utilization rate** of the USDC pool in Aave V3 on Arbitrum has exceeded 90%. When borrowers outnumber available liquidity, the protocol raises the rate — and USDC suppliers are now earning up to **11.8% APY**.\n\n### Where the yield comes from\n\nA supplier's income is formed from the interest borrowers pay. This is organic yield, not inflationary governance-token emissions.\n\n### Where the risk hides\n\n- On a sharp utilization spike, withdrawals can temporarily slow down.\n- The rate is variable: when demand falls, APY drops quickly.\n- Systemic smart-contract risk remains, despite Tier-1 audits.\n\nTJT only surfaces first-tier protocols, but interacting with the smart contract is always on the user's side.",
+        "ru": "## Спрос на заём толкает APY вверх\n\nКоэффициент использования (**utilization rate**) пула USDC в Aave V3 на сети Arbitrum превысил 90%. Когда заёмщиков больше, чем свободной ликвидности, протокол повышает ставку — и поставщики USDC сейчас получают до **11.8% APY**.\n\n### Откуда берётся доходность\n\nДоход поставщика ликвидности формируется из процентов, которые платят заёмщики. Это органический yield, а не инфляционная эмиссия токена управления.\n\n### Где прячется риск\n\n- При резком росте utilization вывод средств может временно замедлиться.\n- Ставка переменная: при падении спроса APY быстро снижается.\n- Сохраняется системный риск смарт-контракта, несмотря на аудиты Tier-1.\n\nTJT отображает только протоколы первого эшелона, но взаимодействие со смарт-контрактом всегда на стороне пользователя."
+      },
+      "seo_keywords": {
+        "en": ["Aave V3", "USDC APY", "Arbitrum DeFi", "lending pools", "utilization rate"],
+        "ru": ["Aave V3", "USDC APY", "Arbitrum DeFi", "кредитные пулы", "utilization rate"]
+      }
+    },
+    {
+      "id": "news-solana-jito-restaking",
+      "slug": "solana-jito-restaking-novaya-volna-dohodnosti",
+      "category": "DeFi",
+      "published_at": "2026-06-02T11:00:00Z",
+      "title": {
+        "en": "Solana and Jito: Restaking Opens a New Wave of Yield",
+        "ru": "Solana и Jito: рестейкинг открывает новую волну доходности"
+      },
+      "description": {
+        "en": "The Solana ecosystem is rolling out restaking on top of Jito liquid staking. What it gives JitoSOL holders and which new layers of risk appear.",
+        "ru": "Экосистема Solana запускает механики рестейкинга поверх ликвидного стейкинга Jito. Что это даёт держателям JitoSOL и какие появляются новые слои риска."
+      },
+      "content": {
+        "en": "## Restaking arrives on Solana\n\nThe **Jito** protocol is extending liquid staking: **JitoSOL** can now be restaked to secure additional network services, earning a premium over the base yield of roughly 8.4% APY.\n\n### Upsides\n\n- An extra reward layer on top of base staking.\n- Capital stays liquid thanks to the derivative token.\n\n### New risks\n\n1. **Composability risk** — a failure in one layer affects the whole position.\n2. A more complex slashing model.\n3. Dependence on the load of the services that restaking secures.\n\n> The higher the potential yield, the more carefully you should read the protocol's documentation.",
+        "ru": "## Рестейкинг приходит в Solana\n\nПротокол **Jito** расширяет ликвидный стейкинг: теперь **JitoSOL** можно повторно задействовать (restake) для обеспечения дополнительных сервисов сети, получая надбавку к базовой доходности около 8.4% APY.\n\n### Плюсы\n\n- Дополнительный слой вознаграждения поверх базового стейкинга.\n- Капитал остаётся ликвидным благодаря деривативному токену.\n\n### Новые риски\n\n1. **Композиционный риск** — сбой в одном из слоёв задевает всю позицию.\n2. Усложнённая модель slashing.\n3. Зависимость от загрузки сервисов, которые обеспечивает рестейкинг.\n\n> Чем выше потенциальная доходность, тем внимательнее стоит читать документацию протокола."
+      },
+      "seo_keywords": {
+        "en": ["Solana restaking", "Jito", "JitoSOL", "Solana liquid staking", "restaking risks"],
+        "ru": ["Solana рестейкинг", "Jito", "JitoSOL", "ликвидный стейкинг Solana", "restaking риски"]
+      }
+    },
+    {
+      "id": "news-cpi-print-real-rate",
+      "slug": "inflyaciya-vs-depozit-realnaya-stavka-snova-otricatelnaya",
+      "category": "Аналитика",
+      "published_at": "2026-06-01T08:00:00Z",
+      "title": {
+        "en": "Fresh Inflation Print: The Real Deposit Rate Is Negative Again",
+        "ru": "Свежий принт инфляции: реальная ставка по депозиту снова ушла в минус"
+      },
+      "description": {
+        "en": "Inflation is holding above the bank deposit rate. We calculate what conservative savings turn into and why it's worth watching Web3 yield aggregators.",
+        "ru": "Инфляция держится выше ставки банковского депозита. Считаем, во что превращается консервативное сбережение и зачем смотреть на Web3-агрегаторы доходности."
+      },
+      "content": {
+        "en": "## The deposit is losing to inflation again\n\nFresh data confirms it: real inflation (around **6.5%**) is outrunning the classic bank deposit rate (**2.5%**). The real yield on savings is negative.\n\n### Simple arithmetic\n\nWith $10,000 of capital:\n\n- A deposit nominally returns ~$250 over a year.\n- Inflation \"eats\" ~$650 of purchasing power.\n- Net result — **minus ~$400** in real terms.\n\n### Where investors are looking\n\nWeb3 yield aggregators offer rates above inflation, but with a fundamentally different risk profile. This is not a replacement for a deposit — it's a different instrument.\n\nUse the TJT calculator to estimate the opportunity cost, and keep smart-contract risk in mind.",
+        "ru": "## Депозит снова проигрывает инфляции\n\nСвежие данные подтверждают: реальная инфляция (около **6.5%**) обгоняет ставку классического банковского депозита (**2.5%**). Реальная доходность сбережения — отрицательная.\n\n### Простая арифметика\n\nПри капитале $10 000:\n\n- Депозит за год номинально даёт ~$250.\n- Инфляция «съедает» ~$650 покупательной способности.\n- Итог — **минус ~$400** в реальном выражении.\n\n### Куда смотрят инвесторы\n\nWeb3-агрегаторы доходности предлагают ставки выше уровня инфляции, но с принципиально иным профилем риска. Это не замена депозиту, а другой инструмент.\n\nИспользуйте калькулятор TJT, чтобы оценить упущенную выгоду, и помните о рисках смарт-контрактов."
+      },
+      "seo_keywords": {
+        "en": ["inflation 2026", "real rate", "bank deposit", "opportunity cost", "Web3 yield"],
+        "ru": ["инфляция 2026", "реальная ставка", "банковский депозит", "упущенная выгода", "Web3 доходность"]
+      }
+    },
+    {
+      "id": "news-tjt-platform-launch",
+      "slug": "tjt-zapuskaet-novostnoj-hab-ii-analitiki",
+      "category": "Новости",
+      "published_at": "2026-05-30T12:00:00Z",
+      "title": {
+        "en": "TJT Launches an AI-Analytics News Hub",
+        "ru": "TJT запускает новостной хаб ИИ-аналитики"
+      },
+      "description": {
+        "en": "TJT opens a dynamic news and analytics section populated by autonomous AI agents. What's inside and how it helps you make decisions.",
+        "ru": "Платформа TJT открывает динамический раздел новостей и аналитики, который наполняется автономными ИИ-агентами. Что внутри и как это помогает принимать решения."
+      },
+      "content": {
+        "en": "## A new section: the AI-analytics feed\n\nTJT is launching a dynamic **news hub** where material is created and updated by the platform's autonomous AI agents.\n\n### What's inside\n\n- **Analytics** — macro and on-chain market breakdowns.\n- **DeFi** — reviews of protocols, rates and yield mechanics.\n- **News** — short updates across the ecosystem.\n\n### Principles\n\n1. Informational only — not investment advice.\n2. Transparency of data sources.\n3. Non-custodial model: TJT never holds funds or keys.\n\nStay tuned — the feed is updated in real time.",
+        "ru": "## Новый раздел: лента ИИ-аналитики\n\nTJT запускает динамический **новостной хаб**, где материалы создаются и обновляются автономными ИИ-агентами платформы.\n\n### Что внутри\n\n- **Аналитика** — макро- и ончейн-разборы рынка.\n- **DeFi** — обзоры протоколов, ставок и механик доходности.\n- **Новости** — короткие апдейты по экосистеме.\n\n### Принципы\n\n1. Только информационный характер — не инвестиционная рекомендация.\n2. Прозрачность источников данных.\n3. Некастодиальная модель: TJT не хранит средства и ключи.\n\nСледите за обновлениями — лента пополняется в реальном времени."
+      },
+      "seo_keywords": {
+        "en": ["TJT news", "AI analytics", "crypto news", "DeFi analytics", "Web3 hub"],
+        "ru": ["TJT новости", "ИИ-аналитика", "крипто новости", "DeFi аналитика", "Web3 хаб"]
+      }
+    },
+    {
+      "id": "news-morpho-blue-tvl-milestone",
+      "slug": "morpho-blue-tvl-milestone",
+      "category": "DeFi",
+      "published_at": "2026-06-08T10:00:00Z",
+      "title": {
+        "en": "Morpho Blue crosses $5B TVL as curated markets expand",
+        "ru": "Morpho Blue превысил $5B TVL на фоне расширения curated markets"
+      },
+      "description": {
+        "en": "Morpho Blue lending markets continue to grow as curators deploy new USDC and ETH vaults. TJT Trust Score for Morpho remains ~81/100 — review audit and oracle dependencies before allocating.",
+        "ru": "Рынки Morpho Blue продолжают расти по мере развёртывания новых USDC и ETH vaults кураторами. TJT Trust Score для Morpho ~81/100 — проверьте аудиты и oracle-зависимости перед аллокацией."
+      },
+      "content": {
+        "en": "Morpho Blue has crossed a new TVL milestone as curated lending markets attract institutional and retail liquidity. The P2P matching layer can improve supplier APY versus passive underlying pools during periods of elevated borrow demand.\n\nTJT tracks Morpho with a Trust Score of approximately 81/100. Before depositing, compare Morpho against Aave and Compound on our [Morpho vs Aave](/en/compare/morpho-vs-aave) page and read the [Morpho review](/en/reviews/morpho-review).\n\nYield is variable and depends on market utilization. Use our [USDC yield comparison guide](/en/earn/how-to-compare-usdc-yield) to evaluate net returns after gas and bridge costs.",
+        "ru": "Morpho Blue превысил новый рубеж TVL: curated lending markets привлекают институциональную и розничную ликвидность. Слой P2P-matching может улучшать APY поставщиков vs пассивные базовые пулы при высоком спросе на заём.\n\nTJT отслеживает Morpho с Trust Score ~81/100. Перед депозитом сравните Morpho с Aave и Compound на странице [Morpho vs Aave](/ru/compare/morpho-vs-aave) и прочитайте [обзор Morpho](/ru/reviews/morpho-review).\n\nДоходность переменная и зависит от utilization. Используйте [гайд по сравнению USDC yield](/ru/earn/how-to-compare-usdc-yield) для оценки net returns с учётом gas и bridge."
+      },
+      "seo_keywords": {
+        "en": ["Morpho Blue", "Morpho TVL", "curated lending", "USDC yield"],
+        "ru": ["Morpho Blue", "Morpho TVL", "curated lending", "USDC yield"]
+      }
+    },
+    {
+      "id": "news-sparklend-utilization-update",
+      "slug": "sparklend-utilization-update",
+      "category": "DeFi",
+      "published_at": "2026-06-07T14:30:00Z",
+      "title": {
+        "en": "SparkLend utilization rises as MakerDAO ecosystem lending heats up",
+        "ru": "Utilization SparkLend растёт на фоне активности lending в экосистеме MakerDAO"
+      },
+      "description": {
+        "en": "SparkLend borrow demand has pushed supplier APY higher across USDC and DAI markets. Spark Trust Score ~80/100 — see our Spark review and Spark vs Aave comparison.",
+        "ru": "Спрос на заём в SparkLend поднял APY поставщиков на рынках USDC и DAI. Trust Score Spark ~80/100 — см. обзор Spark и сравнение Spark vs Aave."
+      },
+      "content": {
+        "en": "SparkLend, the lending arm of the MakerDAO ecosystem, has seen rising utilization across core stablecoin markets. Higher borrow demand typically translates to improved supplier APY, though rates remain algorithmically variable.\n\nTJT assigns Spark a Trust Score of approximately 80/100 based on audit coverage, governance transparency, and operational history. Compare Spark against alternatives on [Spark vs Aave](/en/compare/spark-vs-aave) and check [is Spark safe](/en/safety/is-spark-safe) before depositing.\n\nFor USDC-specific routing, see our [how to compare USDC yield](/en/earn/how-to-compare-usdc-yield) guide and the [SparkLend USDC offer](/en/offers/sparklend-usdc-ethereum).",
+        "ru": "SparkLend — lending-направление экосистемы MakerDAO — фиксирует рост utilization на ключевых stablecoin-рынках. Высокий спрос на заём обычно улучшает APY поставщиков, хотя ставки остаются алгоритмическими.\n\nTJT присваивает Spark Trust Score ~80/100 по аудитам, прозрачности governance и операционной истории. Сравните альтернативы на [Spark vs Aave](/ru/compare/spark-vs-aave) и проверьте [безопасен ли Spark](/ru/safety/is-spark-safe) перед депозитом.\n\nДля USDC-маршрутов см. [гайд по сравнению USDC yield](/ru/earn/how-to-compare-usdc-yield) и [оффер SparkLend USDC](/ru/offers/sparklend-usdc-ethereum)."
+      },
+      "seo_keywords": {
+        "en": ["SparkLend", "MakerDAO", "Spark APY", "USDC lending"],
+        "ru": ["SparkLend", "MakerDAO", "Spark APY", "USDC lending"]
+      }
+    },
+    {
+      "id": "news-etherfi-restaking-growth",
+      "slug": "etherfi-restaking-growth",
+      "category": "DeFi",
+      "published_at": "2026-06-06T09:15:00Z",
+      "title": {
+        "en": "EtherFi eETH restaking TVL grows as liquid restaking demand surges",
+        "ru": "TVL EtherFi eETH растёт на волне спроса на liquid restaking"
+      },
+      "description": {
+        "en": "EtherFi liquid restaking continues to attract ETH deposits. Trust Score ~73/100 — restaking adds operator and slashing layers beyond standard liquid staking.",
+        "ru": "Liquid restaking EtherFi продолжает привлекать ETH-депозиты. Trust Score ~73/100 — restaking добавляет слои операторов и slashing поверх liquid staking."
+      },
+      "content": {
+        "en": "EtherFi's eETH token has seen sustained inflows as investors seek liquid restaking exposure without running validators. eETH accrues both consensus staking rewards and restaking incentives, but introduces additional smart-contract and operator dependencies.\n\nTJT rates EtherFi at approximately 73/100 on our Trust Score framework. Read the full [EtherFi review](/en/reviews/etherfi-review) and compare against Lido on [best ETH restaking](/en/compare/best-eth-restaking).\n\nUse our [how to compare ETH yield](/en/earn/how-to-compare-eth-yield) guide to weigh eETH against stETH, rETH, and native staking options.",
+        "ru": "Токен eETH EtherFi получает устойчивые притоки: инвесторы ищут liquid restaking без запуска валидаторов. eETH начисляет consensus staking rewards и restaking incentives, но добавляет зависимости от смарт-контрактов и операторов.\n\nTJT оценивает EtherFi ~73/100 по Trust Score. Прочитайте [обзор EtherFi](/ru/reviews/etherfi-review) и сравните с Lido на [best ETH restaking](/ru/compare/best-eth-restaking).\n\nИспользуйте [гайд по сравнению ETH yield](/ru/earn/how-to-compare-eth-yield) для сравнения eETH со stETH, rETH и native staking."
+      },
+      "seo_keywords": {
+        "en": ["EtherFi", "eETH", "liquid restaking", "ETH yield"],
+        "ru": ["EtherFi", "eETH", "liquid restaking", "ETH yield"]
+      }
+    },
+    {
+      "id": "news-pendle-maturity-season",
+      "slug": "pendle-maturity-season",
+      "category": "Аналитика",
+      "published_at": "2026-06-05T16:00:00Z",
+      "title": {
+        "en": "Pendle maturity season: what PT holders should know",
+        "ru": "Сезон погашений Pendle: что важно держателям PT"
+      },
+      "description": {
+        "en": "Several Pendle PT markets approach maturity. Implied yields were market-derived — verify underlying-asset risk and Trust Score ~77/100 before rolling positions.",
+        "ru": "Несколько рынков Pendle PT приближаются к погашению. Implied yield был рыночным — проверьте риск базового актива и Trust Score ~77/100 перед роллингом позиций."
+      },
+      "content": {
+        "en": "Pendle's Principal Token (PT) markets are entering a maturity window where holders can redeem for underlying yield-bearing assets. PT prices embed implied fixed yields that were set at purchase time — actual outcomes depend on underlying protocol performance.\n\nTJT Trust Score for Pendle is approximately 77/100. Review [is Pendle safe](/en/safety/is-pendle-safe) and the [Pendle review](/en/reviews/pendle-review) before rolling into new maturities.\n\nCompare Pendle yield strategies against EtherFi on [Pendle vs EtherFi](/en/compare/pendle-vs-etherfi). For stablecoin routes, see [how to compare USDC yield](/en/earn/how-to-compare-usdc-yield).",
+        "ru": "Рынки Principal Token (PT) Pendle входят в окно погашения: держатели могут получить базовые yield-bearing активы. Цены PT закладывали implied fixed yield на момент покупки — итог зависит от performance базового протокола.\n\nTJT Trust Score для Pendle ~77/100. Изучите [безопасен ли Pendle](/ru/safety/is-pendle-safe) и [обзор Pendle](/ru/reviews/pendle-review) перед роллингом в новые сроки.\n\nСравните стратегии Pendle с EtherFi на [Pendle vs EtherFi](/ru/compare/pendle-vs-etherfi). Для stablecoin — [гайд по USDC yield](/ru/earn/how-to-compare-usdc-yield)."
+      },
+      "seo_keywords": {
+        "en": ["Pendle", "PT maturity", "yield trading", "fixed yield DeFi"],
+        "ru": ["Pendle", "погашение PT", "yield trading", "фиксированный yield DeFi"]
+      }
+    },
+    {
+      "id": "news-ethena-funding-rates-update",
+      "slug": "ethena-funding-rates-update",
+      "category": "Аналитика",
+      "published_at": "2026-06-04T11:45:00Z",
+      "title": {
+        "en": "Ethena funding rates shift: sUSDe yield outlook for Q3",
+        "ru": "Funding rates Ethena меняются: прогноз yield sUSDe на Q3"
+      },
+      "description": {
+        "en": "Ethena sUSDe yields track perpetual funding rates and basis dynamics. Trust Score ~70/100 — synthetic dollar risk differs from lending supply.",
+        "ru": "Yield sUSDe Ethena следует за funding rates перпов и basis. Trust Score ~70/100 — риск synthetic dollar отличается от lending supply."
+      },
+      "content": {
+        "en": "Ethena's sUSDe yield is primarily driven by funding rates on delta-neutral hedged positions rather than traditional borrow utilization. Recent funding dynamics have shifted implied APY — past performance does not guarantee future returns.\n\nTJT assigns Ethena a Trust Score of approximately 70/100, reflecting newer protocol history and synthetic-asset mechanics. Read [is Ethena safe](/en/safety/is-ethena-safe) and compare on [Ethena vs Aave](/en/compare/ethena-vs-aave).\n\nFor stablecoin allocation decisions, use [how to compare USDC yield](/en/earn/how-to-compare-usdc-yield) and the [Ethena sUSDe offer](/en/offers/ethena-susde-ethereum).",
+        "ru": "Yield sUSDe Ethena в основном определяется funding rates на delta-neutral хеджированных позициях, а не borrow utilization. Недавняя динамика funding сдвинула implied APY — прошлые результаты не гарантируют будущие.\n\nTJT присваивает Ethena Trust Score ~70/100 с учётом более короткой истории и механики synthetic-активов. Изучите [безопасна ли Ethena](/ru/safety/is-ethena-safe) и сравнение [Ethena vs Aave](/ru/compare/ethena-vs-aave).\n\nДля аллокации stablecoin используйте [гайд USDC yield](/ru/earn/how-to-compare-usdc-yield) и [оффер Ethena sUSDe](/ru/offers/ethena-susde-ethereum)."
+      },
+      "seo_keywords": {
+        "en": ["Ethena", "sUSDe", "funding rates", "synthetic dollar"],
+        "ru": ["Ethena", "sUSDe", "funding rates", "synthetic dollar"]
+      }
+    },
+    {
+      "id": "news-compound-v3-governance-vote",
+      "slug": "compound-v3-governance-vote",
+      "category": "Новости",
+      "published_at": "2026-06-03T08:20:00Z",
+      "title": {
+        "en": "Compound III governance vote passes collateral parameter update",
+        "ru": "Голосование governance Compound III одобрило обновление параметров залога"
+      },
+      "description": {
+        "en": "Compound community approved collateral factor adjustments on Ethereum USDC Comet. Trust Score ~85/100 — monitor utilization impact on supplier APY.",
+        "ru": "Сообщество Compound одобрило корректировки collateral factor в USDC Comet на Ethereum. Trust Score ~85/100 — следите за влиянием на APY поставщиков."
+      },
+      "content": {
+        "en": "Compound III (Comet) governance has approved updated collateral parameters on the Ethereum USDC market. Parameter changes can affect borrow capacity and utilization, which in turn influences supplier APY.\n\nWith a TJT Trust Score of approximately 85/100, Compound remains among the higher-rated lending protocols. See [Compound vs Morpho](/en/compare/compound-vs-morpho) and the [Compound review](/en/reviews/compound-review).\n\nUSDC suppliers can check live rates via the [Compound V3 USDC offer](/en/offers/compound-v3-usdc-ethereum) and our [USDC yield guide](/en/earn/how-to-compare-usdc-yield).",
+        "ru": "Governance Compound III (Comet) одобрила обновлённые параметры залога на USDC-рынке Ethereum. Изменения влияют на borrow capacity и utilization, а значит — на APY поставщиков.\n\nС Trust Score ~85/100 Compound остаётся среди высоко оценённых lending-протоколов. См. [Compound vs Morpho](/ru/compare/compound-vs-morpho) и [обзор Compound](/ru/reviews/compound-review).\n\nПоставщики USDC могут проверить ставки через [оффер Compound V3 USDC](/ru/offers/compound-v3-usdc-ethereum) и [гайд USDC yield](/ru/earn/how-to-compare-usdc-yield)."
+      },
+      "seo_keywords": {
+        "en": ["Compound", "Compound III", "governance", "USDC Comet"],
+        "ru": ["Compound", "Compound III", "governance", "USDC Comet"]
+      }
+    },
+    {
+      "id": "news-aave-vs-lido-yield-analysis",
+      "slug": "aave-vs-lido-yield-analysis",
+      "category": "Аналитика",
+      "published_at": "2026-06-02T13:00:00Z",
+      "title": {
+        "en": "Aave vs Lido: ETH yield paths compared for June 2026",
+        "ru": "Aave vs Lido: сравнение путей ETH yield на июнь 2026"
+      },
+      "description": {
+        "en": "Lending supply APY and liquid staking rewards offer different ETH yield mechanics. Updated editorial on Aave vs Lido with Trust Scores ~88 and ~86.",
+        "ru": "Lending supply APY и liquid staking rewards — разная механика ETH yield. Обновлённая редакция Aave vs Lido с Trust Scores ~88 и ~86."
+      },
+      "content": {
+        "en": "ETH holders face a fork: supply WETH or stETH on Aave for borrow-driven APY, or stake via Lido for consensus rewards with stETH liquidity. The optimal path depends on utilization, loop risk, and liquidity needs.\n\nTJT Trust Scores: Aave ~88/100, Lido ~86/100. Read our enriched [Aave vs Lido](/en/compare/aave-vs-lido) comparison and [how to compare ETH yield](/en/earn/how-to-compare-eth-yield) guide.\n\nFor liquid staking depth, see [best liquid staking](/en/compare/best-liquid-staking) and [Lido review](/en/reviews/lido-review).",
+        "ru": "Держатели ETH выбирают: supply WETH или stETH на Aave за borrow-driven APY или staking через Lido с ликвидностью stETH. Оптимальный путь зависит от utilization, loop risk и потребности в ликвидности.\n\nTJT Trust Scores: Aave ~88/100, Lido ~86/100. Читайте обновлённое [Aave vs Lido](/ru/compare/aave-vs-lido) и [гайд ETH yield](/ru/earn/how-to-compare-eth-yield).\n\nПо liquid staking — [best liquid staking](/ru/compare/best-liquid-staking) и [обзор Lido](/ru/reviews/lido-review)."
+      },
+      "seo_keywords": {
+        "en": ["Aave vs Lido", "ETH yield", "stETH", "liquid staking"],
+        "ru": ["Aave vs Lido", "ETH yield", "stETH", "liquid staking"]
+      }
+    },
+    {
+      "id": "news-jito-sol-yield-surge",
+      "slug": "jito-sol-yield-surge",
+      "category": "DeFi",
+      "published_at": "2026-06-01T10:30:00Z",
+      "title": {
+        "en": "Jito SOL staking rewards climb as MEV tips increase",
+        "ru": "Награды Jito SOL растут на фоне увеличения MEV tips"
+      },
+      "description": {
+        "en": "Jito liquid staking on Solana benefits from higher MEV tip flows. Trust Score ~79/100 — compare SOL yield paths before allocating.",
+        "ru": "Liquid staking Jito на Solana выигрывает от роста MEV tips. Trust Score ~79/100 — сравните пути SOL yield перед аллокацией."
+      },
+      "content": {
+        "en": "Jito's liquid staking token (JitoSOL) has seen improved effective APY as MEV tip revenue on Solana increases. Unlike Ethereum liquid staking, Solana MEV dynamics are a primary yield driver alongside inflation rewards.\n\nTJT rates Jito at approximately 79/100. Compare against Aave Solana routes on [Aave vs Jito](/en/compare/aave-vs-jito) and [Lido vs Jito](/en/compare/lido-vs-jito) for cross-chain context.\n\nUse [how to compare SOL yield](/en/earn/how-to-compare-sol-yield) for a structured evaluation framework.",
+        "ru": "Liquid staking токен Jito (JitoSOL) показывает улучшенный effective APY по мере роста MEV tip revenue на Solana. В отличие от Ethereum, MEV — ключевой драйвер yield вместе с inflation rewards.\n\nTJT оценивает Jito ~79/100. Сравните с маршрутами Aave Solana на [Aave vs Jito](/ru/compare/aave-vs-jito) и [Lido vs Jito](/ru/compare/lido-vs-jito) для кросс-чейн контекста.\n\nИспользуйте [гайд SOL yield](/ru/earn/how-to-compare-sol-yield) для структурированной оценки."
+      },
+      "seo_keywords": {
+        "en": ["Jito", "JitoSOL", "Solana staking", "MEV yield"],
+        "ru": ["Jito", "JitoSOL", "Solana staking", "MEV yield"]
+      }
+    },
+    {
+      "id": "news-defi-trust-scores-june-update",
+      "slug": "defi-trust-scores-june-update",
+      "category": "Аналитика",
+      "published_at": "2026-05-31T15:00:00Z",
+      "title": {
+        "en": "TJT Trust Scores June update: top protocols ranked",
+        "ru": "Обновление TJT Trust Scores за июнь: рейтинг топ-протоколов"
+      },
+      "description": {
+        "en": "Monthly Trust Score refresh across 10 tracked protocols. Compound leads at ~85, Ethena trails at ~70 — see individual protocol pages for methodology.",
+        "ru": "Ежемесячное обновление Trust Score по 10 протоколам. Compound лидирует ~85, Ethena ~70 — методология на страницах протоколов."
+      },
+      "content": {
+        "en": "TJT has refreshed Trust Scores for all 10 tracked DeFi protocols. Top performers: Compound (~85), Aave (~88), Lido (~86). Newer or structurally complex protocols — Ethena (~70), EtherFi (~73) — score lower on history and dependency factors.\n\nTrust Scores inform but do not replace due diligence. Visit individual pages: [Aave Trust Score](/en/protocols/aave), [Morpho Trust Score](/en/protocols/morpho), [Ethena Trust Score](/en/protocols/ethena).\n\nPair comparisons: [Compound vs Morpho](/en/compare/compound-vs-morpho), [Ethena vs Aave](/en/compare/ethena-vs-aave), [Spark vs Aave](/en/compare/spark-vs-aave).",
+        "ru": "TJT обновил Trust Scores для всех 10 отслеживаемых DeFi-протоколов. Лидеры: Compound (~85), Aave (~88), Lido (~86). Более новые или структурно сложные — Ethena (~70), EtherFi (~73) — ниже по истории и зависимостям.\n\nTrust Scores дополняют, но не заменяют due diligence. Страницы: [Trust Score Aave](/ru/protocols/aave), [Trust Score Morpho](/ru/protocols/morpho), [Trust Score Ethena](/ru/protocols/ethena).\n\nСравнения: [Compound vs Morpho](/ru/compare/compound-vs-morpho), [Ethena vs Aave](/ru/compare/ethena-vs-aave), [Spark vs Aave](/ru/compare/spark-vs-aave)."
+      },
+      "seo_keywords": {
+        "en": ["Trust Score", "DeFi safety", "protocol ranking", "TJT analytics"],
+        "ru": ["Trust Score", "безопасность DeFi", "рейтинг протоколов", "аналитика TJT"]
+      }
+    },
+    {
+      "id": "news-beta-launch-content-expansion",
+      "slug": "beta-launch-content-expansion",
+      "category": "Новости",
+      "published_at": "2026-05-29T12:00:00Z",
+      "title": {
+        "en": "TJT Beta content expansion: new guides, compares, and offers live",
+        "ru": "Расширение контента TJT Beta: новые гайды, сравнения и офферы"
+      },
+      "description": {
+        "en": "Beta finish pass adds earn guides for USDC, ETH, and SOL yield comparison, enriches protocol compares, and launches 6 new CPA offers.",
+        "ru": "Beta finish pass добавляет гайды USDC, ETH и SOL yield, обогащает сравнения протоколов и 6 новых CPA-офферов."
+      },
+      "content": {
+        "en": "TJT's Beta content expansion is now live. New earn guides help users compare yield across assets:\n\n- [How to compare USDC yield](/en/earn/how-to-compare-usdc-yield)\n- [How to compare ETH yield](/en/earn/how-to-compare-eth-yield)\n- [How to compare SOL yield](/en/earn/how-to-compare-sol-yield)\n\nProtocol comparisons enriched: [Aave vs Lido](/en/compare/aave-vs-lido), [Aave vs Jito](/en/compare/aave-vs-jito), [Lido vs Jito](/en/compare/lido-vs-jito). New pair: [Ethena vs Aave](/en/compare/ethena-vs-aave).\n\nSix new offers: Morpho, Spark, EtherFi, Pendle, Ethena, and Compound — browse all on the [Earn hub](/en/earn).",
+        "ru": "Расширение контента TJT Beta уже доступно. Новые earn-гайды помогают сравнивать yield по активам:\n\n- [Как сравнить USDC yield](/ru/earn/how-to-compare-usdc-yield)\n- [Как сравнить ETH yield](/ru/earn/how-to-compare-eth-yield)\n- [Как сравнить SOL yield](/ru/earn/how-to-compare-sol-yield)\n\nОбогащены сравнения: [Aave vs Lido](/ru/compare/aave-vs-lido), [Aave vs Jito](/ru/compare/aave-vs-jito), [Lido vs Jito](/ru/compare/lido-vs-jito). Новая пара: [Ethena vs Aave](/ru/compare/ethena-vs-aave).\n\nШесть новых офферов: Morpho, Spark, EtherFi, Pendle, Ethena и Compound — все на [хабе Earn](/ru/earn)."
+      },
+      "seo_keywords": {
+        "en": ["TJT Beta", "DeFi guides", "yield comparison", "CPA offers"],
+        "ru": ["TJT Beta", "гайды DeFi", "сравнение yield", "CPA офферы"]
+      }
+    }
+  ],
+  "ui": {
+    "site": {
+      "tagline": {
+        "en": "Autonomous Web3 Info-Broker & Passive Yield Aggregator",
+        "ru": "Автономный Web3 инфо-брокер и агрегатор пассивной доходности"
+      },
+      "metaTitle": {
+        "en": "TJT — Autonomous Web3 Info-Broker & Passive Yield Aggregator",
+        "ru": "TJT — Автономный Web3 инфо-брокер и агрегатор пассивной доходности"
+      },
+      "metaDescription": {
+        "en": "TJT is a premium Web3 info-broker and passive-yield aggregator. Measure what inflation costs you and find the best vetted DeFi pools.",
+        "ru": "TJT — премиальный Web3 инфо-брокер и агрегатор пассивной доходности. Считайте упущенную выгоду и находите лучшие DeFi-пулы."
+      }
+    },
+    "nav": {
+      "calculator": { "en": "Calculator", "ru": "Калькулятор" },
+      "market": { "en": "Market", "ru": "Рынок" },
+      "news": { "en": "News", "ru": "Новости" },
+      "yield": { "en": "Yield", "ru": "Доходность" },
+      "safety": { "en": "Safety", "ru": "Безопасность" },
+      "academy": { "en": "Academy", "ru": "Академия" },
+      "cta": { "en": "Start earning", "ru": "Начать зарабатывать" },
+      "openMenu": { "en": "Open menu", "ru": "Открыть меню" },
+      "closeMenu": { "en": "Close menu", "ru": "Закрыть меню" },
+      "mobileTagline": {
+        "en": "Non-custodial · CPA / RevShare · AI-driven traffic",
+        "ru": "Non-custodial · CPA / RevShare · AI-driven traffic"
+      }
+    },
+    "hero": {
+      "badge": { "en": "Autonomous Web3 Info-Broker", "ru": "Autonomous Web3 Info-Broker" },
+      "titleLead": { "en": "Your money in the bank", "ru": "Ваши деньги в банке" },
+      "titleLoss": { "en": "is losing", "ru": "теряют" },
+      "titleMid": { "en": "purchasing power.", "ru": "покупательную способность." },
+      "titleWeb3": { "en": "Web3", "ru": "Web3" },
+      "titleTail": { "en": "isn't.", "ru": "— нет." },
+      "subtitle": {
+        "en": "TJT is a premium passive-yield aggregator. We show how much you lose to inflation and deposits, and find the best vetted DeFi pools — without holding funds or touching your keys.",
+        "ru": "TJT — премиальный агрегатор пассивной доходности. Мы показываем, сколько вы теряете на инфляции и депозитах, и находим лучшие, проверенные DeFi-пулы. Без хранения средств и доступа к ключам."
+      },
+      "ctaCalc": { "en": "Calculate opportunity cost", "ru": "Рассчитать упущенную выгоду" },
+      "ctaOffers": { "en": "Yield showcase", "ru": "Витрина доходности" },
+      "pillarCustodial": { "en": "Non-custodial", "ru": "Non-custodial" },
+      "pillarAi": { "en": "AI-driven traffic", "ru": "AI-driven traffic" },
+      "pillarCpa": { "en": "CPA / RevShare", "ru": "CPA / RevShare" },
+      "statWeb3": { "en": "Web3 aggregator APY", "ru": "Web3 APY агрегатора" },
+      "statBank": { "en": "Average bank deposit", "ru": "Средний банк. депозит" },
+      "statInflation": { "en": "Real inflation", "ru": "Реальная инфляция" }
+    },
+    "calculator": {
+      "liveBadge": { "en": "Live calc", "ru": "Live-расчёт" },
+      "title": { "en": "Opportunity-cost calculator", "ru": "Калькулятор упущенной выгоды" },
+      "desc": {
+        "en": "Compare what a bank deposit earns, how inflation erodes capital, and the yield a Web3 aggregator delivers.",
+        "ru": "Сравните, сколько приносит банковский депозит, как инфляция съедает капитал и какую доходность даёт Web3-агрегатор."
+      },
+      "capitalLabel": { "en": "Your capital", "ru": "Ваш капитал" },
+      "horizonLabel": { "en": "Investment horizon", "ru": "Горизонт инвестирования" },
+      "nameBank": { "en": "Bank", "ru": "Банк" },
+      "nameInflation": { "en": "Inflation", "ru": "Инфляция" },
+      "nameWeb3": { "en": "Web3", "ru": "Web3" },
+      "profitOver": { "en": "Profit over", "ru": "Прибыль за" },
+      "subInflation": { "en": "Purchasing-power erosion", "ru": "Эрозия покупательной способности" },
+      "subWeb3": { "en": "Aggregator yield", "ru": "Доходность агрегатора" },
+      "missedTitle": { "en": "Revealed opportunity cost", "ru": "Открытая упущенная выгода" },
+      "missedDescPrefix": {
+        "en": "the gap between the Web3 pool and a bank deposit over",
+        "ru": "разница Web3-пула и банковского депозита за"
+      },
+      "missedCta": { "en": "Close the opportunity cost", "ru": "Закрыть упущенную выгоду" },
+      "assetLabel": { "en": "Asset / currency", "ru": "Актив / валюта" },
+      "scrollToOffers": {
+        "en": "Find the best options for my balance",
+        "ru": "Подобрать лучшие варианты под мой баланс"
+      },
+      "sniperBadgePrefix": {
+        "en": "Perfect for your capital of",
+        "ru": "Идеально для вашего капитала в"
+      },
+      "sniperBadgeProfit": {
+        "en": "Net profit will be",
+        "ru": "Чистая прибыль составит"
+      },
+      "downloadReport": { "en": "Download Financial Report", "ru": "Скачать PDF-отчёт об упущенной выгоде" },
+      "generatingReport": { "en": "Generating report…", "ru": "Готовим отчёт…" },
+      "reportReady": { "en": "Your financial report is ready.", "ru": "Ваш финансовый отчёт готов." },
+      "reportError": { "en": "Could not generate the report. Please try again.", "ru": "Не удалось сформировать отчёт. Попробуйте ещё раз." },
+      "error": {
+        "en": "Failed to load financial benchmarks from the data source.",
+        "ru": "Не удалось загрузить финансовые бенчмарки из источника данных."
+      }
+    },
+    "report": {
+      "documentTitle": { "en": "Opportunity-Cost Report", "ru": "Отчёт об упущенной выгоде" },
+      "fileLabel": { "en": "tjt-opportunity-cost-report", "ru": "tjt-otchet-upushennoy-vygody" },
+      "brandTagline": { "en": "Non-custodial information broker · Web3 yield intelligence", "ru": "Некостодиальный информационный брокер · аналитика доходности Web3" },
+      "generatedOn": { "en": "Generated", "ru": "Сформировано" },
+      "inputsHeading": { "en": "Your scenario", "ru": "Ваш сценарий" },
+      "capitalLabel": { "en": "Starting capital", "ru": "Начальный капитал" },
+      "horizonLabel": { "en": "Investment horizon", "ru": "Горизонт инвестирования" },
+      "benchmarksHeading": { "en": "Projected outcomes vs. Web3 benchmark", "ru": "Прогноз в сравнении с Web3-бенчмарком" },
+      "colScenario": { "en": "Scenario", "ru": "Сценарий" },
+      "colRate": { "en": "Rate", "ru": "Ставка" },
+      "colResult": { "en": "Result over horizon", "ru": "Результат за горизонт" },
+      "bankLabel": { "en": "Bank deposit", "ru": "Банковский депозит" },
+      "inflationLabel": { "en": "Inflation erosion", "ru": "Эрозия от инфляции" },
+      "web3Label": { "en": "Web3 aggregator", "ru": "Web3-агрегатор" },
+      "missedHeading": { "en": "Your opportunity cost", "ru": "Ваша упущенная выгода" },
+      "missedSub": { "en": "The yield gap between a Web3 pool and a bank deposit over your horizon.", "ru": "Разница доходности между Web3-пулом и банковским депозитом за выбранный горизонт." },
+      "offersHeading": { "en": "Close the gap — active CPA yield offers", "ru": "Закройте разрыв — активные CPA-офферы" },
+      "offersIntro": { "en": "Vetted, non-custodial protocols. Tap a link to open the deposit gateway in your browser.", "ru": "Проверенные некостодиальные протоколы. Нажмите на ссылку, чтобы открыть депозитный шлюз в браузере." },
+      "minLabel": { "en": "min.", "ru": "мин." },
+      "openLink": { "en": "Open deposit", "ru": "Открыть депозит" },
+      "disclaimerHeading": { "en": "Disclaimer", "ru": "Дисклеймер" },
+      "disclaimer": {
+        "en": "TJT is a non-custodial information broker and does not hold funds or provide investment advice. Figures are model projections based on current benchmarks and are not guaranteed. DeFi protocols carry smart-contract and market risk. Always do your own research.",
+        "ru": "TJT — некостодиальный информационный брокер: мы не храним средства и не даём инвестиционных рекомендаций. Цифры являются модельным прогнозом на основе текущих бенчмарков и не гарантированы. DeFi-протоколы несут риски смарт-контрактов и рынка. Всегда проводите собственный анализ."
+      },
+      "pageLabel": { "en": "Page", "ru": "Стр." },
+      "ofLabel": { "en": "of", "ru": "из" }
+    },
+    "admin": {
+      "eyebrow": { "en": "Internal · CPA analytics", "ru": "Внутреннее · CPA-аналитика" },
+      "title": { "en": "CPA offer dashboard", "ru": "Дашборд CPA-офферов" },
+      "desc": {
+        "en": "Live attribution from the shared system registry: which offers convert, where traffic speaks which language, and the latest non-custodial transitions.",
+        "ru": "Живая атрибуция из общего системного реестра: какие офферы конвертируют, на каком языке говорит трафик и последние некостодиальные переходы."
+      },
+      "liveBadge": { "en": "Live registry", "ru": "Живой реестр" },
+      "kpiTotalClicks": { "en": "Total outbound clicks", "ru": "Всего исходящих кликов" },
+      "kpiActiveOffers": { "en": "Converting offers", "ru": "Конвертирующие офферы" },
+      "kpiArticles": { "en": "AI articles generated", "ru": "Сгенерировано ИИ-статей" },
+      "kpiVideoScripts": { "en": "Video scripts generated", "ru": "Сгенерировано видео-сценариев" },
+      "kpiOfTotal": { "en": "of catalog", "ru": "из каталога" },
+      "lastUpdated": { "en": "Registry updated", "ru": "Реестр обновлён" },
+      "never": { "en": "no data yet", "ru": "пока нет данных" },
+      "tabByOffer": { "en": "By offer", "ru": "По офферам" },
+      "tabByLang": { "en": "By language", "ru": "По языкам" },
+      "tabRecent": { "en": "Recent clicks", "ru": "Последние клики" },
+      "byOfferTitle": { "en": "Clicks by CPA offer", "ru": "Клики по CPA-офферам" },
+      "byOfferDesc": { "en": "Outbound transitions attributed to each vetted offer.", "ru": "Исходящие переходы, атрибутированные каждому офферу." },
+      "byLangTitle": { "en": "Distribution by language", "ru": "Распределение по языкам" },
+      "byLangDesc": { "en": "Interface language of the page where each click happened.", "ru": "Язык интерфейса страницы, на которой произошёл клик." },
+      "recentTitle": { "en": "Last 20 clicks", "ru": "Последние 20 кликов" },
+      "recentDesc": { "en": "Most recent non-custodial gateway transitions, newest first.", "ru": "Самые свежие переходы через некостодиальный шлюз, новые сверху." },
+      "colRank": { "en": "#", "ru": "#" },
+      "colOffer": { "en": "Offer", "ru": "Оффер" },
+      "colNetwork": { "en": "Network", "ru": "Сеть" },
+      "colApy": { "en": "APY", "ru": "APY" },
+      "colRisk": { "en": "Risk", "ru": "Риск" },
+      "colClicks": { "en": "Clicks", "ru": "Клики" },
+      "colShare": { "en": "Share", "ru": "Доля" },
+      "colLastClick": { "en": "Last click", "ru": "Последний клик" },
+      "colLanguage": { "en": "Language", "ru": "Язык" },
+      "colTime": { "en": "Time", "ru": "Время" },
+      "langEn": { "en": "English", "ru": "Английский" },
+      "langRu": { "en": "Russian", "ru": "Русский" },
+      "langUnknown": { "en": "Unattributed", "ru": "Без атрибуции" },
+      "emptyClicks": { "en": "No outbound clicks recorded yet.", "ru": "Исходящих кликов пока не зафиксировано." },
+      "backToSite": { "en": "Back to site", "ru": "На сайт" },
+      "error": {
+        "en": "Failed to read the system registry (sys_registry.json).",
+        "ru": "Не удалось прочитать системный реестр (sys_registry.json)."
+      }
+    },
+    "priceTicker": {
+      "liveLabel": { "en": "Live · Top 5", "ru": "Live · Топ-5" }
+    },
+    "home": {
+      "aiScoringTitle": { "en": "AI Market Scoring", "ru": "ИИ-Скоринг рынка" },
+      "aiScoringDesc": {
+        "en": "Quick AI verdicts on top assets — sentiment, momentum and risk at a glance.",
+        "ru": "Быстрые ИИ-вердикты по топ-активам — тональность, импульс и риск одним взглядом."
+      },
+      "aiVerdictLabel": { "en": "Verdict", "ru": "Вердикт" },
+      "fixBonusCta": { "en": "Fix this and claim your bonus", "ru": "Исправить это и забрать бонус" },
+      "leaderboardTitle": { "en": "CPA Yield Leaderboard", "ru": "CPA-Лидерборд" },
+      "leaderboardDesc": {
+        "en": "Top financial offers ranked by bonus APY and risk — compare and claim in one click.",
+        "ru": "Топ финансовых офферов с сравнением бонусов и риска — получите выгоду в один клик."
+      },
+      "getOffer": { "en": "Get", "ru": "Получить" },
+      "getBonus": { "en": "Get Bonus", "ru": "Бонус" },
+      "bonusLabel": { "en": "Bonus APY", "ru": "Бонус APY" },
+      "exchangesTitle": { "en": "Top Crypto Exchanges", "ru": "Лучшие криптобиржи" },
+      "signUp": { "en": "Sign Up", "ru": "Регистрация" }
+    },
+    "market": {
+      "eyebrow": { "en": "CoinMarketCap layer", "ru": "CoinMarketCap layer" },
+      "title": { "en": "Real-time market", "ru": "Рынок в реальном времени" },
+      "desc": {
+        "en": "A self-healing data pipeline with AI-scored market sentiment.",
+        "ru": "Самовосстанавливающийся пайплайн данных с ИИ-оценкой настроений рынка."
+      },
+      "cardTitle": { "en": "Streaming market monitor", "ru": "Потоковый мониторинг рынка" },
+      "cardDesc": { "en": "Top assets with an AI sentiment index", "ru": "Топ-активы с ИИ-индексом тональности" },
+      "colAsset": { "en": "Asset", "ru": "Актив" },
+      "colPrice": { "en": "Price", "ru": "Цена" },
+      "colCap": { "en": "Market cap", "ru": "Капитализация" },
+      "colChange": { "en": "24h", "ru": "24ч" },
+      "colVolume": { "en": "24h Vol", "ru": "Объём 24ч" },
+      "colAction": { "en": "Buy", "ru": "Купить" },
+      "colSentiment": { "en": "AI Index", "ru": "ИИ-Индекс" },
+      "error": {
+        "en": "Failed to load market data from the data source.",
+        "ru": "Не удалось загрузить рыночные данные из источника данных."
+      }
+    },
+    "ticker": {
+      "title": { "en": "AI Analytics & News Feed", "ru": "Лента ИИ-Аналитики и Новостей" },
+      "desc": { "en": "Fresh material from TJT's autonomous AI agents", "ru": "Свежие материалы от автономных ИИ-агентов TJT" },
+      "empty": {
+        "en": "The feed will soon fill with the AI agents' first material.",
+        "ru": "Лента скоро пополнится первыми материалами ИИ-агентов."
+      },
+      "error": { "en": "Failed to load the news feed.", "ru": "Не удалось загрузить ленту новостей." },
+      "all": { "en": "All news and analytics", "ru": "Все новости и аналитика" }
+    },
+    "offers": {
+      "eyebrow": { "en": "CPA Yield Leaderboard", "ru": "CPA Yield Leaderboard" },
+      "title": { "en": "Yield leaders showcase", "ru": "Витрина лидеров доходности" },
+      "desc": {
+        "en": "Vetted DeFi protocols with risk ratings. Direct, non-custodial transitions to smart contracts.",
+        "ru": "Проверенные DeFi-протоколы с рейтингом риска. Прямые non-custodial переходы к смарт-контрактам."
+      },
+      "min": { "en": "min.", "ru": "мин." },
+      "review": { "en": "Full review", "ru": "Полный обзор" },
+      "error": {
+        "en": "Failed to load the offers showcase from the data source.",
+        "ru": "Не удалось загрузить витрину офферов из источника данных."
+      }
+    },
+    "offersHub": {
+      "metaTitle": { "en": "Best DeFi Yield Offers 2026 — CPA Catalog | TJT", "ru": "Лучшие DeFi-офферы 2026 — CPA-каталог | TJT" },
+      "metaDescription": {
+        "en": "Compare vetted Tier-1 DeFi yield offers with risk ratings, APY and non-custodial deposit gateways.",
+        "ru": "Сравните проверенные Tier-1 DeFi-офферы с рейтингом риска, APY и некастодиальными шлюзами депозита."
+      },
+      "breadcrumbOffers": { "en": "Yield catalog", "ru": "Каталог доходности" }
+    },
+    "offerDetail": {
+      "benefitsHeading": { "en": "Key advantages", "ru": "Ключевые преимущества" },
+      "cta": { "en": "Open non-custodial deposit", "ru": "Открыть некастодиальный депозит" },
+      "back": { "en": "Back to catalog", "ru": "Назад в каталог" },
+      "notFoundTitle": { "en": "Offer not found — TJT", "ru": "Оффер не найден — TJT" },
+      "notFoundDesc": { "en": "The requested yield offer is not in the TJT catalog.", "ru": "Запрошенный оффер отсутствует в каталоге TJT." }
+    },
+    "marketDetail": {
+      "metaTitleSuffix": { "en": "Live Chart & Buy Guide", "ru": "График и где купить" },
+      "whereToBuy": { "en": "Where to buy {coin} profitably?", "ru": "Где выгодно купить {coin}?" },
+      "whereToBuyDesc": {
+        "en": "Vetted exchange and DeFi gateways with CPA bonuses — non-custodial transitions only.",
+        "ru": "Проверенные биржи и DeFi-шлюзы с CPA-бонусами — только некастодиальные переходы."
+      },
+      "newsAbout": { "en": "News about {coin}", "ru": "Новости по теме {coin}" },
+      "chartTitle": { "en": "Advanced chart", "ru": "Расширенный график" },
+      "timeframe1D": { "en": "1D", "ru": "1Д" },
+      "timeframe1W": { "en": "1W", "ru": "1Н" },
+      "timeframe1M": { "en": "1M", "ru": "1М" },
+      "timeframe3M": { "en": "3M", "ru": "3М" },
+      "timeframe1Y": { "en": "1Y", "ru": "1Г" },
+      "notFoundTitle": { "en": "Asset not found — TJT", "ru": "Актив не найден — TJT" },
+      "notFoundDesc": { "en": "The requested asset is not in the TJT market snapshot.", "ru": "Запрошенный актив отсутствует в снимке рынка TJT." },
+      "priceLabel": { "en": "Price", "ru": "Цена" },
+      "change24hLabel": { "en": "24h change", "ru": "Изм. 24ч" },
+      "sentimentLabel": { "en": "AI sentiment", "ru": "ИИ-тональность" },
+      "aiAnalysisEyebrow": { "en": "AI Agent", "ru": "ИИ-Агент" },
+      "aiAnalysisTitle": { "en": "AI Agent Analysis", "ru": "Анализ от ИИ-Агента" },
+      "signalBuy": { "en": "Buy", "ru": "Покупать" },
+      "signalHold": { "en": "Hold", "ru": "Держать" },
+      "signalSell": { "en": "Sell", "ru": "Продавать" },
+      "signalRationaleLabel": { "en": "Rationale", "ru": "Обоснование" },
+      "similarEyebrow": { "en": "Discovery", "ru": "Подборка" },
+      "similarTitle": { "en": "Also viewed with this asset", "ru": "С этим активом также смотрят" },
+      "similarChange24h": { "en": "24h", "ru": "24ч" }
+    },
+    "marketHub": {
+      "metaTitle": { "en": "Live AI Crypto Market Terminal | TJT", "ru": "Живой ИИ-терминал крипторынка | TJT" },
+      "metaDescription": {
+        "en": "Live AI crypto market monitoring — real-time quotes, sentiment index and analytics feed.",
+        "ru": "Живой ИИ-мониторинг крипторынка, котировки и аналитика в реальном времени."
+      },
+      "breadcrumbMarket": { "en": "Market terminal", "ru": "Терминал рынка" },
+      "terminalBadge": { "en": "AI Terminal · Live", "ru": "ИИ-Терминал · Live" },
+      "searchPlaceholder": { "en": "Search asset (e.g. BTC, Bitcoin)…", "ru": "Поиск актива…" },
+      "filterAll": { "en": "All", "ru": "Все" },
+      "filterGainers": { "en": "Gainers", "ru": "Лидеры роста" },
+      "filterLosers": { "en": "Losers", "ru": "Лидеры падения" },
+      "filterGreed": { "en": "Greed", "ru": "Жадность" },
+      "filterNeutral": { "en": "Neutral", "ru": "Нейтрально" },
+      "filterFear": { "en": "Fear", "ru": "Страх" },
+      "sortRank": { "en": "Rank", "ru": "Ранг" },
+      "sortChange": { "en": "24h %", "ru": "24ч %" },
+      "sortPrice": { "en": "Price", "ru": "Цена" },
+      "sortCap": { "en": "Market cap", "ru": "Капитализация" },
+      "noResults": { "en": "No assets found", "ru": "Активы не найдены" }
+    },
+    "calculatorPage": {
+      "metaTitle": { "en": "Inflation vs DeFi ROI Calculator | TJT", "ru": "Калькулятор инфляции vs DeFi ROI | TJT" },
+      "metaDescription": {
+        "en": "Calculate missed yield: compare bank deposits, real inflation and Web3 aggregator APY over any horizon.",
+        "ru": "Рассчитайте упущенную доходность: сравните банковский депозит, реальную инфляцию и Web3 APY на любом горизонте."
+      },
+      "breadcrumbCalculator": { "en": "ROI Calculator", "ru": "ROI-калькулятор" }
+    },
+    "homeTeasers": {
+      "marketEyebrow": { "en": "Live market", "ru": "Рынок live" },
+      "marketTitle": { "en": "AI market terminal", "ru": "ИИ-терминал рынка" },
+      "marketDesc": { "en": "Top assets, 24h moves and AI sentiment index — updated from the data source.", "ru": "Топ-активы, движение за 24ч и ИИ-индекс тональности — из источника данных." },
+      "marketCta": { "en": "Open full AI market terminal →", "ru": "Открыть полный ИИ-терминал рынка →" },
+      "offersEyebrow": { "en": "Yield catalog", "ru": "Каталог доходности" },
+      "offersTitle": { "en": "Top CPA offers", "ru": "Топ CPA-офферов" },
+      "offersDesc": { "en": "Highest-rated non-custodial protocols with transparent risk scores.", "ru": "Протоколы с лучшим рейтингом и прозрачными оценками риска." },
+      "offersCta": { "en": "View full yield catalog →", "ru": "Смотреть весь каталог доходности →" },
+      "newsEyebrow": { "en": "AI news", "ru": "ИИ-новости" },
+      "newsTitle": { "en": "Latest analytics", "ru": "Свежая аналитика" },
+      "newsCta": { "en": "All news and analytics →", "ru": "Все новости и аналитика →" },
+      "calcEyebrow": { "en": "Tools", "ru": "Инструменты" },
+      "calcTitle": { "en": "Missed yield calculator", "ru": "Калькулятор упущенной доходности" },
+      "calcDesc": { "en": "Share your scenario via URL — bank vs inflation vs Web3 APY.", "ru": "Делитесь сценарием через URL — банк vs инфляция vs Web3 APY." },
+      "calcCta": { "en": "Open ROI calculator →", "ru": "Открыть ROI-калькулятор →" }
+    },
+    "offerButton": {
+      "idle": { "en": "Open deposit", "ru": "Открыть депозит" },
+      "opening": { "en": "Opening gateway…", "ru": "Открываем шлюз…" },
+      "loading": { "en": "Initializing non-custodial gateway…", "ru": "Инициализация некостодиального шлюза…" },
+      "successPrefix": { "en": "Redirecting to the", "ru": "Перенаправление на протокол" },
+      "successSuffix": { "en": "protocol", "ru": "" },
+      "error": { "en": "Gateway unavailable. Transition not recorded.", "ru": "Шлюз недоступен. Переход не зафиксирован." }
+    },
+    "safety": {
+      "eyebrow": { "en": "Non-custodial by design", "ru": "Non-custodial by design" },
+      "title": { "en": "Safety infographic", "ru": "Инфографика безопасности" },
+      "desc": {
+        "en": "Three steps of the TJT non-custodial model: funds and keys always stay under your control.",
+        "ru": "Три шага некастодиальной модели TJT: средства и ключи всегда остаются под вашим контролем."
+      },
+      "cardTitle": { "en": "The non-custodial model in three steps", "ru": "Некастодиальная модель в три шага" },
+      "cardDesc": {
+        "en": "Funds never pass through TJT. We aggregate data — you own the assets at every step.",
+        "ru": "Средства никогда не проходят через TJT. Мы агрегируем данные — вы владеете активами на каждом этапе."
+      },
+      "badge": { "en": "Funds never touch TJT", "ru": "Funds never touch TJT" },
+      "steps": [
+        {
+          "title": { "en": "Pick an offer", "ru": "Выбор оффера" },
+          "description": {
+            "en": "You browse a showcase of vetted Tier-1 protocols with transparent risk ratings. TJT aggregates data but does not manage your decision and does not hold funds.",
+            "ru": "Вы изучаете витрину проверенных Tier-1 протоколов с прозрачным рейтингом риска. TJT агрегирует данные, но не управляет вашим решением и не держит средства."
+          }
+        },
+        {
+          "title": { "en": "Connect your wallet", "ru": "Подключение кошелька" },
+          "description": {
+            "en": "The transition goes directly into the protocol's smart contract through your own wallet. TJT never requests private keys and gains no access to assets.",
+            "ru": "Переход выполняется напрямую в смарт-контракт протокола через ваш собственный кошелёк. TJT не запрашивает приватные ключи и не получает доступа к активам."
+          }
+        },
+        {
+          "title": { "en": "Profit directly", "ru": "Профит напрямую" },
+          "description": {
+            "en": "Yield accrues in the protocol to your non-custodial address. Funds always remain under your full control — no intermediaries, no freezes.",
+            "ru": "Доходность начисляется в протоколе на ваш некастодиальный адрес. Средства всегда остаются под вашим полным контролем — без посредников и заморозок."
+          }
+        }
+      ]
+    },
+    "academy": {
+      "eyebrow": { "en": "TJT Academy", "ru": "Академия TJT" },
+      "title": { "en": "Content from AI agents", "ru": "Контент от ИИ-агентов" },
+      "desc": {
+        "en": "Deep fintech breakdowns generated by TJT's autonomous AI agents: inflation, staking and the sustainability of DeFi yield.",
+        "ru": "Глубокие финтех-разборы, сгенерированные автономными ИИ-агентами TJT: инфляция, стейкинг и устойчивость DeFi-доходности."
+      },
+      "readingSuffix": { "en": "min read", "ru": "мин чтения" },
+      "read": { "en": "Read", "ru": "Читать" },
+      "articles": [
+        {
+          "id": "inflation-erosion",
+          "category": { "en": "Macroeconomics", "ru": "Макроэкономика" },
+          "title": {
+            "en": "The hidden tax: how inflation erases capital faster than a deposit grows",
+            "ru": "Скрытый налог: как инфляция стирает капитал быстрее, чем растёт депозит"
+          },
+          "excerpt": {
+            "en": "The real yield of a bank deposit goes negative when inflation outpaces the rate. We unpack the mechanics of a negative real rate and calculate what $10,000 turns into after five idle years.",
+            "ru": "Реальная доходность банковского депозита уходит в минус, когда инфляция обгоняет ставку. Разбираем механику отрицательной реальной ставки и считаем, во что превращаются $10 000 за пять лет покоя."
+          },
+          "tags": {
+            "en": ["Inflation", "Real rate", "Savings"],
+            "ru": ["Инфляция", "Реальная ставка", "Сбережения"]
+          },
+          "readingMinutes": 7
+        },
+        {
+          "id": "staking-mechanics",
+          "category": { "en": "Proof-of-Stake", "ru": "Proof-of-Stake" },
+          "title": {
+            "en": "Staking without illusions: where yield comes from and where risk hides",
+            "ru": "Стейкинг без иллюзий: откуда берётся доходность и где прячется риск"
+          },
+          "excerpt": {
+            "en": "Validator rewards, liquid staking and protocol fees — what really makes up APY. We explain slashing, the unbonding period and why a liquid-staking token isn't the same as a locked asset.",
+            "ru": "Награды валидаторов, ликвидный стейкинг и комиссии протокола — что реально формирует APY. Объясняем slashing, период анбондинга и почему ликвидный стейкинг-токен не равен заблокированному активу."
+          },
+          "tags": {
+            "en": ["Staking", "Liquid Staking", "Validators"],
+            "ru": ["Стейкинг", "Liquid Staking", "Валидаторы"]
+          },
+          "readingMinutes": 9
+        },
+        {
+          "id": "defi-yield-sources",
+          "category": { "en": "DeFi", "ru": "DeFi" },
+          "title": {
+            "en": "Anatomy of DeFi yield: lending pools, AMMs and APY sustainability",
+            "ru": "Анатомия DeFi-доходности: кредитные пулы, AMM и устойчивость APY"
+          },
+          "excerpt": {
+            "en": "How income from supplying liquidity to Aave differs from AMM pool fees. We unpack utilization rate, impermanent loss and how to separate organic yield from inflationary token emissions.",
+            "ru": "Чем отличается доход от поставки ликвидности в Aave от комиссий пула на AMM. Разбираем utilization rate, impermanent loss и как отделять органический yield от инфляционных эмиссий токенов."
+          },
+          "tags": {
+            "en": ["DeFi", "Liquidity", "Smart contracts"],
+            "ru": ["DeFi", "Ликвидность", "Смарт-контракты"]
+          },
+          "readingMinutes": 11
+        }
+      ]
+    },
+    "newsHub": {
+      "eyebrow": { "en": "AI Analytics & News Feed", "ru": "Лента ИИ-Аналитики и Новостей" },
+      "title": { "en": "TJT News Hub", "ru": "Новостной хаб TJT" },
+      "desc": {
+        "en": "Market analytics, DeFi protocol reviews and Web3 news — generated and updated by TJT's autonomous AI agents. The material is informational and is not investment advice.",
+        "ru": "Аналитика рынка, обзоры DeFi-протоколов и новости Web3 — генерируются и обновляются автономными ИИ-агентами TJT. Материалы носят информационный характер и не являются инвестиционной рекомендацией."
+      },
+      "metaTitle": { "en": "AI Analytics & News Feed — TJT", "ru": "Лента ИИ-Аналитики и Новостей — TJT" },
+      "metaDescription": {
+        "en": "TJT's dynamic hub: market analytics, DeFi protocol reviews and Web3 news generated by autonomous AI agents. Fresh material on yield, staking and inflation.",
+        "ru": "Динамический хаб TJT: аналитика рынка, обзоры DeFi-протоколов и новости Web3, генерируемые автономными ИИ-агентами. Свежие материалы о доходности, стейкинге и инфляции."
+      },
+      "breadcrumbNews": { "en": "News & analytics", "ru": "Новости и аналитика" },
+      "filterAll": { "en": "All", "ru": "Все" },
+      "emptyCategory": {
+        "en": "No material in this category yet. TJT's AI agents are already working on new publications.",
+        "ru": "В этой категории пока нет материалов. ИИ-агенты TJT уже работают над новыми публикациями."
+      },
+      "readMore": { "en": "Read", "ru": "Читать" },
+      "loadError": {
+        "en": "Failed to load the news feed from the data source.",
+        "ru": "Не удалось загрузить ленту новостей из источника данных."
+      }
+    },
+    "article": {
+      "aiBadge": { "en": "AI Analytics", "ru": "ИИ-Аналитика" },
+      "back": { "en": "Back to the news feed", "ru": "Назад к ленте новостей" },
+      "related": { "en": "Related material", "ru": "Похожие материалы" },
+      "similarNews": { "en": "Similar news", "ru": "Схожие новости" },
+      "assetsInArticle": { "en": "Assets analyzed in this article", "ru": "Анализируемые в статье активы" },
+      "disclaimer": {
+        "en": "This material was generated by TJT's autonomous AI agents and is purely informational. It is not individual investment advice. Interacting with third-party smart contracts carries risk and is done by the user independently.",
+        "ru": "Материал сгенерирован автономными ИИ-агентами TJT и носит исключительно информационный характер. Это не индивидуальная инвестиционная рекомендация. Взаимодействие со смарт-контрактами третьих сторон сопряжено с рисками и осуществляется пользователем самостоятельно."
+      },
+      "notFoundTitle": { "en": "Material not found — TJT", "ru": "Материал не найден — TJT" },
+      "notFoundDesc": { "en": "The requested story was not found in the TJT feed.", "ru": "Запрошенная новость не найдена в ленте TJT." }
+    },
+    "breadcrumbs": {
+      "home": { "en": "Home", "ru": "Главная" },
+      "news": { "en": "News", "ru": "Новости" },
+      "market": { "en": "Market", "ru": "Рынок" },
+      "offers": { "en": "Offers", "ru": "Офферы" },
+      "tools": { "en": "Tools", "ru": "Инструменты" },
+      "ariaLabel": { "en": "Breadcrumbs", "ru": "Хлебные крошки" }
+    },
+    "newsCategories": {
+      "Аналитика": { "en": "Analytics", "ru": "Аналитика" },
+      "DeFi": { "en": "DeFi", "ru": "DeFi" },
+      "Новости": { "en": "News", "ru": "Новости" }
+    },
+    "footer": {
+      "tagline": {
+        "en": "We aggregate yield data on Tier-1 protocols, but never hold your funds or keys.",
+        "ru": "Некастодиальная модель: мы агрегируем данные о доходности Tier-1 протоколов, но никогда не храним ваши средства и ключи."
+      },
+      "columns": [
+        {
+          "heading": { "en": "Products", "ru": "Продукты" },
+          "links": [
+            { "label": { "en": "Inflation calculator", "ru": "Калькулятор инфляции" }, "href": "/tools/roi-calculator" },
+            { "label": { "en": "Yield showcase", "ru": "Витрина доходности" }, "href": "/offers" },
+            { "label": { "en": "Non-custodial flow", "ru": "Non-custodial поток" }, "href": "/safety" },
+            { "label": { "en": "Data API", "ru": "API данных" }, "href": "/market" }
+          ]
+        },
+        {
+          "heading": { "en": "Analytics", "ru": "Аналитика" },
+          "links": [
+            { "label": { "en": "Real-time market", "ru": "Рынок в реальном времени" }, "href": "/market" },
+            { "label": { "en": "AI sentiment index", "ru": "ИИ-индекс тональности" }, "href": "/market" },
+            { "label": { "en": "Protocol ratings", "ru": "Рейтинг протоколов" }, "href": "/offers" },
+            { "label": { "en": "Yield benchmarks", "ru": "Бенчмарки доходности" }, "href": "/tools/roi-calculator" }
+          ]
+        },
+        {
+          "heading": { "en": "Academy", "ru": "Академия" },
+          "links": [
+            { "label": { "en": "Learn hub", "ru": "Обучение" }, "href": "/learn" },
+            { "label": { "en": "Protocol reviews", "ru": "Обзоры протоколов" }, "href": "/reviews" },
+            { "label": { "en": "Safety guides", "ru": "Безопасность" }, "href": "/safety" },
+            { "label": { "en": "Earn hub", "ru": "Earn" }, "href": "/earn" }
+          ]
+        },
+        {
+          "heading": { "en": "Legal", "ru": "Юридическая информация" },
+          "links": [
+            { "label": { "en": "Risk Disclosure", "ru": "Risk Disclosure" }, "href": "#legal" },
+            { "label": { "en": "Terms of use", "ru": "Условия использования" }, "href": "#legal" },
+            { "label": { "en": "Privacy policy", "ru": "Политика конфиденциальности" }, "href": "#legal" },
+            { "label": { "en": "Non-custodial status", "ru": "Некастодиальный статус" }, "href": "#legal" }
+          ]
+        }
+      ],
+      "statusLabel": { "en": "Systems: Nominal · Live", "ru": "Системы: Номинал · Live" },
+      "nonCustodialLabel": { "en": "Non-custodial · No KYC · No funds held", "ru": "Non-custodial · No KYC · No funds held" },
+      "academyNote": {
+        "en": "TJT Academy content is generated by autonomous AI agents and reviewed; it is purely informational and is not investment advice.",
+        "ru": "Контент Академии TJT генерируется автономными ИИ-агентами и проходит проверку; он носит исключительно информационный характер и не является инвестиционной рекомендацией."
+      }
+    },
+    "risk": {
+      "heading": { "en": "Risk Disclosure", "ru": "Раскрытие рисков (Risk Disclosure)" },
+      "paragraphs": [
+        {
+          "en": "Non-custodial status. TJT operates as an autonomous information broker and aggregator of public market data. Under no circumstances does the platform take custody of, control or dispose of users' funds or digital assets, and it never requests or stores private keys, seed phrases or other wallet-access credentials. All operations are initiated and signed by the user independently in their own non-custodial wallet.",
+          "ru": "Некастодиальный статус. TJT функционирует как автономный информационный брокер и агрегатор публичных рыночных данных. Платформа ни при каких обстоятельствах не принимает на хранение, не контролирует и не распоряжается денежными средствами или цифровыми активами пользователей, не запрашивает и не хранит приватные ключи, seed-фразы или иные средства доступа к кошелькам. Все операции инициируются и подписываются пользователем самостоятельно в его собственном некастодиальном кошельке."
+        },
+        {
+          "en": "Tier-1 protocol smart-contract risk. Although TJT only surfaces audited, long-running first-tier (Tier-1) protocols, interacting with any smart contract carries irreducible risks: code vulnerabilities and bugs, exploits, oracle risk, bridge and cross-chain infrastructure failures, governance risk, and the possible depeg of collateral and liquid-staking assets. Quoted yields (APY) are historical or projected, are variable in nature and are not guaranteed.",
+          "ru": "Риски смарт-контрактов Tier-1 протоколов. Несмотря на то что TJT отображает только протоколы первого эшелона (Tier-1) с пройденным аудитом и продолжительной историей работы, взаимодействие с любым смарт-контрактом сопряжено с неустранимыми рисками: уязвимости и ошибки кода, эксплойты, риски оракулов, сбои моста (bridge) и кросс-чейн инфраструктуры, риски управления (governance), а также возможная депривязка (depeg) залоговых и ликвидных стейкинг-активов. Указанная доходность (APY) является исторической или прогнозной, носит переменный характер и не гарантируется."
+        },
+        {
+          "en": "Market volatility. The value of digital assets is highly volatile and can fall substantially, up to the total loss of invested capital. Past performance is not an indicator of future returns. Prices, sentiment indices and calculations shown on the site are for reference, may be displayed with delay and must not be treated as an offer or as investment, legal or tax advice.",
+          "ru": "Волатильность рынка. Стоимость цифровых активов подвержена высокой волатильности и может существенно снижаться вплоть до полной потери вложенного капитала. Прошлые результаты не являются индикатором будущей доходности. Приведённые на сайте цены, индексы тональности и расчёты являются справочными, могут отображаться с задержкой и не должны рассматриваться как оферта, инвестиционный, юридический или налоговый совет."
+        },
+        {
+          "en": "Personal responsibility. All decisions are made by the user independently, taking into account their financial situation and the applicable law of their jurisdiction. TJT is not liable for any direct or indirect losses arising from the use of information on the platform or interaction with third-party protocols.",
+          "ru": "Самостоятельная ответственность. Любые решения принимаются пользователем самостоятельно с учётом его финансового положения и применимого законодательства его юрисдикции. TJT не несёт ответственности за прямые или косвенные убытки, возникшие вследствие использования информации с платформы или взаимодействия со сторонними протоколами."
+        }
+      ]
+    }
+  }
+}

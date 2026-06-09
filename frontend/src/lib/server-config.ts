@@ -1,5 +1,6 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
+import { resolveRepoDataPath } from "@/lib/repo-paths";
 import {
   NEWS_CATEGORIES,
   type AppConfig,
@@ -24,7 +25,7 @@ import { DEFAULT_LOCALE, LOCALES, type Locale } from "@/lib/i18n";
  * `lang`. It deliberately throws (instead of returning placeholder data) when
  * the file is missing or malformed, so a broken source of truth fails loudly.
  */
-const CONFIG_PATH = path.resolve(process.cwd(), "..", "config.json");
+const CONFIG_PATH = resolveRepoDataPath("config.json");
 
 class ConfigError extends Error {
   constructor(message: string) {

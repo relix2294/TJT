@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { promises as fs } from "node:fs";
-import path from "node:path";
+import { resolveRepoDataPath } from "@/lib/repo-paths";
 import {
   DEFAULT_AGENT_METRICS,
   type AgentKind,
@@ -13,7 +13,7 @@ import {
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const REGISTRY_PATH = path.resolve(process.cwd(), "..", "sys_registry.json");
+const REGISTRY_PATH = resolveRepoDataPath("sys_registry.json");
 const LOG_LIMIT = 18;
 const READ_RETRIES = 3;
 const READ_RETRY_MS = 60;

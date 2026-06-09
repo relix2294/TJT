@@ -1,7 +1,7 @@
 import { promises as fs } from "node:fs";
-import path from "node:path";
 import { loadCpaOffers } from "@/lib/server-config";
 import type { CpaOffer } from "@/lib/config";
+import { resolveRepoDataPath } from "@/lib/repo-paths";
 
 /**
  * Server-side reader & analytics layer for the shared system registry.
@@ -19,7 +19,7 @@ import type { CpaOffer } from "@/lib/config";
  * `config.json` is authoritative for offer metadata) and derives the analytics
  * the dashboard renders. It never writes — the dashboard is read-only.
  */
-const REGISTRY_PATH = path.resolve(process.cwd(), "..", "sys_registry.json");
+const REGISTRY_PATH = resolveRepoDataPath("sys_registry.json");
 
 export type RegistryMetrics = {
   generated_articles_count: number;
