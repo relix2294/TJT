@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { loadAppConfig } from "@/lib/server-config";
 import { LOCALES } from "@/lib/i18n";
 import { EARN_ASSET_SLUGS } from "@/lib/earn";
+import { PROTOCOL_SLUGS } from "@/lib/protocols";
 import {
   buildSitemapEntry,
   buildStaticHubEntries,
@@ -64,6 +65,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ),
   );
 
+  const protocolEntries: MetadataRoute.Sitemap = PROTOCOL_SLUGS.flatMap((slug) =>
+    LOCALES.map((lang) =>
+      buildSitemapEntry(
+        {
+          baseUrl,
+          lang,
+          path: `/${lang}/protocols/${slug}`,
+          lastModified: now,
+          changeFrequency: "weekly",
+          priority: 0.76,
+          localeNeutralPath: (l) => `/${l}/protocols/${slug}`,
+        },
+        now,
+      ),
+    ),
+  );
+
   const earnAssetEntries: MetadataRoute.Sitemap = EARN_ASSET_SLUGS.flatMap(
     (asset) =>
       LOCALES.map((lang) =>
@@ -101,6 +119,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...staticEntries,
+    ...protocolEntries,
     ...earnAssetEntries,
     ...offerEntries,
     ...newsEntries,

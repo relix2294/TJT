@@ -42,7 +42,7 @@ export const SEO_ROUTE_MAP: Record<
     detail: (slug) => `/market/${slug}`,
   },
   protocols: {
-    hub: "/offers",
+    hub: "/protocols",
     detail: (slug) => `/offers/${slug}`,
   },
   compare: {
