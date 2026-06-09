@@ -32,7 +32,7 @@ export function HomeCryptoExchanges({ lang, dict, offers }: HomeCryptoExchangesP
   return (
     <section className="overflow-hidden rounded-lg border border-gray-800 bg-neutral-950/80">
       <header className="border-b border-gray-800 px-3 py-2 sm:px-4">
-        <h2 className="text-sm font-semibold text-white">{t.exchangesTitle}</h2>
+        <h2 className="text-sm font-semibold text-white">{t.featuredOpportunitiesTitle}</h2>
       </header>
       <ul className="divide-y divide-gray-800">
         {rows.map((offer) => (

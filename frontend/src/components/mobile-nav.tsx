@@ -38,7 +38,7 @@ export function MobileNav({
   }, [open]);
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <button
         type="button"
         aria-label={open ? dict.nav.closeMenu : dict.nav.openMenu}
@@ -108,7 +108,7 @@ export function MobileNav({
         </nav>
 
         <Button
-          render={<Link href={`/${lang}/offers`} onClick={() => setOpen(false)} />}
+          render={<Link href={`/${lang}/compare`} onClick={() => setOpen(false)} />}
           className="mt-4 h-12 w-full rounded-xl bg-primary font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
         >
           {dict.nav.cta}

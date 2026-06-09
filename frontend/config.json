@@ -744,31 +744,35 @@
   "ui": {
     "site": {
       "tagline": {
-        "en": "Autonomous Web3 Info-Broker & Passive Yield Aggregator",
-        "ru": "Автономный Web3 инфо-брокер и агрегатор пассивной доходности"
+        "en": "Non-custodial crypto product comparison marketplace.",
+        "ru": "Некастодиальный маркетплейс сравнения криптопродуктов."
       },
       "metaTitle": {
-        "en": "TJT — Autonomous Web3 Info-Broker & Passive Yield Aggregator",
-        "ru": "TJT — Автономный Web3 инфо-брокер и агрегатор пассивной доходности"
+        "en": "TJT — Compare Crypto Yield Opportunities",
+        "ru": "TJT — Сравнение крипто-доходности"
       },
       "metaDescription": {
-        "en": "TJT is a premium Web3 info-broker and passive-yield aggregator. Measure what inflation costs you and find the best vetted DeFi pools.",
-        "ru": "TJT — премиальный Web3 инфо-брокер и агрегатор пассивной доходности. Считайте упущенную выгоду и находите лучшие DeFi-пулы."
+        "en": "Compare crypto yield opportunities, DeFi protocols, APY snapshots, Trust Scores, reviews and risk context — without custody or financial advice.",
+        "ru": "Сравнивайте крипто-доходность, DeFi-протоколы, снимки APY, Trust Score, обзоры и контекст рисков — без кастоди и финансовых советов."
       }
     },
     "nav": {
+      "compare": { "en": "Compare", "ru": "Сравнения" },
+      "earn": { "en": "Earn", "ru": "Earn" },
+      "protocols": { "en": "Protocols", "ru": "Протоколы" },
+      "reviews": { "en": "Reviews", "ru": "Обзоры" },
       "calculator": { "en": "Calculator", "ru": "Калькулятор" },
       "market": { "en": "Market", "ru": "Рынок" },
       "news": { "en": "News", "ru": "Новости" },
       "yield": { "en": "Yield", "ru": "Доходность" },
       "safety": { "en": "Safety", "ru": "Безопасность" },
       "academy": { "en": "Academy", "ru": "Академия" },
-      "cta": { "en": "Start earning", "ru": "Начать зарабатывать" },
+      "cta": { "en": "Compare opportunities", "ru": "Сравнить возможности" },
       "openMenu": { "en": "Open menu", "ru": "Открыть меню" },
       "closeMenu": { "en": "Close menu", "ru": "Закрыть меню" },
       "mobileTagline": {
-        "en": "Non-custodial · CPA / RevShare · AI-driven traffic",
-        "ru": "Non-custodial · CPA / RevShare · AI-driven traffic"
+        "en": "Non-custodial · Educational information · No wallet connection",
+        "ru": "Non-custodial · Образовательная информация · Без подключения кошелька"
       }
     },
     "hero": {
@@ -811,7 +815,7 @@
         "en": "the gap between the Web3 pool and a bank deposit over",
         "ru": "разница Web3-пула и банковского депозита за"
       },
-      "missedCta": { "en": "Close the opportunity cost", "ru": "Закрыть упущенную выгоду" },
+      "missedCta": { "en": "Compare yield routes", "ru": "Сравнить маршруты доходности" },
       "assetLabel": { "en": "Asset / currency", "ru": "Актив / валюта" },
       "scrollToOffers": {
         "en": "Find the best options for my balance",
@@ -854,7 +858,7 @@
       "offersHeading": { "en": "Close the gap — active CPA yield offers", "ru": "Закройте разрыв — активные CPA-офферы" },
       "offersIntro": { "en": "Vetted, non-custodial protocols. Tap a link to open the deposit gateway in your browser.", "ru": "Проверенные некостодиальные протоколы. Нажмите на ссылку, чтобы открыть депозитный шлюз в браузере." },
       "minLabel": { "en": "min.", "ru": "мин." },
-      "openLink": { "en": "Open deposit", "ru": "Открыть депозит" },
+      "openLink": { "en": "View protocol", "ru": "Открыть протокол" },
       "disclaimerHeading": { "en": "Disclaimer", "ru": "Дисклеймер" },
       "disclaimer": {
         "en": "TJT is a non-custodial information broker and does not hold funds or provide investment advice. Figures are model projections based on current benchmarks and are not guaranteed. DeFi protocols carry smart-contract and market risk. Always do your own research.",
@@ -918,16 +922,18 @@
       },
       "aiVerdictLabel": { "en": "Verdict", "ru": "Вердикт" },
       "fixBonusCta": { "en": "Fix this and claim your bonus", "ru": "Исправить это и забрать бонус" },
-      "leaderboardTitle": { "en": "CPA Yield Leaderboard", "ru": "CPA-Лидерборд" },
+      "leaderboardTitle": { "en": "Featured Protocol Opportunities", "ru": "Избранные возможности протоколов" },
+      "leaderboardSidebarTitle": { "en": "Top yield snapshots", "ru": "Топ снимков доходности" },
       "leaderboardDesc": {
-        "en": "Top financial offers ranked by bonus APY and risk — compare and claim in one click.",
-        "ru": "Топ финансовых офферов с сравнением бонусов и риска — получите выгоду в один клик."
+        "en": "Protocol opportunities ranked by APY snapshot and risk context — educational information only.",
+        "ru": "Возможности протоколов по снимку APY и контексту риска — только образовательная информация."
       },
-      "getOffer": { "en": "Get", "ru": "Получить" },
-      "getBonus": { "en": "Get Bonus", "ru": "Бонус" },
-      "bonusLabel": { "en": "Bonus APY", "ru": "Бонус APY" },
-      "exchangesTitle": { "en": "Top Crypto Exchanges", "ru": "Лучшие криптобиржи" },
-      "signUp": { "en": "Sign Up", "ru": "Регистрация" }
+      "getOffer": { "en": "View", "ru": "Открыть" },
+      "getBonus": { "en": "View opportunity", "ru": "Открыть возможность" },
+      "bonusLabel": { "en": "APY snapshot", "ru": "Снимок APY" },
+      "featuredOpportunitiesTitle": { "en": "Featured Protocol Opportunities", "ru": "Избранные возможности протоколов" },
+      "exchangesTitle": { "en": "Featured Protocol Opportunities", "ru": "Избранные возможности протоколов" },
+      "signUp": { "en": "View details", "ru": "Подробнее" }
     },
     "market": {
       "eyebrow": { "en": "CoinMarketCap layer", "ru": "CoinMarketCap layer" },
@@ -936,14 +942,14 @@
         "en": "A self-healing data pipeline with AI-scored market sentiment.",
         "ru": "Самовосстанавливающийся пайплайн данных с ИИ-оценкой настроений рынка."
       },
-      "cardTitle": { "en": "Streaming market monitor", "ru": "Потоковый мониторинг рынка" },
-      "cardDesc": { "en": "Top assets with an AI sentiment index", "ru": "Топ-активы с ИИ-индексом тональности" },
+      "cardTitle": { "en": "Market Context", "ru": "Рыночный контекст" },
+      "cardDesc": { "en": "Top assets with price context and 24h moves", "ru": "Топ-активы с ценовым контекстом и движением за 24ч" },
       "colAsset": { "en": "Asset", "ru": "Актив" },
       "colPrice": { "en": "Price", "ru": "Цена" },
       "colCap": { "en": "Market cap", "ru": "Капитализация" },
       "colChange": { "en": "24h", "ru": "24ч" },
       "colVolume": { "en": "24h Vol", "ru": "Объём 24ч" },
-      "colAction": { "en": "Buy", "ru": "Купить" },
+      "colAction": { "en": "View asset", "ru": "Открыть актив" },
       "colSentiment": { "en": "AI Index", "ru": "ИИ-Индекс" },
       "error": {
         "en": "Failed to load market data from the data source.",
@@ -961,7 +967,7 @@
       "all": { "en": "All news and analytics", "ru": "Все новости и аналитика" }
     },
     "offers": {
-      "eyebrow": { "en": "CPA Yield Leaderboard", "ru": "CPA Yield Leaderboard" },
+      "eyebrow": { "en": "Protocol opportunities", "ru": "Возможности протоколов" },
       "title": { "en": "Yield leaders showcase", "ru": "Витрина лидеров доходности" },
       "desc": {
         "en": "Vetted DeFi protocols with risk ratings. Direct, non-custodial transitions to smart contracts.",
@@ -1048,24 +1054,87 @@
       "breadcrumbCalculator": { "en": "ROI Calculator", "ru": "ROI-калькулятор" }
     },
     "homeTeasers": {
-      "marketEyebrow": { "en": "Live market", "ru": "Рынок live" },
-      "marketTitle": { "en": "AI market terminal", "ru": "ИИ-терминал рынка" },
-      "marketDesc": { "en": "Top assets, 24h moves and AI sentiment index — updated from the data source.", "ru": "Топ-активы, движение за 24ч и ИИ-индекс тональности — из источника данных." },
-      "marketCta": { "en": "Open full AI market terminal →", "ru": "Открыть полный ИИ-терминал рынка →" },
-      "offersEyebrow": { "en": "Yield catalog", "ru": "Каталог доходности" },
-      "offersTitle": { "en": "Top CPA offers", "ru": "Топ CPA-офферов" },
-      "offersDesc": { "en": "Highest-rated non-custodial protocols with transparent risk scores.", "ru": "Протоколы с лучшим рейтингом и прозрачными оценками риска." },
-      "offersCta": { "en": "View full yield catalog →", "ru": "Смотреть весь каталог доходности →" },
-      "newsEyebrow": { "en": "AI news", "ru": "ИИ-новости" },
-      "newsTitle": { "en": "Latest analytics", "ru": "Свежая аналитика" },
-      "newsCta": { "en": "All news and analytics →", "ru": "Все новости и аналитика →" },
+      "marketEyebrow": { "en": "Market context", "ru": "Рыночный контекст" },
+      "marketTitle": { "en": "Market Context", "ru": "Рыночный контекст" },
+      "marketDesc": { "en": "Top assets, 24h moves and price context — updated from the data source.", "ru": "Топ-активы, движение за 24ч и ценовой контекст — из источника данных." },
+      "marketCta": { "en": "View full market context →", "ru": "Открыть полный рыночный контекст →" },
+      "offersEyebrow": { "en": "Protocol opportunities", "ru": "Возможности протоколов" },
+      "offersTitle": { "en": "Featured Protocol Opportunities", "ru": "Избранные возможности протоколов" },
+      "offersDesc": { "en": "Non-custodial protocols with APY snapshots and risk context.", "ru": "Некастодиальные протоколы со снимками APY и контекстом риска." },
+      "offersCta": { "en": "View all protocol opportunities →", "ru": "Все возможности протоколов →" },
+      "newsEyebrow": { "en": "Market context", "ru": "Рыночный контекст" },
+      "newsTitle": { "en": "Latest market context", "ru": "Свежий рыночный контекст" },
+      "newsCta": { "en": "All market context →", "ru": "Весь рыночный контекст →" },
       "calcEyebrow": { "en": "Tools", "ru": "Инструменты" },
-      "calcTitle": { "en": "Missed yield calculator", "ru": "Калькулятор упущенной доходности" },
-      "calcDesc": { "en": "Share your scenario via URL — bank vs inflation vs Web3 APY.", "ru": "Делитесь сценарием через URL — банк vs инфляция vs Web3 APY." },
-      "calcCta": { "en": "Open ROI calculator →", "ru": "Открыть ROI-калькулятор →" }
+      "calcTitle": { "en": "Opportunity calculator", "ru": "Калькулятор возможностей" },
+      "calcDesc": { "en": "Model yield routes — bank vs inflation vs Web3 APY snapshots.", "ru": "Моделируйте маршруты доходности — банк vs инфляция vs снимки Web3 APY." },
+      "calcCta": { "en": "Compare yield routes →", "ru": "Сравнить маршруты доходности →" }
+    },
+    "homeMarketplace": {
+      "heroEyebrow": { "en": "Crypto yield comparison marketplace", "ru": "Маркетплейс сравнения крипто-доходности" },
+      "heroHeadline": { "en": "Compare Crypto Yield Opportunities", "ru": "Сравнивайте крипто-доходность" },
+      "heroSubheadline": {
+        "en": "Explore DeFi protocols, APY snapshots, Trust Scores, reviews and risk context — without custody, wallet connection or financial advice.",
+        "ru": "Изучайте DeFi-протоколы, снимки APY, Trust Score, обзоры и контекст рисков — без кастоди, подключения кошелька и финансовых советов."
+      },
+      "ctaCompare": { "en": "Compare opportunities", "ru": "Сравнить возможности" },
+      "ctaProtocols": { "en": "Explore protocols", "ru": "Изучить протоколы" },
+      "badgeNonCustodial": { "en": "Non-custodial", "ru": "Non-custodial" },
+      "badgeNoWallet": { "en": "No wallet connection", "ru": "Без подключения кошелька" },
+      "badgeEducational": { "en": "Educational only", "ru": "Только образовательно" },
+      "badgeTrustScore": { "en": "Trust Score v0.1", "ru": "Trust Score v0.1" },
+      "entryCardsTitle": { "en": "Explore the marketplace", "ru": "Изучите маркетплейс" },
+      "entryCards": {
+        "compare": {
+          "title": { "en": "Compare Yield", "ru": "Сравнить доходность" },
+          "desc": { "en": "Side-by-side APY snapshots, protocol context and Trust Score overviews.", "ru": "Сравнение снимков APY, контекста протоколов и Trust Score." },
+          "cta": { "en": "Compare opportunities", "ru": "Сравнить возможности" }
+        },
+        "earn": {
+          "title": { "en": "Earn Guides", "ru": "Гайды Earn" },
+          "desc": { "en": "Asset-level earn guides with risk context and protocol routes.", "ru": "Гайды по активам с контекстом риска и маршрутами протоколов." },
+          "cta": { "en": "View earn guides", "ru": "Открыть гайды" }
+        },
+        "reviews": {
+          "title": { "en": "Protocol Reviews", "ru": "Обзоры протоколов" },
+          "desc": { "en": "Educational protocol reviews with trust overview and risk notes.", "ru": "Образовательные обзоры протоколов с trust overview и рисками." },
+          "cta": { "en": "View reviews", "ru": "Открыть обзоры" }
+        },
+        "safety": {
+          "title": { "en": "Safety Scores", "ru": "Оценки безопасности" },
+          "desc": { "en": "Protocol safety context, audit notes and non-custodial model.", "ru": "Контекст безопасности протоколов, аудиты и некастодиальная модель." },
+          "cta": { "en": "View safety scores", "ru": "Открыть оценки" }
+        }
+      },
+      "featuredEyebrow": { "en": "Popular comparisons", "ru": "Популярные сравнения" },
+      "featuredTitle": { "en": "Featured comparisons", "ru": "Избранные сравнения" },
+      "featuredDesc": { "en": "Key yield and protocol comparisons — educational market context only.", "ru": "Ключевые сравнения доходности и протоколов — только образовательный контекст." },
+      "featuredCta": { "en": "View all comparisons →", "ru": "Все сравнения →" },
+      "featuredLinks": [
+        { "en": "Best USDT Yield", "ru": "Лучшая доходность USDT" },
+        { "en": "Best USDC Yield", "ru": "Лучшая доходность USDC" },
+        { "en": "Best ETH Staking", "ru": "Лучший стейкинг ETH" },
+        { "en": "Best SOL Staking", "ru": "Лучший стейкинг SOL" },
+        { "en": "Aave vs Morpho", "ru": "Aave vs Morpho" },
+        { "en": "Lido vs Rocket Pool", "ru": "Lido vs Rocket Pool" }
+      ],
+      "trustEyebrow": { "en": "Trust overview", "ru": "Trust overview" },
+      "trustTitle": { "en": "What is TJT Trust Score?", "ru": "Что такое TJT Trust Score?" },
+      "trustDesc": {
+        "en": "TJT Trust Score is an educational 0–100 framework for protocol-level context. Scores may be estimated or reviewed — they are not financial advice.",
+        "ru": "TJT Trust Score — образовательная шкала 0–100 для контекста на уровне протокола. Оценки могут быть расчётными или проверенными — это не финансовый совет."
+      },
+      "trustBullets": [
+        { "en": "0–100 educational framework for protocol context", "ru": "Образовательная шкала 0–100 для контекста протокола" },
+        { "en": "Estimated or reviewed status per protocol", "ru": "Статус estimated или reviewed для каждого протокола" },
+        { "en": "Risk context and trust overview — not financial advice", "ru": "Контекст риска и trust overview — не финансовый совет" }
+      ],
+      "trustLinkProtocols": { "en": "Explore protocols", "ru": "Изучить протоколы" },
+      "trustLinkSafety": { "en": "Safety scores", "ru": "Оценки безопасности" },
+      "trustLinkReviews": { "en": "Protocol reviews", "ru": "Обзоры протоколов" }
     },
     "offerButton": {
-      "idle": { "en": "Open deposit", "ru": "Открыть депозит" },
+      "idle": { "en": "View protocol", "ru": "Открыть протокол" },
       "opening": { "en": "Opening gateway…", "ru": "Открываем шлюз…" },
       "loading": { "en": "Initializing non-custodial gateway…", "ru": "Инициализация некостодиального шлюза…" },
       "successPrefix": { "en": "Redirecting to the", "ru": "Перенаправление на протокол" },
@@ -1224,8 +1293,8 @@
     },
     "footer": {
       "tagline": {
-        "en": "We aggregate yield data on Tier-1 protocols, but never hold your funds or keys.",
-        "ru": "Некастодиальная модель: мы агрегируем данные о доходности Tier-1 протоколов, но никогда не храним ваши средства и ключи."
+        "en": "Educational comparison marketplace — we never hold your funds or keys.",
+        "ru": "Образовательный маркетплейс сравнений — мы никогда не храним ваши средства и ключи."
       },
       "columns": [
         {

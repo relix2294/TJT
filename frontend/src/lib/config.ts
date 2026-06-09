@@ -23,7 +23,7 @@ export const SITE = {
    * Set `NEXT_PUBLIC_SITE_URL` in production (see frontend/.env.example).
    */
   url: "",
-  model: "Non-Custodial Information Broker (CPA / RevShare)",
+  model: "Non-custodial crypto product comparison marketplace.",
   version: "1.0.0",
 } as const;
 
@@ -138,6 +138,10 @@ export type FooterColumn = {
 export type Dictionary = {
   site: SiteContent;
   nav: {
+    compare: string;
+    earn: string;
+    protocols: string;
+    reviews: string;
     calculator: string;
     market: string;
     news: string;
@@ -279,12 +283,44 @@ export type Dictionary = {
     aiVerdictLabel: string;
     fixBonusCta: string;
     leaderboardTitle: string;
+    leaderboardSidebarTitle: string;
     leaderboardDesc: string;
     getOffer: string;
     getBonus: string;
     bonusLabel: string;
+    featuredOpportunitiesTitle: string;
     exchangesTitle: string;
     signUp: string;
+  };
+  homeMarketplace: {
+    heroEyebrow: string;
+    heroHeadline: string;
+    heroSubheadline: string;
+    ctaCompare: string;
+    ctaProtocols: string;
+    badgeNonCustodial: string;
+    badgeNoWallet: string;
+    badgeEducational: string;
+    badgeTrustScore: string;
+    entryCardsTitle: string;
+    entryCards: {
+      compare: { title: string; desc: string; cta: string };
+      earn: { title: string; desc: string; cta: string };
+      reviews: { title: string; desc: string; cta: string };
+      safety: { title: string; desc: string; cta: string };
+    };
+    featuredEyebrow: string;
+    featuredTitle: string;
+    featuredDesc: string;
+    featuredCta: string;
+    featuredLinks: string[];
+    trustEyebrow: string;
+    trustTitle: string;
+    trustDesc: string;
+    trustBullets: string[];
+    trustLinkProtocols: string;
+    trustLinkSafety: string;
+    trustLinkReviews: string;
   };
   marketDetail: {
     metaTitleSuffix: string;

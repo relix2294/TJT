@@ -21,14 +21,14 @@ type CompactOpportunityCalculatorProps = {
   lang: Locale;
   dict: Dictionary;
   benchmarks: Benchmarks;
-  offersHref: string;
+  compareHref: string;
 };
 
 export function CompactOpportunityCalculator({
   lang,
   dict,
   benchmarks,
-  offersHref,
+  compareHref,
 }: CompactOpportunityCalculatorProps) {
   const t = dict.calculator;
   const teasers = dict.homeTeasers;
@@ -130,7 +130,7 @@ export function CompactOpportunityCalculator({
         </div>
 
         <Link
-          href={offersHref}
+          href={compareHref}
           className="flex h-8 w-full items-center justify-center gap-1.5 rounded-md border border-emerald-500/30 bg-emerald-500/10 text-[11px] font-semibold text-emerald-400 transition-colors hover:border-emerald-500/50 hover:bg-emerald-500/15"
         >
           {t.missedCta}

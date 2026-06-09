@@ -53,10 +53,7 @@ export function HomeSidebarLeaderboard({
   return (
     <section className="rounded-lg border border-slate-800 bg-slate-950/80 p-3">
       <header className="mb-2 border-b border-slate-800 pb-2">
-        <p className="text-[10px] font-semibold uppercase tracking-wider text-emerald-500">
-          {dict.offers.eyebrow}
-        </p>
-        <h2 className="text-sm font-semibold text-white">{homeT.leaderboardTitle}</h2>
+        <h2 className="text-sm font-semibold text-white">{homeT.leaderboardSidebarTitle}</h2>
       </header>
 
       <ul className="divide-y divide-slate-800">
