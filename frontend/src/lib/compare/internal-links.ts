@@ -16,13 +16,23 @@ import { compareDetailPath, compareHubPath } from "@/lib/compare/paths";
 import { getCompareSlugTitle } from "@/lib/compare/content";
 
 /** Map domain CompareInternalLink to shared SEO InternalLink shape. */
+function toSeoLinkType(
+  type: CompareInternalLink["type"],
+): import("@/lib/seo/internal-links").InternalLink["type"] {
+  if (type === "offers" || type === "reviews" || type === "safety") {
+    return "protocols";
+  }
+  if (type === "learn") return "guides";
+  return type;
+}
+
 export function toSeoInternalLinks(
   links: CompareInternalLink[],
 ): import("@/lib/seo/internal-links").InternalLink[] {
   return links.map((link) => ({
     href: link.href,
     label: link.label,
-    type: link.type === "offers" ? "protocols" : link.type,
+    type: toSeoLinkType(link.type),
     slug: link.slug,
     priority: link.priority,
   }));
@@ -124,19 +134,45 @@ export function getEarnCompareLinks(
   ];
 }
 
+const PROTOCOL_SEO_SLUGS: Partial<
+  Record<ProtocolSlug, { review?: string; safety?: string }>
+> = {
+  aave: { review: "aave-review", safety: "is-aave-safe" },
+  morpho: { review: "morpho-review", safety: "is-morpho-safe" },
+  compound: { review: "compound-review", safety: "is-compound-safe" },
+  lido: { review: "lido-review", safety: "is-lido-safe" },
+  "rocket-pool": { review: "rocket-pool-review", safety: "is-rocket-pool-safe" },
+  jito: { review: "jito-review", safety: "is-jito-safe" },
+};
+
+const COMPARE_LEARN_LINKS: Partial<Record<CompareSlug, { slug: string; label: LocalizedString }[]>> = {
+  "morpho-vs-aave": [
+    { slug: "what-is-defi-yield", label: { en: "What is DeFi yield?", ru: "Что такое DeFi yield?" } },
+    { slug: "crypto-yield-risks", label: { en: "Crypto yield risks", ru: "Риски crypto yield" } },
+  ],
+  "compound-vs-aave": [
+    { slug: "what-is-defi-yield", label: { en: "What is DeFi yield?", ru: "Что такое DeFi yield?" } },
+    { slug: "crypto-yield-risks", label: { en: "Crypto yield risks", ru: "Риски crypto yield" } },
+  ],
+  "lido-vs-rocket-pool": [
+    { slug: "what-is-liquid-staking", label: { en: "What is liquid staking?", ru: "Что такое liquid staking?" } },
+    { slug: "crypto-yield-risks", label: { en: "Crypto yield risks", ru: "Риски crypto yield" } },
+  ],
+};
+
 /** Protocol page → protocol-vs-protocol compare links involving this protocol. */
 export function getProtocolCompareLinks(
   lang: Locale,
   protocol: Protocol,
 ): CompareInternalLink[] {
   const pairs: Record<ProtocolSlug, CompareSlug[]> = {
-    aave: ["aave-vs-lido", "aave-vs-jito"],
-    lido: ["aave-vs-lido", "lido-vs-jito"],
+    aave: ["aave-vs-lido", "aave-vs-jito", "morpho-vs-aave", "compound-vs-aave"],
+    lido: ["aave-vs-lido", "lido-vs-jito", "lido-vs-rocket-pool"],
     jito: ["aave-vs-jito", "lido-vs-jito"],
-    morpho: ["best-usdc-yield", "best-usdt-yield"],
+    morpho: ["morpho-vs-aave", "best-usdc-yield", "best-usdt-yield"],
     spark: ["best-usdc-yield", "best-usdt-yield"],
-    compound: ["best-usdc-yield", "best-usdt-yield"],
-    "rocket-pool": ["best-eth-staking", "aave-vs-lido"],
+    compound: ["compound-vs-aave", "best-usdc-yield", "best-usdt-yield"],
+    "rocket-pool": ["lido-vs-rocket-pool", "best-eth-staking"],
     etherfi: ["best-eth-staking"],
     pendle: ["best-usdc-yield", "best-eth-staking"],
     ethena: ["best-usdt-yield", "best-usdc-yield"],
@@ -172,11 +208,31 @@ export function buildComparePageInternalLinks(
     for (const side of [page.comparison.left, page.comparison.right]) {
       links.push({
         href: side.protocolPath,
-        label: `${side.name} Review`,
+        label: `${side.name} protocol hub`,
         type: "protocols",
         slug: side.protocolSlug,
         priority: 0.84,
       });
+
+      const seo = PROTOCOL_SEO_SLUGS[side.protocolSlug];
+      if (seo?.review) {
+        links.push({
+          href: localePath(lang, `/reviews/${seo.review}`),
+          label: `${side.name} review`,
+          type: "reviews",
+          slug: seo.review,
+          priority: 0.82,
+        });
+      }
+      if (seo?.safety) {
+        links.push({
+          href: localePath(lang, `/safety/${seo.safety}`),
+          label: `Is ${side.name} safe?`,
+          type: "safety",
+          slug: seo.safety,
+          priority: 0.81,
+        });
+      }
     }
     if (page.comparison.sharedAsset) {
       links.push({
@@ -185,6 +241,15 @@ export function buildComparePageInternalLinks(
         type: "earn",
         slug: page.comparison.sharedAsset,
         priority: 0.83,
+      });
+    }
+    for (const learn of COMPARE_LEARN_LINKS[page.slug] ?? []) {
+      links.push({
+        href: localePath(lang, `/learn/${learn.slug}`),
+        label: lang === "ru" ? learn.label.ru : learn.label.en,
+        type: "learn",
+        slug: learn.slug,
+        priority: 0.79,
       });
     }
   } else {

@@ -1,7 +1,7 @@
 import { SITE } from "@/lib/config";
 import type { Locale } from "@/lib/i18n";
 import { absoluteUrl } from "@/lib/seo/urls";
-import type { ComparePage } from "@/lib/compare/types";
+import type { CompareDetailEditorial, ComparePage } from "@/lib/compare/types";
 import {
   isProtocolComparison,
   isYieldComparison,
@@ -63,6 +63,7 @@ export function buildCompareHubJsonLd(input: {
 export function buildCompareDetailJsonLd(input: {
   lang: Locale;
   page: ComparePage;
+  editorial?: CompareDetailEditorial | null;
 }): JsonLd[] {
   const path = compareDetailPath(input.lang, input.page.slug);
   const description = resolveCompareLocalized(input.page.summary, input.lang);
@@ -154,6 +155,21 @@ export function buildCompareDetailJsonLd(input: {
                 },
               }
             : {}),
+        },
+      })),
+    });
+  }
+
+  if (input.editorial?.faq.length) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: input.editorial.faq.map((item) => ({
+        "@type": "Question",
+        name: resolveCompareLocalized(item.question, input.lang),
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: resolveCompareLocalized(item.answer, input.lang),
         },
       })),
     });

@@ -1,5 +1,10 @@
 import type { Locale } from "@/lib/i18n";
-import type { ComparePage, CompareSlug, LocalizedString } from "@/lib/compare/types";
+import type {
+  ComparePage,
+  CompareSlug,
+  LocalizedString,
+  ProtocolCompareSlug,
+} from "@/lib/compare/types";
 import { resolveCompareLocalized } from "@/lib/compare/types";
 
 export const COMPARE_LEGAL_DISCLAIMER: LocalizedString = {
@@ -42,10 +47,7 @@ export const COMPARE_HUB_COPY = {
   } satisfies LocalizedString,
 };
 
-const PROTOCOL_COMPARE_TITLES: Record<
-  Extract<CompareSlug, "aave-vs-lido" | "aave-vs-jito" | "lido-vs-jito">,
-  LocalizedString
-> = {
+const PROTOCOL_COMPARE_TITLES: Record<ProtocolCompareSlug, LocalizedString> = {
   "aave-vs-lido": {
     en: "Aave vs Lido — informational protocol comparison",
     ru: "Aave vs Lido — информационное сравнение протоколов",
@@ -57,6 +59,18 @@ const PROTOCOL_COMPARE_TITLES: Record<
   "lido-vs-jito": {
     en: "Lido vs Jito — informational liquid-staking comparison",
     ru: "Lido vs Jito — информационное сравнение liquid staking",
+  },
+  "morpho-vs-aave": {
+    en: "Morpho vs Aave — informational lending comparison",
+    ru: "Morpho vs Aave — информационное сравнение lending",
+  },
+  "compound-vs-aave": {
+    en: "Compound vs Aave — informational lending comparison",
+    ru: "Compound vs Aave — информационное сравнение lending",
+  },
+  "lido-vs-rocket-pool": {
+    en: "Lido vs Rocket Pool — informational liquid-staking comparison",
+    ru: "Lido vs Rocket Pool — информационное сравнение liquid staking",
   },
 };
 

@@ -24,6 +24,7 @@ import type {
   ComparePage,
   CompareSlug,
   LocalizedString,
+  ProtocolCompareSlug,
   ProtocolComparison,
   ProtocolComparisonSide,
   YieldComparison,
@@ -41,7 +42,7 @@ const RISK_EXPLANATION: LocalizedString = {
 };
 
 type ProtocolPairSpec = {
-  slug: Extract<CompareSlug, "aave-vs-lido" | "aave-vs-jito" | "lido-vs-jito">;
+  slug: ProtocolCompareSlug;
   left: ProtocolSlug;
   right: ProtocolSlug;
   sharedAsset?: EarnAssetSlug;
@@ -59,6 +60,9 @@ const PROTOCOL_PAIR_SPECS: ProtocolPairSpec[] = [
   { slug: "aave-vs-lido", left: "aave", right: "lido", sharedAsset: "eth" },
   { slug: "aave-vs-jito", left: "aave", right: "jito" },
   { slug: "lido-vs-jito", left: "lido", right: "jito" },
+  { slug: "morpho-vs-aave", left: "morpho", right: "aave", sharedAsset: "usdc" },
+  { slug: "compound-vs-aave", left: "compound", right: "aave", sharedAsset: "usdc" },
+  { slug: "lido-vs-rocket-pool", left: "lido", right: "rocket-pool", sharedAsset: "eth" },
 ];
 
 const YIELD_SPECS: YieldSpec[] = [
@@ -80,6 +84,18 @@ const PROTOCOL_COMPARE_SUMMARIES: Record<ProtocolPairSpec["slug"], LocalizedStri
   "lido-vs-jito": {
     en: "Liquid-staking comparison across Ethereum (Lido stETH) and Solana (Jito jitoSOL). Informational APY, TVL tier, and Trust Score context for two distinct staking ecosystems.",
     ru: "Сравнение liquid staking на Ethereum (Lido stETH) и Solana (Jito jitoSOL). Информационный APY, уровень TVL и Trust Score для двух экосистем стейкинга.",
+  },
+  "morpho-vs-aave": {
+    en: "Informational comparison of Morpho (P2P lending optimizer and Morpho Blue markets) and Aave (multi-chain lending). Covers stablecoin supply context, TVL tiers, chain coverage, and TJT Trust Score v0.1 — market context only.",
+    ru: "Информационное сравнение Morpho (P2P lending optimizer и Morpho Blue) и Aave (multi-chain lending). Контекст supply стейблкоинов, TVL, сети и TJT Trust Score v0.1 — только рыночный контекст.",
+  },
+  "compound-vs-aave": {
+    en: "Informational comparison of Compound (pioneer lending markets) and Aave (multi-chain lending). Side-by-side APY snapshots, TVL tiers, governance models, and Trust Score profiles for market research.",
+    ru: "Информационное сравнение Compound (pioneer lending) и Aave (multi-chain lending). APY, TVL, модели governance и профили Trust Score для исследования рынка.",
+  },
+  "lido-vs-rocket-pool": {
+    en: "Informational Ethereum liquid-staking comparison: Lido stETH vs Rocket Pool rETH. Covers operator models, APY context, TVL tiers, composability, and TJT Trust Score v0.1 — not a ranking.",
+    ru: "Информационное сравнение liquid staking Ethereum: Lido stETH vs Rocket Pool rETH. Модели операторов, APY, TVL, composability и TJT Trust Score v0.1 — не рейтинг.",
   },
 };
 

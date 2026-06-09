@@ -5,6 +5,7 @@ import { Navbar } from "@/components/navbar";
 import { LegalFooter } from "@/components/legal-footer";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CompareComparisonTable } from "@/components/compare/comparison-table";
+import { CompareEditorialSections } from "@/components/compare/editorial-sections";
 import { CompareTrustOverview } from "@/components/compare/trust-overview-section";
 import { CompareInternalLinkSection } from "@/components/compare/internal-link-section";
 import { CompareDisclaimer } from "@/components/compare/disclaimer";
@@ -22,6 +23,7 @@ import {
   comparePageMetaDescription,
   comparePageMetaTitle,
   comparePageTitle,
+  getCompareDetailEditorial,
   getComparePage,
   isCompareSlug,
   resolveCompareLocalized,
@@ -85,7 +87,12 @@ export default async function CompareDetailPage({ params }: PageProps) {
   const page = getComparePage(pages, slug);
   if (!page) notFound();
 
-  const jsonLd = buildCompareDetailJsonLd({ lang: lang as Locale, page });
+  const editorial = getCompareDetailEditorial(slug);
+  const jsonLd = buildCompareDetailJsonLd({
+    lang: lang as Locale,
+    page,
+    editorial,
+  });
 
   const tableLabels = {
     protocol: lang === "ru" ? "Протокол" : "Protocol",
@@ -152,6 +159,13 @@ export default async function CompareDetailPage({ params }: PageProps) {
               </div>
 
               <CompareTrustOverview lang={lang as Locale} page={page} />
+
+              {editorial ? (
+                <CompareEditorialSections
+                  lang={lang as Locale}
+                  editorial={editorial}
+                />
+              ) : null}
 
               <CompareDisclaimer
                 lang={lang as Locale}

@@ -1,9 +1,11 @@
 export {
   COMPARE_SLUGS,
+  PROTOCOL_COMPARE_SLUGS,
   isCompareSlug,
   isProtocolComparison,
   isYieldComparison,
   resolveCompareLocalized,
+  type CompareDetailEditorial,
   type CompareInternalLink,
   type CompareLinkedOffer,
   type CompareMetric,
@@ -11,11 +13,17 @@ export {
   type ComparePageType,
   type CompareSlug,
   type LocalizedString,
+  type ProtocolCompareSlug,
   type ProtocolComparison,
   type ProtocolComparisonSide,
   type YieldComparison,
   type YieldComparisonRow,
 } from "@/lib/compare/types";
+
+export {
+  getCompareDetailEditorial,
+  hasCompareDetailEditorial,
+} from "@/lib/compare/detail-content";
 
 export {
   buildComparePagesFromOffers,

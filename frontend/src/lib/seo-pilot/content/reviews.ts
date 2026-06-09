@@ -135,6 +135,16 @@ export const REVIEW_PAGES: SeoPilotPage[] = [
     ],
     relatedLinks: [
       {
+        href: (lang) => compareHref(lang, "morpho-vs-aave"),
+        label: L("Morpho vs Aave comparison", "Сравнение Morpho vs Aave"),
+        type: "compare",
+      },
+      {
+        href: (lang) => compareHref(lang, "compound-vs-aave"),
+        label: L("Compound vs Aave comparison", "Сравнение Compound vs Aave"),
+        type: "compare",
+      },
+      {
         href: (lang) => compareHref(lang, "aave-vs-lido"),
         label: L("Aave vs Lido comparison", "Сравнение Aave vs Lido"),
         type: "compare",
@@ -279,6 +289,11 @@ export const REVIEW_PAGES: SeoPilotPage[] = [
       },
     ],
     relatedLinks: [
+      {
+        href: (lang) => compareHref(lang, "lido-vs-rocket-pool"),
+        label: L("Lido vs Rocket Pool comparison", "Сравнение Lido vs Rocket Pool"),
+        type: "compare",
+      },
       {
         href: (lang) => compareHref(lang, "lido-vs-jito"),
         label: L("Lido vs Jito comparison", "Сравнение Lido vs Jito"),
@@ -569,6 +584,7 @@ export const REVIEW_PAGES: SeoPilotPage[] = [
       },
     ],
     relatedLinks: [
+      { href: (lang) => compareHref(lang, "morpho-vs-aave"), label: L("Morpho vs Aave comparison", "Сравнение Morpho vs Aave"), type: "compare" },
       { href: (lang) => compareHref(lang, "best-usdc-yield"), label: L("Best USDC yield comparison", "Сравнение лучшего USDC yield"), type: "compare" },
       { href: (lang) => compareHref(lang, "best-usdt-yield"), label: L("Best USDT yield comparison", "Сравнение лучшего USDT yield"), type: "compare" },
       { href: (lang) => compareHref(lang, "aave-vs-lido"), label: L("Aave vs Lido comparison", "Сравнение Aave vs Lido"), type: "compare" },
@@ -578,7 +594,7 @@ export const REVIEW_PAGES: SeoPilotPage[] = [
       { href: (lang) => safetyHref(lang, "is-morpho-safe"), label: L("Is Morpho safe?", "Безопасен ли Morpho?"), type: "safety" },
       { href: reviewsHubHref, label: L("Reviews hub", "Хаб обзоров"), type: "reviews" },
     ],
-    ctaHref: (lang) => compareHref(lang, "best-usdc-yield"),
+    ctaHref: (lang) => compareHref(lang, "morpho-vs-aave"),
     keywords: ["morpho review", "morpho blue", "defi lending optimizer", "morpho risks"],
   },
   {
@@ -681,6 +697,7 @@ export const REVIEW_PAGES: SeoPilotPage[] = [
       },
     ],
     relatedLinks: [
+      { href: (lang) => compareHref(lang, "lido-vs-rocket-pool"), label: L("Lido vs Rocket Pool comparison", "Сравнение Lido vs Rocket Pool"), type: "compare" },
       { href: (lang) => compareHref(lang, "best-eth-staking"), label: L("Best ETH staking comparison", "Сравнение лучшего ETH staking"), type: "compare" },
       { href: (lang) => compareHref(lang, "aave-vs-lido"), label: L("Aave vs Lido comparison", "Сравнение Aave vs Lido"), type: "compare" },
       { href: (lang) => protocolHref(lang, "rocket-pool"), label: L("Rocket Pool protocol hub", "Хаб протокола Rocket Pool"), type: "protocols" },
@@ -689,7 +706,7 @@ export const REVIEW_PAGES: SeoPilotPage[] = [
       { href: (lang) => safetyHref(lang, "is-rocket-pool-safe"), label: L("Is Rocket Pool safe?", "Безопасен ли Rocket Pool?"), type: "safety" },
       { href: reviewsHubHref, label: L("Reviews hub", "Хаб обзоров"), type: "reviews" },
     ],
-    ctaHref: (lang) => compareHref(lang, "best-eth-staking"),
+    ctaHref: (lang) => compareHref(lang, "lido-vs-rocket-pool"),
     keywords: ["rocket pool review", "reth", "decentralized staking", "eth liquid staking"],
   },
   {
@@ -792,6 +809,7 @@ export const REVIEW_PAGES: SeoPilotPage[] = [
       },
     ],
     relatedLinks: [
+      { href: (lang) => compareHref(lang, "compound-vs-aave"), label: L("Compound vs Aave comparison", "Сравнение Compound vs Aave"), type: "compare" },
       { href: (lang) => compareHref(lang, "best-usdc-yield"), label: L("Best USDC yield comparison", "Сравнение лучшего USDC yield"), type: "compare" },
       { href: (lang) => compareHref(lang, "best-usdt-yield"), label: L("Best USDT yield comparison", "Сравнение лучшего USDT yield"), type: "compare" },
       { href: (lang) => compareHref(lang, "aave-vs-lido"), label: L("Aave vs Lido comparison", "Сравнение Aave vs Lido"), type: "compare" },
@@ -801,7 +819,7 @@ export const REVIEW_PAGES: SeoPilotPage[] = [
       { href: (lang) => safetyHref(lang, "is-compound-safe"), label: L("Is Compound safe?", "Безопасен ли Compound?"), type: "safety" },
       { href: reviewsHubHref, label: L("Reviews hub", "Хаб обзоров"), type: "reviews" },
     ],
-    ctaHref: (lang) => compareHref(lang, "best-usdc-yield"),
+    ctaHref: (lang) => compareHref(lang, "compound-vs-aave"),
     keywords: ["compound review", "compound finance", "defi lending", "compound risks"],
   },
 ];

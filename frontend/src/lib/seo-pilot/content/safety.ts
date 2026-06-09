@@ -131,6 +131,16 @@ export const SAFETY_PAGES: SeoPilotPage[] = [
     ],
     relatedLinks: [
       {
+        href: (lang) => compareHref(lang, "morpho-vs-aave"),
+        label: L("Morpho vs Aave comparison", "Сравнение Morpho vs Aave"),
+        type: "compare",
+      },
+      {
+        href: (lang) => compareHref(lang, "compound-vs-aave"),
+        label: L("Compound vs Aave comparison", "Сравнение Compound vs Aave"),
+        type: "compare",
+      },
+      {
         href: (lang) => compareHref(lang, "aave-vs-lido"),
         label: L("Aave vs Lido comparison", "Сравнение Aave vs Lido"),
         type: "compare",
@@ -259,6 +269,11 @@ export const SAFETY_PAGES: SeoPilotPage[] = [
       },
     ],
     relatedLinks: [
+      {
+        href: (lang) => compareHref(lang, "lido-vs-rocket-pool"),
+        label: L("Lido vs Rocket Pool comparison", "Сравнение Lido vs Rocket Pool"),
+        type: "compare",
+      },
       {
         href: (lang) => compareHref(lang, "best-eth-staking"),
         label: L("Best ETH staking comparison", "Сравнение лучшего ETH staking"),
@@ -517,6 +532,7 @@ export const SAFETY_PAGES: SeoPilotPage[] = [
       },
     ],
     relatedLinks: [
+      { href: (lang) => compareHref(lang, "morpho-vs-aave"), label: L("Morpho vs Aave comparison", "Сравнение Morpho vs Aave"), type: "compare" },
       { href: (lang) => compareHref(lang, "best-usdc-yield"), label: L("Best USDC yield comparison", "Сравнение лучшего USDC yield"), type: "compare" },
       { href: (lang) => compareHref(lang, "best-usdt-yield"), label: L("Best USDT yield comparison", "Сравнение лучшего USDT yield"), type: "compare" },
       { href: (lang) => protocolHref(lang, "morpho"), label: L("Morpho protocol hub", "Хаб протокола Morpho"), type: "protocols" },
@@ -525,7 +541,7 @@ export const SAFETY_PAGES: SeoPilotPage[] = [
       { href: (lang) => earnHref(lang, "usdc"), label: L("USDC earn hub", "Earn-хаб USDC"), type: "earn" },
       { href: safetyHubHref, label: L("Safety hub", "Хаб безопасности"), type: "safety" },
     ],
-    ctaHref: (lang) => compareHref(lang, "best-usdc-yield"),
+    ctaHref: (lang) => compareHref(lang, "morpho-vs-aave"),
     keywords: ["is morpho safe", "morpho risks", "morpho blue safety", "defi lending safety"],
   },
   {
@@ -628,6 +644,7 @@ export const SAFETY_PAGES: SeoPilotPage[] = [
       },
     ],
     relatedLinks: [
+      { href: (lang) => compareHref(lang, "lido-vs-rocket-pool"), label: L("Lido vs Rocket Pool comparison", "Сравнение Lido vs Rocket Pool"), type: "compare" },
       { href: (lang) => compareHref(lang, "best-eth-staking"), label: L("Best ETH staking comparison", "Сравнение лучшего ETH staking"), type: "compare" },
       { href: (lang) => compareHref(lang, "aave-vs-lido"), label: L("Aave vs Lido comparison", "Сравнение Aave vs Lido"), type: "compare" },
       { href: (lang) => protocolHref(lang, "rocket-pool"), label: L("Rocket Pool protocol hub", "Хаб протокола Rocket Pool"), type: "protocols" },
@@ -636,7 +653,7 @@ export const SAFETY_PAGES: SeoPilotPage[] = [
       { href: (lang) => earnHref(lang, "eth"), label: L("ETH earn hub", "Earn-хаб ETH"), type: "earn" },
       { href: safetyHubHref, label: L("Safety hub", "Хаб безопасности"), type: "safety" },
     ],
-    ctaHref: (lang) => compareHref(lang, "best-eth-staking"),
+    ctaHref: (lang) => compareHref(lang, "lido-vs-rocket-pool"),
     keywords: ["is rocket pool safe", "reth risks", "rocket pool slashing", "liquid staking safety"],
   },
   {
@@ -739,6 +756,7 @@ export const SAFETY_PAGES: SeoPilotPage[] = [
       },
     ],
     relatedLinks: [
+      { href: (lang) => compareHref(lang, "compound-vs-aave"), label: L("Compound vs Aave comparison", "Сравнение Compound vs Aave"), type: "compare" },
       { href: (lang) => compareHref(lang, "best-usdc-yield"), label: L("Best USDC yield comparison", "Сравнение лучшего USDC yield"), type: "compare" },
       { href: (lang) => compareHref(lang, "best-usdt-yield"), label: L("Best USDT yield comparison", "Сравнение лучшего USDT yield"), type: "compare" },
       { href: (lang) => protocolHref(lang, "compound"), label: L("Compound protocol hub", "Хаб протокола Compound"), type: "protocols" },
@@ -747,7 +765,7 @@ export const SAFETY_PAGES: SeoPilotPage[] = [
       { href: (lang) => earnHref(lang, "usdc"), label: L("USDC earn hub", "Earn-хаб USDC"), type: "earn" },
       { href: safetyHubHref, label: L("Safety hub", "Хаб безопасности"), type: "safety" },
     ],
-    ctaHref: (lang) => compareHref(lang, "best-usdc-yield"),
+    ctaHref: (lang) => compareHref(lang, "compound-vs-aave"),
     keywords: ["is compound safe", "compound risks", "compound security", "defi lending safety"],
   },
 ];

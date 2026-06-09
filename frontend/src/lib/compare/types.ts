@@ -11,11 +11,26 @@ export const COMPARE_SLUGS = [
   "aave-vs-lido",
   "aave-vs-jito",
   "lido-vs-jito",
+  "morpho-vs-aave",
+  "compound-vs-aave",
+  "lido-vs-rocket-pool",
   "best-usdt-yield",
   "best-usdc-yield",
   "best-eth-staking",
   "best-sol-staking",
 ] as const;
+
+/** Protocol-vs-protocol compare slugs only. */
+export const PROTOCOL_COMPARE_SLUGS = [
+  "aave-vs-lido",
+  "aave-vs-jito",
+  "lido-vs-jito",
+  "morpho-vs-aave",
+  "compound-vs-aave",
+  "lido-vs-rocket-pool",
+] as const;
+
+export type ProtocolCompareSlug = (typeof PROTOCOL_COMPARE_SLUGS)[number];
 
 export type CompareSlug = (typeof COMPARE_SLUGS)[number];
 
@@ -45,9 +60,38 @@ export type CompareLinkedOffer = {
 export type CompareInternalLink = {
   href: string;
   label: string;
-  type: "earn" | "protocols" | "compare" | "offers" | "coins" | "news";
+  type:
+    | "earn"
+    | "protocols"
+    | "compare"
+    | "offers"
+    | "coins"
+    | "news"
+    | "reviews"
+    | "safety"
+    | "learn";
   slug?: string;
   priority: number;
+};
+
+/** Editorial prose blocks for protocol-vs-protocol compare detail pages. */
+export type CompareEditorialFaqItem = {
+  question: LocalizedString;
+  answer: LocalizedString;
+};
+
+export type CompareProtocolOverview = {
+  protocolName: string;
+  title: LocalizedString;
+  body: LocalizedString;
+};
+
+export type CompareDetailEditorial = {
+  slug: ProtocolCompareSlug;
+  leftOverview: CompareProtocolOverview;
+  rightOverview: CompareProtocolOverview;
+  useCaseComparison: { title: LocalizedString; body: LocalizedString };
+  faq: CompareEditorialFaqItem[];
 };
 
 /** One side of a protocol-vs-protocol comparison table. */
