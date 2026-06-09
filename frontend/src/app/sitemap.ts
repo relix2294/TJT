@@ -4,6 +4,7 @@ import { LOCALES } from "@/lib/i18n";
 import { EARN_ASSET_SLUGS } from "@/lib/earn";
 import { COMPARE_SLUGS } from "@/lib/compare";
 import { PROTOCOL_SLUGS } from "@/lib/protocols";
+import { SEO_PILOT_PAGES } from "@/lib/seo-pilot";
 import {
   buildSitemapEntry,
   buildStaticHubEntries,
@@ -135,11 +136,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ),
   );
 
+  const seoPilotEntries: MetadataRoute.Sitemap = SEO_PILOT_PAGES.flatMap(
+    (page) =>
+      LOCALES.map((lang) =>
+        buildSitemapEntry(
+          {
+            baseUrl,
+            lang,
+            path: `/${lang}/${page.hubSegment}/${page.slug}`,
+            lastModified: now,
+            changeFrequency: "monthly",
+            priority: 0.72,
+            localeNeutralPath: (l) => `/${l}/${page.hubSegment}/${page.slug}`,
+          },
+          now,
+        ),
+      ),
+  );
+
   return [
     ...staticEntries,
     ...protocolEntries,
     ...compareEntries,
     ...earnAssetEntries,
+    ...seoPilotEntries,
     ...offerEntries,
     ...newsEntries,
     ...marketEntries,

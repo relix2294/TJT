@@ -37,6 +37,56 @@ export type NewsArticleSchemaInput = {
   publisherName?: string;
 };
 
+export type ArticleSchemaInput = {
+  lang: Locale;
+  path: string;
+  headline: string;
+  description: string;
+  keywords?: string[];
+};
+
+export function buildArticleSchema(input: ArticleSchemaInput): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    inLanguage: input.lang,
+    headline: input.headline,
+    description: input.description,
+    ...(input.keywords?.length
+      ? { keywords: input.keywords.join(", ") }
+      : {}),
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": absoluteUrl(input.path),
+    },
+    author: {
+      "@type": "Organization",
+      name: "TJT Research",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE.name,
+    },
+  };
+}
+
+export function buildFaqPageSchema(
+  faq: Array<{ question: string; answer: string }>,
+): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
+
 export function buildNewsArticleSchema(input: NewsArticleSchemaInput): JsonLd {
   return {
     "@context": "https://schema.org",

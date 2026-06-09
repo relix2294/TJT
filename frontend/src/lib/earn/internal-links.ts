@@ -71,6 +71,12 @@ export function getEarnHubLinkGraph(
       type: "news",
       priority: 0.7,
     },
+    {
+      href: localePath(lang, "/earn/how-to-compare-usdt-yield"),
+      label: lang === "ru" ? "Сравнение USDT yield" : "Compare USDT yield guide",
+      type: "earn",
+      priority: 0.78,
+    },
   ];
 
   for (const asset of EARN_ASSETS) {

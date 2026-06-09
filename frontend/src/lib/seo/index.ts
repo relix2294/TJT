@@ -28,7 +28,9 @@ export {
 } from "@/lib/seo/metadata";
 
 export {
+  buildArticleSchema,
   buildBreadcrumbList,
+  buildFaqPageSchema,
   buildFinancialProductSchema,
   buildNewsArticleSchema,
   buildOrganizationSchema,
