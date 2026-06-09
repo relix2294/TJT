@@ -121,4 +121,4 @@ Checks:
 
 ## Next recommended step
 
-**Phase 4 — Earn asset trust model:** define `EarnAssetTrustProfile` or documented blend rules, then migrate `/earn` hub and asset detail pages.
+**Phase 4 — Earn asset trust model:** design complete in [`EARN_ASSET_TRUST_V0_1.md`](./EARN_ASSET_TRUST_V0_1.md). Next: implement Phase 4a–4b (resolver + verification, no UI change), then migrate `/earn` hub and asset detail pages.
