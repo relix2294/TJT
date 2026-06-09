@@ -138,8 +138,8 @@ function parseSeoKeywords(
   const en = value.en;
   const ru = value.ru;
   if (!Array.isArray(en) || !Array.isArray(ru)) return null;
-  const enKeywords = en.filter((k): k is string => typeof k === "string" && k.trim());
-  const ruKeywords = ru.filter((k): k is string => typeof k === "string" && k.trim());
+  const enKeywords = en.filter((k): k is string => typeof k === "string" && k.trim().length > 0);
+  const ruKeywords = ru.filter((k): k is string => typeof k === "string" && k.trim().length > 0);
   if (!enKeywords.length || !ruKeywords.length) return null;
   return { en: enKeywords, ru: ruKeywords };
 }
@@ -204,7 +204,7 @@ function parsePayload(body: unknown): PublishArticlePayload | string {
     description,
     content,
     ...(lang !== undefined ? { lang } : {}),
-    ...(seo_keywords !== undefined ? { seo_keywords } : {}),
+    ...(seo_keywords != null ? { seo_keywords } : {}),
   };
 }
 

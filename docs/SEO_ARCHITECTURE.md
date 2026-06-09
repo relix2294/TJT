@@ -165,7 +165,7 @@ Implementation: use `chunkSitemapEntries()` from `@/lib/seo` and add route handl
 
 - `allow: /`
 - `disallow: /api/`, `/*/admin/`
-- `sitemap` and `host` from `getSiteUrl()`
+- `sitemap` and `host` from `getSiteUrl()` in `@/lib/seo/constants`
 
 ---
 

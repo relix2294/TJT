@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getSiteUrl } from "@/lib/seo";
+import { getSiteUrl } from "@/lib/seo/constants";
 
 /**
  * robots.txt — fully indexable public hub; API plumbing stays out of crawlers.

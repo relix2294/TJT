@@ -165,7 +165,7 @@ Remaining gaps are dominated by **placeholder domain configuration**, **missing 
 |---|---|
 | **Impact** | Admin routes relied on `noindex` meta only; crawlers could still fetch login/dashboard. |
 | **Evidence** | `robots.ts` before refactor |
-| **Fix** | **Fixed** — added `disallow: /*/admin/`. |
+| **Fix** | **Fixed** — `frontend/src/app/robots.ts` sets `allow: /`, `disallow: /api/`, and `disallow: /*/admin/`; `sitemap` / `host` use `getSiteUrl()` from `@/lib/seo/constants` (no local fallback duplication). |
 | **Status** | ✅ Resolved |
 
 ### M9 — Unused SEO-adjacent components
@@ -227,7 +227,7 @@ Remaining gaps are dominated by **placeholder domain configuration**, **missing 
 | Page refactors (metadata + schema) | All `[lang]/**/page.tsx` with SEO |
 | Architecture doc | `/docs/SEO_ARCHITECTURE.md` |
 | This audit | `/docs/SEO_AUDIT.md` |
-| robots.txt admin disallow | `frontend/src/app/robots.ts` |
+| robots.txt (`/api/`, `/*/admin/` disallow + `getSiteUrl`) | `frontend/src/app/robots.ts` |
 | Market page FinancialProduct schema | `market/[slug]/page.tsx` |
 
 **Preserved:** all existing routes, UI, features, and `/market`, `/offers`, `/news` URL paths.

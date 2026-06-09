@@ -46,7 +46,10 @@ async function withCrossProcessLock<T>(
     });
     return await fn();
   } catch (err) {
-    if (lockfile.isLockStale(err as Error)) {
+    const isLockStale = (
+      lockfile as typeof lockfile & { isLockStale?: (error: Error) => boolean }
+    ).isLockStale;
+    if (typeof isLockStale === "function" && isLockStale(err as Error)) {
       console.error(`[json-file-store] Stale lock on ${targetPath}:`, err);
     }
     const message = (err as Error).message ?? String(err);
