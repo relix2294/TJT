@@ -46,8 +46,8 @@ export const SEO_ROUTE_MAP: Record<
     detail: (slug) => `/offers/${slug}`,
   },
   compare: {
-    hub: "/market",
-    detail: (slug) => `/market/${slug}`,
+    hub: "/compare",
+    detail: (slug) => `/compare/${slug}`,
   },
   earn: {
     hub: "/earn",

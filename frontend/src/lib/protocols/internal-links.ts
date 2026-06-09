@@ -107,13 +107,7 @@ export function getProtocolsHubLinkGraph(
   return links;
 }
 
-/** Future compare deep-links — structure only, no compare pages yet. */
-export function getProtocolComparePlaceholderLinks(
-  _lang: Locale,
-  _protocol: Protocol,
-): InternalLink[] {
-  return [];
-}
+export { getProtocolComparePlaceholderLinks } from "@/lib/compare/internal-links";
 
 /** Earn opportunity rows with offer deep-links when available. */
 export function getProtocolEarnOpportunityLinks(

@@ -109,13 +109,7 @@ export function getEarnToMarketLinks(
   ];
 }
 
-/** Future compare deep-links — structure only, no compare pages yet. */
-export function getEarnComparePlaceholderLinks(
-  _lang: Locale,
-  _asset: Asset,
-): InternalLink[] {
-  return [];
-}
+export { getEarnComparePlaceholderLinks } from "@/lib/compare/internal-links";
 
 /** Filter offers relevant to an asset for sidebar cards. */
 export function filterOffersForAsset(
