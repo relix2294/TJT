@@ -3,6 +3,9 @@ import type { EarnAssetSlug } from "@/lib/earn/types";
 import type { Asset } from "@/lib/earn/types";
 import type { TrustScore } from "@/lib/trust-score";
 import type { SeoPilotFaqItem } from "@/lib/seo-pilot/types";
+import { getCompareSlugTitle } from "@/lib/compare/content";
+import { compareDetailPath } from "@/lib/compare/paths";
+import type { CompareSlug } from "@/lib/compare/types";
 
 /** Hub-level copy — bilingual, independent of config.json for earn foundation. */
 export const EARN_HUB_COPY = {
@@ -110,6 +113,15 @@ export type EarnContentBlock = {
   body: string;
   /** When true, block is a slot for future AI-generated prose. */
   aiSlot?: boolean;
+  /** Optional inline links for blocks that surface live destinations. */
+  links?: { href: string; label: string }[];
+};
+
+const ASSET_COMPARE_SLUG: Partial<Record<Asset["slug"], CompareSlug>> = {
+  usdt: "best-usdt-yield",
+  usdc: "best-usdc-yield",
+  eth: "best-eth-staking",
+  sol: "best-sol-staking",
 };
 
 /** Default content blocks for asset pages — AI slots marked for future injection. */
@@ -159,11 +171,43 @@ export function buildEarnAssetContentBlocks(
     {
       key: "compare_teaser",
       title: { en: "Compare routes", ru: "Сравнение маршрутов" }[lang],
-      body: {
-        en: "Side-by-side protocol comparison pages are planned. This block reserves crawlable internal-link slots.",
-        ru: "Страницы сравнения протоколов в разработке. Блок резервирует слоты для внутренних ссылок.",
-      }[lang],
-      aiSlot: true,
+      body: (() => {
+        const compareSlug = ASSET_COMPARE_SLUG[asset.slug];
+        if (!compareSlug) {
+          return {
+            en: "Open live TJT Compare pages for side-by-side APY, TVL context, and Trust Score differences across catalogued routes.",
+            ru: "Откройте live-страницы TJT Compare для сравнения APY, TVL и Trust Score по маршрутам каталога.",
+          }[lang];
+        }
+        const compareTitle = getCompareSlugTitle(compareSlug)[lang];
+        return {
+          en: `Compare ${symbol} yield routes side by side on ${compareTitle} — live APY snapshots, chain coverage, and Trust Score context.`,
+          ru: `Сравните маршруты ${symbol} на странице ${compareTitle} — live APY, сети и контекст Trust Score.`,
+        }[lang];
+      })(),
+      links: (() => {
+        const compareSlug = ASSET_COMPARE_SLUG[asset.slug];
+        if (!compareSlug) return undefined;
+        const links = [
+          {
+            href: compareDetailPath(lang, compareSlug),
+            label: getCompareSlugTitle(compareSlug)[lang],
+          },
+        ];
+        if (asset.slug === "eth") {
+          links.push(
+            {
+              href: compareDetailPath(lang, "best-liquid-staking"),
+              label: getCompareSlugTitle("best-liquid-staking")[lang],
+            },
+            {
+              href: compareDetailPath(lang, "best-eth-restaking"),
+              label: getCompareSlugTitle("best-eth-restaking")[lang],
+            },
+          );
+        }
+        return links;
+      })(),
     },
   ];
 }

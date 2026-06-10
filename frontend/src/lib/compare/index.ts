@@ -25,6 +25,8 @@ export {
   hasCompareDetailEditorial,
 } from "@/lib/compare/detail-content";
 
+export { getCompareYieldFaq } from "@/lib/compare/yield-detail-content";
+
 export {
   buildComparePagesFromOffers,
   getAllCompareSlugs,

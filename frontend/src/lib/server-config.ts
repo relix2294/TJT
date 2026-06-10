@@ -1,5 +1,6 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
+import { cache } from "react";
 import { resolveRepoDataPath } from "@/lib/repo-paths";
 import {
   NEWS_CATEGORIES,
@@ -368,7 +369,8 @@ function normalizeDictionary(raw: unknown, lang: Locale): Dictionary {
 
 /* -------------------------------- loaders -------------------------------- */
 
-async function readConfigFile(): Promise<Record<string, unknown>> {
+/** Per-request dedupe — metadata + page often both load config in one render. */
+const readConfigFile = cache(async (): Promise<Record<string, unknown>> => {
   let raw: string;
   try {
     raw = await fs.readFile(CONFIG_PATH, "utf-8");
@@ -386,7 +388,7 @@ async function readConfigFile(): Promise<Record<string, unknown>> {
   }
 
   return asRecord(parsed, "<root>");
-}
+});
 
 /**
  * Read, validate and normalize the backend `config.json` for a given locale.

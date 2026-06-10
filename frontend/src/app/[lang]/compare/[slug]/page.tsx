@@ -9,6 +9,12 @@ import { CompareEditorialSections } from "@/components/compare/editorial-section
 import { CompareTrustOverview } from "@/components/compare/trust-overview-section";
 import { CompareInternalLinkSection } from "@/components/compare/internal-link-section";
 import { CompareDisclaimer } from "@/components/compare/disclaimer";
+import { SeoPilotFaqSection } from "@/components/seo-pilot/faq-section";
+import { TrustContextNote } from "@/components/trust-context-note";
+import { ProductNextStep } from "@/components/product-connectivity/product-next-step";
+import { RecommendationLayer } from "@/components/recommendations/recommendation-layer";
+import { buildComparePageNextSteps } from "@/lib/product-connectivity";
+import { buildCompareRecommendations } from "@/lib/recommendations";
 import { JsonLd } from "@/components/json-ld";
 import { loadAppConfig, loadDictionary } from "@/lib/server-config";
 import { LOCALES, isLocale, type Locale } from "@/lib/i18n";
@@ -24,6 +30,7 @@ import {
   comparePageMetaTitle,
   comparePageTitle,
   getCompareDetailEditorial,
+  getCompareYieldFaq,
   getComparePage,
   isCompareSlug,
   resolveCompareLocalized,
@@ -88,10 +95,13 @@ export default async function CompareDetailPage({ params }: PageProps) {
   if (!page) notFound();
 
   const editorial = getCompareDetailEditorial(slug);
+  const yieldFaq = getCompareYieldFaq(slug);
+  const faqTitle = lang === "ru" ? "FAQ" : "FAQ";
   const jsonLd = buildCompareDetailJsonLd({
     lang: lang as Locale,
     page,
     editorial,
+    yieldFaq,
   });
 
   const tableLabels = {
@@ -113,6 +123,8 @@ export default async function CompareDetailPage({ params }: PageProps) {
     lang === "ru" ? "Контекст риска" : "Risk context";
   const relatedTitle =
     lang === "ru" ? "Связанные страницы" : "Related pages";
+  const nextSteps = buildComparePageNextSteps(lang as Locale, page);
+  const recommendations = buildCompareRecommendations(lang as Locale, page);
 
   return (
     <>
@@ -158,6 +170,13 @@ export default async function CompareDetailPage({ params }: PageProps) {
                 />
               </div>
 
+              {recommendations ? (
+                <RecommendationLayer
+                  lang={lang as Locale}
+                  model={recommendations}
+                />
+              ) : null}
+
               <CompareTrustOverview lang={lang as Locale} page={page} />
 
               {editorial ? (
@@ -167,15 +186,32 @@ export default async function CompareDetailPage({ params }: PageProps) {
                 />
               ) : null}
 
+              {yieldFaq ? (
+                <SeoPilotFaqSection
+                  lang={lang as Locale}
+                  items={yieldFaq}
+                  title={faqTitle}
+                />
+              ) : null}
+
               <CompareDisclaimer
                 lang={lang as Locale}
                 disclaimer={page.disclaimer}
                 riskExplanation={page.riskExplanation}
                 riskTitle={riskTitle}
               />
+
+              <ProductNextStep
+                lang={lang as Locale}
+                steps={nextSteps}
+                variant="grid"
+              />
+
+              <TrustContextNote lang={lang as Locale} />
             </div>
 
-            <aside>
+            <aside className="space-y-4">
+              <ProductNextStep lang={lang as Locale} steps={nextSteps} />
               <CompareInternalLinkSection
                 title={relatedTitle}
                 links={page.internalLinks}

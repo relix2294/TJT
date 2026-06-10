@@ -14,6 +14,7 @@ import type {
 import { COMPARE_SLUGS, isProtocolComparison } from "@/lib/compare/types";
 import { compareDetailPath, compareHubPath } from "@/lib/compare/paths";
 import { getCompareSlugTitle } from "@/lib/compare/content";
+import { PROTOCOL_SEO_SLUGS } from "@/lib/product-connectivity/protocol-seo-map";
 
 /** Map domain CompareInternalLink to shared SEO InternalLink shape. */
 function toSeoLinkType(
@@ -84,6 +85,24 @@ export function getCompareHubLinkGraph(
       label: "Yield catalog",
       type: "offers",
       priority: 0.82,
+    },
+    {
+      href: localePath(lang, "/reviews"),
+      label: "Protocol reviews",
+      type: "reviews",
+      priority: 0.8,
+    },
+    {
+      href: localePath(lang, "/safety"),
+      label: "Safety guides",
+      type: "safety",
+      priority: 0.78,
+    },
+    {
+      href: localePath(lang, "/learn"),
+      label: "Learn hub",
+      type: "learn",
+      priority: 0.76,
     },
   ];
 
@@ -166,21 +185,6 @@ export function getEarnCompareLinks(
     ...usdcRiskLink,
   ];
 }
-
-const PROTOCOL_SEO_SLUGS: Partial<
-  Record<ProtocolSlug, { review?: string; safety?: string }>
-> = {
-  aave: { review: "aave-review", safety: "is-aave-safe" },
-  morpho: { review: "morpho-review", safety: "is-morpho-safe" },
-  compound: { review: "compound-review", safety: "is-compound-safe" },
-  lido: { review: "lido-review", safety: "is-lido-safe" },
-  "rocket-pool": { review: "rocket-pool-review", safety: "is-rocket-pool-safe" },
-  jito: { review: "jito-review", safety: "is-jito-safe" },
-  spark: { review: "spark-review", safety: "is-spark-safe" },
-  pendle: { review: "pendle-review", safety: "is-pendle-safe" },
-  etherfi: { review: "etherfi-review", safety: "is-etherfi-safe" },
-  ethena: { review: "ethena-review", safety: "is-ethena-safe" },
-};
 
 const COMPARE_LEARN_LINKS: Partial<Record<CompareSlug, { slug: string; label: LocalizedString }[]>> = {
   "morpho-vs-aave": [

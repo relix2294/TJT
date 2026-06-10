@@ -5,6 +5,11 @@ import type {
   TrustLocalizedString,
   TrustProtocolSlug,
 } from "@/lib/trust/trust-types";
+import {
+  computeProtocolTrustScore,
+  scoreToGrade,
+} from "@/lib/trust-score/scoring";
+import type { TrustScore, TrustScoreInput } from "@/lib/trust-score/types";
 
 /** Resolved protocol trust data for display surfaces (compare table, badges). */
 export type ProtocolTrustDisplay = {
@@ -68,4 +73,39 @@ export function getProtocolTrustForDisplay(
     dataStatus: profile.dataStatus,
     lastReviewed: profile.lastReviewed,
   };
+}
+
+/** Canonical numeric Trust Score — prefers static registry profile over dynamic compute. */
+export function resolveProtocolTrustScoreValue(
+  slug: string,
+  fallback?: TrustScoreInput,
+): number | null {
+  const profile = getTrustProfileOrNull(slug);
+  if (profile) return profile.score;
+  if (fallback) return computeProtocolTrustScore(fallback).score;
+  return null;
+}
+
+/** Canonical Trust Score object — prefers static registry profile over dynamic compute. */
+export function resolveProtocolTrustScore(
+  slug: string,
+  fallback?: TrustScoreInput,
+): TrustScore | null {
+  const profile = getTrustProfileOrNull(slug);
+  if (profile) {
+    return {
+      score: profile.score,
+      grade: scoreToGrade(profile.score),
+      version: profile.version,
+      explanation: {
+        short: profile.explanation,
+        detailed: profile.explanation,
+      },
+      factors: [],
+      disclaimer: profile.disclaimer,
+      computedAt: profile.lastReviewed,
+    };
+  }
+  if (fallback) return computeProtocolTrustScore(fallback);
+  return null;
 }

@@ -50,21 +50,23 @@ export function LegalFooter({ lang, dict }: { lang: Locale; dict: Dictionary }) 
               {dict.site.tagline}. {t.tagline}
             </p>
 
-            <div className="mt-6 flex items-center gap-2">
-              {SOCIAL_LINKS.map((s) => {
-                const Icon = SOCIAL_ICONS[s.label] ?? AtSign;
-                return (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    aria-label={s.label}
-                    className="grid size-9 place-items-center rounded-lg border border-border/60 bg-white/[0.03] text-muted-foreground transition-colors hover:border-primary/50 hover:bg-[--neon-soft] hover:text-primary"
-                  >
-                    <Icon className="size-4" />
-                  </a>
-                );
-              })}
-            </div>
+            {SOCIAL_LINKS.length > 0 ? (
+              <div className="mt-6 flex items-center gap-2">
+                {SOCIAL_LINKS.map((s) => {
+                  const Icon = SOCIAL_ICONS[s.label] ?? AtSign;
+                  return (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      aria-label={s.label}
+                      className="grid size-9 place-items-center rounded-lg border border-border/60 bg-white/[0.03] text-muted-foreground transition-colors hover:border-primary/50 hover:bg-[--neon-soft] hover:text-primary"
+                    >
+                      <Icon className="size-4" />
+                    </a>
+                  );
+                })}
+              </div>
+            ) : null}
           </div>
 
           {t.columns.map((col) => (
@@ -89,14 +91,27 @@ export function LegalFooter({ lang, dict }: { lang: Locale; dict: Dictionary }) 
         </div>
 
         {/* Risk disclosure */}
-        <div className="mt-12 rounded-2xl border border-border/60 bg-background/40 p-6 sm:p-8">
+        <div
+          id="risk-disclosure"
+          className="mt-12 scroll-mt-20 rounded-2xl border border-border/60 bg-background/40 p-6 sm:p-8"
+        >
           <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-slate-300">
             <Scale className="size-4 text-primary" />
             {dict.risk.heading}
           </div>
           <div className="space-y-3">
             {dict.risk.paragraphs.map((p, i) => (
-              <p key={i} className="text-xs leading-relaxed text-muted-foreground">
+              <p
+                key={i}
+                id={
+                  i === 0
+                    ? "non-custodial-status"
+                    : i === dict.risk.paragraphs.length - 1
+                      ? "terms-of-use"
+                      : undefined
+                }
+                className="scroll-mt-20 text-xs leading-relaxed text-muted-foreground"
+              >
                 {p}
               </p>
             ))}
@@ -128,7 +143,10 @@ export function LegalFooter({ lang, dict }: { lang: Locale; dict: Dictionary }) 
           </div>
         </div>
 
-        <p className="mt-4 text-[0.7rem] leading-relaxed text-muted-foreground/70">
+        <p
+          id="privacy-policy"
+          className="mt-4 scroll-mt-20 text-[0.7rem] leading-relaxed text-muted-foreground/70"
+        >
           {SITE.model}. {t.academyNote}
         </p>
       </div>

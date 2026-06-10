@@ -40,6 +40,7 @@ export {
   getProtocolEarnAssetLinks,
   getProtocolEarnOpportunityLinks,
   getProtocolOfferLinks,
+  getProtocolReviewLink,
   getProtocolsHubLinkGraph,
   getRelatedProtocolLinks,
 } from "@/lib/protocols/internal-links";
@@ -53,3 +54,25 @@ export {
   type ProtocolContentBlock,
   type ProtocolContentBlockKey,
 } from "@/lib/protocols/content";
+
+export {
+  getProtocolIntelligenceComparisons,
+  getProtocolIntelligenceSeed,
+  TVL_TIER_LABELS,
+} from "@/lib/protocols/intelligence";
+
+export {
+  buildTrustBreakdownFromProfile,
+  resolveProtocolIntelligence,
+} from "@/lib/protocols/intelligence-resolve";
+
+export type {
+  ProtocolIntelligenceSeed,
+  ProtocolRiskItem,
+  ProtocolRiskSeverity,
+  ProtocolRiskType,
+  ProtocolTvlTier,
+  ProtocolTrustBreakdownComponent,
+  ResolvedProtocolIntelligence,
+  ResolvedProtocolOpportunity,
+} from "@/lib/protocols/intelligence-types";

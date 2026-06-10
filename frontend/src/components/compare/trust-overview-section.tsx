@@ -58,7 +58,7 @@ export function CompareTrustOverview({ lang, page }: CompareTrustOverviewProps) 
       : "TJT Trust Score v0.1 educational scores for protocols in this comparison. Estimated framework for risk context only — not financial advice.";
 
   return (
-    <section aria-label={sectionTitle}>
+    <section id="compare-trust-overview" aria-label={sectionTitle}>
       <h2 className="mb-2 font-heading text-lg font-bold text-white">
         {sectionTitle}
       </h2>

@@ -5,6 +5,8 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
 import { SeoPilotFaqSection } from "@/components/seo-pilot/faq-section";
 import { SeoPilotPageGrid } from "@/components/seo-pilot/page-grid";
+import { ProductNextStep } from "@/components/product-connectivity/product-next-step";
+import { buildSeoPilotHubNextSteps } from "@/lib/product-connectivity";
 import type { Dictionary } from "@/lib/config";
 import type { Locale } from "@/lib/i18n";
 import {
@@ -31,6 +33,7 @@ export function SeoPilotHubPage({
   const copy = SEO_PILOT_HUB_COPY[hubSegment];
   const hubLabel = SEO_PILOT_HUB_LABELS[hubSegment][lang];
   const pages = getSeoPilotPagesByHub(hubSegment);
+  const hubNextSteps = buildSeoPilotHubNextSteps(lang, hubSegment);
 
   const breadcrumbs = [
     { label: dict.breadcrumbs.home, href: `/${lang}` },
@@ -69,7 +72,16 @@ export function SeoPilotHubPage({
             </p>
           </div>
 
-          <h2 className="mb-4 font-heading text-lg font-bold text-white">
+          <ProductNextStep
+            lang={lang}
+            steps={hubNextSteps}
+            variant="grid"
+            title={
+              lang === "ru" ? "Рекомендуемый маршрут" : "Suggested journey"
+            }
+          />
+
+          <h2 className="mb-4 mt-10 font-heading text-lg font-bold text-white">
             {resolvePilotLocalized(copy.gridTitle, lang)}
           </h2>
           <SeoPilotPageGrid

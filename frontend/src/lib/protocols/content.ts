@@ -1,4 +1,6 @@
+import { getCompareSlugTitle } from "@/lib/compare/content";
 import type { Locale } from "@/lib/i18n";
+import { getProtocolIntelligenceSeed } from "@/lib/protocols/intelligence";
 import type { Protocol } from "@/lib/protocols/types";
 
 /** Hub-level copy — bilingual, independent of config.json for protocols foundation. */
@@ -117,11 +119,20 @@ export function buildProtocolContentBlocks(
     {
       key: "compare_teaser",
       title: { en: "Compare protocols", ru: "Сравнение протоколов" }[lang],
-      body: {
-        en: "Side-by-side protocol comparison pages are planned. This block reserves crawlable internal-link slots for future Compare integration.",
-        ru: "Страницы сравнения протоколов в разработке. Блок резервирует слоты для будущей интеграции Compare.",
-      }[lang],
-      aiSlot: true,
+      body: (() => {
+        const comparisons = getProtocolIntelligenceSeed(protocol.slug)
+          .relatedComparisons.slice(0, 3)
+          .map((slug) => getCompareSlugTitle(slug)[lang])
+          .join(", ");
+        return {
+          en: comparisons
+            ? `Explore side-by-side comparisons: ${comparisons}. Visit linked compare pages for APY, TVL context, and Trust Score differences.`
+            : "Explore side-by-side protocol comparisons for APY, TVL context, and Trust Score differences.",
+          ru: comparisons
+            ? `Изучите сравнения: ${comparisons}. Перейдите на страницы compare для APY, TVL и различий Trust Score.`
+            : "Изучите сравнения протоколов для APY, TVL и различий Trust Score.",
+        }[lang];
+      })(),
     },
   ];
 }

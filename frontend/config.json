@@ -759,6 +759,7 @@
     "nav": {
       "compare": { "en": "Compare", "ru": "Сравнения" },
       "earn": { "en": "Earn", "ru": "Earn" },
+      "offers": { "en": "Offers", "ru": "Офферы" },
       "protocols": { "en": "Protocols", "ru": "Протоколы" },
       "reviews": { "en": "Reviews", "ru": "Обзоры" },
       "calculator": { "en": "Calculator", "ru": "Калькулятор" },
@@ -1327,10 +1328,10 @@
         {
           "heading": { "en": "Legal", "ru": "Юридическая информация" },
           "links": [
-            { "label": { "en": "Risk Disclosure", "ru": "Risk Disclosure" }, "href": "#legal" },
-            { "label": { "en": "Terms of use", "ru": "Условия использования" }, "href": "#legal" },
-            { "label": { "en": "Privacy policy", "ru": "Политика конфиденциальности" }, "href": "#legal" },
-            { "label": { "en": "Non-custodial status", "ru": "Некастодиальный статус" }, "href": "#legal" }
+            { "label": { "en": "Risk Disclosure", "ru": "Risk Disclosure" }, "href": "#risk-disclosure" },
+            { "label": { "en": "Terms of use", "ru": "Условия использования" }, "href": "#terms-of-use" },
+            { "label": { "en": "Privacy policy", "ru": "Политика конфиденциальности" }, "href": "#privacy-policy" },
+            { "label": { "en": "Non-custodial status", "ru": "Некастодиальный статус" }, "href": "#non-custodial-status" }
           ]
         }
       ],

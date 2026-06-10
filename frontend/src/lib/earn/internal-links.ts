@@ -2,6 +2,7 @@ import type { CpaOffer } from "@/lib/config";
 import type { Locale } from "@/lib/i18n";
 import { detailPath, hubPath, localePath } from "@/lib/seo/urls";
 import type { Asset, EarnAssetSlug, YieldOpportunity } from "@/lib/earn/types";
+import { compareHubPath } from "@/lib/compare/paths";
 import { earnAssetPath, earnHubPath } from "@/lib/earn/paths";
 import { EARN_ASSETS } from "@/lib/earn/registry";
 import { protocolDetailPath } from "@/lib/protocols/paths";
@@ -70,6 +71,12 @@ export function getEarnHubLinkGraph(
       priority: 0.9,
     },
     {
+      href: compareHubPath(lang),
+      label: "Compare",
+      type: "compare" as const,
+      priority: 0.88,
+    },
+    {
       href: hubPath(lang, "coins"),
       label: "Market",
       type: "coins",
@@ -122,6 +129,18 @@ export function getEarnHubLinkGraph(
       label: lang === "ru" ? "Обзоры протоколов" : "Protocol reviews",
       type: "protocols",
       priority: 0.76,
+    },
+    {
+      href: localePath(lang, "/safety"),
+      label: lang === "ru" ? "Безопасность" : "Safety guides",
+      type: "protocols",
+      priority: 0.75,
+    },
+    {
+      href: localePath(lang, "/learn"),
+      label: lang === "ru" ? "Обучение" : "Learn hub",
+      type: "guides" as const,
+      priority: 0.74,
     },
   ];
 

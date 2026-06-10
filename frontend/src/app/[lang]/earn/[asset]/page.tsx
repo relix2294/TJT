@@ -5,9 +5,14 @@ import { Navbar } from "@/components/navbar";
 import { LegalFooter } from "@/components/legal-footer";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { TrustScoreCard } from "@/components/trust-score/trust-score-card";
+import { EarnCompareCtaSection } from "@/components/earn/compare-cta-section";
 import { EarnContentBlocks } from "@/components/earn/content-blocks";
+import { HubEmptyRecovery } from "@/components/hub-empty-recovery";
+import { TrustContextNote } from "@/components/trust-context-note";
 import { EarnOpportunityList } from "@/components/earn/opportunity-list";
 import { EarnInternalLinkSection } from "@/components/earn/internal-link-section";
+import { ProductNextStep } from "@/components/product-connectivity/product-next-step";
+import { RecommendationLayer } from "@/components/recommendations/recommendation-layer";
 import { JsonLd } from "@/components/json-ld";
 import { Badge } from "@/components/ui/badge";
 import { loadAppConfig, loadDictionary } from "@/lib/server-config";
@@ -28,11 +33,16 @@ import {
   getEarnOfferLinks,
   getEarnToMarketLinks,
   getOpportunitiesForAsset,
+  getEarnComparePlaceholderLinks,
   getRelatedEarnAssetLinks,
   getTopApyForAsset,
   isEarnAssetSlug,
   resolveLocalized,
 } from "@/lib/earn";
+import { buildEarnAssetNextSteps } from "@/lib/product-connectivity";
+import { buildEarnAssetRecommendations } from "@/lib/recommendations";
+import { protocolDetailPath } from "@/lib/protocols/paths";
+import type { ProtocolSlug } from "@/lib/protocols/types";
 
 export const dynamic = "force-dynamic";
 
@@ -100,7 +110,26 @@ export default async function EarnAssetPage({ params }: PageProps) {
   );
 
   const currentPath = earnAssetMetadataPath(lang, earnAsset);
+  const topOpportunity = opportunities[0];
+  const topProtocolPath = topOpportunity
+    ? protocolDetailPath(lang as Locale, topOpportunity.protocolSlug as ProtocolSlug)
+    : null;
+  const nextSteps = buildEarnAssetNextSteps(
+    lang as Locale,
+    earnAsset,
+    topProtocolPath,
+    topOpportunity?.offerSlug
+      ? `/${lang}/offers/${topOpportunity.offerSlug}`
+      : null,
+  );
+  const recommendations = buildEarnAssetRecommendations(
+    lang as Locale,
+    earnAsset,
+    opportunities,
+  );
+
   const internalLinks = dedupeInternalLinks([
+    ...getEarnComparePlaceholderLinks(lang as Locale, earnAsset),
     ...getRelatedEarnAssetLinks(lang as Locale, earnAsset.slug),
     ...getEarnOfferLinks(lang as Locale, opportunities),
     ...(config
@@ -178,22 +207,43 @@ export default async function EarnAssetPage({ params }: PageProps) {
             <TrustScoreCard lang={lang as Locale} trustScore={trustScore} />
           </div>
 
+          <div className="mb-8">
+            <EarnCompareCtaSection lang={lang as Locale} asset={earnAsset} />
+          </div>
+
           <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
             <div className="space-y-8">
+              {recommendations ? (
+                <RecommendationLayer
+                  lang={lang as Locale}
+                  model={recommendations}
+                />
+              ) : null}
+
               <section>
                 <h2 className="mb-4 font-heading text-lg font-bold text-white">
                   {opportunitiesTitle}
                 </h2>
-                <EarnOpportunityList
-                  lang={lang as Locale}
-                  opportunities={opportunities}
-                  emptyLabel={emptyOpportunities}
-                />
+                {opportunities.length > 0 ? (
+                  <EarnOpportunityList
+                    lang={lang as Locale}
+                    opportunities={opportunities}
+                    emptyLabel={emptyOpportunities}
+                  />
+                ) : (
+                  <HubEmptyRecovery
+                    lang={lang as Locale}
+                    hub="earn"
+                    message={emptyOpportunities}
+                  />
+                )}
               </section>
               <EarnContentBlocks blocks={contentBlocks} />
+              <TrustContextNote lang={lang as Locale} />
             </div>
 
             <aside className="space-y-4">
+              <ProductNextStep lang={lang as Locale} steps={nextSteps} />
               <EarnInternalLinkSection
                 title={lang === "ru" ? "Связанные страницы" : "Related pages"}
                 links={internalLinks}

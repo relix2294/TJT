@@ -1,10 +1,12 @@
 import type { Locale } from "@/lib/i18n";
 import { detailPath, hubPath, localePath } from "@/lib/seo/urls";
+import { compareHubPath } from "@/lib/compare/paths";
 import { earnHubPath } from "@/lib/earn/paths";
 import type { InternalLink } from "@/lib/seo/internal-links";
 import type { Protocol, ProtocolSlug } from "@/lib/protocols/types";
 import { resolveProtocolLocalized } from "@/lib/protocols/types";
 import { protocolDetailPath, protocolsHubPath } from "@/lib/protocols/paths";
+import { protocolReviewPath } from "@/lib/product-connectivity/protocol-seo-map";
 
 /** Cross-links between protocol review pages. */
 export function getRelatedProtocolLinks(
@@ -37,6 +39,22 @@ export function getProtocolEarnAssetLinks(
     slug: asset.slug,
     priority: 0.85,
   }));
+}
+
+/** SeoPilot protocol review article when mapped for this catalog slug. */
+export function getProtocolReviewLink(
+  lang: Locale,
+  protocol: Protocol,
+): InternalLink | null {
+  const href = protocolReviewPath(lang, protocol.slug);
+  if (!href) return null;
+  return {
+    href,
+    label: `${protocol.name} Review`,
+    type: "protocols",
+    slug: protocol.slug,
+    priority: 0.87,
+  };
 }
 
 /** Linked CPA offers on a protocol page — keeps /offers routes live. */
@@ -73,10 +91,34 @@ export function getProtocolsHubLinkGraph(
       priority: 0.88,
     },
     {
+      href: compareHubPath(lang),
+      label: "Compare",
+      type: "compare" as const,
+      priority: 0.87,
+    },
+    {
       href: localePath(lang, "/offers"),
       label: "Yield catalog",
       type: "protocols",
       priority: 0.82,
+    },
+    {
+      href: localePath(lang, "/reviews"),
+      label: "Protocol reviews",
+      type: "protocols",
+      priority: 0.81,
+    },
+    {
+      href: localePath(lang, "/safety"),
+      label: "Safety guides",
+      type: "protocols",
+      priority: 0.79,
+    },
+    {
+      href: localePath(lang, "/learn"),
+      label: "Learn hub",
+      type: "guides" as const,
+      priority: 0.77,
     },
     {
       href: hubPath(lang, "coins"),

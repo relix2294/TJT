@@ -1,7 +1,11 @@
 import { SITE } from "@/lib/config";
 import type { Locale } from "@/lib/i18n";
 import { absoluteUrl } from "@/lib/seo/urls";
-import type { CompareDetailEditorial, ComparePage } from "@/lib/compare/types";
+import type {
+  CompareDetailEditorial,
+  CompareEditorialFaqItem,
+  ComparePage,
+} from "@/lib/compare/types";
 import {
   isProtocolComparison,
   isYieldComparison,
@@ -64,6 +68,7 @@ export function buildCompareDetailJsonLd(input: {
   lang: Locale;
   page: ComparePage;
   editorial?: CompareDetailEditorial | null;
+  yieldFaq?: CompareEditorialFaqItem[] | null;
 }): JsonLd[] {
   const path = compareDetailPath(input.lang, input.page.slug);
   const description = resolveCompareLocalized(input.page.summary, input.lang);
@@ -160,11 +165,12 @@ export function buildCompareDetailJsonLd(input: {
     });
   }
 
-  if (input.editorial?.faq.length) {
+  const faqItems = input.editorial?.faq ?? input.yieldFaq ?? [];
+  if (faqItems.length) {
     schemas.push({
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      mainEntity: input.editorial.faq.map((item) => ({
+      mainEntity: faqItems.map((item) => ({
         "@type": "Question",
         name: resolveCompareLocalized(item.question, input.lang),
         acceptedAnswer: {

@@ -140,6 +140,7 @@ export type Dictionary = {
   nav: {
     compare: string;
     earn: string;
+    offers: string;
     protocols: string;
     reviews: string;
     calculator: string;
@@ -499,10 +500,5 @@ export type AppConfig = {
 
 export type SocialLink = { label: string; href: string };
 
-/** Placeholder social handles — non-functional anchors by design. */
-export const SOCIAL_LINKS: SocialLink[] = [
-  { label: "X (Twitter)", href: "#" },
-  { label: "Telegram", href: "#" },
-  { label: "Discord", href: "#" },
-  { label: "GitHub", href: "#" },
-];
+/** Social handles — empty until real profile URLs are configured. */
+export const SOCIAL_LINKS: SocialLink[] = [];

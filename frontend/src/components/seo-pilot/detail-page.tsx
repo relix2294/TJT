@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { SeoPilotDisclaimer } from "@/components/seo-pilot/disclaimer";
 import { SeoPilotFaqSection } from "@/components/seo-pilot/faq-section";
 import { SeoPilotRelatedLinks } from "@/components/seo-pilot/related-links";
+import { ProductNextStep } from "@/components/product-connectivity/product-next-step";
+import { buildSeoPilotPageNextSteps } from "@/lib/product-connectivity";
 import type { Dictionary } from "@/lib/config";
 import type { Locale } from "@/lib/i18n";
 import { TrustScoreCard } from "@/components/trust/trust-score-card";
@@ -36,6 +38,7 @@ export function SeoPilotDetailPage({
   const hubLabel = SEO_PILOT_HUB_LABELS[page.hubSegment][lang];
   const ctaLabel =
     lang === "ru" ? "Сравнить возможности" : "Compare opportunities";
+  const nextSteps = buildSeoPilotPageNextSteps(lang, page);
 
   const breadcrumbs = [
     { label: dict.breadcrumbs.home, href: `/${lang}` },
@@ -116,23 +119,7 @@ export function SeoPilotDetailPage({
 
             <aside className="space-y-4">
               <SeoPilotRelatedLinks lang={lang} links={page.relatedLinks} />
-              <div className="rounded-2xl border border-primary/30 bg-[--neon-soft]/30 p-5">
-                <p className="text-xs font-semibold uppercase tracking-wider text-primary">
-                  {lang === "ru" ? "Следующий шаг" : "Next step"}
-                </p>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  {lang === "ru"
-                    ? "Откройте таблицы Compare для структурированного рыночного контекста."
-                    : "Open Compare tables for structured market context."}
-                </p>
-                <Button
-                  render={<Link href={page.ctaHref(lang)} />}
-                  size="sm"
-                  className="mt-4 w-full rounded-lg bg-primary font-semibold text-primary-foreground hover:bg-primary/90"
-                >
-                  {ctaLabel}
-                </Button>
-              </div>
+              <ProductNextStep lang={lang} steps={nextSteps} />
             </aside>
           </div>
         </section>

@@ -4,7 +4,11 @@ import { TrendingUp } from "lucide-react";
 import { Navbar } from "@/components/navbar";
 import { LegalFooter } from "@/components/legal-footer";
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { HubEmptyRecovery } from "@/components/hub-empty-recovery";
+import { TrustContextNote } from "@/components/trust-context-note";
 import { Offers } from "@/components/offers";
+import { RecommendationLayer } from "@/components/recommendations/recommendation-layer";
+import { buildOffersCatalogRecommendations } from "@/lib/recommendations";
 import { Card } from "@/components/ui/card";
 import { loadAppConfig, loadDictionary } from "@/lib/server-config";
 import { LOCALES, isLocale } from "@/lib/i18n";
@@ -49,6 +53,11 @@ export default async function OffersCatalogPage({ params }: PageProps) {
   const dict = config?.dict ?? (await loadDictionary(lang).catch(() => null));
   if (!dict) notFound();
 
+  const recommendations =
+    config?.offers != null
+      ? buildOffersCatalogRecommendations(lang, config.offers)
+      : null;
+
   return (
     <>
       <Navbar lang={lang} dict={dict} />
@@ -74,13 +83,42 @@ export default async function OffersCatalogPage({ params }: PageProps) {
           </div>
 
           {error || !config ? (
-            <Card className="rounded-2xl border-loss/40 bg-loss/5 p-6 text-sm text-loss">
-              {dict.offers.error}
-              {error ? <span className="mt-1 block text-loss/70">{error}</span> : null}
-            </Card>
+            <div className="space-y-6">
+              <Card className="rounded-2xl border-loss/40 bg-loss/5 p-6 text-sm text-loss">
+                {dict.offers.error}
+                {error ? <span className="mt-1 block text-loss/70">{error}</span> : null}
+              </Card>
+              <HubEmptyRecovery
+                lang={lang}
+                hub="offers"
+                message={
+                  lang === "ru"
+                    ? "Каталог офферов временно недоступен. Сравните маршруты и протоколы, пока данные обновляются."
+                    : "The offers catalog is temporarily unavailable. Compare routes and protocols while data refreshes."
+                }
+              />
+            </div>
+          ) : config.offers.length === 0 ? (
+            <HubEmptyRecovery
+              lang={lang}
+              hub="offers"
+              message={
+                lang === "ru"
+                  ? "В каталоге пока нет активных офферов. Исследуйте Compare и Earn для контекста yield."
+                  : "No active offers in the catalog yet. Explore Compare and Earn for yield context."
+              }
+            />
           ) : (
-            <Offers lang={lang} dict={dict} data={config.offers} />
+            <>
+              {recommendations ? (
+                <div className="mb-8">
+                  <RecommendationLayer lang={lang} model={recommendations} />
+                </div>
+              ) : null}
+              <Offers lang={lang} dict={dict} data={config.offers} />
+            </>
           )}
+          <TrustContextNote lang={lang} />
         </section>
       </main>
       <LegalFooter lang={lang} dict={dict} />

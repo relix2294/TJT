@@ -5,6 +5,8 @@ import { Navbar } from "@/components/navbar";
 import { LegalFooter } from "@/components/legal-footer";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ProtocolGrid } from "@/components/protocols/protocol-grid";
+import { HubEmptyRecovery } from "@/components/hub-empty-recovery";
+import { TrustContextNote } from "@/components/trust-context-note";
 import { ProtocolInternalLinkSection } from "@/components/protocols/internal-link-section";
 import { JsonLd } from "@/components/json-ld";
 import { loadAppConfig, loadDictionary } from "@/lib/server-config";
@@ -102,11 +104,25 @@ export default async function ProtocolsHubPage({ params }: PageProps) {
           <h2 className="mb-4 font-heading text-lg font-bold text-white">
             {PROTOCOLS_HUB_COPY.gridTitle[lang as Locale]}
           </h2>
-          <ProtocolGrid
-            lang={lang as Locale}
-            protocols={protocols}
-            exploreLabel={PROTOCOLS_HUB_COPY.exploreLabel[lang as Locale]}
-          />
+          {protocols.length > 0 ? (
+            <ProtocolGrid
+              lang={lang as Locale}
+              protocols={protocols}
+              exploreLabel={PROTOCOLS_HUB_COPY.exploreLabel[lang as Locale]}
+            />
+          ) : (
+            <HubEmptyRecovery
+              lang={lang as Locale}
+              hub="protocols"
+              message={
+                lang === "ru"
+                  ? "Каталог протоколов пуст — CPA-офферы ещё не подключены. Продолжите через сравнения и Earn."
+                  : "The protocol catalog is empty — CPA offers are not connected yet. Continue via Compare and Earn."
+              }
+            />
+          )}
+
+          <TrustContextNote lang={lang as Locale} />
 
           <div className="mt-10">
             <ProtocolInternalLinkSection

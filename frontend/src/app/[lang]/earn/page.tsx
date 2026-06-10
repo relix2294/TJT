@@ -6,6 +6,9 @@ import { LegalFooter } from "@/components/legal-footer";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { EarnHubPageGrid } from "@/components/earn/hub-page-grid";
 import { EarnInternalLinkSection } from "@/components/earn/internal-link-section";
+import { TrustContextNote } from "@/components/trust-context-note";
+import { ProductNextStep } from "@/components/product-connectivity/product-next-step";
+import { buildEarnHubNextSteps } from "@/lib/product-connectivity";
 import { SeoPilotFaqSection } from "@/components/seo-pilot/faq-section";
 import { JsonLd } from "@/components/json-ld";
 import { loadAppConfig, loadDictionary } from "@/lib/server-config";
@@ -83,6 +86,8 @@ export default async function EarnHubPage({ params }: PageProps) {
     breadcrumbs,
   });
 
+  const hubNextSteps = buildEarnHubNextSteps(lang as Locale);
+
   return (
     <>
       <JsonLd data={jsonLd} />
@@ -107,7 +112,14 @@ export default async function EarnHubPage({ params }: PageProps) {
             </p>
           </div>
 
-          <h2 className="mb-4 font-heading text-lg font-bold text-white">
+          <ProductNextStep
+            lang={lang as Locale}
+            steps={hubNextSteps}
+            variant="grid"
+            title={lang === "ru" ? "Рекомендуемый маршрут" : "Suggested journey"}
+          />
+
+          <h2 className="mb-4 mt-10 font-heading text-lg font-bold text-white">
             {EARN_HUB_COPY.hubGridTitle[lang as Locale]}
           </h2>
           <EarnHubPageGrid
@@ -117,6 +129,8 @@ export default async function EarnHubPage({ params }: PageProps) {
             topApyByAsset={topApyByAsset}
             trustScoreByAsset={trustScoreByAsset}
           />
+
+          <TrustContextNote lang={lang as Locale} />
 
           <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_320px]">
             <SeoPilotFaqSection

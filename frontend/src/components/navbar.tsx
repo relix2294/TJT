@@ -8,9 +8,11 @@ export function Navbar({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const nav = [
     { href: `/${lang}/compare`, label: dict.nav.compare },
     { href: `/${lang}/earn`, label: dict.nav.earn },
+    { href: `/${lang}/offers`, label: dict.nav.offers },
     { href: `/${lang}/protocols`, label: dict.nav.protocols },
     { href: `/${lang}/reviews`, label: dict.nav.reviews },
     { href: `/${lang}/safety`, label: dict.nav.safety },
+    { href: `/${lang}/learn`, label: dict.nav.academy },
     { href: `/${lang}/market`, label: dict.nav.market },
     { href: `/${lang}/news`, label: dict.nav.news },
   ];

@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import type { EarnContentBlock } from "@/lib/earn/content";
 
@@ -28,6 +30,21 @@ export function EarnContentBlocks({ blocks }: EarnContentBlocksProps) {
             ) : null}
           </header>
           <p className="text-sm leading-relaxed text-muted-foreground">{block.body}</p>
+          {block.links && block.links.length > 0 ? (
+            <ul className="mt-4 space-y-2">
+              {block.links.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-white"
+                  >
+                    {link.label}
+                    <ArrowUpRight className="size-3.5" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </article>
       ))}
     </div>

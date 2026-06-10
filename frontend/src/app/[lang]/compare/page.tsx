@@ -7,6 +7,10 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CompareGrid } from "@/components/compare/compare-grid";
 import { CompareInternalLinkSection } from "@/components/compare/internal-link-section";
 import { CompareDisclaimer } from "@/components/compare/disclaimer";
+import { HubEmptyRecovery } from "@/components/hub-empty-recovery";
+import { TrustContextNote } from "@/components/trust-context-note";
+import { ProductNextStep } from "@/components/product-connectivity/product-next-step";
+import { buildCompareHubNextSteps } from "@/lib/product-connectivity";
 import { JsonLd } from "@/components/json-ld";
 import { loadAppConfig, loadDictionary } from "@/lib/server-config";
 import { LOCALES, isLocale, type Locale } from "@/lib/i18n";
@@ -71,6 +75,8 @@ export default async function CompareHubPage({ params }: PageProps) {
     pages,
   });
 
+  const hubNextSteps = buildCompareHubNextSteps(lang as Locale);
+
   return (
     <>
       <JsonLd data={jsonLd} />
@@ -98,14 +104,35 @@ export default async function CompareHubPage({ params }: PageProps) {
             </p>
           </div>
 
-          <h2 className="mb-4 font-heading text-lg font-bold text-white">
+          <ProductNextStep
+            lang={lang as Locale}
+            steps={hubNextSteps}
+            variant="grid"
+            title={lang === "ru" ? "Рекомендуемый маршрут" : "Suggested journey"}
+          />
+
+          <h2 className="mb-4 mt-10 font-heading text-lg font-bold text-white">
             {COMPARE_HUB_COPY.gridTitle[lang as Locale]}
           </h2>
-          <CompareGrid
-            lang={lang as Locale}
-            pages={pages}
-            exploreLabel={COMPARE_HUB_COPY.exploreLabel[lang as Locale]}
-          />
+          {pages.length > 0 ? (
+            <CompareGrid
+              lang={lang as Locale}
+              pages={pages}
+              exploreLabel={COMPARE_HUB_COPY.exploreLabel[lang as Locale]}
+            />
+          ) : (
+            <HubEmptyRecovery
+              lang={lang as Locale}
+              hub="compare"
+              message={
+                lang === "ru"
+                  ? "Сравнения пока недоступны — каталог CPA пуст. Исследуйте связанные разделы ниже."
+                  : "Comparisons are unavailable while the CPA catalog is empty. Explore related sections below."
+              }
+            />
+          )}
+
+          <TrustContextNote lang={lang as Locale} />
 
           <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_320px]">
             <CompareDisclaimer lang={lang as Locale} disclaimer={COMPARE_LEGAL_DISCLAIMER} />

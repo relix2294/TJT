@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, CheckCircle2 } from "lucide-react";
+import { OfferButton } from "@/components/offer-button";
 import { Navbar } from "@/components/navbar";
 import { LegalFooter } from "@/components/legal-footer";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { findOfferBySlug, loadAppConfig, loadDictionary } from "@/lib/server-config";
 import { fmtUsd } from "@/lib/format";
@@ -18,6 +18,11 @@ import {
   noIndexMetadata,
 } from "@/lib/seo";
 import { JsonLd } from "@/components/json-ld";
+import { TrustContextNote } from "@/components/trust-context-note";
+import { ProductNextStep } from "@/components/product-connectivity/product-next-step";
+import { RecommendationLayer } from "@/components/recommendations/recommendation-layer";
+import { buildOfferNextSteps } from "@/lib/product-connectivity";
+import { buildOfferDetailRecommendations } from "@/lib/recommendations";
 
 export const dynamic = "force-dynamic";
 
@@ -78,11 +83,14 @@ export default async function OfferDetailPage({ params }: PageProps) {
 
   if (!offer) notFound();
 
-  const related = (await loadAppConfig(lang).catch(() => null))?.offers
-    .filter((o) => o.slug !== offer.slug)
-    .slice(0, 3) ?? [];
+  const config = await loadAppConfig(lang).catch(() => null);
+  const related =
+    config?.offers.filter((o) => o.slug !== offer.slug).slice(0, 3) ?? [];
 
-  const trackUrl = `/api/click-track?offerId=${encodeURIComponent(offer.id)}&lang=${lang}`;
+  const nextSteps = buildOfferNextSteps(lang, offer);
+  const recommendations = config
+    ? buildOfferDetailRecommendations(lang, offer, config.offers)
+    : null;
 
   const offerPath = detailPath(lang, "protocols", offer.slug);
   const jsonLd = buildProductSchema({
@@ -139,6 +147,12 @@ export default async function OfferDetailPage({ params }: PageProps) {
             </div>
           </header>
 
+          {recommendations ? (
+            <div className="mb-8">
+              <RecommendationLayer lang={lang} model={recommendations} />
+            </div>
+          ) : null}
+
           {offer.benefits.length > 0 ? (
             <section className="mb-10">
               <h2 className="mb-4 font-heading text-xl font-bold text-white">
@@ -158,16 +172,26 @@ export default async function OfferDetailPage({ params }: PageProps) {
             </section>
           ) : null}
 
-          <Button
-            size="lg"
+          <OfferButton
+            offer={offer}
+            dict={dict}
+            lang={lang}
+            label={dict.offerDetail.cta}
             className="h-12 w-full rounded-xl bg-primary font-semibold text-primary-foreground transition-colors hover:bg-primary/90 sm:w-auto sm:px-8"
-            render={<a href={trackUrl} rel="noopener noreferrer" />}
-          >
-            {dict.offerDetail.cta}
-            <ArrowUpRight className="size-4" />
-          </Button>
+          />
 
           <div className="mt-10">
+            <ProductNextStep
+              lang={lang}
+              steps={nextSteps}
+              variant="grid"
+              title={lang === "ru" ? "Продолжить исследование" : "Continue research"}
+            />
+          </div>
+
+          <TrustContextNote lang={lang} />
+
+          <div className="mt-6">
             <Link
               href={`/${lang}/offers`}
               className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-white"

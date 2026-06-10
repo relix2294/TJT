@@ -6,14 +6,20 @@ import { LegalFooter } from "@/components/legal-footer";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ProtocolTrustScoreCard } from "@/components/protocols/protocol-trust-score-card";
 import { ProtocolContentBlocks } from "@/components/protocols/content-blocks";
+import {
+  ProtocolIntelligenceConnectivity,
+  ProtocolIntelligenceCore,
+  ProtocolSuggestedNextStep,
+} from "@/components/protocols/protocol-intelligence-layer";
 import { ProtocolEarnOpportunities } from "@/components/protocols/earn-opportunities";
 import { ProtocolInternalLinkSection } from "@/components/protocols/internal-link-section";
 import { ProtocolLinkedOffers } from "@/components/protocols/linked-offers";
 import { ProtocolSupportedAssets } from "@/components/protocols/supported-assets";
 import { ProtocolSupportedChains } from "@/components/protocols/supported-chains";
+import { TrustContextNote } from "@/components/trust-context-note";
 import { JsonLd } from "@/components/json-ld";
 import { Badge } from "@/components/ui/badge";
-import { loadAppConfig, loadDictionary } from "@/lib/server-config";
+import { loadAppConfig } from "@/lib/server-config";
 import { LOCALES, isLocale, type Locale } from "@/lib/i18n";
 import { dedupeInternalLinks, generatePageMetadata, noIndexMetadata } from "@/lib/seo";
 import {
@@ -23,9 +29,11 @@ import {
   buildProtocolDetailJsonLd,
   buildProtocolsFromOffers,
   getProtocol,
+  resolveProtocolIntelligence,
   getProtocolComparePlaceholderLinks,
   getProtocolEarnAssetLinks,
   getProtocolOfferLinks,
+  getProtocolReviewLink,
   getRelatedProtocolLinks,
   isProtocolSlug,
   protocolDetailMetadataPath,
@@ -84,20 +92,26 @@ export default async function ProtocolDetailPage({ params }: PageProps) {
   const { lang, slug } = await params;
   if (!isLocale(lang) || !isProtocolSlug(slug)) notFound();
 
-  const dict = await loadDictionary(lang).catch(() => null);
-  if (!dict) notFound();
-
   const config = await loadAppConfig(lang).catch(() => null);
   if (!config) notFound();
+  const dict = config.dict;
 
   const protocols = buildProtocolsFromOffers(config.offers, lang as Locale);
   const protocol = getProtocol(protocols, slug);
   if (!protocol) notFound();
 
   const contentBlocks = buildProtocolContentBlocks(protocol, lang as Locale);
+  const intelligence = resolveProtocolIntelligence(
+    protocol,
+    lang as Locale,
+    protocols,
+  );
   const currentPath = protocolDetailMetadataPath(lang, protocol);
 
+  const reviewLink = getProtocolReviewLink(lang as Locale, protocol);
+
   const internalLinks = dedupeInternalLinks([
+    ...(reviewLink ? [reviewLink] : []),
     ...getRelatedProtocolLinks(lang as Locale, protocol.slug, protocols),
     ...getProtocolEarnAssetLinks(lang as Locale, protocol),
     ...getProtocolOfferLinks(lang as Locale, protocol),
@@ -182,6 +196,13 @@ export default async function ProtocolDetailPage({ params }: PageProps) {
             <ProtocolTrustScoreCard lang={lang as Locale} protocol={protocol} />
           </div>
 
+          <div className="mb-8">
+            <ProtocolIntelligenceCore
+              lang={lang as Locale}
+              intelligence={intelligence}
+            />
+          </div>
+
           <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
             <div className="space-y-8">
               <ProtocolSupportedAssets
@@ -214,6 +235,11 @@ export default async function ProtocolDetailPage({ params }: PageProps) {
                 minLabel={dict.offers.min}
               />
 
+              <ProtocolIntelligenceConnectivity
+                lang={lang as Locale}
+                intelligence={intelligence}
+              />
+
               <ProtocolContentBlocks blocks={contentBlocks} />
             </div>
 
@@ -224,6 +250,15 @@ export default async function ProtocolDetailPage({ params }: PageProps) {
               />
             </aside>
           </div>
+
+          <div className="mt-8">
+            <ProtocolSuggestedNextStep
+              lang={lang as Locale}
+              intelligence={intelligence}
+            />
+          </div>
+
+          <TrustContextNote lang={lang as Locale} />
         </section>
       </main>
       <LegalFooter lang={lang} dict={dict} />

@@ -1,10 +1,8 @@
 import type { Asset, YieldOpportunity } from "@/lib/earn/types";
 import { EARN_PROTOCOLS, getTopApyForAsset } from "@/lib/earn/registry";
+import { resolveProtocolTrustScore } from "@/lib/trust";
 import { PROTOCOL_CATEGORIES } from "@/lib/trust-score/protocol-categories";
-import {
-  computeEarnAssetTrustScore,
-  computeProtocolTrustScore,
-} from "@/lib/trust-score/scoring";
+import { computeEarnAssetTrustScore } from "@/lib/trust-score/scoring";
 import type { TrustScore } from "@/lib/trust-score/types";
 
 /** Compute asset-level Trust Score from live yield opportunities. */
@@ -30,16 +28,15 @@ export function buildEarnAssetTrustScore(
 
     const categorySlug = PROTOCOL_CATEGORIES[slug] ?? "vault";
 
-    return [
-      computeProtocolTrustScore({
-        entityType: "protocol",
-        slug,
-        name: seed.name,
-        categorySlug,
-        riskTier: seed.riskTier,
-        topApy,
-      }),
-    ];
+    const resolved = resolveProtocolTrustScore(slug, {
+      entityType: "protocol",
+      slug,
+      name: seed.name,
+      categorySlug,
+      riskTier: seed.riskTier,
+      topApy,
+    });
+    return resolved ? [resolved] : [];
   });
 
   return computeEarnAssetTrustScore({

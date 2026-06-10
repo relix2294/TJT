@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { HubEmptyRecovery } from "@/components/hub-empty-recovery";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -26,7 +27,10 @@ export function ProtocolLinkedOffers({
 }: ProtocolLinkedOffersProps) {
   if (!offers.length) {
     return (
-      <p className="text-sm text-muted-foreground">{emptyLabel}</p>
+      <div className="space-y-4">
+        <h2 className="font-heading text-lg font-bold text-white">{title}</h2>
+        <HubEmptyRecovery lang={lang} hub="offers" message={emptyLabel} />
+      </div>
     );
   }
 

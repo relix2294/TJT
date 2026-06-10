@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HubEmptyRecovery } from "@/components/hub-empty-recovery";
 import { TrendingUp } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 import type { ProtocolLinkedEarnOpportunity } from "@/lib/protocols/types";
@@ -21,7 +22,12 @@ export function ProtocolEarnOpportunities({
   earnLabel,
 }: ProtocolEarnOpportunitiesProps) {
   if (!opportunities.length) {
-    return <p className="text-sm text-muted-foreground">{emptyLabel}</p>;
+    return (
+      <div className="space-y-4">
+        <h2 className="font-heading text-lg font-bold text-white">{title}</h2>
+        <HubEmptyRecovery lang={lang} hub="protocols" message={emptyLabel} />
+      </div>
+    );
   }
 
   return (

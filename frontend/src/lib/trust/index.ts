@@ -21,6 +21,8 @@ export {
 
 export {
   getProtocolTrustForDisplay,
+  resolveProtocolTrustScore,
+  resolveProtocolTrustScoreValue,
   trustProfileToCompareBadge,
 } from "@/lib/trust/resolve";
 
