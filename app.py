@@ -299,7 +299,12 @@ st.markdown(
 # ===========================================================================
 # MODULE 1 — INTERACTIVE LOSS CALCULATOR (Банки.ру layer)
 # ===========================================================================
-st.markdown('<div class="tjt-section">Калькулятор упущенной выгоды</div>', unsafe_allow_html=True)
+st.markdown('<div class="tjt-section">Калькулятор сравнения доходности (иллюстративный)</div>', unsafe_allow_html=True)
+st.caption(
+    "Иллюстративный расчёт для сравнения способов размещения капитала. "
+    "Ставки APY переменны, не гарантированы и несут риски. "
+    "Материал не является инвестиционной рекомендацией."
+)
 
 b = CFG["fintech_benchmarks"]
 default_capital = b.get("default_capital", b.get("default_capital_usd", 10000))
@@ -344,9 +349,9 @@ with c3:
     st.markdown(
         f"""
         <div class="tjt-metric">
-            <div class="label">Web3-пулы TJT · {b['web3_aggregator_apy']}% APY</div>
+            <div class="label">DeFi-пулы · ~{b['web3_aggregator_apy']}% APY (переменный)</div>
             <div class="value val-green">${web3_gain:,.0f}</div>
-            <div class="sub">Потенциальный доход за год</div>
+            <div class="sub">Иллюстративный результат за год · не гарантирован</div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -356,8 +361,9 @@ with c3:
 st.markdown(
     f"""
     <div class="tjt-result">
-        <span class="cap">Открытая упущенная выгода — сколько вы недополучаете,
-        держа капитал в банке вместо Web3-пулов TJT</span>
+        <span class="cap">Разница в расчётной годовой доходности между DeFi-пулами
+        (~{b['web3_aggregator_apy']}% APY, переменный) и банковским вкладом в этом
+        иллюстративном сценарии. Не является прогнозом или рекомендацией.</span>
         <span class="big">${missed_yield:,.0f}</span>
     </div>
     """,
