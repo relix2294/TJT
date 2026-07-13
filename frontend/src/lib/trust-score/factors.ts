@@ -15,28 +15,28 @@ export const TRUST_SCORE_FACTOR_LABELS: Record<
   LocalizedString
 > = {
   tvl_strength: {
-    en: "TVL strength",
-    ru: "Сила TVL",
+    en: "Money locked in protocol",
+    ru: "Деньги в протоколе",
   },
   protocol_maturity: {
-    en: "Protocol maturity",
-    ru: "Зрелость протокола",
+    en: "How long it's been running",
+    ru: "Сколько лет работает",
   },
   audit_status: {
-    en: "Audit status",
-    ru: "Статус аудита",
+    en: "Code audits",
+    ru: "Аудиты кода",
   },
   exploit_history: {
-    en: "Exploit history",
-    ru: "История эксплойтов",
+    en: "Hack history",
+    ru: "История взломов",
   },
   apy_sustainability: {
-    en: "APY sustainability",
-    ru: "Устойчивость APY",
+    en: "Is the yield sustainable?",
+    ru: "Устойчива ли доходность?",
   },
   liquidity_withdrawal_risk: {
-    en: "Liquidity & withdrawal",
-    ru: "Ликвидность и вывод",
+    en: "Can you withdraw quickly?",
+    ru: "Быстрый ли вывод?",
   },
 };
 

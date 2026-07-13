@@ -17,24 +17,24 @@ const BEST_USDT_YIELD: YieldCompareFaq = {
   slug: "best-usdt-yield",
   faq: [
     {
-      question: L("What is the best USDT yield on TJT?", "Какой лучший USDT yield на TJT?"),
+      question: L("Where can I earn the most on USDT right now?", "Где сейчас больше всего заработать на USDT?"),
       answer: L(
-        "TJT lists catalogued USDT supply routes across lending protocols with indicative APY, chain coverage, and Trust Score v0.1 context. Rankings are not provided — compare rows side by side for your research scope.",
-        "TJT показывает маршруты supply USDT из каталога с ориентировочным APY, сетями и Trust Score v0.1. Рейтинги не публикуются — сравнивайте строки для своего исследования.",
+        "Rates change daily, but Aave, Morpho, Compound, and Spark typically lead for USDT supply. Use the table above to compare current APY, which chain each route uses, and the Trust Score — then pick what fits your risk tolerance.",
+        "Ставки меняются ежедневно, но Aave, Morpho, Compound и Spark обычно лидируют по supply USDT. Сравните в таблице текущий APY, сеть и Trust Score — и выберите под свой риск.",
       ),
     },
     {
-      question: L("Is higher USDT APY always better?", "Более высокий USDT APY всегда лучше?"),
+      question: L("Is higher USDT APY always better?", "Более высокий APY на USDT всегда лучше?"),
       answer: L(
-        "No. Stablecoin yield depends on borrow utilization, incentives, chain risk, and protocol design. Trust Score and risk tier context on this page help frame trade-offs — not guarantees.",
-        "Нет. Yield стейблкоинов зависит от utilization, incentives, рисков сети и дизайна протокола. Trust Score и risk tier на странице помогают оценить trade-offs — не гарантии.",
+        "No. A higher rate often means a newer protocol, a riskier chain, or temporary token rewards that will disappear. Check the Trust Score and risk tier before chasing the top number.",
+        "Нет. Более высокая ставка часто означает новый протокол, рискованную сеть или временные токен-награды. Проверьте Trust Score и уровень риска, прежде чем гнаться за цифрой.",
       ),
     },
     {
-      question: L("Does TJT recommend a USDT protocol?", "TJT рекомендует USDT-протокол?"),
+      question: L("Can I lose my USDT in DeFi lending?", "Могу ли я потерять USDT в DeFi lending?"),
       answer: L(
-        "No. This comparison is informational market context for independent research — not financial advice or a product recommendation.",
-        "Нет. Сравнение — информационный рыночный контекст для самостоятельного исследования — не финансовый совет и не рекомендация продукта.",
+        "Yes. Smart contract bugs, oracle failures, or protocol exploits can impair funds — even on established platforms. TJT shows risk scores to help you compare, but you should never deposit more than you can afford to lose.",
+        "Да. Баги смарт-контрактов, сбои оракулов или взломы протоколов могут затронуть средства — даже на известных платформах. TJT показывает оценки риска для сравнения, но не вкладывайте больше, чем готовы потерять.",
       ),
     },
   ],

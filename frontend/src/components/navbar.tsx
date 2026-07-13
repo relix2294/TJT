@@ -44,6 +44,7 @@ export function Navbar({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         <div className="flex items-center gap-2">
           <Button
             render={<Link href={`/${lang}/compare`} />}
+            nativeButton={false}
             size="sm"
             className="hidden rounded-lg bg-primary font-semibold text-primary-foreground transition-colors hover:bg-primary/90 lg:inline-flex"
           >

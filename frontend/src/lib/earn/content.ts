@@ -14,17 +14,17 @@ export const EARN_HUB_COPY = {
     ru: "Crypto Earn — доходность USDT, USDC, ETH, SOL | TJT",
   },
   metaDescription: {
-    en: "Explore non-custodial yield routes for USDT, USDC, ETH and SOL. APY snapshots, protocol mapping, TJT Trust Score v0.1 indicators and scalable earn knowledge graph.",
-    ru: "Некастодиальные маршруты доходности для USDT, USDC, ETH и SOL. APY, протоколы, индикаторы TJT Trust Score v0.1 и масштабируемый earn knowledge graph.",
+    en: "Compare yield options for USDT, USDC, ETH and SOL across top DeFi protocols. APY snapshots, risk context, and TJT Trust Score — all in one place.",
+    ru: "Сравните варианты доходности для USDT, USDC, ETH и SOL в топ DeFi-протоколах. APY, риски и TJT Trust Score — всё в одном месте.",
   },
-  eyebrow: { en: "Earn Engine", ru: "Earn Engine" },
+  eyebrow: { en: "Put Your Crypto to Work", ru: "Заставьте крипту работать" },
   title: {
-    en: "Crypto Earn Knowledge Graph",
-    ru: "Crypto Earn Knowledge Graph",
+    en: "Where Should You Put Your USDT or ETH?",
+    ru: "Куда положить USDT или ETH?",
   },
   subtitle: {
-    en: "Asset-first yield discovery for stablecoins and native tokens. Every page is SEO-ready and wired for 10,000+ programmatic expansion.",
-    ru: "Поиск доходности по активам: стейблкоины и нативные токены. SEO-готовые страницы для масштабирования до 10 000+ URL.",
+    en: "Compare yield options for stablecoins and native tokens across top DeFi protocols — APY, risk, and Trust Score in one place.",
+    ru: "Сравните варианты доходности для стейблкоинов и нативных токенов в топ DeFi-протоколах — APY, риск и Trust Score в одном месте.",
   },
   hubGridTitle: {
     en: "Earn guides & yield pages",

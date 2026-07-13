@@ -454,7 +454,7 @@ function addFooter(
   doc.setFont(FONT, "normal");
   doc.setFontSize(7.5);
   doc.setTextColor(SUB);
-  doc.text("TJT · tjt.example", margin, pageH - 26);
+  doc.text("TJT · tjt.finance", margin, pageH - 26);
   if (page && total) {
     doc.text(
       `${t.pageLabel} ${page} ${t.ofLabel} ${total}`,

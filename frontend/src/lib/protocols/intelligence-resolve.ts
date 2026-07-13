@@ -217,16 +217,16 @@ export function resolveProtocolIntelligence(
     suggestedNextStep: {
       compareAlternatives: {
         label:
-          lang === "ru" ? "Сравнить альтернативы" : "Compare alternatives",
+          lang === "ru" ? "Также: сравнить с альтернативами" : "Also: compare alternatives",
         href: compareHref,
       },
       reviewRisks: {
-        label: lang === "ru" ? "Изучить риски" : "Review risks",
+        label: lang === "ru" ? "Сначала: проверить риски" : "First: check the risks",
         href: safetyHref,
       },
       viewOpportunities: {
         label:
-          lang === "ru" ? "Смотреть возможности" : "View opportunities",
+          lang === "ru" ? "Смотреть живые маршруты доходности →" : "See live earn routes →",
         href: opportunityHref,
       },
     },

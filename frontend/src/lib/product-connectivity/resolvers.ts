@@ -138,7 +138,7 @@ export function buildComparePageNextSteps(
         steps.push(
           step(
             "opportunity",
-            lang === "ru" ? "Открыть оффер" : "View opportunity",
+            lang === "ru" ? "Открыть лучший маршрут →" : "Open top yield route →",
             topRow.offerPath,
           ),
         );

@@ -77,12 +77,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: protocolMetaTitle(protocol, lang),
     description: protocolMetaDescription(protocol, lang),
     keywords: [
-      `${protocol.name} protocol`,
-      `${protocol.name} review`,
-      `${protocol.name} defi`,
+      `${protocol.name} review 2026`,
+      `${protocol.name} usdt yield`,
+      `is ${protocol.name.toLowerCase()} safe`,
       "tjt trust score",
-      "defi risk indicator",
-      "yield protocol",
+      "defi lending apy",
+      "defi yield comparison",
     ],
     ogImageAlt: `${protocol.name} Protocol Review`,
   });

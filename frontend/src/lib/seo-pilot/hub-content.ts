@@ -60,21 +60,21 @@ export const SEO_PILOT_HUB_COPY: Record<
   },
   safety: {
     metaTitle: L(
-      "DeFi Protocol Safety — Risk & Security Guides | TJT",
-      "Безопасность DeFi-протоколов — гиды по рискам | TJT",
+      "Is DeFi Safe? Aave, Lido, Morpho Security Checks | TJT",
+      "Безопасен ли DeFi? Проверки Aave, Lido, Morpho | TJT",
     ),
     metaDescription: L(
-      "Educational safety guides for Aave, Lido, Jito, Morpho, Rocket Pool, Compound, Spark, Pendle, EtherFi, and Ethena. Smart contract risk, governance, audit history, exploit context, and TJT Trust Score factors — informational only.",
-      "Образовательные гиды по безопасности Aave, Lido, Jito, Morpho, Rocket Pool, Compound, Spark, Pendle, EtherFi и Ethena: риски смарт-контрактов, governance, аудиты, контекст эксплойтов и факторы TJT Trust Score — только информация.",
+      "Scared of losing money in DeFi? Check audit history, past hacks, and withdrawal risks for Aave, Lido, Morpho, Compound, and more — before you move USDT or ETH off your exchange.",
+      "Боитесь потерять деньги в DeFi? Проверьте аудиты, взломы и риски вывода для Aave, Lido, Morpho, Compound и других — до перевода USDT или ETH с биржи.",
     ),
-    eyebrow: L("Safety analysis", "Анализ безопасности"),
-    title: L("DeFi Protocol Safety", "Безопасность DeFi-протоколов"),
+    eyebrow: L("Before you deposit", "Перед депозитом"),
+    title: L("Can You Trust This Protocol?", "Можно ли доверять протоколу?"),
     subtitle: L(
-      "Structured safety context for major yield protocols. Understand smart contract risk, governance models, audit coverage, and historical incidents before comparing opportunities.",
-      "Структурированный контекст безопасности для ключевых yield-протоколов. Поймите риски смарт-контрактов, governance, аудиты и исторические инциденты перед сравнением возможностей.",
+      "Every DeFi protocol carries risk — even the big ones. These guides show you what was audited, what was hacked, and what could still go wrong with your USDT or ETH.",
+      "Любой DeFi-протокол несёт риск — даже крупные. Эти гиды показывают, что аудировали, что взламывали и что ещё может пойти не так с вашим USDT или ETH.",
     ),
-    gridTitle: L("Safety guides", "Гиды по безопасности"),
-    exploreLabel: L("Read safety guide", "Читать гид"),
+    gridTitle: L("Protocol safety checks", "Проверки безопасности протоколов"),
+    exploreLabel: L("Read safety check", "Читать проверку"),
     faqTitle: L("Safety FAQ", "FAQ по безопасности"),
     faq: [
       {
@@ -102,20 +102,20 @@ export const SEO_PILOT_HUB_COPY: Record<
   },
   learn: {
     metaTitle: L(
-      "DeFi Learning Hub — Yield, Staking & Risk Education | TJT",
-      "Обучение DeFi — доходность, стейкинг и риски | TJT",
+      "DeFi for Beginners — How Yield, Staking & Risk Work | TJT",
+      "DeFi для начинающих — доходность, стейкинг и риски | TJT",
     ),
     metaDescription: L(
-      "Educational DeFi guides on yield mechanics, liquid staking, restaking, protocol TVL, smart contract risk, audits, and USDC yield risks. Build foundational knowledge before comparing protocols on TJT.",
-      "Образовательные гиды по механике yield, liquid staking, restaking, TVL протоколов, рискам смарт-контрактов, аудитам и USDC yield. Базовые знания перед сравнением протоколов на TJT.",
+      "New to DeFi? Plain-language guides on how yield works, what liquid staking means, why protocols get hacked, and what TVL actually tells you. Read first, then compare real rates on TJT.",
+      "Новичок в DeFi? Понятные гиды: как работает доходность, что такое liquid staking, почему взламывают протоколы и что значит TVL. Сначала читайте, потом сравнивайте ставки на TJT.",
     ),
-    eyebrow: L("DeFi education", "Обучение DeFi"),
-    title: L("DeFi Learning Hub", "Обучение DeFi"),
+    eyebrow: L("New to DeFi?", "Новичок в DeFi?"),
+    title: L("Learn Before You Deposit", "Узнайте, прежде чем вносить"),
     subtitle: L(
-      "Foundational guides on DeFi yield, liquid staking, restaking, protocol TVL, smart contract risk, audits, and USDC yield risks. Educational information wired to Compare and earn routes.",
-      "Базовые гиды: DeFi yield, liquid staking, restaking, TVL протоколов, риски смарт-контрактов, аудиты и USDC yield. Образовательная информация со связями с Compare и earn.",
+      "Holding USDT or ETH on an exchange and curious about DeFi yield? Start here. Short guides explain how money actually moves on-chain — and what can go wrong.",
+      "USDT или ETH на бирже и интересует DeFi-доходность? Начните здесь. Короткие гиды объясняют, как деньги движутся on-chain — и что может пойти не так.",
     ),
-    gridTitle: L("Learning guides", "Обучающие гиды"),
+    gridTitle: L("Start with these guides", "Начните с этих гидов"),
     exploreLabel: L("Read guide", "Читать гид"),
     faqTitle: L("Learning FAQ", "FAQ по обучению"),
     faq: [

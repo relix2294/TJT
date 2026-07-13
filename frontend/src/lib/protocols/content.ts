@@ -13,14 +13,14 @@ export const PROTOCOLS_HUB_COPY = {
     en: "Protocol reviews for Aave, Lido, Jito, Morpho, Spark, Rocket Pool, EtherFi, Pendle, Ethena, and Compound. Supported assets, chains, earn routes, and TJT Trust Score v0.1 indicators.",
     ru: "Обзоры протоколов Aave, Lido, Jito, Morpho, Spark, Rocket Pool, EtherFi, Pendle, Ethena и Compound. Активы, сети, earn-маршруты и индикаторы TJT Trust Score v0.1.",
   },
-  eyebrow: { en: "Protocols Engine", ru: "Protocols Engine" },
+  eyebrow: { en: "Protocol deep dive", ru: "Разбор протокола" },
   title: {
     en: "DeFi Protocol Reviews",
     ru: "Обзоры DeFi-протоколов",
   },
   subtitle: {
-    en: "Protocol-first discovery for lending and liquid-staking routes. Every page is SEO-ready and wired for Trust Score and Compare expansion.",
-    ru: "Поиск по протоколам для lending и liquid staking. SEO-готовые страницы с заделом под Trust Score и Compare.",
+    en: "Compare lending and liquid staking protocols side by side — TVL, supported assets, chains, and TJT Trust Score in one place.",
+    ru: "Сравните протоколы lending и liquid staking — TVL, активы, сети и TJT Trust Score в одном месте.",
   },
   gridTitle: { en: "Featured protocols", ru: "Избранные протоколы" },
   exploreLabel: { en: "View protocol review", ru: "Открыть обзор" },
@@ -50,8 +50,8 @@ export type ProtocolContentBlock = {
 
 export function protocolMetaTitle(protocol: Protocol, lang: Locale): string {
   return {
-    en: `${protocol.name} Protocol Review — Assets, Chains & Earn | TJT`,
-    ru: `Обзор протокола ${protocol.name} — активы, сети и Earn | TJT`,
+    en: `${protocol.name} Review 2026 — Yield, Risk & Trust Score | TJT`,
+    ru: `Обзор ${protocol.name} 2026 — доходность, риск и Trust Score | TJT`,
   }[lang];
 }
 
@@ -78,8 +78,8 @@ export function buildProtocolContentBlocks(
       key: "supported_assets",
       title: { en: "Supported assets", ru: "Поддерживаемые активы" }[lang],
       body: {
-        en: `${protocol.name} supports ${assetList || "catalogued assets"} across TJT earn routes. Each asset links to a dedicated earn hub for APY comparison.`,
-        ru: `${protocol.name} поддерживает ${assetList || "активы каталога"} в earn-маршрутах TJT. Каждый актив ведёт на отдельный earn-хаб для сравнения APY.`,
+        en: `You can deposit ${assetList || "supported assets"} on ${protocol.name}. Tap any asset below to see current rates and how it compares to other protocols.`,
+        ru: `На ${protocol.name} можно внести ${assetList || "поддерживаемые активы"}. Нажмите на актив ниже, чтобы увидеть текущие ставки и сравнение с другими протоколами.`,
       }[lang],
     },
     {

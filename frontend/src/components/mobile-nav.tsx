@@ -109,6 +109,7 @@ export function MobileNav({
 
         <Button
           render={<Link href={`/${lang}/compare`} onClick={() => setOpen(false)} />}
+          nativeButton={false}
           className="mt-4 h-12 w-full rounded-xl bg-primary font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
         >
           {dict.nav.cta}

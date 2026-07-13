@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { type Dictionary, type MarketAsset } from "@/lib/config";
@@ -31,6 +31,7 @@ type MarketSnapshotProps = {
 };
 
 export function MarketSnapshot({ lang, dict, market }: MarketSnapshotProps) {
+  const router = useRouter();
   const { config, loading: configLoading, error: configError } = useConfig(lang);
   const { market: liveMarket, live, updatedAt, tickAt, loading: marketLoading, error: marketError } =
     useMarket();
@@ -126,7 +127,8 @@ export function MarketSnapshot({ lang, dict, market }: MarketSnapshotProps) {
               ? assets.map((a) => (
                   <tr
                     key={a.symbol}
-                    className="group relative border-t border-border/40 transition-colors hover:bg-white/[0.04]"
+                    className="group border-t border-border/40 transition-colors hover:bg-white/[0.04] cursor-pointer"
+                    onClick={() => router.push(marketHref(lang, a))}
                   >
                     <td className="px-6 py-4 font-numeric text-muted-foreground">{a.rank}</td>
                     <td className="px-6 py-4">
@@ -152,11 +154,6 @@ export function MarketSnapshot({ lang, dict, market }: MarketSnapshotProps) {
                     <td className="px-6 py-4 text-right">
                       <SentimentBadge sentiment={a.aiSentiment} />
                     </td>
-                    <Link
-                      href={marketHref(lang, a)}
-                      className="absolute inset-0 z-[1]"
-                      aria-label={`${a.name} (${a.symbol})`}
-                    />
                   </tr>
                 ))
               : null}

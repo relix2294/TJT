@@ -391,6 +391,7 @@ export function Calculator({
                   <Button
                     size="lg"
                     className="h-12 rounded-xl bg-primary px-6 font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+                    nativeButton={false}
                     render={<Link href={`/${lang}/offers`} />}
                   >
                     {t.missedCta}

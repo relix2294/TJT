@@ -103,8 +103,8 @@ const YIELD_COMPARE_TITLES: Record<
   LocalizedString
 > = {
   "best-usdt-yield": {
-    en: "USDT yield comparison — informational market context",
-    ru: "Сравнение доходности USDT — информационный рыночный контекст",
+    en: "Best USDT Yield in DeFi 2026",
+    ru: "Лучшая доходность USDT в DeFi 2026",
   },
   "best-usdc-yield": {
     en: "USDC yield comparison — informational market context",

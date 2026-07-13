@@ -1,7 +1,7 @@
 import { SITE } from "@/lib/config";
 
 /** Fallback when `SITE.url` is unset — keeps sitemap/robots from emitting empty URLs. */
-export const FALLBACK_BASE_URL = "https://yourdomain.com";
+export const FALLBACK_BASE_URL = "https://tjt.finance";
 
 /** Default Open Graph / Twitter card image (served from `/public`). */
 export const DEFAULT_OG_IMAGE = "/og-card.png";

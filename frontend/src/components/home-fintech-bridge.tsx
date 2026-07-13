@@ -90,6 +90,7 @@ export function HomeFintechBridge({
             variant="ghost"
             size="xs"
             className="text-[11px] text-primary"
+            nativeButton={false}
             render={<Link href={`/${lang}/offers`} />}
           >
             {dict.offers.review}

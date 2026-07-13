@@ -52,6 +52,7 @@ export function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
             <Button
               render={<Link href={`/${lang}/tools/roi-calculator`} />}
+              nativeButton={false}
               size="lg"
               className="h-12 rounded-xl bg-primary px-7 font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
             >
@@ -59,6 +60,7 @@ export function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             </Button>
             <Button
               render={<Link href={`/${lang}/offers`} />}
+              nativeButton={false}
               size="lg"
               variant="outline"
               className="h-12 rounded-xl border-border/70 bg-white/5 px-7 font-semibold text-white hover:bg-white/10"

@@ -72,6 +72,7 @@ export function ProtocolLinkedOffers({
                 size="sm"
                 variant="outline"
                 className="rounded-xl"
+                nativeButton={false}
                 render={<Link href={offer.offerPath} />}
               >
                 {lang === "ru" ? "Детали оффера" : "Offer details"}

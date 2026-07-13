@@ -76,6 +76,7 @@ export function SeoPilotDetailPage({
             </p>
             <Button
               render={<Link href={page.ctaHref(lang)} />}
+              nativeButton={false}
               className="mt-6 rounded-lg bg-primary font-semibold text-primary-foreground hover:bg-primary/90"
             >
               {ctaLabel}

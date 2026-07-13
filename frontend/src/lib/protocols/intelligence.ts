@@ -32,16 +32,16 @@ const PROTOCOL_INTELLIGENCE: Record<ProtocolSlug, ProtocolIntelligenceSeed> = {
     },
     whyUsersChoose: [
       {
-        en: "Largest decentralized lending protocol by TVL and market depth",
-        ru: "Крупнейший децентрализованный lending-протокол по TVL и глубине рынка",
+        en: "More money locked here than any other DeFi lender — $10B+ means deeper liquidity and easier withdrawals",
+        ru: "Здесь заблокировано больше денег, чем в любом другом DeFi-кредиторе — $10B+ означает больше ликвидности и проще вывод",
       },
       {
-        en: "Deep liquidity across USDC, USDT, ETH, and major collateral markets",
-        ru: "Глубокая ликвидность по USDC, USDT, ETH и основным залоговым рынкам",
+        en: "Deposit USDT, USDC, or ETH and earn from real borrowers — not token giveaways",
+        ru: "Внесите USDT, USDC или ETH и зарабатывайте на реальных заёмщиках — не на раздаче токенов",
       },
       {
-        en: "Multi-chain deployments on Ethereum, Arbitrum, Polygon, Base, and Optimism",
-        ru: "Multi-chain развёртывания на Ethereum, Arbitrum, Polygon, Base и Optimism",
+        en: "Works on Ethereum, Arbitrum, Polygon, Base, and Optimism — pick the chain with lowest fees for your amount",
+        ru: "Работает на Ethereum, Arbitrum, Polygon, Base и Optimism — выберите сеть с наименьшими комиссиями для вашей суммы",
       },
     ],
     mainRisks: [
@@ -71,14 +71,14 @@ const PROTOCOL_INTELLIGENCE: Record<ProtocolSlug, ProtocolIntelligenceSeed> = {
       },
     ],
     bestFor: [
-      { en: "Conservative yield seekers on stablecoins and ETH", ru: "Консервативные искатели yield на stablecoins и ETH" },
-      { en: "Long-term holders seeking passive supply yield", ru: "Долгосрочные держатели, ищущие пассивный supply yield" },
-      { en: "DeFi users who need deep, composable collateral markets", ru: "DeFi-пользователи, которым нужны глубокие composable collateral markets" },
+      { en: "Holding $1,000–$20,000 USDT or ETH on an exchange and wanting steady, borrower-funded yield", ru: "Держатели $1 000–$20 000 USDT или ETH на бирже, желающие стабильную доходность от заёмщиков" },
+      { en: "First-time DeFi users who want the most battle-tested lending protocol", ru: "Новички в DeFi, которым нужен самый проверенный lending-протокол" },
+      { en: "Long-term holders who don't want to sell but want their assets to work", ru: "Долгосрочные держатели, которые не хотят продавать, но хотят, чтобы активы работали" },
     ],
     notIdealFor: [
-      { en: "High-risk yield hunters chasing unsustainable APY", ru: "Охотники за высоким риском и неустойчивым APY" },
-      { en: "Short-term traders who cannot tolerate variable rates", ru: "Краткосрочные трейдеры, не терпящие переменные ставки" },
-      { en: "Users uncomfortable with cross-chain bridge dependencies", ru: "Пользователи, не готовые к зависимости от cross-chain мостов" },
+      { en: "Anyone chasing 50%+ APY from token rewards — Aave rates are modest but more sustainable", ru: "Те, кто гонится за 50%+ APY от токен-наград — ставки Aave скромнее, но устойчивее" },
+      { en: "Traders who need a fixed rate locked in for months", ru: "Трейдеры, которым нужна фиксированная ставка на месяцы" },
+      { en: "Users who want zero smart-contract risk — no DeFi protocol can offer that", ru: "Пользователи, желающие нулевой риск смарт-контрактов — ни один DeFi-протокол этого не даст" },
     ],
     alternatives: ["morpho", "compound", "spark"],
     relatedComparisons: ["morpho-vs-aave", "compound-vs-aave", "spark-vs-aave", "ethena-vs-aave"],

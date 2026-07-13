@@ -43,6 +43,7 @@ export function HomeMarketplaceHero({
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Button
             render={<Link href={`/${lang}/compare`} />}
+            nativeButton={false}
             size="lg"
             className="h-11 rounded-xl bg-primary px-6 font-semibold text-primary-foreground hover:bg-primary/90"
           >
@@ -50,6 +51,7 @@ export function HomeMarketplaceHero({
           </Button>
           <Button
             render={<Link href={`/${lang}/protocols`} />}
+            nativeButton={false}
             size="lg"
             variant="outline"
             className="h-11 rounded-xl border-border/70 bg-white/5 px-6 font-semibold text-white hover:bg-white/10"

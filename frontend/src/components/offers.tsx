@@ -80,7 +80,7 @@ export function Offers({ lang, dict, data }: OffersProps) {
             {offer.protocol} · {dict.offers.min} {fmtUsd(offer.minEntryUsd)}
           </p>
 
-          <div className="mt-5 font-numeric text-3xl font-extrabold text-profit sm:text-4xl">
+          <div className="mt-5 text-3xl font-extrabold text-profit sm:text-4xl">
             {offer.apy.toFixed(1)}%
             <span className="ml-1 text-sm font-semibold text-muted-foreground">
               APY

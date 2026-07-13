@@ -20,18 +20,18 @@ export const LEARN_PAGES: SeoPilotPage[] = [
     type: "learn",
     hubSegment: "learn",
     metaTitle: L(
-      "What Is DeFi Yield? Educational Guide | TJT",
-      "Что такое DeFi yield? Образовательный гид | TJT",
+      "What Is DeFi Yield? Plain-Language Guide for Beginners | TJT",
+      "Что такое DeFi-доходность? Гид для начинающих | TJT",
     ),
     metaDescription: L(
-      "Learn what DeFi yield means, why it matters, common mistakes, examples across lending and staking, and risks. Educational information with Compare links on TJT.",
-      "Узнайте, что такое DeFi yield, почему это важно, типичные ошибки, примеры lending и staking и риски. Образовательная информация со ссылками Compare на TJT.",
+      "USDT sitting on an exchange earning nothing? Learn how DeFi yield actually works — lending, staking, real risks — before you move your first dollar.",
+      "USDT на бирже не приносит доход? Узнайте, как реально работает DeFi-доходность — lending, стейкинг, риски — до первого перевода.",
     ),
     h1: L("What Is DeFi Yield?", "Что такое DeFi yield?"),
-    eyebrow: L("Educational information", "Образовательная информация"),
+    eyebrow: L("Start here", "Начните здесь"),
     intro: L(
-      "DeFi yield is return generated from on-chain protocols — lending interest, staking rewards, liquidity fees, or incentive programs — minus costs and risks. It is not a bank deposit rate and carries no principal guarantee.",
-      "DeFi yield — доход от on-chain протоколов: проценты lending, награды стейкинга, комиссии ликвидности или инсентивы — минус издержки и риски. Это не ставка банковского вклада и без гарантии principal.",
+      "DeFi yield is what you earn when you put crypto to work on-chain — lending interest, staking rewards, or trading fees. It is not a bank deposit. Your money can go up, and it can go down.",
+      "DeFi-доходность — это то, что вы зарабатываете, когда крипта работает on-chain: проценты от lending, награды стейкинга или комиссии. Это не банковский вклад. Деньги могут вырасти — и могут уменьшиться.",
     ),
     sections: [
       {
@@ -76,10 +76,10 @@ export const LEARN_PAGES: SeoPilotPage[] = [
       },
       {
         key: "related_pages",
-        title: L("Related pages", "Связанные страницы"),
+        title: L("What to do next", "Что делать дальше"),
         body: L(
-          "Explore crypto yield risks for a dedicated risk overview, liquid staking guide for ETH/SOL receipt tokens, and USDT comparison guide for stablecoin research.\n\nUse Compare opportunities pages to align yield types with Trust Score indicators.",
-          "Изучите crypto yield risks для risk overview, гид по liquid staking для ETH/SOL receipt-токенов и гид сравнения USDT для стейблкоинов.\n\nИспользуйте Compare opportunities с индикаторами Trust Score.",
+          "Now that you understand where DeFi yield comes from, the next step is seeing real numbers. Head to the USDT yield comparison to check current rates on Aave, Morpho, and Compound — each with a risk score so you know what you are getting into before moving money off your exchange.",
+          "Теперь, когда вы понимаете, откуда берётся DeFi-доходность, следующий шаг — посмотреть реальные цифры. Откройте сравнение доходности USDT: текущие ставки Aave, Morpho и Compound с оценкой риска — чтобы понимать, во что ввязываетесь, прежде чем переводить деньги с биржи.",
         ),
       },
     ],

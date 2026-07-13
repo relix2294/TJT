@@ -68,12 +68,12 @@
       "min_entry_usd": 25,
       "referral_url": "https://app.aave.com/?ref=tjt&market=arbitrum",
       "description": {
-        "en": "Supply USDC to Aave V3 on Arbitrum and earn organic borrow demand yield. Variable APY driven by utilization, not token emissions.",
-        "ru": "Поставьте USDC в Aave V3 на Arbitrum и получайте органический yield от спроса на заём. Переменный APY от utilization, а не эмиссии токенов."
+        "en": "Park your USDC in Aave V3 on Arbitrum and earn from real borrowers — not token giveaways. Low gas fees make it practical even with $1,000. You keep full control of your wallet.",
+        "ru": "Разместите USDC в Aave V3 на Arbitrum и зарабатывайте на реальных заёмщиках — не на раздаче токенов. Низкий газ делает это выгодным даже с $1 000. Кошелёк остаётся у вас."
       },
       "benefits": {
-        "en": ["Up to 11.8% APY on organic borrow demand", "Low gas costs on Arbitrum L2", "Instant withdrawals when liquidity is available", "Minimum entry from $25"],
-        "ru": ["До 11.8% APY на органическом спросе заёмщиков", "Низкие комиссии газа на Arbitrum L2", "Мгновенный вывод при наличии ликвидности", "Минимальный вход от $25"]
+        "en": ["Up to 11.8% APY from real borrower demand — not token giveaways", "Arbitrum gas costs pennies, not dollars", "Withdraw anytime when liquidity is available", "Start with as little as $25"],
+        "ru": ["До 11,8% APY от реального спроса заёмщиков — не от раздачи токенов", "Газ на Arbitrum — копейки, не доллары", "Вывод в любой момент при наличии ликвидности", "Минимальный вход от $25"]
       }
     },
     {
@@ -748,12 +748,12 @@
         "ru": "Некастодиальный маркетплейс сравнения криптопродуктов."
       },
       "metaTitle": {
-        "en": "TJT — Compare Crypto Yield Opportunities",
-        "ru": "TJT — Сравнение крипто-доходности"
+        "en": "Best DeFi Yield for USDT & ETH — Compare Rates 2026 | TJT",
+        "ru": "Лучшая DeFi-доходность для USDT и ETH — сравнение 2026 | TJT"
       },
       "metaDescription": {
-        "en": "Compare crypto yield opportunities, DeFi protocols, APY snapshots, Trust Scores, reviews and risk context — without custody or financial advice.",
-        "ru": "Сравнивайте крипто-доходность, DeFi-протоколы, снимки APY, Trust Score, обзоры и контекст рисков — без кастоди и финансовых советов."
+        "en": "USDT or ETH sitting on an exchange? Compare real DeFi yields from Aave, Morpho, and Compound with risk scores — browse without connecting a wallet. Not financial advice.",
+        "ru": "USDT или ETH лежат на бирже? Сравните реальную DeFi-доходность Aave, Morpho и Compound с оценками риска — без подключения кошелька. Не финансовый совет."
       }
     },
     "nav": {
@@ -768,12 +768,12 @@
       "yield": { "en": "Yield", "ru": "Доходность" },
       "safety": { "en": "Safety", "ru": "Безопасность" },
       "academy": { "en": "Academy", "ru": "Академия" },
-      "cta": { "en": "Compare opportunities", "ru": "Сравнить возможности" },
+      "cta": { "en": "Compare USDT yield", "ru": "Сравнить доходность USDT" },
       "openMenu": { "en": "Open menu", "ru": "Открыть меню" },
       "closeMenu": { "en": "Close menu", "ru": "Закрыть меню" },
       "mobileTagline": {
-        "en": "Non-custodial · Educational information · No wallet connection",
-        "ru": "Non-custodial · Образовательная информация · Без подключения кошелька"
+        "en": "Non-custodial · No wallet needed to browse · Your keys, your funds",
+        "ru": "Non-custodial · Без кошелька для просмотра · Ваши ключи, ваши средства"
       }
     },
     "hero": {
@@ -990,9 +990,9 @@
       "breadcrumbOffers": { "en": "Yield catalog", "ru": "Каталог доходности" }
     },
     "offerDetail": {
-      "benefitsHeading": { "en": "Key advantages", "ru": "Ключевые преимущества" },
-      "cta": { "en": "Open non-custodial deposit", "ru": "Открыть некастодиальный депозит" },
-      "back": { "en": "Back to catalog", "ru": "Назад в каталог" },
+      "benefitsHeading": { "en": "Why people choose this route", "ru": "Почему выбирают этот маршрут" },
+      "cta": { "en": "Deposit through your wallet →", "ru": "Внести через кошелёк →" },
+      "back": { "en": "Browse other yield routes", "ru": "Другие маршруты доходности" },
       "notFoundTitle": { "en": "Offer not found — TJT", "ru": "Оффер не найден — TJT" },
       "notFoundDesc": { "en": "The requested yield offer is not in the TJT catalog.", "ru": "Запрошенный оффер отсутствует в каталоге TJT." }
     },
@@ -1072,45 +1072,45 @@
       "calcCta": { "en": "Compare yield routes →", "ru": "Сравнить маршруты доходности →" }
     },
     "homeMarketplace": {
-      "heroEyebrow": { "en": "Non-custodial crypto product comparison marketplace", "ru": "Некастодиальный маркетплейс сравнения криптопродуктов" },
-      "heroHeadline": { "en": "Compare Crypto Yield Opportunities", "ru": "Сравнивайте крипто-доходность" },
+      "heroEyebrow": { "en": "For USDT & ETH holders on exchanges", "ru": "Для держателей USDT и ETH на биржах" },
+      "heroHeadline": { "en": "Stop Leaving Your USDT on the Exchange", "ru": "Хватит держать USDT на бирже" },
       "heroSubheadline": {
-        "en": "Explore DeFi protocols, APY snapshots, Trust Scores, reviews and risk context — without custody, wallet connection or financial advice.",
-        "ru": "Изучайте DeFi-протоколы, снимки APY, Trust Score, обзоры и контекст рисков — без кастоди, подключения кошелька и финансовых советов."
+        "en": "You already hold USDT or ETH. TJT shows what you'd actually earn in DeFi — and what could go wrong — before you move a single dollar. We never touch your funds.",
+        "ru": "У вас уже есть USDT или ETH. TJT показывает, сколько вы реально заработаете в DeFi — и что может пойти не так — до того, как вы переведёте хоть один доллар. Мы никогда не касаемся ваших средств."
       },
-      "ctaCompare": { "en": "Compare opportunities", "ru": "Сравнить возможности" },
-      "ctaProtocols": { "en": "Explore protocols", "ru": "Изучить протоколы" },
-      "badgeNonCustodial": { "en": "Non-custodial", "ru": "Non-custodial" },
-      "badgeNoWallet": { "en": "No wallet connection", "ru": "Без подключения кошелька" },
-      "badgeEducational": { "en": "Educational only", "ru": "Только образовательно" },
-      "badgeTrustScore": { "en": "Trust Score v0.1", "ru": "Trust Score v0.1" },
-      "entryCardsTitle": { "en": "Explore the marketplace", "ru": "Изучите маркетплейс" },
+      "ctaCompare": { "en": "Compare USDT yield", "ru": "Сравнить доходность USDT" },
+      "ctaProtocols": { "en": "How each protocol works", "ru": "Как работает каждый протокол" },
+      "badgeNonCustodial": { "en": "Your keys, your funds", "ru": "Ваши ключи, ваши средства" },
+      "badgeNoWallet": { "en": "No wallet needed to browse", "ru": "Без кошелька для просмотра" },
+      "badgeEducational": { "en": "Not financial advice", "ru": "Не финансовый совет" },
+      "badgeTrustScore": { "en": "Risk scores included", "ru": "С оценками риска" },
+      "entryCardsTitle": { "en": "Where to start", "ru": "С чего начать" },
       "entryCards": {
         "compare": {
           "title": { "en": "Compare Yield", "ru": "Сравнить доходность" },
-          "desc": { "en": "Side-by-side APY snapshots, protocol context and Trust Score overviews.", "ru": "Сравнение снимков APY, контекста протоколов и Trust Score." },
-          "cta": { "en": "Compare opportunities", "ru": "Сравнить возможности" }
+          "desc": { "en": "See USDT and ETH rates side by side — APY, chain, and risk score in one table.", "ru": "USDT и ETH в одной таблице — APY, сеть и оценка риска." },
+          "cta": { "en": "Compare USDT yield", "ru": "Сравнить доходность USDT" }
         },
         "earn": {
           "title": { "en": "Earn Guides", "ru": "Гайды Earn" },
-          "desc": { "en": "Asset-level earn guides with risk context and protocol routes.", "ru": "Гайды по активам с контекстом риска и маршрутами протоколов." },
-          "cta": { "en": "View earn guides", "ru": "Открыть гайды" }
+          "desc": { "en": "Step-by-step guides for putting USDT, USDC, ETH, or SOL to work.", "ru": "Пошаговые гайды: как заставить работать USDT, USDC, ETH или SOL." },
+          "cta": { "en": "Browse earn guides", "ru": "Открыть гайды" }
         },
         "reviews": {
           "title": { "en": "Protocol Reviews", "ru": "Обзоры протоколов" },
-          "desc": { "en": "Educational protocol reviews with trust overview and risk notes.", "ru": "Образовательные обзоры протоколов с trust overview и рисками." },
-          "cta": { "en": "View reviews", "ru": "Открыть обзоры" }
+          "desc": { "en": "Plain-language breakdowns of Aave, Lido, Morpho, and more — before you deposit.", "ru": "Понятные обзоры Aave, Lido, Morpho и других — до депозита." },
+          "cta": { "en": "Read protocol reviews", "ru": "Читать обзоры" }
         },
         "safety": {
-          "title": { "en": "Safety Scores", "ru": "Оценки безопасности" },
-          "desc": { "en": "Protocol safety context, audit notes and non-custodial model.", "ru": "Контекст безопасности протоколов, аудиты и некастодиальная модель." },
-          "cta": { "en": "View safety scores", "ru": "Открыть оценки" }
+          "title": { "en": "Safety Checks", "ru": "Проверки безопасности" },
+          "desc": { "en": "Audit history, exploit track record, and what could go wrong with your money.", "ru": "Аудиты, история взломов и что может случиться с вашими деньгами." },
+          "cta": { "en": "Check protocol safety", "ru": "Проверить безопасность" }
         }
       },
-      "featuredEyebrow": { "en": "Popular comparisons", "ru": "Популярные сравнения" },
-      "featuredTitle": { "en": "Featured comparisons", "ru": "Избранные сравнения" },
-      "featuredDesc": { "en": "Key yield and protocol comparisons — educational market context only.", "ru": "Ключевые сравнения доходности и протоколов — только образовательный контекст." },
-      "featuredCta": { "en": "View all comparisons →", "ru": "Все сравнения →" },
+      "featuredEyebrow": { "en": "Most searched", "ru": "Популярные запросы" },
+      "featuredTitle": { "en": "Where is the yield?", "ru": "Где доходность?" },
+      "featuredDesc": { "en": "Holding USDT or ETH on a CEX? These are the comparisons people run first.", "ru": "USDT или ETH на бирже? С этих сравнений обычно начинают." },
+      "featuredCta": { "en": "See all comparisons →", "ru": "Все сравнения →" },
       "featuredLinks": [
         { "en": "Best USDT Yield", "ru": "Лучшая доходность USDT" },
         { "en": "Best USDC Yield", "ru": "Лучшая доходность USDC" },
@@ -1119,20 +1119,20 @@
         { "en": "Aave vs Morpho", "ru": "Aave vs Morpho" },
         { "en": "Lido vs Rocket Pool", "ru": "Lido vs Rocket Pool" }
       ],
-      "trustEyebrow": { "en": "Trust overview", "ru": "Trust overview" },
-      "trustTitle": { "en": "What is TJT Trust Score?", "ru": "Что такое TJT Trust Score?" },
+      "trustEyebrow": { "en": "Before you deposit", "ru": "Перед депозитом" },
+      "trustTitle": { "en": "How safe is this protocol?", "ru": "Насколько безопасен протокол?" },
       "trustDesc": {
-        "en": "TJT Trust Score is an educational 0–100 framework for protocol-level context. Scores may be estimated or reviewed — they are not financial advice.",
-        "ru": "TJT Trust Score — образовательная шкала 0–100 для контекста на уровне протокола. Оценки могут быть расчётными или проверенными — это не финансовый совет."
+        "en": "Every protocol on TJT gets a 0–100 Trust Score based on how much money is locked in it, audit history, past hacks, and how fast you can withdraw. Higher is generally safer — but nothing is guaranteed.",
+        "ru": "Каждый протокол на TJT получает Trust Score 0–100: сколько денег в протоколе, аудиты, взломы в прошлом и скорость вывода. Выше — обычно безопаснее, но гарантий нет."
       },
       "trustBullets": [
-        { "en": "0–100 educational framework for protocol context", "ru": "Образовательная шкала 0–100 для контекста протокола" },
-        { "en": "Estimated or reviewed status per protocol", "ru": "Статус estimated или reviewed для каждого протокола" },
-        { "en": "Risk context and trust overview — not financial advice", "ru": "Контекст риска и trust overview — не финансовый совет" }
+        { "en": "TVL — how much real money is in the protocol", "ru": "TVL — сколько реальных денег в протоколе" },
+        { "en": "Audits — has the code been checked by security firms", "ru": "Аудиты — проверяли ли код специалисты по безопасности" },
+        { "en": "Exploit history — has it been hacked before", "ru": "История взломов — взламывали ли раньше" }
       ],
-      "trustLinkProtocols": { "en": "Explore protocols", "ru": "Изучить протоколы" },
-      "trustLinkSafety": { "en": "Safety scores", "ru": "Оценки безопасности" },
-      "trustLinkReviews": { "en": "Protocol reviews", "ru": "Обзоры протоколов" }
+      "trustLinkProtocols": { "en": "See protocol scores", "ru": "Оценки протоколов" },
+      "trustLinkSafety": { "en": "Read safety guides", "ru": "Гайды по безопасности" },
+      "trustLinkReviews": { "en": "Read protocol reviews", "ru": "Обзоры протоколов" }
     },
     "offerButton": {
       "idle": { "en": "View protocol", "ru": "Открыть протокол" },
@@ -1143,11 +1143,11 @@
       "error": { "en": "Gateway unavailable. Transition not recorded.", "ru": "Шлюз недоступен. Переход не зафиксирован." }
     },
     "safety": {
-      "eyebrow": { "en": "Non-custodial by design", "ru": "Non-custodial by design" },
-      "title": { "en": "Safety infographic", "ru": "Инфографика безопасности" },
+      "eyebrow": { "en": "Your money stays yours", "ru": "Ваши деньги остаются вашими" },
+      "title": { "en": "How TJT keeps you in control", "ru": "Как TJT сохраняет ваш контроль" },
       "desc": {
-        "en": "Three steps of the TJT non-custodial model: funds and keys always stay under your control.",
-        "ru": "Три шага некастодиальной модели TJT: средства и ключи всегда остаются под вашим контролем."
+        "en": "TJT never holds your crypto. Here is exactly what happens when you go from browsing to depositing.",
+        "ru": "TJT никогда не хранит вашу крипту. Вот что происходит, когда вы переходите от просмотра к депозиту."
       },
       "cardTitle": { "en": "The non-custodial model in three steps", "ru": "Некастодиальная модель в три шага" },
       "cardDesc": {

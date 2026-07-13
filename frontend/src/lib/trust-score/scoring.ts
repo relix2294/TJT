@@ -71,38 +71,38 @@ export function computeProtocolTrustScore(input: TrustScoreInput): TrustScore {
     buildFactor("tvl_strength", tvl.score, tvl.status, {
       en:
         tvl.status === "verified"
-          ? `TVL tier derived from available USD data.`
-          : `TVL tier estimated from protocol profile — pending on-chain verification.`,
+          ? `How much money is locked in this protocol right now. More TVL usually means deeper liquidity and more eyes watching the code — but it is not a safety guarantee.`
+          : `Estimated total value locked. Protocols with billions locked tend to be harder to drain quickly, but large TVL alone does not mean your deposit is safe.`,
       ru:
         tvl.status === "verified"
-          ? `Уровень TVL из доступных USD-данных.`
-          : `Уровень TVL оценён по профилю протокола — ожидает on-chain верификации.`,
+          ? `Сколько денег сейчас заблокировано в протоколе. Больше TVL обычно означает больше ликвидности и больше внимания к коду — но это не гарантия безопасности.`
+          : `Оценочный TVL. Протоколы с миллиардами сложнее опустошить быстро, но большой TVL сам по себе не означает безопасность депозита.`,
     }),
     buildFactor("protocol_maturity", maturityScore, "estimated", {
-      en: `Protocol age placeholder (~${maturityYears}y) — pending verified launch date.`,
-      ru: `Заглушка возраста протокола (~${maturityYears} лет) — ожидает подтверждённую дату запуска.`,
+      en: `How long this protocol has been running (~${maturityYears} years). Older protocols have survived more market crashes and code upgrades — newer ones have less track record.`,
+      ru: `Как долго работает протокол (~${maturityYears} лет). Старые пережили больше кризисов и обновлений кода — у новых меньше истории.`,
     }),
     buildFactor("audit_status", auditScore, "pending_verification", {
-      en: `Audit coverage placeholder adjusted by catalog risk tier ${input.riskTier}.`,
-      ru: `Заглушка аудита с учётом уровня риска каталога ${input.riskTier}.`,
+      en: `Whether independent security firms have reviewed the smart contract code. Audits reduce risk but do not eliminate it — bugs are still found after audits. Risk tier: ${input.riskTier}.`,
+      ru: `Проверяли ли независимые фирмы код смарт-контрактов. Аудиты снижают риск, но не убирают его — баги находят и после аудитов. Уровень риска: ${input.riskTier}.`,
     }),
     buildFactor("exploit_history", exploitScore, "pending_verification", {
-      en: `Exploit history placeholder — no verified incident feed connected yet.`,
-      ru: `Заглушка истории эксплойтов — верифицированный фид инцидентов не подключён.`,
+      en: `Whether this protocol has been hacked or had funds stolen before. A clean history is reassuring; past exploits mean the team has been tested — but new vulnerabilities can still appear.`,
+      ru: `Был ли протокол взломан или терял средства раньше. Чистая история обнадёживает; прошлые взломы значат, что команду уже проверяли — но новые уязвимости возможны.`,
     }),
     buildFactor("apy_sustainability", apy.score, apy.status, {
       en:
         input.topApy != null
-          ? `APY sustainability from catalog top rate ${input.topApy}%.`
-          : `APY sustainability estimated — no catalog APY available.`,
+          ? `Whether the current ${input.topApy}% APY looks sustainable or driven by temporary token rewards. Very high stablecoin rates often drop sharply when incentives end.`
+          : `Whether advertised yield comes from real borrower demand or short-lived token giveaways. Unsustainable rates are the most common way beginners lose money.`,
       ru:
         input.topApy != null
-          ? `Устойчивость APY по лучшему APY каталога ${input.topApy}%.`
-          : `Устойчивость APY оценена — APY в каталоге отсутствует.`,
+          ? `Насколько текущий APY ${input.topApy}% устойчив или основан на временных токен-наградах. Очень высокие ставки на стейблкоинах часто падают, когда incentives заканчиваются.`
+          : `Идёт ли доходность от реального спроса заёмщиков или от краткосрочных раздач токенов. Неустойчивые ставки — частая причина потерь у новичков.`,
     }),
     buildFactor("liquidity_withdrawal_risk", liquidityScore, "estimated", {
-      en: `Liquidity and withdrawal risk placeholder by protocol category.`,
-      ru: `Заглушка риска ликвидности и вывода по категории протокола.`,
+      en: `How quickly you can get your money back out. If too many people withdraw at once, you may face delays or accept a lower exit price — especially on newer or smaller protocols.`,
+      ru: `Как быстро можно вывести деньги. Если многие выводят одновременно, возможны задержки или выход по худшей цене — особенно в новых или мелких протоколах.`,
     }),
   ];
 

@@ -165,19 +165,19 @@ export function buildProtocolExplanation(
 ): { short: { en: string; ru: string }; detailed?: { en: string; ru: string } } {
   const gradeContext =
     score >= 80
-      ? { en: "strong informational profile", ru: "сильный информационный профиль" }
+      ? { en: "strong track record on most factors", ru: "сильная история по большинству факторов" }
       : score >= 65
-        ? { en: "moderate informational profile", ru: "умеренный информационный профиль" }
-        : { en: "mixed informational profile", ru: "смешанный информационный профиль" };
+        ? { en: "decent profile with some gaps to watch", ru: "приемлемый профиль с отдельными слабыми местами" }
+        : { en: "weaker profile — proceed with extra caution", ru: "слабый профиль — действуйте с повышенной осторожностью" };
 
   return {
     short: {
-      en: `${input.name} scores ${score}/100 on TJT Trust Score v0.1 — a ${gradeContext.en} based on catalog data and estimated on-chain factors.`,
-      ru: `${input.name} получает ${score}/100 в TJT Trust Score v0.1 — ${gradeContext.ru} на основе данных каталога и оценочных on-chain факторов.`,
+      en: `${input.name} scores ${score}/100 — ${gradeContext.en}. Higher means more money locked, longer history, and fewer red flags — not a guarantee your deposit is safe.`,
+      ru: `${input.name} получает ${score}/100 — ${gradeContext.ru}. Выше — больше денег в протоколе, дольше история и меньше красных флагов — не гарантия безопасности депозита.`,
     },
     detailed: {
-      en: `Composite reflects TVL strength, protocol maturity, audit and exploit placeholders, APY sustainability from catalog snapshots, and liquidity exit assumptions. External verification pending for v1.0.`,
-      ru: `Композит учитывает TVL, зрелость протокола, заглушки аудита и эксплойтов, устойчивость APY из каталога и допущения по ликвидности. Внешняя верификация запланирована для v1.0.`,
+      en: `Based on how much is locked (TVL), how long the protocol has run, audit coverage, hack history, whether the current APY looks sustainable, and how fast you could withdraw. Scores above 80 are generally among the safer options in DeFi — but all DeFi carries risk.`,
+      ru: `На основе TVL, возраста протокола, аудитов, истории взломов, устойчивости текущего APY и скорости вывода. Оценки выше 80 обычно среди более безопасных вариантов в DeFi — но любой DeFi несёт риск.`,
     },
   };
 }

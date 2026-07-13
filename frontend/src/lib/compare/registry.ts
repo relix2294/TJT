@@ -132,8 +132,8 @@ const PROTOCOL_COMPARE_SUMMARIES: Record<ProtocolPairSpec["slug"], LocalizedStri
 
 const YIELD_COMPARE_SUMMARIES: Record<YieldSpec["slug"], LocalizedString> = {
   "best-usdt-yield": {
-    en: "Informational USDT yield comparison across catalogued DeFi routes. APY snapshots, chain coverage, TVL context, and TJT Trust Score v0.1 — market context only, not financial advice.",
-    ru: "Информационное сравнение доходности USDT по маршрутам каталога. Снимки APY, сети, TVL и TJT Trust Score v0.1 — только рыночный контекст.",
+    en: "Compare Aave, Morpho, Compound, and Spark USDT yields side by side. See live APY, which chain to use, and risk scores — so you can move off your exchange with eyes open. Not financial advice.",
+    ru: "Сравните доходность USDT в Aave, Morpho, Compound и Spark. APY, сеть и оценки риска — чтобы уйти с биржи осознанно. Не финансовый совет.",
   },
   "best-usdc-yield": {
     en: "Informational USDC yield comparison from the TJT CPA catalog. Side-by-side APY, chain, protocol Trust Score, and risk context for market research.",

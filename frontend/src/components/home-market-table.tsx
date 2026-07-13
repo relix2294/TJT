@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Search } from "lucide-react";
 import { useDeferredValue, useMemo, useState } from "react";
 import { Input } from "@/components/ui/input";
@@ -65,6 +66,7 @@ function CoinLogo({ asset }: { asset: MarketAsset }) {
 }
 
 export function HomeMarketTable({ lang, dict, initialMarket }: HomeMarketTableProps) {
+  const router = useRouter();
   const { market: liveMarket, live, updatedAt, tickAt, loading, error } = useMarket();
   const assets = liveMarket ?? initialMarket;
   const t = dict.market;
@@ -216,7 +218,8 @@ export function HomeMarketTable({ lang, dict, initialMarket }: HomeMarketTablePr
               return (
                 <tr
                   key={asset.symbol}
-                  className="group relative border-b border-slate-800/60 transition-colors hover:bg-slate-900/60"
+                  className="group relative border-b border-slate-800/60 transition-colors hover:bg-slate-900/60 cursor-pointer"
+                  onClick={() => router.push(href)}
                 >
                   <td className="px-3 py-2 font-numeric tabular-nums text-slate-500">
                     {asset.rank}
@@ -252,18 +255,12 @@ export function HomeMarketTable({ lang, dict, initialMarket }: HomeMarketTablePr
                     {asset.volume24h ? fmtCompactUsd(asset.volume24h) : "—"}
                   </td>
                   <td className="px-3 py-2 text-right">
-                    <Link
-                      href={href}
-                      className="relative z-[2] inline-flex h-6 items-center rounded border border-slate-700 bg-slate-900 px-2.5 text-[10px] font-semibold text-slate-200 transition-colors hover:border-emerald-500/40 hover:bg-emerald-500/10 hover:text-emerald-400"
+                    <span
+                      className="inline-flex h-6 items-center rounded border border-slate-700 bg-slate-900 px-2.5 text-[10px] font-semibold text-slate-200 transition-colors group-hover:border-emerald-500/40 group-hover:bg-emerald-500/10 group-hover:text-emerald-400"
                     >
                       {t.colAction}
-                    </Link>
+                    </span>
                   </td>
-                  <Link
-                    href={href}
-                    className="absolute inset-0 z-[1]"
-                    aria-label={`${asset.name} (${asset.symbol})`}
-                  />
                 </tr>
               );
             })}

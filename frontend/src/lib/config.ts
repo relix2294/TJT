@@ -22,7 +22,7 @@ export const SITE = {
    * Canonical public origin — used when `NEXT_PUBLIC_SITE_URL` is unset.
    * Set `NEXT_PUBLIC_SITE_URL` in production (see frontend/.env.example).
    */
-  url: "",
+  url: "https://tjt.finance",
   model: "Non-custodial crypto product comparison marketplace.",
   version: "1.0.0",
 } as const;

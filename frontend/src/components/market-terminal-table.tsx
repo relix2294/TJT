@@ -1,7 +1,7 @@
 "use client";
 
 import { useDeferredValue, useMemo, useState } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Search } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -36,6 +36,7 @@ function SentimentBadge({ sentiment }: { sentiment: MarketAsset["aiSentiment"] }
 }
 
 export function MarketTerminalTable({ lang, dict, initialMarket }: MarketTerminalTableProps) {
+  const router = useRouter();
   const { market: liveMarket, live, updatedAt, tickAt, loading, error } = useMarket();
   const assets = liveMarket ?? initialMarket;
   const hub = dict.marketHub;
@@ -212,7 +213,8 @@ export function MarketTerminalTable({ lang, dict, initialMarket }: MarketTermina
             {filtered.map((a) => (
               <tr
                 key={a.symbol}
-                className="group relative border-t border-border/40 transition-colors hover:bg-white/[0.04]"
+                className="group border-t border-border/40 transition-colors hover:bg-white/[0.04] cursor-pointer"
+                onClick={() => router.push(marketHref(lang, a))}
               >
                 <td className="px-5 py-4 font-numeric text-muted-foreground">{a.rank}</td>
                 <td className="px-5 py-4">
@@ -255,11 +257,6 @@ export function MarketTerminalTable({ lang, dict, initialMarket }: MarketTermina
                         : dict.marketDetail.signalHold}
                   </Badge>
                 </td>
-                <Link
-                  href={marketHref(lang, a)}
-                  className="absolute inset-0 z-[1]"
-                  aria-label={`${a.name} (${a.symbol})`}
-                />
               </tr>
             ))}
           </tbody>

@@ -93,8 +93,8 @@ const CATEGORY_REGISTRY: Record<ProtocolCategorySlug, ProtocolCategory> = {
 
 const PROTOCOL_DESCRIPTIONS: Record<ProtocolSlug, Protocol["description"]> = {
   aave: {
-    en: "Aave is a decentralized non-custodial liquidity protocol. Suppliers earn variable APY from borrower demand across multiple chains.",
-    ru: "Aave — децентрализованный некастодиальный протокол ликвидности. Поставщики получают переменный APY от спроса заёмщиков на разных сетях.",
+    en: "Aave is the largest DeFi lending protocol. Deposit USDT, USDC, or ETH and earn from real borrowers — your wallet stays in your control across Ethereum, Arbitrum, and more.",
+    ru: "Aave — крупнейший DeFi lending-протокол. Внесите USDT, USDC или ETH и зарабатывайте на реальных заёмщиках — кошелёк остаётся у вас на Ethereum, Arbitrum и других сетях.",
   },
   lido: {
     en: "Lido is the leading liquid-staking protocol on Ethereum. stETH accrues validator rewards while staying composable as DeFi collateral.",

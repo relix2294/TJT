@@ -71,10 +71,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: comparePageMetaDescription(page, lang),
     keywords: [
       slug.replace(/-/g, " "),
-      "defi comparison",
-      "informational comparison",
+      "best usdt yield defi",
+      "aave vs morpho usdt",
+      "usdt lending apy 2026",
+      "defi stablecoin yield",
       "tjt trust score",
-      "market context",
     ],
     ogImageAlt: comparePageTitle(page, lang),
   });
