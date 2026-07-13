@@ -1147,8 +1147,8 @@
         "ru": "— нет."
       },
       "subtitle": {
-        "en": "TJT is a premium passive-yield aggregator. We show how much you lose to inflation and deposits, and find the best vetted DeFi pools — without holding funds or touching your keys.",
-        "ru": "TJT — премиальный агрегатор пассивной доходности. Мы показываем, сколько вы теряете на инфляции и депозитах, и находим лучшие, проверенные DeFi-пулы. Без хранения средств и доступа к ключам."
+        "en": "TJT is a yield-data aggregator. We compare bank deposits, inflation and the yields of curated DeFi pools side by side — without holding funds or touching your keys. Informational only, not investment advice.",
+        "ru": "TJT — агрегатор данных о доходности. Мы наглядно сравниваем банковский вклад, инфляцию и доходность отобранных DeFi-пулов. Без хранения средств и доступа к ключам. Информационный сервис, не инвестиционная рекомендация."
       },
       "ctaCalc": {
         "en": "Calculate opportunity cost",
