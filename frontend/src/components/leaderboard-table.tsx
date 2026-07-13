@@ -22,11 +22,17 @@ import { fmtUsd } from "@/lib/format";
 import type { CpaOffer, Dictionary } from "@/lib/config";
 import type { Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
+import { normalizeRiskTier, riskTierLabel } from "@/lib/risk-tier";
 
 function riskBadgeClass(rating: string): string {
-  if (rating.startsWith("AAA")) return "border-profit/30 bg-profit/10 text-profit";
-  if (rating.startsWith("AA")) return "border-primary/30 bg-[--neon-soft] text-primary";
-  return "border-loss/30 bg-loss/10 text-loss";
+  switch (normalizeRiskTier(rating)) {
+    case "lower":
+      return "border-profit/30 bg-profit/10 text-profit";
+    case "medium":
+      return "border-primary/30 bg-[--neon-soft] text-primary";
+    case "higher":
+      return "border-loss/30 bg-loss/10 text-loss";
+  }
 }
 
 type LeaderboardTableProps = {
@@ -135,7 +141,7 @@ export function LeaderboardTable({
                       riskBadgeClass(offer.riskRating),
                     )}
                   >
-                    {offer.riskRating}
+                    {riskTierLabel(offer.riskRating, lang)}
                   </Badge>
                 </TableCell>
                 <TableCell className="align-top text-right">

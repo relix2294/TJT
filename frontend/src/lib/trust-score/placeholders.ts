@@ -1,4 +1,5 @@
 import type { TrustScoreInput } from "@/lib/trust-score/types";
+import { normalizeRiskTier } from "@/lib/risk-tier";
 
 /**
  * Static placeholder tiers for known protocols until external TVL/audit APIs ship.
@@ -94,14 +95,24 @@ const DEFAULT_PROFILE = {
   liquidityScore: 50,
 };
 
-/** Risk tier nudges audit and exploit placeholder scores. */
+/**
+ * Risk tier nudges audit and exploit placeholder scores. Accepts both the
+ * legacy internal letter codes ("AAA"/"AA") and the current descriptive tiers
+ * ("lower"/"medium"/"higher") via a shared normalizer, so the scoring math is
+ * unchanged regardless of which representation the caller passes.
+ */
 export function riskTierAdjustments(riskTier: string): {
   auditDelta: number;
   exploitDelta: number;
 } {
-  if (riskTier.startsWith("AAA")) return { auditDelta: 8, exploitDelta: 10 };
-  if (riskTier.startsWith("AA")) return { auditDelta: 4, exploitDelta: 5 };
-  return { auditDelta: 0, exploitDelta: 0 };
+  switch (normalizeRiskTier(riskTier)) {
+    case "lower":
+      return { auditDelta: 8, exploitDelta: 10 };
+    case "medium":
+      return { auditDelta: 4, exploitDelta: 5 };
+    case "higher":
+      return { auditDelta: 0, exploitDelta: 0 };
+  }
 }
 
 export function getProtocolPlaceholderProfile(slug: string) {

@@ -37,6 +37,7 @@ import {
 } from "@/lib/server-registry";
 import { fmtDateTime } from "@/lib/format";
 import { LOCALES, isLocale, type Locale } from "@/lib/i18n";
+import { normalizeRiskTier, riskTierLabel } from "@/lib/risk-tier";
 import type { Dictionary } from "@/lib/config";
 import { cn } from "@/lib/utils";
 
@@ -61,9 +62,14 @@ function pct(share: number): string {
 
 function riskTone(rating: string | null): string {
   if (!rating) return "border-border text-muted-foreground";
-  if (rating.startsWith("AAA")) return "border-profit/40 bg-profit/10 text-profit";
-  if (rating.startsWith("AA")) return "border-primary/40 bg-[--neon-soft] text-primary";
-  return "border-loss/40 bg-loss/10 text-loss";
+  switch (normalizeRiskTier(rating)) {
+    case "lower":
+      return "border-profit/40 bg-profit/10 text-profit";
+    case "medium":
+      return "border-primary/40 bg-[--neon-soft] text-primary";
+    case "higher":
+      return "border-loss/40 bg-loss/10 text-loss";
+  }
 }
 
 function langLabel(lang: string, t: Dictionary["admin"]): string {
@@ -380,7 +386,7 @@ function OfferTable({
             <TableCell className="text-center">
               {s.riskRating ? (
                 <Badge variant="outline" className={cn("font-bold", riskTone(s.riskRating))}>
-                  {s.riskRating}
+                  {riskTierLabel(s.riskRating, lang)}
                 </Badge>
               ) : (
                 <span className="text-muted-foreground">—</span>

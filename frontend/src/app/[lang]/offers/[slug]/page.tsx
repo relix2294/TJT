@@ -11,6 +11,7 @@ import { Card } from "@/components/ui/card";
 import { findOfferBySlug, loadAppConfig, loadDictionary } from "@/lib/server-config";
 import { fmtUsd } from "@/lib/format";
 import { LOCALES, isLocale } from "@/lib/i18n";
+import { riskTierLabel } from "@/lib/risk-tier";
 import {
   buildProductSchema,
   detailPath,
@@ -125,7 +126,7 @@ export default async function OfferDetailPage({ params }: PageProps) {
                     variant="outline"
                     className="border-primary/40 bg-[--neon-soft] font-bold text-primary"
                   >
-                    {offer.riskRating}
+                    {riskTierLabel(offer.riskRating, lang)}
                   </Badge>
                   <span className="text-xs text-muted-foreground">
                     {offer.protocol} · {offer.network}

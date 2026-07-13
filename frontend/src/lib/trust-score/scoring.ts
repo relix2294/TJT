@@ -12,6 +12,7 @@ import {
   scoreMaturity,
   scoreTvl,
 } from "@/lib/trust-score/placeholders";
+import { riskTierLabel } from "@/lib/risk-tier";
 import type {
   EarnAssetTrustScoreInput,
   TrustScore,
@@ -83,8 +84,8 @@ export function computeProtocolTrustScore(input: TrustScoreInput): TrustScore {
       ru: `Как долго работает протокол (~${maturityYears} лет). Старые пережили больше кризисов и обновлений кода — у новых меньше истории.`,
     }),
     buildFactor("audit_status", auditScore, "pending_verification", {
-      en: `Whether independent security firms have reviewed the smart contract code. Audits reduce risk but do not eliminate it — bugs are still found after audits. Risk tier: ${input.riskTier}.`,
-      ru: `Проверяли ли независимые фирмы код смарт-контрактов. Аудиты снижают риск, но не убирают его — баги находят и после аудитов. Уровень риска: ${input.riskTier}.`,
+      en: `Whether independent security firms have reviewed the smart contract code. Audits reduce risk but do not eliminate it — bugs are still found after audits. Risk tier: ${riskTierLabel(input.riskTier, "en")}.`,
+      ru: `Проверяли ли независимые фирмы код смарт-контрактов. Аудиты снижают риск, но не убирают его — баги находят и после аудитов. Уровень риска: ${riskTierLabel(input.riskTier, "ru")}.`,
     }),
     buildFactor("exploit_history", exploitScore, "pending_verification", {
       en: `Whether this protocol has been hacked or had funds stolen before. A clean history is reassuring; past exploits mean the team has been tested — but new vulnerabilities can still appear.`,

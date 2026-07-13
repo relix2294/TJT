@@ -12,11 +12,17 @@ import {
 import type { Benchmarks, CpaOffer, Dictionary } from "@/lib/config";
 import type { Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
+import { normalizeRiskTier, riskTierLabel } from "@/lib/risk-tier";
 
 function riskBadgeClass(rating: string): string {
-  if (rating.startsWith("AAA")) return "border-emerald-500/30 bg-emerald-500/10 text-emerald-400";
-  if (rating.startsWith("AA")) return "border-sky-500/30 bg-sky-500/10 text-sky-400";
-  return "border-rose-500/30 bg-rose-500/10 text-rose-400";
+  switch (normalizeRiskTier(rating)) {
+    case "lower":
+      return "border-emerald-500/30 bg-emerald-500/10 text-emerald-400";
+    case "medium":
+      return "border-sky-500/30 bg-sky-500/10 text-sky-400";
+    case "higher":
+      return "border-rose-500/30 bg-rose-500/10 text-rose-400";
+  }
 }
 
 type HomeSidebarLeaderboardProps = {
@@ -84,7 +90,7 @@ export function HomeSidebarLeaderboard({
                       riskBadgeClass(offer.riskRating),
                     )}
                   >
-                    {offer.riskRating}
+                    {riskTierLabel(offer.riskRating, lang)}
                   </Badge>
                   <span className="font-numeric text-[11px] font-bold tabular-nums text-emerald-500">
                     {offer.apy.toFixed(1)}% {homeT.bonusLabel}

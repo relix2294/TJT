@@ -3,13 +3,7 @@
 import { OfferButton } from "@/components/offer-button";
 import type { CpaOffer, Dictionary } from "@/lib/config";
 import type { Locale } from "@/lib/i18n";
-
-function ratingFromRisk(risk: string): string {
-  if (risk.startsWith("AAA")) return "4.9";
-  if (risk.startsWith("AA")) return "4.7";
-  if (risk.startsWith("A")) return "4.5";
-  return "4.6";
-}
+import { riskTierScore } from "@/lib/risk-tier";
 
 function featureTag(offer: CpaOffer): string {
   const raw = offer.benefits[0] ?? offer.network;
@@ -47,7 +41,7 @@ export function HomeCryptoExchanges({ lang, dict, offers }: HomeCryptoExchangesP
               <p className="truncate text-[11px] font-semibold text-slate-100">{offer.name}</p>
               <div className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5">
                 <span className="font-numeric text-[10px] font-semibold tabular-nums text-amber-400">
-                  {ratingFromRisk(offer.riskRating)}/5
+                  {riskTierScore(offer.riskRating)}/5
                 </span>
                 <span className="rounded border border-gray-800 bg-neutral-900 px-1.5 py-px text-[9px] font-medium text-slate-400">
                   {featureTag(offer)}

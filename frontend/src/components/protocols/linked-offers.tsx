@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { fmtUsd } from "@/lib/format";
 import type { Locale } from "@/lib/i18n";
 import type { ProtocolLinkedOffer } from "@/lib/protocols/types";
+import { riskTierLabel } from "@/lib/risk-tier";
 
 type ProtocolLinkedOffersProps = {
   lang: Locale;
@@ -48,7 +49,7 @@ export function ProtocolLinkedOffers({
                 variant="outline"
                 className="border-primary/40 bg-[--neon-soft] font-bold text-primary"
               >
-                {offer.riskRating}
+                {riskTierLabel(offer.riskRating, lang)}
               </Badge>
               <span className="text-xs text-muted-foreground">{offer.network}</span>
             </div>

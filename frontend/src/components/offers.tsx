@@ -9,6 +9,7 @@ import { useConfig } from "@/lib/use-config";
 import { fmtUsd } from "@/lib/format";
 import type { CpaOffer, Dictionary } from "@/lib/config";
 import type { Locale } from "@/lib/i18n";
+import { riskTierLabel } from "@/lib/risk-tier";
 
 type OffersProps = {
   lang: Locale;
@@ -66,7 +67,7 @@ export function Offers({ lang, dict, data }: OffersProps) {
               variant="outline"
               className="border-primary/40 bg-[--neon-soft] font-bold text-primary"
             >
-              {offer.riskRating}
+              {riskTierLabel(offer.riskRating, lang)}
             </Badge>
             <span className="text-xs text-muted-foreground">{offer.network}</span>
           </div>
