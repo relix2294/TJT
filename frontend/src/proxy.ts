@@ -1,5 +1,9 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { ADMIN_SESSION_COOKIE, isValidAdminSession } from "@/lib/admin-session";
+import {
+  ADMIN_SESSION_COOKIE,
+  isValidAdminSession,
+  resolveSessionSigningSecret,
+} from "@/lib/admin-session";
 import {
   LOCALES,
   LOCALE_COOKIE,
@@ -54,9 +58,11 @@ async function guardAdminDashboard(
   request: NextRequest,
   locale: Locale,
 ): Promise<NextResponse | null> {
-  const adminPassword = process.env.ADMIN_PASSWORD?.trim() ?? "";
   const session = request.cookies.get(ADMIN_SESSION_COOKIE)?.value;
-  const authorized = await isValidAdminSession(session, adminPassword);
+  const authorized = await isValidAdminSession(
+    session,
+    resolveSessionSigningSecret(),
+  );
   if (authorized) return null;
 
   const loginUrl = request.nextUrl.clone();

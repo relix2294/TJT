@@ -10,6 +10,22 @@ export const ADMIN_SESSION_COOKIE = "tjt_admin_session";
 /** Seven days — matches product requirement. */
 export const ADMIN_SESSION_MAX_AGE = 60 * 60 * 24 * 7;
 
+/**
+ * Secret used to HMAC-sign session cookies.
+ *
+ * Prefer a dedicated, high-entropy `ADMIN_SESSION_SECRET` so the session
+ * signing key is decoupled from the (often human-chosen, lower-entropy) login
+ * password: rotating the password then does not require the signing key, and a
+ * weak password is never used directly as a cryptographic key. Falls back to
+ * `ADMIN_PASSWORD` when the dedicated secret is unset, preserving the behavior
+ * of existing deployments.
+ */
+export function resolveSessionSigningSecret(): string {
+  const dedicated = process.env.ADMIN_SESSION_SECRET?.trim();
+  if (dedicated) return dedicated;
+  return process.env.ADMIN_PASSWORD?.trim() ?? "";
+}
+
 const textEncoder = new TextEncoder();
 
 function base64UrlEncode(bytes: Uint8Array): string {
